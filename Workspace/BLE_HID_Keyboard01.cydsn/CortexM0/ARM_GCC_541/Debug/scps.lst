@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
    9:scps.c        **** * Hardware Dependency:
   10:scps.c        **** *  CY8CKIT-042 BLE
   11:scps.c        **** * 
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 2
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 2
 
 
   12:scps.c        **** ********************************************************************************
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
   66 0012 22D8     		bhi	.L11
   67 0014 9A00     		lsls	r2, r3, #2
   68 0016 144B     		ldr	r3, .L13
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 3
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 3
 
 
   69 0018 D318     		adds	r3, r2, r3
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  111 0048 0233     		adds	r3, r3, #2
  112 004a 1800     		movs	r0, r3
  113 004c FFF7FEFF 		bl	CyBle_Get16ByPtr
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 4
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 4
 
 
  114 0050 0300     		movs	r3, r0
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
   74:scps.c        **** /*******************************************************************************
   75:scps.c        **** * Function Name: ScpsInit()
   76:scps.c        **** ********************************************************************************
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 5
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 5
 
 
   77:scps.c        **** *
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
   95:scps.c        ****         requestScanRefresh |= ENABLED;
  188              		.loc 1 95 0 is_stmt 1
  189 0030 064B     		ldr	r3, .L18+4
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 6
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 6
 
 
  190 0032 1B88     		ldrh	r3, [r3]
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  242 0034 02       		.byte	0x2
  243 0035 05       		.byte	0x5
  244 0036 DE2C0000 		.4byte	.LASF2
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 7
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 7
 
 
  245 003a 02       		.uleb128 0x2
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  299 00a0 DE0E0000 		.4byte	.LASF14
  300 00a4 02       		.uleb128 0x2
  301 00a5 08       		.byte	0x8
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 8
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 8
 
 
  302 00a6 04       		.byte	0x4
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  356 0110 A92B0000 		.4byte	.LASF30
  357 0114 26       		.byte	0x26
  358 0115 07       		.uleb128 0x7
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 9
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 9
 
 
  359 0116 70020000 		.4byte	.LASF31
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  413 0182 8F020000 		.4byte	.LASF49
  414 0186 41       		.byte	0x41
  415 0187 07       		.uleb128 0x7
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 10
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 10
 
 
  416 0188 0F340000 		.4byte	.LASF50
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  470 01f4 78350000 		.4byte	.LASF68
  471 01f8 54       		.byte	0x54
  472 01f9 07       		.uleb128 0x7
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 11
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 11
 
 
  473 01fa 23050000 		.4byte	.LASF69
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  527 0266 9E230000 		.4byte	.LASF87
  528 026a FD       		.byte	0xfd
  529 026b 07       		.uleb128 0x7
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 12
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 12
 
 
  530 026c B0210000 		.4byte	.LASF88
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  584 02d9 07       		.uleb128 0x7
  585 02da 491C0000 		.4byte	.LASF104
  586 02de 0F       		.byte	0xf
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 13
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 13
 
 
  587 02df 07       		.uleb128 0x7
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  641 0350 03       		.byte	0x3
  642 0351 7104     		.2byte	0x471
  643 0353 72020000 		.4byte	0x272
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 14
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 14
 
 
  644 0357 09       		.uleb128 0x9
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  698 03c6 8D030000 		.4byte	0x38d
  699 03ca 09       		.uleb128 0x9
  700 03cb 04       		.byte	0x4
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 15
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 15
 
 
  701 03cc BE030000 		.4byte	0x3be
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  755 0438 0E       		.uleb128 0xe
  756 0439 FD1A0000 		.4byte	.LASF141
  757 043d 06       		.byte	0x6
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 16
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 16
 
 
  758 043e 26       		.byte	0x26
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  812 04a8 77340000 		.4byte	.LASF149
  813 04ac 0101     		.2byte	0x101
  814 04ae 08       		.uleb128 0x8
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 17
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 17
 
 
  815 04af C4090000 		.4byte	.LASF150
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  869 052d 4E270000 		.4byte	.LASF168
  870 0531 1401     		.2byte	0x114
  871 0533 08       		.uleb128 0x8
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 18
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 18
 
 
  872 0534 031C0000 		.4byte	.LASF169
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  926 05b2 E42D0000 		.4byte	.LASF187
  927 05b6 2701     		.2byte	0x127
  928 05b8 08       		.uleb128 0x8
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 19
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 19
 
 
  929 05b9 DD210000 		.4byte	.LASF188
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  983 0637 82000000 		.4byte	.LASF206
  984 063b 3A01     		.2byte	0x13a
  985 063d 08       		.uleb128 0x8
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 20
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 20
 
 
  986 063e 90270000 		.4byte	.LASF207
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  1040 06bc FD070000 		.4byte	.LASF225
  1041 06c0 4D01     		.2byte	0x14d
  1042 06c2 08       		.uleb128 0x8
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 21
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 21
 
 
  1043 06c3 C2230000 		.4byte	.LASF226
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  1097 0741 CA220000 		.4byte	.LASF244
  1098 0745 6001     		.2byte	0x160
  1099 0747 08       		.uleb128 0x8
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 22
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 22
 
 
  1100 0748 B4010000 		.4byte	.LASF245
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  1154 07c6 DC1F0000 		.4byte	.LASF263
  1155 07ca 7301     		.2byte	0x173
  1156 07cc 08       		.uleb128 0x8
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 23
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 23
 
 
  1157 07cd E72E0000 		.4byte	.LASF264
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  1211 084b 6A160000 		.4byte	.LASF282
  1212 084f 8601     		.2byte	0x186
  1213 0851 08       		.uleb128 0x8
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 24
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 24
 
 
  1214 0852 330A0000 		.4byte	.LASF283
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  1268 08d0 A7160000 		.4byte	.LASF301
  1269 08d4 9901     		.2byte	0x199
  1270 08d6 08       		.uleb128 0x8
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 25
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 25
 
 
  1271 08d7 07140000 		.4byte	.LASF302
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  1325 0955 8B240000 		.4byte	.LASF320
  1326 0959 AC01     		.2byte	0x1ac
  1327 095b 08       		.uleb128 0x8
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 26
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 26
 
 
  1328 095c F4060000 		.4byte	.LASF321
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  1382 09da 99350000 		.4byte	.LASF339
  1383 09de BF01     		.2byte	0x1bf
  1384 09e0 08       		.uleb128 0x8
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 27
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 27
 
 
  1385 09e1 570A0000 		.4byte	.LASF340
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  1439 0a5f 52330000 		.4byte	.LASF358
  1440 0a63 D201     		.2byte	0x1d2
  1441 0a65 08       		.uleb128 0x8
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 28
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 28
 
 
  1442 0a66 661D0000 		.4byte	.LASF359
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  1496 0ae4 45080000 		.4byte	.LASF377
  1497 0ae8 E501     		.2byte	0x1e5
  1498 0aea 08       		.uleb128 0x8
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 29
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 29
 
 
  1499 0aeb E2000000 		.4byte	.LASF378
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  1553 0b69 29300000 		.4byte	.LASF396
  1554 0b6d F801     		.2byte	0x1f8
  1555 0b6f 08       		.uleb128 0x8
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 30
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 30
 
 
  1556 0b70 7D1E0000 		.4byte	.LASF397
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  1610 0bee 00000000 		.4byte	.LASF415
  1611 0bf2 0B02     		.2byte	0x20b
  1612 0bf4 08       		.uleb128 0x8
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 31
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 31
 
 
  1613 0bf5 1B220000 		.4byte	.LASF416
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  1667 0c73 78100000 		.4byte	.LASF434
  1668 0c77 1E02     		.2byte	0x21e
  1669 0c79 08       		.uleb128 0x8
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 32
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 32
 
 
  1670 0c7a F5110000 		.4byte	.LASF435
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  1724 0ceb 4B030000 		.4byte	0x34b
  1725 0cef 02       		.uleb128 0x2
  1726 0cf0 91       		.byte	0x91
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 33
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 33
 
 
  1727 0cf1 6E       		.sleb128 -18
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  1781 0011 00       		.byte	0
  1782 0012 00       		.byte	0
  1783 0013 02       		.uleb128 0x2
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 34
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 34
 
 
  1784 0014 24       		.uleb128 0x24
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  1838 004a 00       		.byte	0
  1839 004b 00       		.byte	0
  1840 004c 07       		.uleb128 0x7
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 35
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 35
 
 
  1841 004d 28       		.uleb128 0x28
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  1895 0083 0C       		.uleb128 0xc
  1896 0084 0D       		.uleb128 0xd
  1897 0085 00       		.byte	0
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 36
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 36
 
 
  1898 0086 03       		.uleb128 0x3
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  1952 00bc 0D       		.uleb128 0xd
  1953 00bd 00       		.byte	0
  1954 00be 03       		.uleb128 0x3
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 37
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 37
 
 
  1955 00bf 0E       		.uleb128 0xe
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  2009 00f6 03       		.uleb128 0x3
  2010 00f7 0E       		.uleb128 0xe
  2011 00f8 3A       		.uleb128 0x3a
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 38
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 38
 
 
  2012 00f9 0B       		.uleb128 0xb
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  2063      FB0E0D00 
  2063      01010101 
  2064              	.LASF415:
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 39
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 39
 
 
  2065 0000 4359424C 		.ascii	"CYBLE_EVT_UDSC_READ_CHAR_RESPONSE\000"
@@ -2338,7 +2338,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  2083      545F5254 
  2083      5553535F 
  2083      57524954 
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 40
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 40
 
 
  2084              	.LASF145:
@@ -2398,7 +2398,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  2103      74506172 
  2103      616D00
  2104              	.LASF216:
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 41
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 41
 
 
  2105 024e 4359424C 		.ascii	"CYBLE_EVT_BLSC_READ_CHAR_RESPONSE\000"
@@ -2458,7 +2458,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  2123      53535F49 
  2123      4E444943 
  2124              	.LASF266:
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 42
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 42
 
 
  2125 0381 4359424C 		.ascii	"CYBLE_EVT_CTSC_READ_CHAR_RESPONSE\000"
@@ -2518,7 +2518,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  2143 04b3 4359424C 		.ascii	"CYBLE_ERROR_L2CAP_CONNECTION_ENTITY_NOT_FOUND\000"
  2143      455F4552 
  2143      524F525F 
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 43
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 43
 
 
  2143      4C324341 
@@ -2578,7 +2578,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  2160      52454144 
  2161              	.LASF450:
  2162 0609 73637073 		.ascii	"scps.c\000"
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 44
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 44
 
 
  2162      2E6300
@@ -2638,7 +2638,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  2180      52495445 
  2181              	.LASF100:
  2182 0717 4359424C 		.ascii	"CYBLE_ERROR_BT_ON_NOT_COMPLETED\000"
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 45
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 45
 
 
  2182      455F4552 
@@ -2698,7 +2698,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  2200      53435F52 
  2200      4541445F 
  2201              	.LASF377:
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 46
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 46
 
 
  2202 0845 4359424C 		.ascii	"CYBLE_EVT_PLXSC_WRITE_CHAR_RESPONSE\000"
@@ -2758,7 +2758,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  2220      545F4C4E 
  2220      53535F4E 
  2220      4F544946 
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 47
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 47
 
 
  2221              	.LASF253:
@@ -2818,7 +2818,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  2239              	.LASF119:
  2240 0a9e 4359424C 		.ascii	"CYBLE_ERROR_CHAR_IS_NOT_DISCOVERED\000"
  2240      455F4552 
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 48
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 48
 
 
  2240      524F525F 
@@ -2878,7 +2878,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  2258      68617200 
  2259              	.LASF438:
  2260 0bcc 4359424C 		.ascii	"CYBLE_EVT_WSSC_WRITE_DESCR_RESPONSE\000"
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 49
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 49
 
 
  2260      455F4556 
@@ -2938,7 +2938,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  2278      53535F4E 
  2278      4F544946 
  2279              	.LASF387:
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 50
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 50
 
 
  2280 0cfa 4359424C 		.ascii	"CYBLE_EVT_RSCSC_INDICATION\000"
@@ -2998,7 +2998,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  2298      545F4950 
  2298      53435F52 
  2298      4541445F 
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 51
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 51
 
 
  2299              	.LASF79:
@@ -3058,7 +3058,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  2318      545F4149 
  2318      4F53435F 
  2318      4552524F 
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 52
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 52
 
 
  2319              	.LASF174:
@@ -3118,7 +3118,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  2337              	.LASF434:
  2338 1078 4359424C 		.ascii	"CYBLE_EVT_WSSS_INDICATION_CONFIRMED\000"
  2338      455F4556 
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 53
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 53
 
 
  2338      545F5753 
@@ -3178,7 +3178,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  2356      545F424C 
  2356      53535F4E 
  2356      4F544946 
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 54
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 54
 
 
  2357              	.LASF134:
@@ -3238,7 +3238,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  2375              	.LASF251:
  2376 12d0 4359424C 		.ascii	"CYBLE_EVT_CSCSS_NOTIFICATION_DISABLED\000"
  2376      455F4556 
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 55
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 55
 
 
  2376      545F4353 
@@ -3298,7 +3298,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  2394      545F4850 
  2394      53535F43 
  2394      4841525F 
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 56
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 56
 
 
  2395              	.LASF302:
@@ -3358,7 +3358,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  2414 1517 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
  2414      43313120 
  2414      352E342E 
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 57
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 57
 
 
  2414      31203230 
@@ -3418,7 +3418,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  2431              	.LASF29:
  2432 168d 4359424C 		.ascii	"CYBLE_EVT_GAP_AUTH_FAILED\000"
  2432      455F4556 
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 58
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 58
 
 
  2432      545F4741 
@@ -3478,7 +3478,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  2450      545F4941 
  2450      53535F57 
  2450      52495445 
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 59
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 59
 
 
  2451              	.LASF361:
@@ -3538,7 +3538,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  2469              	.LASF269:
  2470 1906 4359424C 		.ascii	"CYBLE_EVT_CTSC_WRITE_CHAR_RESPONSE\000"
  2470      455F4556 
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 60
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 60
 
 
  2470      545F4354 
@@ -3598,7 +3598,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  2489              	.LASF372:
  2490 1a31 4359424C 		.ascii	"CYBLE_EVT_PLXSS_INDICATION_DISABLED\000"
  2490      455F4556 
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 61
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 61
 
 
  2490      545F504C 
@@ -3658,7 +3658,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  2508      545F4854 
  2508      53435F4E 
  2508      4F544946 
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 62
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 62
 
 
  2509              	.LASF6:
@@ -3718,7 +3718,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  2528 1c8c 4359424C 		.ascii	"CYBLE_EVT_CGMSS_INDICATION_ENABLED\000"
  2528      455F4556 
  2528      545F4347 
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 63
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 63
 
 
  2528      4D53535F 
@@ -3778,7 +3778,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  2548 1dd0 4359424C 		.ascii	"CYBLE_EVT_CSCSS_INDICATION_CONFIRMATION\000"
  2548      455F4556 
  2548      545F4353 
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 64
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 64
 
 
  2548      4353535F 
@@ -3838,7 +3838,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  2568 1efd 4359424C 		.ascii	"CYBLE_EVT_HIDSS_NOTIFICATION_DISABLED\000"
  2568      455F4556 
  2568      545F4849 
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 65
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 65
 
 
  2568      4453535F 
@@ -3898,7 +3898,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  2586      52545F44 
  2587              	.LASF395:
  2588 203c 4359424C 		.ascii	"CYBLE_EVT_SCPSS_NOTIFICATION_DISABLED\000"
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 66
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 66
 
 
  2588      455F4556 
@@ -3958,7 +3958,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  2606      53535F49 
  2606      4E444943 
  2607              	.LASF315:
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 67
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 67
 
 
  2608 218d 4359424C 		.ascii	"CYBLE_EVT_HPSC_WRITE_CHAR_RESPONSE\000"
@@ -4018,7 +4018,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  2626      455F4552 
  2626      524F525F 
  2626      4E54465F 
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 68
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 68
 
 
  2626      44495341 
@@ -4078,7 +4078,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  2644      434F5252 
  2645              	.LASF15:
  2646 23b6 6C6F6E67 		.ascii	"long double\000"
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 69
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 69
 
 
  2646      20646F75 
@@ -4138,7 +4138,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  2664      505F454E 
  2664      43525950 
  2665              	.LASF360:
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 70
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 70
 
 
  2666 24e6 4359424C 		.ascii	"CYBLE_EVT_NDCSC_READ_CHAR_RESPONSE\000"
@@ -4198,7 +4198,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  2684              	.LASF195:
  2685 2634 4359424C 		.ascii	"CYBLE_EVT_ANSC_WRITE_DESCR_RESPONSE\000"
  2685      455F4556 
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 71
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 71
 
 
  2685      545F414E 
@@ -4258,7 +4258,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  2703      4C49445F 
  2704              	.LASF168:
  2705 274e 4359424C 		.ascii	"CYBLE_EVT_AIOSS_INDICATION_ENABLED\000"
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 72
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 72
 
 
  2705      455F4556 
@@ -4318,7 +4318,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  2723      485F5752 
  2724              	.LASF285:
  2725 2866 4359424C 		.ascii	"CYBLE_EVT_GLSS_INDICATION_DISABLED\000"
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 73
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 73
 
 
  2725      455F4556 
@@ -4378,7 +4378,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  2743      53535F4E 
  2743      4F544946 
  2744              	.LASF404:
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 74
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 74
 
 
  2745 2994 4359424C 		.ascii	"CYBLE_EVT_TPSC_READ_DESCR_RESPONSE\000"
@@ -4438,7 +4438,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  2763      545F5343 
  2763      5053435F 
  2763      52454144 
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 75
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 75
 
 
  2764              	.LASF323:
@@ -4498,7 +4498,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  2782              	.LASF430:
  2783 2bf5 4359424C 		.ascii	"CYBLE_EVT_WPTSC_READ_DESCR_RESPONSE\000"
  2783      455F4556 
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 76
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 76
 
 
  2783      545F5750 
@@ -4558,7 +4558,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  2803      455F4556 
  2803      545F4741 
  2803      5454535F 
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 77
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 77
 
 
  2803      494E4449 
@@ -4618,7 +4618,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  2821      4E444943 
  2822              	.LASF190:
  2823 2e49 4359424C 		.ascii	"CYBLE_EVT_ANSS_CHAR_WRITE\000"
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 78
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 78
 
 
  2823      455F4556 
@@ -4678,7 +4678,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  2841      455F4552 
  2841      524F525F 
  2841      4741505F 
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 79
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 79
 
 
  2841      524F4C45 
@@ -4738,7 +4738,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  2860              	.LASF95:
  2861 3081 4359424C 		.ascii	"CYBLE_ERROR_NO_CONNECTION\000"
  2861      455F4552 
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 80
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 80
 
 
  2861      524F525F 
@@ -4798,7 +4798,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  2879      5454435F 
  2879      48414E44 
  2880              	.LASF249:
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 81
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 81
 
 
  2881 31a4 4359424C 		.ascii	"CYBLE_EVT_CPSC_SCAN_PROGRESS_RESULT\000"
@@ -4858,7 +4858,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  2899 32d0 4359424C 		.ascii	"CYBLE_EVT_CGMSS_NOTIFICATION_DISABLED\000"
  2899      455F4556 
  2899      545F4347 
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 82
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 82
 
 
  2899      4D53535F 
@@ -4918,7 +4918,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  2919      524F525F 
  2919      494E5641 
  2919      4C49445F 
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 83
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 83
 
 
  2920              	.LASF21:
@@ -4978,7 +4978,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  2938              	.LASF191:
  2939 351a 4359424C 		.ascii	"CYBLE_EVT_ANSC_NOTIFICATION\000"
  2939      455F4556 
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 84
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 84
 
 
  2939      545F414E 
@@ -5038,7 +5038,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 1
  2958              	.LASF189:
  2959 3652 4359424C 		.ascii	"CYBLE_EVT_ANSS_NOTIFICATION_DISABLED\000"
  2959      455F4556 
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccdJQjyY.s 			page 85
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccAIxm8q.s 			page 85
 
 
  2959      545F414E 

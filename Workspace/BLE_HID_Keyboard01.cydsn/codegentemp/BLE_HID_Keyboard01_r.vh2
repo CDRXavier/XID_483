@@ -1,5 +1,5 @@
 -- Project:   BLE_HID_Keyboard01
--- Generated: 12/08/2024 16:19:44
+-- Generated: 12/08/2024 17:26:00
 -- PSoC Creator  4.4
 
 ENTITY BLE_HID_Keyboard01 IS
@@ -8,17 +8,18 @@ ENTITY BLE_HID_Keyboard01 IS
         CapsLock_LED(0)_PAD : OUT std_ulogic;
         Disconnect_LED(0)_PAD : OUT std_ulogic;
         SW2(0)_PAD : IN std_ulogic;
-        Columns(0)_PAD : OUT std_ulogic;
-        Columns(1)_PAD : OUT std_ulogic;
-        Columns(2)_PAD : OUT std_ulogic;
-        Rows(0)_PAD : IN std_ulogic;
-        Rows(1)_PAD : IN std_ulogic;
-        Rows(2)_PAD : IN std_ulogic;
-        Rows(3)_PAD : IN std_ulogic;
-        Pin_4(0)_PAD : IN std_ulogic;
-        Pin_3(0)_PAD : OUT std_ulogic;
-        Pin_1(0)_PAD : OUT std_ulogic;
-        Pin_2(0)_PAD : OUT std_ulogic);
+        Columns(0)_PAD : IN std_ulogic;
+        Columns(1)_PAD : IN std_ulogic;
+        Columns(2)_PAD : IN std_ulogic;
+        Rows(0)_PAD : OUT std_ulogic;
+        Rows(1)_PAD : OUT std_ulogic;
+        Rows(2)_PAD : OUT std_ulogic;
+        Rows(3)_PAD : OUT std_ulogic;
+        Rows(4)_PAD : OUT std_ulogic;
+        CP_MISO(0)_PAD : IN std_ulogic;
+        DP_CLR(0)_PAD : OUT std_ulogic;
+        DP_DAT(0)_PAD : OUT std_ulogic;
+        DP_CLK(0)_PAD : OUT std_ulogic);
     ATTRIBUTE voltage_VDDA_CTB OF __DEFAULT__ : ENTITY IS 3.3e0;
     ATTRIBUTE voltage_VDDA_1 OF __DEFAULT__ : ENTITY IS 3.3e0;
     ATTRIBUTE voltage_VDDIO_0 OF __DEFAULT__ : ENTITY IS 3.3e0;
@@ -34,6 +35,7 @@ END BLE_HID_Keyboard01;
 
 ARCHITECTURE __DEFAULT__ OF BLE_HID_Keyboard01 IS
     SIGNAL Advertising_LED(0)__PA : bit;
+    SIGNAL CP_MISO(0)__PA : bit;
     SIGNAL CapsLock_LED(0)__PA : bit;
     SIGNAL ClockBlock_ECO : bit;
     SIGNAL ClockBlock_EXTCLK : bit;
@@ -48,6 +50,9 @@ ARCHITECTURE __DEFAULT__ OF BLE_HID_Keyboard01 IS
     SIGNAL Columns(0)__PA : bit;
     SIGNAL Columns(1)__PA : bit;
     SIGNAL Columns(2)__PA : bit;
+    SIGNAL DP_CLK(0)__PA : bit;
+    SIGNAL DP_CLR(0)__PA : bit;
+    SIGNAL DP_DAT(0)__PA : bit;
     SIGNAL Disconnect_LED(0)__PA : bit;
     SIGNAL Net_128 : bit;
     SIGNAL Net_142 : bit;
@@ -55,21 +60,18 @@ ARCHITECTURE __DEFAULT__ OF BLE_HID_Keyboard01 IS
     SIGNAL Net_915 : bit;
     ATTRIBUTE placement_force OF Net_915 : SIGNAL IS "U(1,1,B)3";
     SIGNAL Net_977 : bit;
-    ATTRIBUTE placement_force OF Net_977 : SIGNAL IS "U(1,1,A)1";
+    ATTRIBUTE placement_force OF Net_977 : SIGNAL IS "U(1,0,B)1";
     SIGNAL Net_979 : bit;
     ATTRIBUTE placement_force OF Net_979 : SIGNAL IS "U(1,1,A)0";
-    SIGNAL Pin_1(0)__PA : bit;
-    SIGNAL Pin_2(0)__PA : bit;
-    SIGNAL Pin_3(0)__PA : bit;
-    SIGNAL Pin_4(0)__PA : bit;
     SIGNAL Rows(0)__PA : bit;
     SIGNAL Rows(1)__PA : bit;
     SIGNAL Rows(2)__PA : bit;
     SIGNAL Rows(3)__PA : bit;
+    SIGNAL Rows(4)__PA : bit;
     SIGNAL SW2(0)__PA : bit;
     SIGNAL \BLE:Net_15\ : bit;
     SIGNAL \SPIM_1:BSPIM:cnt_enable\ : bit;
-    ATTRIBUTE placement_force OF \SPIM_1:BSPIM:cnt_enable\ : SIGNAL IS "U(1,0,B)0";
+    ATTRIBUTE placement_force OF \SPIM_1:BSPIM:cnt_enable\ : SIGNAL IS "U(1,1,B)0";
     SIGNAL \SPIM_1:BSPIM:cnt_tc\ : bit;
     SIGNAL \SPIM_1:BSPIM:count_0\ : bit;
     SIGNAL \SPIM_1:BSPIM:count_1\ : bit;
@@ -79,7 +81,7 @@ ARCHITECTURE __DEFAULT__ OF BLE_HID_Keyboard01 IS
     SIGNAL \SPIM_1:BSPIM:count_5\ : bit;
     SIGNAL \SPIM_1:BSPIM:count_6\ : bit;
     SIGNAL \SPIM_1:BSPIM:load_cond\ : bit;
-    ATTRIBUTE placement_force OF \SPIM_1:BSPIM:load_cond\ : SIGNAL IS "U(1,0,A)1";
+    ATTRIBUTE placement_force OF \SPIM_1:BSPIM:load_cond\ : SIGNAL IS "U(1,1,A)1";
     SIGNAL \SPIM_1:BSPIM:load_rx_data\ : bit;
     ATTRIBUTE placement_force OF \SPIM_1:BSPIM:load_rx_data\ : SIGNAL IS "U(1,1,B)1";
     SIGNAL \SPIM_1:BSPIM:mosi_from_dp\ : bit;
@@ -88,17 +90,17 @@ ARCHITECTURE __DEFAULT__ OF BLE_HID_Keyboard01 IS
     SIGNAL \SPIM_1:BSPIM:rx_status_6\ : bit;
     ATTRIBUTE placement_force OF \SPIM_1:BSPIM:rx_status_6\ : SIGNAL IS "U(1,1,B)2";
     SIGNAL \SPIM_1:BSPIM:state_0\ : bit;
-    ATTRIBUTE placement_force OF \SPIM_1:BSPIM:state_0\ : SIGNAL IS "U(1,0,A)0";
+    ATTRIBUTE placement_force OF \SPIM_1:BSPIM:state_0\ : SIGNAL IS "U(1,0,B)0";
     SIGNAL \SPIM_1:BSPIM:state_1\ : bit;
-    ATTRIBUTE placement_force OF \SPIM_1:BSPIM:state_1\ : SIGNAL IS "U(1,1,B)0";
+    ATTRIBUTE placement_force OF \SPIM_1:BSPIM:state_1\ : SIGNAL IS "U(1,0,A)0";
     SIGNAL \SPIM_1:BSPIM:state_2\ : bit;
-    ATTRIBUTE placement_force OF \SPIM_1:BSPIM:state_2\ : SIGNAL IS "U(1,0,B)1";
+    ATTRIBUTE placement_force OF \SPIM_1:BSPIM:state_2\ : SIGNAL IS "U(1,0,A)1";
     SIGNAL \SPIM_1:BSPIM:tx_status_0\ : bit;
     ATTRIBUTE placement_force OF \SPIM_1:BSPIM:tx_status_0\ : SIGNAL IS "U(1,0,B)2";
     SIGNAL \SPIM_1:BSPIM:tx_status_1\ : bit;
     SIGNAL \SPIM_1:BSPIM:tx_status_2\ : bit;
     SIGNAL \SPIM_1:BSPIM:tx_status_4\ : bit;
-    ATTRIBUTE placement_force OF \SPIM_1:BSPIM:tx_status_4\ : SIGNAL IS "U(1,1,A)2";
+    ATTRIBUTE placement_force OF \SPIM_1:BSPIM:tx_status_4\ : SIGNAL IS "U(1,0,A)2";
     SIGNAL \SPIM_1:Net_276_digital\ : bit;
     ATTRIBUTE udbclken_assigned OF \SPIM_1:Net_276_digital\ : SIGNAL IS "True";
     ATTRIBUTE global_signal OF \SPIM_1:Net_276_digital\ : SIGNAL IS true;
@@ -123,33 +125,35 @@ ARCHITECTURE __DEFAULT__ OF BLE_HID_Keyboard01 IS
     ATTRIBUTE lib_model OF SW2(0) : LABEL IS "iocell4";
     ATTRIBUTE Location OF SW2(0) : LABEL IS "P2[7]";
     ATTRIBUTE lib_model OF Columns(0) : LABEL IS "iocell5";
-    ATTRIBUTE Location OF Columns(0) : LABEL IS "P2[0]";
+    ATTRIBUTE Location OF Columns(0) : LABEL IS "P1[1]";
     ATTRIBUTE lib_model OF Columns(1) : LABEL IS "iocell6";
-    ATTRIBUTE Location OF Columns(1) : LABEL IS "P2[1]";
+    ATTRIBUTE Location OF Columns(1) : LABEL IS "P1[2]";
     ATTRIBUTE lib_model OF Columns(2) : LABEL IS "iocell7";
-    ATTRIBUTE Location OF Columns(2) : LABEL IS "P2[2]";
+    ATTRIBUTE Location OF Columns(2) : LABEL IS "P1[3]";
     ATTRIBUTE lib_model OF Rows(0) : LABEL IS "iocell8";
-    ATTRIBUTE Location OF Rows(0) : LABEL IS "P1[0]";
+    ATTRIBUTE Location OF Rows(0) : LABEL IS "P2[0]";
     ATTRIBUTE lib_model OF Rows(1) : LABEL IS "iocell9";
-    ATTRIBUTE Location OF Rows(1) : LABEL IS "P1[1]";
+    ATTRIBUTE Location OF Rows(1) : LABEL IS "P2[1]";
     ATTRIBUTE lib_model OF Rows(2) : LABEL IS "iocell10";
-    ATTRIBUTE Location OF Rows(2) : LABEL IS "P1[2]";
+    ATTRIBUTE Location OF Rows(2) : LABEL IS "P2[2]";
     ATTRIBUTE lib_model OF Rows(3) : LABEL IS "iocell11";
-    ATTRIBUTE Location OF Rows(3) : LABEL IS "P1[3]";
-    ATTRIBUTE lib_model OF Pin_4(0) : LABEL IS "iocell12";
-    ATTRIBUTE Location OF Pin_4(0) : LABEL IS "P0[1]";
-    ATTRIBUTE lib_model OF Pin_3(0) : LABEL IS "iocell13";
-    ATTRIBUTE Location OF Pin_3(0) : LABEL IS "P0[3]";
-    ATTRIBUTE lib_model OF Pin_1(0) : LABEL IS "iocell14";
-    ATTRIBUTE Location OF Pin_1(0) : LABEL IS "P0[2]";
-    ATTRIBUTE lib_model OF Pin_2(0) : LABEL IS "iocell15";
-    ATTRIBUTE Location OF Pin_2(0) : LABEL IS "P0[0]";
+    ATTRIBUTE Location OF Rows(3) : LABEL IS "P2[3]";
+    ATTRIBUTE lib_model OF Rows(4) : LABEL IS "iocell12";
+    ATTRIBUTE Location OF Rows(4) : LABEL IS "P2[4]";
+    ATTRIBUTE lib_model OF CP_MISO(0) : LABEL IS "iocell13";
+    ATTRIBUTE Location OF CP_MISO(0) : LABEL IS "P0[1]";
+    ATTRIBUTE lib_model OF DP_CLR(0) : LABEL IS "iocell14";
+    ATTRIBUTE Location OF DP_CLR(0) : LABEL IS "P1[6]";
+    ATTRIBUTE lib_model OF DP_DAT(0) : LABEL IS "iocell15";
+    ATTRIBUTE Location OF DP_DAT(0) : LABEL IS "P0[0]";
+    ATTRIBUTE lib_model OF DP_CLK(0) : LABEL IS "iocell16";
+    ATTRIBUTE Location OF DP_CLK(0) : LABEL IS "P0[3]";
     ATTRIBUTE lib_model OF \SPIM_1:BSPIM:load_rx_data\ : LABEL IS "macrocell1";
     ATTRIBUTE Location OF \SPIM_1:BSPIM:load_rx_data\ : LABEL IS "U(1,1)";
     ATTRIBUTE lib_model OF \SPIM_1:BSPIM:tx_status_0\ : LABEL IS "macrocell2";
     ATTRIBUTE Location OF \SPIM_1:BSPIM:tx_status_0\ : LABEL IS "U(1,0)";
     ATTRIBUTE lib_model OF \SPIM_1:BSPIM:tx_status_4\ : LABEL IS "macrocell3";
-    ATTRIBUTE Location OF \SPIM_1:BSPIM:tx_status_4\ : LABEL IS "U(1,1)";
+    ATTRIBUTE Location OF \SPIM_1:BSPIM:tx_status_4\ : LABEL IS "U(1,0)";
     ATTRIBUTE lib_model OF \SPIM_1:BSPIM:rx_status_6\ : LABEL IS "macrocell4";
     ATTRIBUTE Location OF \SPIM_1:BSPIM:rx_status_6\ : LABEL IS "U(1,1)";
     ATTRIBUTE Location OF \BLE:cy_m0s8_ble\ : LABEL IS "F(BLE,0)";
@@ -161,21 +165,21 @@ ARCHITECTURE __DEFAULT__ OF BLE_HID_Keyboard01 IS
     ATTRIBUTE lib_model OF \SPIM_1:BSPIM:RxStsReg\ : LABEL IS "statusicell2";
     ATTRIBUTE Location OF \SPIM_1:BSPIM:RxStsReg\ : LABEL IS "U(0,1)";
     ATTRIBUTE lib_model OF \SPIM_1:BSPIM:sR8:Dp:u0\ : LABEL IS "datapathcell1";
-    ATTRIBUTE Location OF \SPIM_1:BSPIM:sR8:Dp:u0\ : LABEL IS "U(1,1)";
+    ATTRIBUTE Location OF \SPIM_1:BSPIM:sR8:Dp:u0\ : LABEL IS "U(1,0)";
     ATTRIBUTE lib_model OF Net_979 : LABEL IS "macrocell5";
     ATTRIBUTE Location OF Net_979 : LABEL IS "U(1,1)";
     ATTRIBUTE lib_model OF \SPIM_1:BSPIM:state_2\ : LABEL IS "macrocell6";
     ATTRIBUTE Location OF \SPIM_1:BSPIM:state_2\ : LABEL IS "U(1,0)";
     ATTRIBUTE lib_model OF \SPIM_1:BSPIM:state_1\ : LABEL IS "macrocell7";
-    ATTRIBUTE Location OF \SPIM_1:BSPIM:state_1\ : LABEL IS "U(1,1)";
+    ATTRIBUTE Location OF \SPIM_1:BSPIM:state_1\ : LABEL IS "U(1,0)";
     ATTRIBUTE lib_model OF \SPIM_1:BSPIM:state_0\ : LABEL IS "macrocell8";
     ATTRIBUTE Location OF \SPIM_1:BSPIM:state_0\ : LABEL IS "U(1,0)";
     ATTRIBUTE lib_model OF Net_977 : LABEL IS "macrocell9";
-    ATTRIBUTE Location OF Net_977 : LABEL IS "U(1,1)";
+    ATTRIBUTE Location OF Net_977 : LABEL IS "U(1,0)";
     ATTRIBUTE lib_model OF \SPIM_1:BSPIM:load_cond\ : LABEL IS "macrocell10";
-    ATTRIBUTE Location OF \SPIM_1:BSPIM:load_cond\ : LABEL IS "U(1,0)";
+    ATTRIBUTE Location OF \SPIM_1:BSPIM:load_cond\ : LABEL IS "U(1,1)";
     ATTRIBUTE lib_model OF \SPIM_1:BSPIM:cnt_enable\ : LABEL IS "macrocell11";
-    ATTRIBUTE Location OF \SPIM_1:BSPIM:cnt_enable\ : LABEL IS "U(1,0)";
+    ATTRIBUTE Location OF \SPIM_1:BSPIM:cnt_enable\ : LABEL IS "U(1,1)";
     ATTRIBUTE lib_model OF Net_915 : LABEL IS "macrocell12";
     ATTRIBUTE Location OF Net_915 : LABEL IS "U(1,1)";
     COMPONENT count7cell
@@ -910,7 +914,7 @@ BEGIN
             init_dr_st => "111",
             input_buffer_sel => "000000",
             input_clk_en => 0,
-            input_sync => "111",
+            input_sync => "000",
             input_sync_mode => "000",
             intr_mode => "000000",
             invert_in_clock => 0,
@@ -940,7 +944,7 @@ BEGIN
             pa_out_clock_en => -1,
             pa_out_reset => -1,
             pin_aliases => ",,",
-            pin_mode => "OOO",
+            pin_mode => "III",
             por_state => 4,
             port_alias_group => "",
             port_alias_required => 0,
@@ -957,7 +961,7 @@ BEGIN
             spanning => 0,
             sw_only => 0,
             use_annotation => "111",
-            vtrip => "101010",
+            vtrip => "000000",
             width => 3,
             in_clk_inv => 0,
             in_clken_inv => 0,
@@ -1032,61 +1036,61 @@ BEGIN
 
     Rows:logicalport
         GENERIC MAP(
-            drive_mode => "001001001001",
-            ibuf_enabled => "1111",
+            drive_mode => "101101101101101",
+            ibuf_enabled => "11111",
             id => "25bcdbed-f3a8-4a6b-b34a-db02f3ba5c5c",
-            init_dr_st => "0000",
-            input_buffer_sel => "00000000",
+            init_dr_st => "00000",
+            input_buffer_sel => "0000000000",
             input_clk_en => 0,
-            input_sync => "0000",
-            input_sync_mode => "0000",
-            intr_mode => "00000000",
+            input_sync => "11111",
+            input_sync_mode => "00000",
+            intr_mode => "0000000000",
             invert_in_clock => 0,
             invert_in_clock_en => 0,
             invert_in_reset => 0,
             invert_out_clock => 0,
             invert_out_clock_en => 0,
             invert_out_reset => 0,
-            io_voltage => ",,,",
+            io_voltage => ",,,,",
             layout_mode => "CONTIGUOUS",
-            oe_conn => "0000",
+            oe_conn => "00000",
             oe_reset => 0,
-            oe_sync => "0000",
+            oe_sync => "00000",
             output_clk_en => 0,
-            output_clock_mode => "0000",
-            output_conn => "0000",
-            output_mode => "0000",
+            output_clock_mode => "00000",
+            output_conn => "00000",
+            output_mode => "00000",
             output_reset => 0,
-            output_sync => "0000",
-            ovt_hyst_trim => "0000",
-            ovt_needed => "0000",
-            ovt_slew_control => "00000000",
+            output_sync => "00000",
+            ovt_hyst_trim => "00000",
+            ovt_needed => "00000",
+            ovt_slew_control => "0000000000",
             pa_in_clock => -1,
             pa_in_clock_en => -1,
             pa_in_reset => -1,
             pa_out_clock => -1,
             pa_out_clock_en => -1,
             pa_out_reset => -1,
-            pin_aliases => ",,,",
-            pin_mode => "IIII",
+            pin_aliases => ",,,,",
+            pin_mode => "OOOOO",
             por_state => 4,
             port_alias_group => "",
             port_alias_required => 0,
             sio_group_cnt => 0,
             sio_hifreq => "00000000",
-            sio_hyst => "1111",
+            sio_hyst => "11111",
             sio_ibuf => "00000000",
-            sio_info => "00000000",
+            sio_info => "0000000000",
             sio_obuf => "00000000",
             sio_refsel => "00000000",
             sio_vohsel => "00000000",
             sio_vtrip => "00000000",
-            slew_rate => "0000",
+            slew_rate => "00000",
             spanning => 0,
             sw_only => 0,
-            use_annotation => "1111",
-            vtrip => "00000000",
-            width => 4,
+            use_annotation => "11111",
+            vtrip => "1010101010",
+            width => 5,
             in_clk_inv => 0,
             in_clken_inv => 0,
             in_clken_mode => 1,
@@ -1177,7 +1181,26 @@ BEGIN
             out_clock_en => '1',
             out_reset => '0');
 
-    Pin_4:logicalport
+    Rows(4):iocell
+        GENERIC MAP(
+            in_sync_mode => 0,
+            out_sync_mode => 0,
+            oe_sync_mode => 0,
+            logicalport => "Rows",
+            logicalport_pin_id => 4,
+            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000001")
+        PORT MAP(
+            pa_out => Rows(4)__PA,
+            oe => open,
+            pad_in => Rows(4)_PAD,
+            in_clock => open,
+            in_clock_en => '1',
+            in_reset => '0',
+            out_clock => open,
+            out_clock_en => '1',
+            out_reset => '0');
+
+    CP_MISO:logicalport
         GENERIC MAP(
             drive_mode => "001",
             ibuf_enabled => "1",
@@ -1248,19 +1271,19 @@ BEGIN
             out_clock_en => open,
             out_reset => open);
 
-    Pin_4(0):iocell
+    CP_MISO(0):iocell
         GENERIC MAP(
             in_sync_mode => 0,
             out_sync_mode => 0,
             oe_sync_mode => 0,
-            logicalport => "Pin_4",
+            logicalport => "CP_MISO",
             logicalport_pin_id => 0,
             io_capabilities => "0000000000000000000000000000000000000000000000000000000000000101")
         PORT MAP(
-            pa_out => Pin_4(0)__PA,
+            pa_out => CP_MISO(0)__PA,
             oe => open,
             fb => Net_909,
-            pad_in => Pin_4(0)_PAD,
+            pad_in => CP_MISO(0)_PAD,
             in_clock => open,
             in_clock_en => '1',
             in_reset => '0',
@@ -1268,7 +1291,7 @@ BEGIN
             out_clock_en => '1',
             out_reset => '0');
 
-    Pin_3:logicalport
+    DP_CLR:logicalport
         GENERIC MAP(
             drive_mode => "110",
             ibuf_enabled => "1",
@@ -1339,18 +1362,18 @@ BEGIN
             out_clock_en => open,
             out_reset => open);
 
-    Pin_3(0):iocell
+    DP_CLR(0):iocell
         GENERIC MAP(
             in_sync_mode => 0,
             out_sync_mode => 0,
             oe_sync_mode => 0,
-            logicalport => "Pin_3",
+            logicalport => "DP_CLR",
             logicalport_pin_id => 0,
             io_capabilities => "0000000000000000000000000000000000000000000000000000000000000001")
         PORT MAP(
-            pa_out => Pin_3(0)__PA,
+            pa_out => DP_CLR(0)__PA,
             oe => open,
-            pad_in => Pin_3(0)_PAD,
+            pad_in => DP_CLR(0)_PAD,
             in_clock => open,
             in_clock_en => '1',
             in_reset => '0',
@@ -1358,7 +1381,7 @@ BEGIN
             out_clock_en => '1',
             out_reset => '0');
 
-    Pin_1:logicalport
+    DP_DAT:logicalport
         GENERIC MAP(
             drive_mode => "110",
             ibuf_enabled => "1",
@@ -1429,20 +1452,20 @@ BEGIN
             out_clock_en => open,
             out_reset => open);
 
-    Pin_1(0):iocell
+    DP_DAT(0):iocell
         GENERIC MAP(
             in_sync_mode => 0,
             out_sync_mode => 0,
             oe_sync_mode => 0,
-            logicalport => "Pin_1",
+            logicalport => "DP_DAT",
             logicalport_pin_id => 0,
             io_capabilities => "0000000000000000000000000000000000000000000000000000000000000101")
         PORT MAP(
-            pa_out => Pin_1(0)__PA,
+            pa_out => DP_DAT(0)__PA,
             oe => open,
             pin_input => Net_979,
-            pad_out => Pin_1(0)_PAD,
-            pad_in => Pin_1(0)_PAD,
+            pad_out => DP_DAT(0)_PAD,
+            pad_in => DP_DAT(0)_PAD,
             in_clock => open,
             in_clock_en => '1',
             in_reset => '0',
@@ -1450,7 +1473,7 @@ BEGIN
             out_clock_en => '1',
             out_reset => '0');
 
-    Pin_2:logicalport
+    DP_CLK:logicalport
         GENERIC MAP(
             drive_mode => "110",
             ibuf_enabled => "1",
@@ -1521,20 +1544,20 @@ BEGIN
             out_clock_en => open,
             out_reset => open);
 
-    Pin_2(0):iocell
+    DP_CLK(0):iocell
         GENERIC MAP(
             in_sync_mode => 0,
             out_sync_mode => 0,
             oe_sync_mode => 0,
-            logicalport => "Pin_2",
+            logicalport => "DP_CLK",
             logicalport_pin_id => 0,
             io_capabilities => "0000000000000000000000000000000000000000000000000000000000000101")
         PORT MAP(
-            pa_out => Pin_2(0)__PA,
+            pa_out => DP_CLK(0)__PA,
             oe => open,
             pin_input => Net_915,
-            pad_out => Pin_2(0)_PAD,
-            pad_in => Pin_2(0)_PAD,
+            pad_out => DP_CLK(0)_PAD,
+            pad_in => DP_CLK(0)_PAD,
             in_clock => open,
             in_clock_en => '1',
             in_reset => '0',

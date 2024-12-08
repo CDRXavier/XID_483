@@ -97,7 +97,7 @@ void Rows_Wakeup(void);
 /* Digital Port Constants */
 #define Rows_MASK               Rows__MASK
 #define Rows_SHIFT              Rows__SHIFT
-#define Rows_WIDTH              4u
+#define Rows_WIDTH              5u
 
 /**
 * \addtogroup group_constants

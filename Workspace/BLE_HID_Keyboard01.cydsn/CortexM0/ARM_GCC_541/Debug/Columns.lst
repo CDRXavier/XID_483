@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccV2fz1Q.s 			page 1
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccU580za.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccV2fz1Q.s 			page 1
   28:Generated_Source\PSoC4/Columns.c **** #else
   29:Generated_Source\PSoC4/Columns.c ****     #if (CY_PSOC4_4200L)
   30:Generated_Source\PSoC4/Columns.c ****         #define Columns_SetP4PinDriveMode(shift, mode)  \
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccV2fz1Q.s 			page 2
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccU580za.s 			page 2
 
 
   31:Generated_Source\PSoC4/Columns.c ****         do { \
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccV2fz1Q.s 			page 1
   39              		.cfi_def_cfa_register 7
   40 0006 0200     		movs	r2, r0
   41 0008 FB1D     		adds	r3, r7, #7
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccV2fz1Q.s 			page 3
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccU580za.s 			page 3
 
 
   42 000a 1A70     		strb	r2, [r3]
@@ -127,24 +127,24 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccV2fz1Q.s 			page 1
   44 000c 114B     		ldr	r3, .L2
   45 000e 114A     		ldr	r2, .L2
   46 0010 1268     		ldr	r2, [r2]
-  47 0012 0721     		movs	r1, #7
+  47 0012 3821     		movs	r1, #56
   48 0014 8A43     		bics	r2, r1
   49 0016 1100     		movs	r1, r2
   50 0018 FA1D     		adds	r2, r7, #7
   51 001a 1278     		ldrb	r2, [r2]
-  52 001c 0A43     		orrs	r2, r1
-  53 001e 1A60     		str	r2, [r3]
+  52 001c D200     		lsls	r2, r2, #3
+  53 001e 0A43     		orrs	r2, r1
+  54 0020 1A60     		str	r2, [r3]
   75:Generated_Source\PSoC4/Columns.c **** 		Columns_SetP4PinDriveMode(Columns__1__SHIFT, mode);
-  54              		.loc 1 75 0
-  55 0020 0C4B     		ldr	r3, .L2
-  56 0022 0C4A     		ldr	r2, .L2
-  57 0024 1268     		ldr	r2, [r2]
-  58 0026 3821     		movs	r1, #56
-  59 0028 8A43     		bics	r2, r1
-  60 002a 1100     		movs	r1, r2
+  55              		.loc 1 75 0
+  56 0022 0C4B     		ldr	r3, .L2
+  57 0024 0B4A     		ldr	r2, .L2
+  58 0026 1268     		ldr	r2, [r2]
+  59 0028 0B49     		ldr	r1, .L2+4
+  60 002a 1140     		ands	r1, r2
   61 002c FA1D     		adds	r2, r7, #7
   62 002e 1278     		ldrb	r2, [r2]
-  63 0030 D200     		lsls	r2, r2, #3
+  63 0030 9201     		lsls	r2, r2, #6
   64 0032 0A43     		orrs	r2, r1
   65 0034 1A60     		str	r2, [r3]
   76:Generated_Source\PSoC4/Columns.c **** 		Columns_SetP4PinDriveMode(Columns__2__SHIFT, mode);
@@ -152,11 +152,11 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccV2fz1Q.s 			page 1
   67 0036 074B     		ldr	r3, .L2
   68 0038 064A     		ldr	r2, .L2
   69 003a 1268     		ldr	r2, [r2]
-  70 003c 0649     		ldr	r1, .L2+4
+  70 003c 0749     		ldr	r1, .L2+8
   71 003e 1140     		ands	r1, r2
   72 0040 FA1D     		adds	r2, r7, #7
   73 0042 1278     		ldrb	r2, [r2]
-  74 0044 9201     		lsls	r2, r2, #6
+  74 0044 5202     		lsls	r2, r2, #9
   75 0046 0A43     		orrs	r2, r1
   76 0048 1A60     		str	r2, [r3]
   77:Generated_Source\PSoC4/Columns.c ****     }
@@ -169,22 +169,23 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccV2fz1Q.s 			page 1
   83              	.L3:
   84 0052 C046     		.align	2
   85              	.L2:
-  86 0054 08020440 		.word	1074004488
+  86 0054 08010440 		.word	1074004232
   87 0058 3FFEFFFF 		.word	-449
-  88              		.cfi_endproc
-  89              	.LFE0:
-  90              		.size	Columns_SetDriveMode, .-Columns_SetDriveMode
-  91              		.section	.text.Columns_Write,"ax",%progbits
-  92              		.align	2
-  93              		.global	Columns_Write
-  94              		.code	16
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccV2fz1Q.s 			page 4
+  88 005c FFF1FFFF 		.word	-3585
+  89              		.cfi_endproc
+  90              	.LFE0:
+  91              		.size	Columns_SetDriveMode, .-Columns_SetDriveMode
+  92              		.section	.text.Columns_Write,"ax",%progbits
+  93              		.align	2
+  94              		.global	Columns_Write
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccU580za.s 			page 4
 
 
-  95              		.thumb_func
-  96              		.type	Columns_Write, %function
-  97              	Columns_Write:
-  98              	.LFB1:
+  95              		.code	16
+  96              		.thumb_func
+  97              		.type	Columns_Write, %function
+  98              	Columns_Write:
+  99              	.LFB1:
   78:Generated_Source\PSoC4/Columns.c **** #endif
   79:Generated_Source\PSoC4/Columns.c **** 
   80:Generated_Source\PSoC4/Columns.c **** 
@@ -222,85 +223,87 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccV2fz1Q.s 			page 1
  112:Generated_Source\PSoC4/Columns.c **** *******************************************************************************/
  113:Generated_Source\PSoC4/Columns.c **** void Columns_Write(uint8 value)
  114:Generated_Source\PSoC4/Columns.c **** {
-  99              		.loc 1 114 0
- 100              		.cfi_startproc
- 101              		@ args = 0, pretend = 0, frame = 16
- 102              		@ frame_needed = 1, uses_anonymous_args = 0
- 103 0000 80B5     		push	{r7, lr}
- 104              		.cfi_def_cfa_offset 8
- 105              		.cfi_offset 7, -8
- 106              		.cfi_offset 14, -4
- 107 0002 84B0     		sub	sp, sp, #16
- 108              		.cfi_def_cfa_offset 24
- 109 0004 00AF     		add	r7, sp, #0
- 110              		.cfi_def_cfa_register 7
- 111 0006 0200     		movs	r2, r0
- 112 0008 FB1D     		adds	r3, r7, #7
- 113 000a 1A70     		strb	r2, [r3]
+ 100              		.loc 1 114 0
+ 101              		.cfi_startproc
+ 102              		@ args = 0, pretend = 0, frame = 16
+ 103              		@ frame_needed = 1, uses_anonymous_args = 0
+ 104 0000 80B5     		push	{r7, lr}
+ 105              		.cfi_def_cfa_offset 8
+ 106              		.cfi_offset 7, -8
+ 107              		.cfi_offset 14, -4
+ 108 0002 84B0     		sub	sp, sp, #16
+ 109              		.cfi_def_cfa_offset 24
+ 110 0004 00AF     		add	r7, sp, #0
+ 111              		.cfi_def_cfa_register 7
+ 112 0006 0200     		movs	r2, r0
+ 113 0008 FB1D     		adds	r3, r7, #7
+ 114 000a 1A70     		strb	r2, [r3]
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccU580za.s 			page 5
+
+
  115:Generated_Source\PSoC4/Columns.c ****     uint8 drVal = (uint8)(Columns_DR & (uint8)(~Columns_MASK));
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccV2fz1Q.s 			page 5
-
-
- 114              		.loc 1 115 0
- 115 000c 0E4B     		ldr	r3, .L5
- 116 000e 1B68     		ldr	r3, [r3]
- 117 0010 DAB2     		uxtb	r2, r3
- 118 0012 0F23     		movs	r3, #15
- 119 0014 FB18     		adds	r3, r7, r3
- 120 0016 0721     		movs	r1, #7
- 121 0018 8A43     		bics	r2, r1
- 122 001a 1A70     		strb	r2, [r3]
+ 115              		.loc 1 115 0
+ 116 000c 0F4B     		ldr	r3, .L5
+ 117 000e 1B68     		ldr	r3, [r3]
+ 118 0010 DAB2     		uxtb	r2, r3
+ 119 0012 0F23     		movs	r3, #15
+ 120 0014 FB18     		adds	r3, r7, r3
+ 121 0016 0E21     		movs	r1, #14
+ 122 0018 8A43     		bics	r2, r1
+ 123 001a 1A70     		strb	r2, [r3]
  116:Generated_Source\PSoC4/Columns.c ****     drVal = (drVal | ((uint8)(value << Columns_SHIFT) & Columns_MASK));
- 123              		.loc 1 116 0
- 124 001c FB1D     		adds	r3, r7, #7
- 125 001e 1B78     		ldrb	r3, [r3]
- 126 0020 0722     		movs	r2, #7
- 127 0022 1340     		ands	r3, r2
- 128 0024 D9B2     		uxtb	r1, r3
- 129 0026 0F23     		movs	r3, #15
- 130 0028 FB18     		adds	r3, r7, r3
- 131 002a 0F22     		movs	r2, #15
- 132 002c BA18     		adds	r2, r7, r2
- 133 002e 1278     		ldrb	r2, [r2]
- 134 0030 0A43     		orrs	r2, r1
- 135 0032 1A70     		strb	r2, [r3]
+ 124              		.loc 1 116 0
+ 125 001c FB1D     		adds	r3, r7, #7
+ 126 001e 1B78     		ldrb	r3, [r3]
+ 127 0020 DB18     		adds	r3, r3, r3
+ 128 0022 DBB2     		uxtb	r3, r3
+ 129 0024 0E22     		movs	r2, #14
+ 130 0026 1340     		ands	r3, r2
+ 131 0028 D9B2     		uxtb	r1, r3
+ 132 002a 0F23     		movs	r3, #15
+ 133 002c FB18     		adds	r3, r7, r3
+ 134 002e 0F22     		movs	r2, #15
+ 135 0030 BA18     		adds	r2, r7, r2
+ 136 0032 1278     		ldrb	r2, [r2]
+ 137 0034 0A43     		orrs	r2, r1
+ 138 0036 1A70     		strb	r2, [r3]
  117:Generated_Source\PSoC4/Columns.c ****     Columns_DR = (uint32)drVal;
- 136              		.loc 1 117 0
- 137 0034 044B     		ldr	r3, .L5
- 138 0036 0F22     		movs	r2, #15
- 139 0038 BA18     		adds	r2, r7, r2
- 140 003a 1278     		ldrb	r2, [r2]
- 141 003c 1A60     		str	r2, [r3]
+ 139              		.loc 1 117 0
+ 140 0038 044B     		ldr	r3, .L5
+ 141 003a 0F22     		movs	r2, #15
+ 142 003c BA18     		adds	r2, r7, r2
+ 143 003e 1278     		ldrb	r2, [r2]
+ 144 0040 1A60     		str	r2, [r3]
  118:Generated_Source\PSoC4/Columns.c **** }
- 142              		.loc 1 118 0
- 143 003e C046     		nop
- 144 0040 BD46     		mov	sp, r7
- 145 0042 04B0     		add	sp, sp, #16
- 146              		@ sp needed
- 147 0044 80BD     		pop	{r7, pc}
- 148              	.L6:
- 149 0046 C046     		.align	2
- 150              	.L5:
- 151 0048 00020440 		.word	1074004480
- 152              		.cfi_endproc
- 153              	.LFE1:
- 154              		.size	Columns_Write, .-Columns_Write
- 155              		.section	.text.Columns_Read,"ax",%progbits
- 156              		.align	2
- 157              		.global	Columns_Read
- 158              		.code	16
- 159              		.thumb_func
- 160              		.type	Columns_Read, %function
- 161              	Columns_Read:
- 162              	.LFB2:
+ 145              		.loc 1 118 0
+ 146 0042 C046     		nop
+ 147 0044 BD46     		mov	sp, r7
+ 148 0046 04B0     		add	sp, sp, #16
+ 149              		@ sp needed
+ 150 0048 80BD     		pop	{r7, pc}
+ 151              	.L6:
+ 152 004a C046     		.align	2
+ 153              	.L5:
+ 154 004c 00010440 		.word	1074004224
+ 155              		.cfi_endproc
+ 156              	.LFE1:
+ 157              		.size	Columns_Write, .-Columns_Write
+ 158              		.section	.text.Columns_Read,"ax",%progbits
+ 159              		.align	2
+ 160              		.global	Columns_Read
+ 161              		.code	16
+ 162              		.thumb_func
+ 163              		.type	Columns_Read, %function
+ 164              	Columns_Read:
+ 165              	.LFB2:
  119:Generated_Source\PSoC4/Columns.c **** 
  120:Generated_Source\PSoC4/Columns.c **** 
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccU580za.s 			page 6
+
+
  121:Generated_Source\PSoC4/Columns.c **** /*******************************************************************************
  122:Generated_Source\PSoC4/Columns.c **** * Function Name: Columns_Read
  123:Generated_Source\PSoC4/Columns.c **** ****************************************************************************//**
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccV2fz1Q.s 			page 6
-
-
  124:Generated_Source\PSoC4/Columns.c **** *
  125:Generated_Source\PSoC4/Columns.c **** * \brief Reads the associated physical port (pin status register) and masks 
  126:Generated_Source\PSoC4/Columns.c **** *  the required bits according to the width and bit position of the component
@@ -317,50 +320,50 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccV2fz1Q.s 			page 1
  137:Generated_Source\PSoC4/Columns.c **** *******************************************************************************/
  138:Generated_Source\PSoC4/Columns.c **** uint8 Columns_Read(void)
  139:Generated_Source\PSoC4/Columns.c **** {
- 163              		.loc 1 139 0
- 164              		.cfi_startproc
- 165              		@ args = 0, pretend = 0, frame = 0
- 166              		@ frame_needed = 1, uses_anonymous_args = 0
- 167 0000 80B5     		push	{r7, lr}
- 168              		.cfi_def_cfa_offset 8
- 169              		.cfi_offset 7, -8
- 170              		.cfi_offset 14, -4
- 171 0002 00AF     		add	r7, sp, #0
- 172              		.cfi_def_cfa_register 7
+ 166              		.loc 1 139 0
+ 167              		.cfi_startproc
+ 168              		@ args = 0, pretend = 0, frame = 0
+ 169              		@ frame_needed = 1, uses_anonymous_args = 0
+ 170 0000 80B5     		push	{r7, lr}
+ 171              		.cfi_def_cfa_offset 8
+ 172              		.cfi_offset 7, -8
+ 173              		.cfi_offset 14, -4
+ 174 0002 00AF     		add	r7, sp, #0
+ 175              		.cfi_def_cfa_register 7
  140:Generated_Source\PSoC4/Columns.c ****     return (uint8)((Columns_PS & Columns_MASK) >> Columns_SHIFT);
- 173              		.loc 1 140 0
- 174 0004 044B     		ldr	r3, .L9
- 175 0006 1B68     		ldr	r3, [r3]
- 176 0008 DBB2     		uxtb	r3, r3
- 177 000a 0722     		movs	r2, #7
- 178 000c 1340     		ands	r3, r2
- 179 000e DBB2     		uxtb	r3, r3
+ 176              		.loc 1 140 0
+ 177 0004 044B     		ldr	r3, .L9
+ 178 0006 1B68     		ldr	r3, [r3]
+ 179 0008 0E22     		movs	r2, #14
+ 180 000a 1340     		ands	r3, r2
+ 181 000c 5B08     		lsrs	r3, r3, #1
+ 182 000e DBB2     		uxtb	r3, r3
  141:Generated_Source\PSoC4/Columns.c **** }
- 180              		.loc 1 141 0
- 181 0010 1800     		movs	r0, r3
- 182 0012 BD46     		mov	sp, r7
- 183              		@ sp needed
- 184 0014 80BD     		pop	{r7, pc}
- 185              	.L10:
- 186 0016 C046     		.align	2
- 187              	.L9:
- 188 0018 04020440 		.word	1074004484
- 189              		.cfi_endproc
- 190              	.LFE2:
- 191              		.size	Columns_Read, .-Columns_Read
- 192              		.section	.text.Columns_ReadDataReg,"ax",%progbits
- 193              		.align	2
- 194              		.global	Columns_ReadDataReg
- 195              		.code	16
- 196              		.thumb_func
- 197              		.type	Columns_ReadDataReg, %function
- 198              	Columns_ReadDataReg:
- 199              	.LFB3:
+ 183              		.loc 1 141 0
+ 184 0010 1800     		movs	r0, r3
+ 185 0012 BD46     		mov	sp, r7
+ 186              		@ sp needed
+ 187 0014 80BD     		pop	{r7, pc}
+ 188              	.L10:
+ 189 0016 C046     		.align	2
+ 190              	.L9:
+ 191 0018 04010440 		.word	1074004228
+ 192              		.cfi_endproc
+ 193              	.LFE2:
+ 194              		.size	Columns_Read, .-Columns_Read
+ 195              		.section	.text.Columns_ReadDataReg,"ax",%progbits
+ 196              		.align	2
+ 197              		.global	Columns_ReadDataReg
+ 198              		.code	16
+ 199              		.thumb_func
+ 200              		.type	Columns_ReadDataReg, %function
+ 201              	Columns_ReadDataReg:
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccU580za.s 			page 7
+
+
+ 202              	.LFB3:
  142:Generated_Source\PSoC4/Columns.c **** 
  143:Generated_Source\PSoC4/Columns.c **** 
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccV2fz1Q.s 			page 7
-
-
  144:Generated_Source\PSoC4/Columns.c **** /*******************************************************************************
  145:Generated_Source\PSoC4/Columns.c **** * Function Name: Columns_ReadDataReg
  146:Generated_Source\PSoC4/Columns.c **** ****************************************************************************//**
@@ -385,48 +388,48 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccV2fz1Q.s 			page 1
  165:Generated_Source\PSoC4/Columns.c **** *******************************************************************************/
  166:Generated_Source\PSoC4/Columns.c **** uint8 Columns_ReadDataReg(void)
  167:Generated_Source\PSoC4/Columns.c **** {
- 200              		.loc 1 167 0
- 201              		.cfi_startproc
- 202              		@ args = 0, pretend = 0, frame = 0
- 203              		@ frame_needed = 1, uses_anonymous_args = 0
- 204 0000 80B5     		push	{r7, lr}
- 205              		.cfi_def_cfa_offset 8
- 206              		.cfi_offset 7, -8
- 207              		.cfi_offset 14, -4
- 208 0002 00AF     		add	r7, sp, #0
- 209              		.cfi_def_cfa_register 7
+ 203              		.loc 1 167 0
+ 204              		.cfi_startproc
+ 205              		@ args = 0, pretend = 0, frame = 0
+ 206              		@ frame_needed = 1, uses_anonymous_args = 0
+ 207 0000 80B5     		push	{r7, lr}
+ 208              		.cfi_def_cfa_offset 8
+ 209              		.cfi_offset 7, -8
+ 210              		.cfi_offset 14, -4
+ 211 0002 00AF     		add	r7, sp, #0
+ 212              		.cfi_def_cfa_register 7
  168:Generated_Source\PSoC4/Columns.c ****     return (uint8)((Columns_DR & Columns_MASK) >> Columns_SHIFT);
- 210              		.loc 1 168 0
- 211 0004 044B     		ldr	r3, .L13
- 212 0006 1B68     		ldr	r3, [r3]
- 213 0008 DBB2     		uxtb	r3, r3
- 214 000a 0722     		movs	r2, #7
- 215 000c 1340     		ands	r3, r2
- 216 000e DBB2     		uxtb	r3, r3
+ 213              		.loc 1 168 0
+ 214 0004 044B     		ldr	r3, .L13
+ 215 0006 1B68     		ldr	r3, [r3]
+ 216 0008 0E22     		movs	r2, #14
+ 217 000a 1340     		ands	r3, r2
+ 218 000c 5B08     		lsrs	r3, r3, #1
+ 219 000e DBB2     		uxtb	r3, r3
  169:Generated_Source\PSoC4/Columns.c **** }
- 217              		.loc 1 169 0
- 218 0010 1800     		movs	r0, r3
- 219 0012 BD46     		mov	sp, r7
- 220              		@ sp needed
- 221 0014 80BD     		pop	{r7, pc}
- 222              	.L14:
- 223 0016 C046     		.align	2
- 224              	.L13:
- 225 0018 00020440 		.word	1074004480
- 226              		.cfi_endproc
- 227              	.LFE3:
- 228              		.size	Columns_ReadDataReg, .-Columns_ReadDataReg
- 229              		.section	.text.Columns_SetInterruptMode,"ax",%progbits
- 230              		.align	2
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccV2fz1Q.s 			page 8
+ 220              		.loc 1 169 0
+ 221 0010 1800     		movs	r0, r3
+ 222 0012 BD46     		mov	sp, r7
+ 223              		@ sp needed
+ 224 0014 80BD     		pop	{r7, pc}
+ 225              	.L14:
+ 226 0016 C046     		.align	2
+ 227              	.L13:
+ 228 0018 00010440 		.word	1074004224
+ 229              		.cfi_endproc
+ 230              	.LFE3:
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccU580za.s 			page 8
 
 
- 231              		.global	Columns_SetInterruptMode
- 232              		.code	16
- 233              		.thumb_func
- 234              		.type	Columns_SetInterruptMode, %function
- 235              	Columns_SetInterruptMode:
- 236              	.LFB4:
+ 231              		.size	Columns_ReadDataReg, .-Columns_ReadDataReg
+ 232              		.section	.text.Columns_SetInterruptMode,"ax",%progbits
+ 233              		.align	2
+ 234              		.global	Columns_SetInterruptMode
+ 235              		.code	16
+ 236              		.thumb_func
+ 237              		.type	Columns_SetInterruptMode, %function
+ 238              	Columns_SetInterruptMode:
+ 239              	.LFB4:
  170:Generated_Source\PSoC4/Columns.c **** 
  171:Generated_Source\PSoC4/Columns.c **** 
  172:Generated_Source\PSoC4/Columns.c **** /*******************************************************************************
@@ -468,79 +471,79 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccV2fz1Q.s 			page 1
  208:Generated_Source\PSoC4/Columns.c **** *******************************************************************************/
  209:Generated_Source\PSoC4/Columns.c **** void Columns_SetInterruptMode(uint16 position, uint16 mode)
  210:Generated_Source\PSoC4/Columns.c **** {
- 237              		.loc 1 210 0
- 238              		.cfi_startproc
- 239              		@ args = 0, pretend = 0, frame = 16
- 240              		@ frame_needed = 1, uses_anonymous_args = 0
- 241 0000 80B5     		push	{r7, lr}
- 242              		.cfi_def_cfa_offset 8
- 243              		.cfi_offset 7, -8
- 244              		.cfi_offset 14, -4
- 245 0002 84B0     		sub	sp, sp, #16
- 246              		.cfi_def_cfa_offset 24
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccV2fz1Q.s 			page 9
+ 240              		.loc 1 210 0
+ 241              		.cfi_startproc
+ 242              		@ args = 0, pretend = 0, frame = 16
+ 243              		@ frame_needed = 1, uses_anonymous_args = 0
+ 244 0000 80B5     		push	{r7, lr}
+ 245              		.cfi_def_cfa_offset 8
+ 246              		.cfi_offset 7, -8
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccU580za.s 			page 9
 
 
- 247 0004 00AF     		add	r7, sp, #0
- 248              		.cfi_def_cfa_register 7
- 249 0006 0200     		movs	r2, r0
- 250 0008 BB1D     		adds	r3, r7, #6
- 251 000a 1A80     		strh	r2, [r3]
- 252 000c 3B1D     		adds	r3, r7, #4
- 253 000e 0A1C     		adds	r2, r1, #0
- 254 0010 1A80     		strh	r2, [r3]
+ 247              		.cfi_offset 14, -4
+ 248 0002 84B0     		sub	sp, sp, #16
+ 249              		.cfi_def_cfa_offset 24
+ 250 0004 00AF     		add	r7, sp, #0
+ 251              		.cfi_def_cfa_register 7
+ 252 0006 0200     		movs	r2, r0
+ 253 0008 BB1D     		adds	r3, r7, #6
+ 254 000a 1A80     		strh	r2, [r3]
+ 255 000c 3B1D     		adds	r3, r7, #4
+ 256 000e 0A1C     		adds	r2, r1, #0
+ 257 0010 1A80     		strh	r2, [r3]
  211:Generated_Source\PSoC4/Columns.c ****     uint32 intrCfg;
  212:Generated_Source\PSoC4/Columns.c ****     
  213:Generated_Source\PSoC4/Columns.c ****     intrCfg =  Columns_INTCFG & (uint32)(~(uint32)position);
- 255              		.loc 1 213 0
- 256 0012 0B4B     		ldr	r3, .L16
- 257 0014 1B68     		ldr	r3, [r3]
- 258 0016 BA1D     		adds	r2, r7, #6
- 259 0018 1288     		ldrh	r2, [r2]
- 260 001a D243     		mvns	r2, r2
- 261 001c 1340     		ands	r3, r2
- 262 001e FB60     		str	r3, [r7, #12]
+ 258              		.loc 1 213 0
+ 259 0012 0B4B     		ldr	r3, .L16
+ 260 0014 1B68     		ldr	r3, [r3]
+ 261 0016 BA1D     		adds	r2, r7, #6
+ 262 0018 1288     		ldrh	r2, [r2]
+ 263 001a D243     		mvns	r2, r2
+ 264 001c 1340     		ands	r3, r2
+ 265 001e FB60     		str	r3, [r7, #12]
  214:Generated_Source\PSoC4/Columns.c ****     Columns_INTCFG = intrCfg | ((uint32)position & (uint32)mode);
- 263              		.loc 1 214 0
- 264 0020 074B     		ldr	r3, .L16
- 265 0022 BA1D     		adds	r2, r7, #6
- 266 0024 391D     		adds	r1, r7, #4
- 267 0026 1288     		ldrh	r2, [r2]
- 268 0028 0988     		ldrh	r1, [r1]
- 269 002a 0A40     		ands	r2, r1
- 270 002c 92B2     		uxth	r2, r2
- 271 002e 1100     		movs	r1, r2
- 272 0030 FA68     		ldr	r2, [r7, #12]
- 273 0032 0A43     		orrs	r2, r1
- 274 0034 1A60     		str	r2, [r3]
+ 266              		.loc 1 214 0
+ 267 0020 074B     		ldr	r3, .L16
+ 268 0022 BA1D     		adds	r2, r7, #6
+ 269 0024 391D     		adds	r1, r7, #4
+ 270 0026 1288     		ldrh	r2, [r2]
+ 271 0028 0988     		ldrh	r1, [r1]
+ 272 002a 0A40     		ands	r2, r1
+ 273 002c 92B2     		uxth	r2, r2
+ 274 002e 1100     		movs	r1, r2
+ 275 0030 FA68     		ldr	r2, [r7, #12]
+ 276 0032 0A43     		orrs	r2, r1
+ 277 0034 1A60     		str	r2, [r3]
  215:Generated_Source\PSoC4/Columns.c **** }
- 275              		.loc 1 215 0
- 276 0036 C046     		nop
- 277 0038 BD46     		mov	sp, r7
- 278 003a 04B0     		add	sp, sp, #16
- 279              		@ sp needed
- 280 003c 80BD     		pop	{r7, pc}
- 281              	.L17:
- 282 003e C046     		.align	2
- 283              	.L16:
- 284 0040 0C020440 		.word	1074004492
- 285              		.cfi_endproc
- 286              	.LFE4:
- 287              		.size	Columns_SetInterruptMode, .-Columns_SetInterruptMode
- 288              		.section	.text.Columns_ClearInterrupt,"ax",%progbits
- 289              		.align	2
- 290              		.global	Columns_ClearInterrupt
- 291              		.code	16
- 292              		.thumb_func
- 293              		.type	Columns_ClearInterrupt, %function
- 294              	Columns_ClearInterrupt:
- 295              	.LFB5:
+ 278              		.loc 1 215 0
+ 279 0036 C046     		nop
+ 280 0038 BD46     		mov	sp, r7
+ 281 003a 04B0     		add	sp, sp, #16
+ 282              		@ sp needed
+ 283 003c 80BD     		pop	{r7, pc}
+ 284              	.L17:
+ 285 003e C046     		.align	2
+ 286              	.L16:
+ 287 0040 0C010440 		.word	1074004236
+ 288              		.cfi_endproc
+ 289              	.LFE4:
+ 290              		.size	Columns_SetInterruptMode, .-Columns_SetInterruptMode
+ 291              		.section	.text.Columns_ClearInterrupt,"ax",%progbits
+ 292              		.align	2
+ 293              		.global	Columns_ClearInterrupt
+ 294              		.code	16
+ 295              		.thumb_func
+ 296              		.type	Columns_ClearInterrupt, %function
+ 297              	Columns_ClearInterrupt:
+ 298              	.LFB5:
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccU580za.s 			page 10
+
+
  216:Generated_Source\PSoC4/Columns.c **** 
  217:Generated_Source\PSoC4/Columns.c **** 
  218:Generated_Source\PSoC4/Columns.c **** /*******************************************************************************
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccV2fz1Q.s 			page 10
-
-
  219:Generated_Source\PSoC4/Columns.c **** * Function Name: Columns_ClearInterrupt
  220:Generated_Source\PSoC4/Columns.c **** ****************************************************************************//**
  221:Generated_Source\PSoC4/Columns.c **** *
@@ -562,656 +565,658 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccV2fz1Q.s 			page 1
  237:Generated_Source\PSoC4/Columns.c **** *******************************************************************************/
  238:Generated_Source\PSoC4/Columns.c **** uint8 Columns_ClearInterrupt(void)
  239:Generated_Source\PSoC4/Columns.c **** {
- 296              		.loc 1 239 0
- 297              		.cfi_startproc
- 298              		@ args = 0, pretend = 0, frame = 8
- 299              		@ frame_needed = 1, uses_anonymous_args = 0
- 300 0000 80B5     		push	{r7, lr}
- 301              		.cfi_def_cfa_offset 8
- 302              		.cfi_offset 7, -8
- 303              		.cfi_offset 14, -4
- 304 0002 82B0     		sub	sp, sp, #8
- 305              		.cfi_def_cfa_offset 16
- 306 0004 00AF     		add	r7, sp, #0
- 307              		.cfi_def_cfa_register 7
+ 299              		.loc 1 239 0
+ 300              		.cfi_startproc
+ 301              		@ args = 0, pretend = 0, frame = 8
+ 302              		@ frame_needed = 1, uses_anonymous_args = 0
+ 303 0000 80B5     		push	{r7, lr}
+ 304              		.cfi_def_cfa_offset 8
+ 305              		.cfi_offset 7, -8
+ 306              		.cfi_offset 14, -4
+ 307 0002 82B0     		sub	sp, sp, #8
+ 308              		.cfi_def_cfa_offset 16
+ 309 0004 00AF     		add	r7, sp, #0
+ 310              		.cfi_def_cfa_register 7
  240:Generated_Source\PSoC4/Columns.c **** 	uint8 maskedStatus = (uint8)(Columns_INTSTAT & Columns_MASK);
- 308              		.loc 1 240 0
- 309 0006 084B     		ldr	r3, .L20
- 310 0008 1B68     		ldr	r3, [r3]
- 311 000a DAB2     		uxtb	r2, r3
- 312 000c FB1D     		adds	r3, r7, #7
- 313 000e 0721     		movs	r1, #7
- 314 0010 0A40     		ands	r2, r1
- 315 0012 1A70     		strb	r2, [r3]
+ 311              		.loc 1 240 0
+ 312 0006 094B     		ldr	r3, .L20
+ 313 0008 1B68     		ldr	r3, [r3]
+ 314 000a DAB2     		uxtb	r2, r3
+ 315 000c FB1D     		adds	r3, r7, #7
+ 316 000e 0E21     		movs	r1, #14
+ 317 0010 0A40     		ands	r2, r1
+ 318 0012 1A70     		strb	r2, [r3]
  241:Generated_Source\PSoC4/Columns.c **** 	Columns_INTSTAT = maskedStatus;
- 316              		.loc 1 241 0
- 317 0014 044B     		ldr	r3, .L20
- 318 0016 FA1D     		adds	r2, r7, #7
- 319 0018 1278     		ldrb	r2, [r2]
- 320 001a 1A60     		str	r2, [r3]
+ 319              		.loc 1 241 0
+ 320 0014 054B     		ldr	r3, .L20
+ 321 0016 FA1D     		adds	r2, r7, #7
+ 322 0018 1278     		ldrb	r2, [r2]
+ 323 001a 1A60     		str	r2, [r3]
  242:Generated_Source\PSoC4/Columns.c ****     return maskedStatus >> Columns_SHIFT;
- 321              		.loc 1 242 0
- 322 001c FB1D     		adds	r3, r7, #7
- 323 001e 1B78     		ldrb	r3, [r3]
+ 324              		.loc 1 242 0
+ 325 001c FB1D     		adds	r3, r7, #7
+ 326 001e 1B78     		ldrb	r3, [r3]
+ 327 0020 5B08     		lsrs	r3, r3, #1
+ 328 0022 DBB2     		uxtb	r3, r3
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccU580za.s 			page 11
+
+
  243:Generated_Source\PSoC4/Columns.c **** }
- 324              		.loc 1 243 0
- 325 0020 1800     		movs	r0, r3
- 326 0022 BD46     		mov	sp, r7
- 327 0024 02B0     		add	sp, sp, #8
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccV2fz1Q.s 			page 11
+ 329              		.loc 1 243 0
+ 330 0024 1800     		movs	r0, r3
+ 331 0026 BD46     		mov	sp, r7
+ 332 0028 02B0     		add	sp, sp, #8
+ 333              		@ sp needed
+ 334 002a 80BD     		pop	{r7, pc}
+ 335              	.L21:
+ 336              		.align	2
+ 337              	.L20:
+ 338 002c 10010440 		.word	1074004240
+ 339              		.cfi_endproc
+ 340              	.LFE5:
+ 341              		.size	Columns_ClearInterrupt, .-Columns_ClearInterrupt
+ 342              		.text
+ 343              	.Letext0:
+ 344              		.file 2 "Generated_Source\\PSoC4\\cytypes.h"
+ 345              		.section	.debug_info,"",%progbits
+ 346              	.Ldebug_info0:
+ 347 0000 96010000 		.4byte	0x196
+ 348 0004 0400     		.2byte	0x4
+ 349 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 350 000a 04       		.byte	0x4
+ 351 000b 01       		.uleb128 0x1
+ 352 000c C0000000 		.4byte	.LASF28
+ 353 0010 0C       		.byte	0xc
+ 354 0011 60000000 		.4byte	.LASF29
+ 355 0015 06000000 		.4byte	.LASF30
+ 356 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 357 001d 00000000 		.4byte	0
+ 358 0021 00000000 		.4byte	.Ldebug_line0
+ 359 0025 02       		.uleb128 0x2
+ 360 0026 01       		.byte	0x1
+ 361 0027 06       		.byte	0x6
+ 362 0028 1A020000 		.4byte	.LASF0
+ 363 002c 02       		.uleb128 0x2
+ 364 002d 01       		.byte	0x1
+ 365 002e 08       		.byte	0x8
+ 366 002f 87000000 		.4byte	.LASF1
+ 367 0033 02       		.uleb128 0x2
+ 368 0034 02       		.byte	0x2
+ 369 0035 05       		.byte	0x5
+ 370 0036 E8010000 		.4byte	.LASF2
+ 371 003a 02       		.uleb128 0x2
+ 372 003b 02       		.byte	0x2
+ 373 003c 07       		.byte	0x7
+ 374 003d AD000000 		.4byte	.LASF3
+ 375 0041 02       		.uleb128 0x2
+ 376 0042 04       		.byte	0x4
+ 377 0043 05       		.byte	0x5
+ 378 0044 F8010000 		.4byte	.LASF4
+ 379 0048 02       		.uleb128 0x2
+ 380 0049 04       		.byte	0x4
+ 381 004a 07       		.byte	0x7
+ 382 004b 9B000000 		.4byte	.LASF5
+ 383 004f 02       		.uleb128 0x2
+ 384 0050 08       		.byte	0x8
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccU580za.s 			page 12
 
 
- 328              		@ sp needed
- 329 0026 80BD     		pop	{r7, pc}
- 330              	.L21:
- 331              		.align	2
- 332              	.L20:
- 333 0028 10020440 		.word	1074004496
- 334              		.cfi_endproc
- 335              	.LFE5:
- 336              		.size	Columns_ClearInterrupt, .-Columns_ClearInterrupt
- 337              		.text
- 338              	.Letext0:
- 339              		.file 2 "Generated_Source\\PSoC4\\cytypes.h"
- 340              		.section	.debug_info,"",%progbits
- 341              	.Ldebug_info0:
- 342 0000 96010000 		.4byte	0x196
- 343 0004 0400     		.2byte	0x4
- 344 0006 00000000 		.4byte	.Ldebug_abbrev0
- 345 000a 04       		.byte	0x4
- 346 000b 01       		.uleb128 0x1
- 347 000c C0000000 		.4byte	.LASF28
- 348 0010 0C       		.byte	0xc
- 349 0011 60000000 		.4byte	.LASF29
- 350 0015 06000000 		.4byte	.LASF30
- 351 0019 00000000 		.4byte	.Ldebug_ranges0+0
- 352 001d 00000000 		.4byte	0
- 353 0021 00000000 		.4byte	.Ldebug_line0
- 354 0025 02       		.uleb128 0x2
- 355 0026 01       		.byte	0x1
- 356 0027 06       		.byte	0x6
- 357 0028 1A020000 		.4byte	.LASF0
- 358 002c 02       		.uleb128 0x2
- 359 002d 01       		.byte	0x1
- 360 002e 08       		.byte	0x8
- 361 002f 87000000 		.4byte	.LASF1
- 362 0033 02       		.uleb128 0x2
- 363 0034 02       		.byte	0x2
- 364 0035 05       		.byte	0x5
- 365 0036 E8010000 		.4byte	.LASF2
- 366 003a 02       		.uleb128 0x2
- 367 003b 02       		.byte	0x2
- 368 003c 07       		.byte	0x7
- 369 003d AD000000 		.4byte	.LASF3
- 370 0041 02       		.uleb128 0x2
- 371 0042 04       		.byte	0x4
- 372 0043 05       		.byte	0x5
- 373 0044 F8010000 		.4byte	.LASF4
- 374 0048 02       		.uleb128 0x2
- 375 0049 04       		.byte	0x4
- 376 004a 07       		.byte	0x7
- 377 004b 9B000000 		.4byte	.LASF5
- 378 004f 02       		.uleb128 0x2
- 379 0050 08       		.byte	0x8
- 380 0051 05       		.byte	0x5
- 381 0052 C8010000 		.4byte	.LASF6
- 382 0056 02       		.uleb128 0x2
- 383 0057 08       		.byte	0x8
- 384 0058 07       		.byte	0x7
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccV2fz1Q.s 			page 12
+ 385 0051 05       		.byte	0x5
+ 386 0052 C8010000 		.4byte	.LASF6
+ 387 0056 02       		.uleb128 0x2
+ 388 0057 08       		.byte	0x8
+ 389 0058 07       		.byte	0x7
+ 390 0059 95010000 		.4byte	.LASF7
+ 391 005d 03       		.uleb128 0x3
+ 392 005e 04       		.byte	0x4
+ 393 005f 05       		.byte	0x5
+ 394 0060 696E7400 		.ascii	"int\000"
+ 395 0064 02       		.uleb128 0x2
+ 396 0065 04       		.byte	0x4
+ 397 0066 07       		.byte	0x7
+ 398 0067 74010000 		.4byte	.LASF8
+ 399 006b 04       		.uleb128 0x4
+ 400 006c F2010000 		.4byte	.LASF9
+ 401 0070 02       		.byte	0x2
+ 402 0071 D201     		.2byte	0x1d2
+ 403 0073 2C000000 		.4byte	0x2c
+ 404 0077 04       		.uleb128 0x4
+ 405 0078 55010000 		.4byte	.LASF10
+ 406 007c 02       		.byte	0x2
+ 407 007d D301     		.2byte	0x1d3
+ 408 007f 3A000000 		.4byte	0x3a
+ 409 0083 04       		.uleb128 0x4
+ 410 0084 65010000 		.4byte	.LASF11
+ 411 0088 02       		.byte	0x2
+ 412 0089 D401     		.2byte	0x1d4
+ 413 008b 48000000 		.4byte	0x48
+ 414 008f 02       		.uleb128 0x2
+ 415 0090 04       		.byte	0x4
+ 416 0091 04       		.byte	0x4
+ 417 0092 81000000 		.4byte	.LASF12
+ 418 0096 02       		.uleb128 0x2
+ 419 0097 08       		.byte	0x8
+ 420 0098 04       		.byte	0x4
+ 421 0099 4E010000 		.4byte	.LASF13
+ 422 009d 02       		.uleb128 0x2
+ 423 009e 01       		.byte	0x1
+ 424 009f 08       		.byte	0x8
+ 425 00a0 E3010000 		.4byte	.LASF14
+ 426 00a4 04       		.uleb128 0x4
+ 427 00a5 00000000 		.4byte	.LASF15
+ 428 00a9 02       		.byte	0x2
+ 429 00aa 7E02     		.2byte	0x27e
+ 430 00ac B0000000 		.4byte	0xb0
+ 431 00b0 05       		.uleb128 0x5
+ 432 00b1 83000000 		.4byte	0x83
+ 433 00b5 06       		.uleb128 0x6
+ 434 00b6 45000000 		.4byte	.LASF16
+ 435 00ba 01       		.byte	0x1
+ 436 00bb 48       		.byte	0x48
+ 437 00bc 00000000 		.4byte	.LFB0
+ 438 00c0 60000000 		.4byte	.LFE0-.LFB0
+ 439 00c4 01       		.uleb128 0x1
+ 440 00c5 9C       		.byte	0x9c
+ 441 00c6 D9000000 		.4byte	0xd9
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccU580za.s 			page 13
 
 
- 385 0059 95010000 		.4byte	.LASF7
- 386 005d 03       		.uleb128 0x3
- 387 005e 04       		.byte	0x4
- 388 005f 05       		.byte	0x5
- 389 0060 696E7400 		.ascii	"int\000"
- 390 0064 02       		.uleb128 0x2
- 391 0065 04       		.byte	0x4
- 392 0066 07       		.byte	0x7
- 393 0067 74010000 		.4byte	.LASF8
- 394 006b 04       		.uleb128 0x4
- 395 006c F2010000 		.4byte	.LASF9
- 396 0070 02       		.byte	0x2
- 397 0071 D201     		.2byte	0x1d2
- 398 0073 2C000000 		.4byte	0x2c
- 399 0077 04       		.uleb128 0x4
- 400 0078 55010000 		.4byte	.LASF10
- 401 007c 02       		.byte	0x2
- 402 007d D301     		.2byte	0x1d3
- 403 007f 3A000000 		.4byte	0x3a
- 404 0083 04       		.uleb128 0x4
- 405 0084 65010000 		.4byte	.LASF11
- 406 0088 02       		.byte	0x2
- 407 0089 D401     		.2byte	0x1d4
- 408 008b 48000000 		.4byte	0x48
- 409 008f 02       		.uleb128 0x2
- 410 0090 04       		.byte	0x4
- 411 0091 04       		.byte	0x4
- 412 0092 81000000 		.4byte	.LASF12
- 413 0096 02       		.uleb128 0x2
- 414 0097 08       		.byte	0x8
- 415 0098 04       		.byte	0x4
- 416 0099 4E010000 		.4byte	.LASF13
- 417 009d 02       		.uleb128 0x2
- 418 009e 01       		.byte	0x1
- 419 009f 08       		.byte	0x8
- 420 00a0 E3010000 		.4byte	.LASF14
- 421 00a4 04       		.uleb128 0x4
- 422 00a5 00000000 		.4byte	.LASF15
- 423 00a9 02       		.byte	0x2
- 424 00aa 7E02     		.2byte	0x27e
- 425 00ac B0000000 		.4byte	0xb0
- 426 00b0 05       		.uleb128 0x5
- 427 00b1 83000000 		.4byte	0x83
- 428 00b5 06       		.uleb128 0x6
- 429 00b6 45000000 		.4byte	.LASF16
- 430 00ba 01       		.byte	0x1
- 431 00bb 48       		.byte	0x48
- 432 00bc 00000000 		.4byte	.LFB0
- 433 00c0 5C000000 		.4byte	.LFE0-.LFB0
- 434 00c4 01       		.uleb128 0x1
- 435 00c5 9C       		.byte	0x9c
- 436 00c6 D9000000 		.4byte	0xd9
- 437 00ca 07       		.uleb128 0x7
- 438 00cb C3010000 		.4byte	.LASF18
- 439 00cf 01       		.byte	0x1
- 440 00d0 48       		.byte	0x48
- 441 00d1 6B000000 		.4byte	0x6b
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccV2fz1Q.s 			page 13
+ 442 00ca 07       		.uleb128 0x7
+ 443 00cb C3010000 		.4byte	.LASF18
+ 444 00cf 01       		.byte	0x1
+ 445 00d0 48       		.byte	0x48
+ 446 00d1 6B000000 		.4byte	0x6b
+ 447 00d5 02       		.uleb128 0x2
+ 448 00d6 91       		.byte	0x91
+ 449 00d7 77       		.sleb128 -9
+ 450 00d8 00       		.byte	0
+ 451 00d9 06       		.uleb128 0x6
+ 452 00da 33020000 		.4byte	.LASF17
+ 453 00de 01       		.byte	0x1
+ 454 00df 71       		.byte	0x71
+ 455 00e0 00000000 		.4byte	.LFB1
+ 456 00e4 50000000 		.4byte	.LFE1-.LFB1
+ 457 00e8 01       		.uleb128 0x1
+ 458 00e9 9C       		.byte	0x9c
+ 459 00ea 0B010000 		.4byte	0x10b
+ 460 00ee 07       		.uleb128 0x7
+ 461 00ef 5A000000 		.4byte	.LASF19
+ 462 00f3 01       		.byte	0x1
+ 463 00f4 71       		.byte	0x71
+ 464 00f5 6B000000 		.4byte	0x6b
+ 465 00f9 02       		.uleb128 0x2
+ 466 00fa 91       		.byte	0x91
+ 467 00fb 6F       		.sleb128 -17
+ 468 00fc 08       		.uleb128 0x8
+ 469 00fd 95000000 		.4byte	.LASF24
+ 470 0101 01       		.byte	0x1
+ 471 0102 73       		.byte	0x73
+ 472 0103 6B000000 		.4byte	0x6b
+ 473 0107 02       		.uleb128 0x2
+ 474 0108 91       		.byte	0x91
+ 475 0109 77       		.sleb128 -9
+ 476 010a 00       		.byte	0
+ 477 010b 09       		.uleb128 0x9
+ 478 010c 26020000 		.4byte	.LASF20
+ 479 0110 01       		.byte	0x1
+ 480 0111 8A       		.byte	0x8a
+ 481 0112 6B000000 		.4byte	0x6b
+ 482 0116 00000000 		.4byte	.LFB2
+ 483 011a 1C000000 		.4byte	.LFE2-.LFB2
+ 484 011e 01       		.uleb128 0x1
+ 485 011f 9C       		.byte	0x9c
+ 486 0120 09       		.uleb128 0x9
+ 487 0121 81010000 		.4byte	.LASF21
+ 488 0125 01       		.byte	0x1
+ 489 0126 A6       		.byte	0xa6
+ 490 0127 6B000000 		.4byte	0x6b
+ 491 012b 00000000 		.4byte	.LFB3
+ 492 012f 1C000000 		.4byte	.LFE3-.LFB3
+ 493 0133 01       		.uleb128 0x1
+ 494 0134 9C       		.byte	0x9c
+ 495 0135 06       		.uleb128 0x6
+ 496 0136 01020000 		.4byte	.LASF22
+ 497 013a 01       		.byte	0x1
+ 498 013b D1       		.byte	0xd1
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccU580za.s 			page 14
 
 
- 442 00d5 02       		.uleb128 0x2
- 443 00d6 91       		.byte	0x91
- 444 00d7 77       		.sleb128 -9
- 445 00d8 00       		.byte	0
- 446 00d9 06       		.uleb128 0x6
- 447 00da 33020000 		.4byte	.LASF17
- 448 00de 01       		.byte	0x1
- 449 00df 71       		.byte	0x71
- 450 00e0 00000000 		.4byte	.LFB1
- 451 00e4 4C000000 		.4byte	.LFE1-.LFB1
- 452 00e8 01       		.uleb128 0x1
- 453 00e9 9C       		.byte	0x9c
- 454 00ea 0B010000 		.4byte	0x10b
- 455 00ee 07       		.uleb128 0x7
- 456 00ef 5A000000 		.4byte	.LASF19
- 457 00f3 01       		.byte	0x1
- 458 00f4 71       		.byte	0x71
- 459 00f5 6B000000 		.4byte	0x6b
- 460 00f9 02       		.uleb128 0x2
- 461 00fa 91       		.byte	0x91
- 462 00fb 6F       		.sleb128 -17
- 463 00fc 08       		.uleb128 0x8
- 464 00fd 95000000 		.4byte	.LASF24
- 465 0101 01       		.byte	0x1
- 466 0102 73       		.byte	0x73
- 467 0103 6B000000 		.4byte	0x6b
- 468 0107 02       		.uleb128 0x2
- 469 0108 91       		.byte	0x91
- 470 0109 77       		.sleb128 -9
- 471 010a 00       		.byte	0
- 472 010b 09       		.uleb128 0x9
- 473 010c 26020000 		.4byte	.LASF20
- 474 0110 01       		.byte	0x1
- 475 0111 8A       		.byte	0x8a
- 476 0112 6B000000 		.4byte	0x6b
- 477 0116 00000000 		.4byte	.LFB2
- 478 011a 1C000000 		.4byte	.LFE2-.LFB2
- 479 011e 01       		.uleb128 0x1
- 480 011f 9C       		.byte	0x9c
- 481 0120 09       		.uleb128 0x9
- 482 0121 81010000 		.4byte	.LASF21
- 483 0125 01       		.byte	0x1
- 484 0126 A6       		.byte	0xa6
- 485 0127 6B000000 		.4byte	0x6b
- 486 012b 00000000 		.4byte	.LFB3
- 487 012f 1C000000 		.4byte	.LFE3-.LFB3
- 488 0133 01       		.uleb128 0x1
- 489 0134 9C       		.byte	0x9c
- 490 0135 06       		.uleb128 0x6
- 491 0136 01020000 		.4byte	.LASF22
- 492 013a 01       		.byte	0x1
- 493 013b D1       		.byte	0xd1
- 494 013c 00000000 		.4byte	.LFB4
- 495 0140 44000000 		.4byte	.LFE4-.LFB4
- 496 0144 01       		.uleb128 0x1
- 497 0145 9C       		.byte	0x9c
- 498 0146 75010000 		.4byte	0x175
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccV2fz1Q.s 			page 14
+ 499 013c 00000000 		.4byte	.LFB4
+ 500 0140 44000000 		.4byte	.LFE4-.LFB4
+ 501 0144 01       		.uleb128 0x1
+ 502 0145 9C       		.byte	0x9c
+ 503 0146 75010000 		.4byte	0x175
+ 504 014a 07       		.uleb128 0x7
+ 505 014b 5C010000 		.4byte	.LASF23
+ 506 014f 01       		.byte	0x1
+ 507 0150 D1       		.byte	0xd1
+ 508 0151 77000000 		.4byte	0x77
+ 509 0155 02       		.uleb128 0x2
+ 510 0156 91       		.byte	0x91
+ 511 0157 6E       		.sleb128 -18
+ 512 0158 07       		.uleb128 0x7
+ 513 0159 C3010000 		.4byte	.LASF18
+ 514 015d 01       		.byte	0x1
+ 515 015e D1       		.byte	0xd1
+ 516 015f 77000000 		.4byte	0x77
+ 517 0163 02       		.uleb128 0x2
+ 518 0164 91       		.byte	0x91
+ 519 0165 6C       		.sleb128 -20
+ 520 0166 08       		.uleb128 0x8
+ 521 0167 6C010000 		.4byte	.LASF25
+ 522 016b 01       		.byte	0x1
+ 523 016c D3       		.byte	0xd3
+ 524 016d 83000000 		.4byte	0x83
+ 525 0171 02       		.uleb128 0x2
+ 526 0172 91       		.byte	0x91
+ 527 0173 74       		.sleb128 -12
+ 528 0174 00       		.byte	0
+ 529 0175 0A       		.uleb128 0xa
+ 530 0176 AC010000 		.4byte	.LASF26
+ 531 017a 01       		.byte	0x1
+ 532 017b EE       		.byte	0xee
+ 533 017c 6B000000 		.4byte	0x6b
+ 534 0180 00000000 		.4byte	.LFB5
+ 535 0184 30000000 		.4byte	.LFE5-.LFB5
+ 536 0188 01       		.uleb128 0x1
+ 537 0189 9C       		.byte	0x9c
+ 538 018a 08       		.uleb128 0x8
+ 539 018b D6010000 		.4byte	.LASF27
+ 540 018f 01       		.byte	0x1
+ 541 0190 F0       		.byte	0xf0
+ 542 0191 6B000000 		.4byte	0x6b
+ 543 0195 02       		.uleb128 0x2
+ 544 0196 91       		.byte	0x91
+ 545 0197 77       		.sleb128 -9
+ 546 0198 00       		.byte	0
+ 547 0199 00       		.byte	0
+ 548              		.section	.debug_abbrev,"",%progbits
+ 549              	.Ldebug_abbrev0:
+ 550 0000 01       		.uleb128 0x1
+ 551 0001 11       		.uleb128 0x11
+ 552 0002 01       		.byte	0x1
+ 553 0003 25       		.uleb128 0x25
+ 554 0004 0E       		.uleb128 0xe
+ 555 0005 13       		.uleb128 0x13
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccU580za.s 			page 15
 
 
- 499 014a 07       		.uleb128 0x7
- 500 014b 5C010000 		.4byte	.LASF23
- 501 014f 01       		.byte	0x1
- 502 0150 D1       		.byte	0xd1
- 503 0151 77000000 		.4byte	0x77
- 504 0155 02       		.uleb128 0x2
- 505 0156 91       		.byte	0x91
- 506 0157 6E       		.sleb128 -18
- 507 0158 07       		.uleb128 0x7
- 508 0159 C3010000 		.4byte	.LASF18
- 509 015d 01       		.byte	0x1
- 510 015e D1       		.byte	0xd1
- 511 015f 77000000 		.4byte	0x77
- 512 0163 02       		.uleb128 0x2
- 513 0164 91       		.byte	0x91
- 514 0165 6C       		.sleb128 -20
- 515 0166 08       		.uleb128 0x8
- 516 0167 6C010000 		.4byte	.LASF25
- 517 016b 01       		.byte	0x1
- 518 016c D3       		.byte	0xd3
- 519 016d 83000000 		.4byte	0x83
- 520 0171 02       		.uleb128 0x2
- 521 0172 91       		.byte	0x91
- 522 0173 74       		.sleb128 -12
- 523 0174 00       		.byte	0
- 524 0175 0A       		.uleb128 0xa
- 525 0176 AC010000 		.4byte	.LASF26
- 526 017a 01       		.byte	0x1
- 527 017b EE       		.byte	0xee
- 528 017c 6B000000 		.4byte	0x6b
- 529 0180 00000000 		.4byte	.LFB5
- 530 0184 2C000000 		.4byte	.LFE5-.LFB5
- 531 0188 01       		.uleb128 0x1
- 532 0189 9C       		.byte	0x9c
- 533 018a 08       		.uleb128 0x8
- 534 018b D6010000 		.4byte	.LASF27
- 535 018f 01       		.byte	0x1
- 536 0190 F0       		.byte	0xf0
- 537 0191 6B000000 		.4byte	0x6b
- 538 0195 02       		.uleb128 0x2
- 539 0196 91       		.byte	0x91
- 540 0197 77       		.sleb128 -9
- 541 0198 00       		.byte	0
- 542 0199 00       		.byte	0
- 543              		.section	.debug_abbrev,"",%progbits
- 544              	.Ldebug_abbrev0:
- 545 0000 01       		.uleb128 0x1
- 546 0001 11       		.uleb128 0x11
- 547 0002 01       		.byte	0x1
- 548 0003 25       		.uleb128 0x25
- 549 0004 0E       		.uleb128 0xe
- 550 0005 13       		.uleb128 0x13
- 551 0006 0B       		.uleb128 0xb
- 552 0007 03       		.uleb128 0x3
- 553 0008 0E       		.uleb128 0xe
- 554 0009 1B       		.uleb128 0x1b
- 555 000a 0E       		.uleb128 0xe
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccV2fz1Q.s 			page 15
+ 556 0006 0B       		.uleb128 0xb
+ 557 0007 03       		.uleb128 0x3
+ 558 0008 0E       		.uleb128 0xe
+ 559 0009 1B       		.uleb128 0x1b
+ 560 000a 0E       		.uleb128 0xe
+ 561 000b 55       		.uleb128 0x55
+ 562 000c 17       		.uleb128 0x17
+ 563 000d 11       		.uleb128 0x11
+ 564 000e 01       		.uleb128 0x1
+ 565 000f 10       		.uleb128 0x10
+ 566 0010 17       		.uleb128 0x17
+ 567 0011 00       		.byte	0
+ 568 0012 00       		.byte	0
+ 569 0013 02       		.uleb128 0x2
+ 570 0014 24       		.uleb128 0x24
+ 571 0015 00       		.byte	0
+ 572 0016 0B       		.uleb128 0xb
+ 573 0017 0B       		.uleb128 0xb
+ 574 0018 3E       		.uleb128 0x3e
+ 575 0019 0B       		.uleb128 0xb
+ 576 001a 03       		.uleb128 0x3
+ 577 001b 0E       		.uleb128 0xe
+ 578 001c 00       		.byte	0
+ 579 001d 00       		.byte	0
+ 580 001e 03       		.uleb128 0x3
+ 581 001f 24       		.uleb128 0x24
+ 582 0020 00       		.byte	0
+ 583 0021 0B       		.uleb128 0xb
+ 584 0022 0B       		.uleb128 0xb
+ 585 0023 3E       		.uleb128 0x3e
+ 586 0024 0B       		.uleb128 0xb
+ 587 0025 03       		.uleb128 0x3
+ 588 0026 08       		.uleb128 0x8
+ 589 0027 00       		.byte	0
+ 590 0028 00       		.byte	0
+ 591 0029 04       		.uleb128 0x4
+ 592 002a 16       		.uleb128 0x16
+ 593 002b 00       		.byte	0
+ 594 002c 03       		.uleb128 0x3
+ 595 002d 0E       		.uleb128 0xe
+ 596 002e 3A       		.uleb128 0x3a
+ 597 002f 0B       		.uleb128 0xb
+ 598 0030 3B       		.uleb128 0x3b
+ 599 0031 05       		.uleb128 0x5
+ 600 0032 49       		.uleb128 0x49
+ 601 0033 13       		.uleb128 0x13
+ 602 0034 00       		.byte	0
+ 603 0035 00       		.byte	0
+ 604 0036 05       		.uleb128 0x5
+ 605 0037 35       		.uleb128 0x35
+ 606 0038 00       		.byte	0
+ 607 0039 49       		.uleb128 0x49
+ 608 003a 13       		.uleb128 0x13
+ 609 003b 00       		.byte	0
+ 610 003c 00       		.byte	0
+ 611 003d 06       		.uleb128 0x6
+ 612 003e 2E       		.uleb128 0x2e
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccU580za.s 			page 16
 
 
- 556 000b 55       		.uleb128 0x55
- 557 000c 17       		.uleb128 0x17
- 558 000d 11       		.uleb128 0x11
- 559 000e 01       		.uleb128 0x1
- 560 000f 10       		.uleb128 0x10
- 561 0010 17       		.uleb128 0x17
- 562 0011 00       		.byte	0
- 563 0012 00       		.byte	0
- 564 0013 02       		.uleb128 0x2
- 565 0014 24       		.uleb128 0x24
- 566 0015 00       		.byte	0
- 567 0016 0B       		.uleb128 0xb
- 568 0017 0B       		.uleb128 0xb
- 569 0018 3E       		.uleb128 0x3e
- 570 0019 0B       		.uleb128 0xb
- 571 001a 03       		.uleb128 0x3
- 572 001b 0E       		.uleb128 0xe
- 573 001c 00       		.byte	0
- 574 001d 00       		.byte	0
- 575 001e 03       		.uleb128 0x3
- 576 001f 24       		.uleb128 0x24
- 577 0020 00       		.byte	0
- 578 0021 0B       		.uleb128 0xb
- 579 0022 0B       		.uleb128 0xb
- 580 0023 3E       		.uleb128 0x3e
- 581 0024 0B       		.uleb128 0xb
- 582 0025 03       		.uleb128 0x3
- 583 0026 08       		.uleb128 0x8
- 584 0027 00       		.byte	0
- 585 0028 00       		.byte	0
- 586 0029 04       		.uleb128 0x4
- 587 002a 16       		.uleb128 0x16
- 588 002b 00       		.byte	0
- 589 002c 03       		.uleb128 0x3
- 590 002d 0E       		.uleb128 0xe
- 591 002e 3A       		.uleb128 0x3a
- 592 002f 0B       		.uleb128 0xb
- 593 0030 3B       		.uleb128 0x3b
- 594 0031 05       		.uleb128 0x5
- 595 0032 49       		.uleb128 0x49
- 596 0033 13       		.uleb128 0x13
- 597 0034 00       		.byte	0
- 598 0035 00       		.byte	0
- 599 0036 05       		.uleb128 0x5
- 600 0037 35       		.uleb128 0x35
- 601 0038 00       		.byte	0
- 602 0039 49       		.uleb128 0x49
- 603 003a 13       		.uleb128 0x13
- 604 003b 00       		.byte	0
- 605 003c 00       		.byte	0
- 606 003d 06       		.uleb128 0x6
- 607 003e 2E       		.uleb128 0x2e
- 608 003f 01       		.byte	0x1
- 609 0040 3F       		.uleb128 0x3f
- 610 0041 19       		.uleb128 0x19
- 611 0042 03       		.uleb128 0x3
- 612 0043 0E       		.uleb128 0xe
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccV2fz1Q.s 			page 16
+ 613 003f 01       		.byte	0x1
+ 614 0040 3F       		.uleb128 0x3f
+ 615 0041 19       		.uleb128 0x19
+ 616 0042 03       		.uleb128 0x3
+ 617 0043 0E       		.uleb128 0xe
+ 618 0044 3A       		.uleb128 0x3a
+ 619 0045 0B       		.uleb128 0xb
+ 620 0046 3B       		.uleb128 0x3b
+ 621 0047 0B       		.uleb128 0xb
+ 622 0048 27       		.uleb128 0x27
+ 623 0049 19       		.uleb128 0x19
+ 624 004a 11       		.uleb128 0x11
+ 625 004b 01       		.uleb128 0x1
+ 626 004c 12       		.uleb128 0x12
+ 627 004d 06       		.uleb128 0x6
+ 628 004e 40       		.uleb128 0x40
+ 629 004f 18       		.uleb128 0x18
+ 630 0050 9742     		.uleb128 0x2117
+ 631 0052 19       		.uleb128 0x19
+ 632 0053 01       		.uleb128 0x1
+ 633 0054 13       		.uleb128 0x13
+ 634 0055 00       		.byte	0
+ 635 0056 00       		.byte	0
+ 636 0057 07       		.uleb128 0x7
+ 637 0058 05       		.uleb128 0x5
+ 638 0059 00       		.byte	0
+ 639 005a 03       		.uleb128 0x3
+ 640 005b 0E       		.uleb128 0xe
+ 641 005c 3A       		.uleb128 0x3a
+ 642 005d 0B       		.uleb128 0xb
+ 643 005e 3B       		.uleb128 0x3b
+ 644 005f 0B       		.uleb128 0xb
+ 645 0060 49       		.uleb128 0x49
+ 646 0061 13       		.uleb128 0x13
+ 647 0062 02       		.uleb128 0x2
+ 648 0063 18       		.uleb128 0x18
+ 649 0064 00       		.byte	0
+ 650 0065 00       		.byte	0
+ 651 0066 08       		.uleb128 0x8
+ 652 0067 34       		.uleb128 0x34
+ 653 0068 00       		.byte	0
+ 654 0069 03       		.uleb128 0x3
+ 655 006a 0E       		.uleb128 0xe
+ 656 006b 3A       		.uleb128 0x3a
+ 657 006c 0B       		.uleb128 0xb
+ 658 006d 3B       		.uleb128 0x3b
+ 659 006e 0B       		.uleb128 0xb
+ 660 006f 49       		.uleb128 0x49
+ 661 0070 13       		.uleb128 0x13
+ 662 0071 02       		.uleb128 0x2
+ 663 0072 18       		.uleb128 0x18
+ 664 0073 00       		.byte	0
+ 665 0074 00       		.byte	0
+ 666 0075 09       		.uleb128 0x9
+ 667 0076 2E       		.uleb128 0x2e
+ 668 0077 00       		.byte	0
+ 669 0078 3F       		.uleb128 0x3f
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccU580za.s 			page 17
 
 
- 613 0044 3A       		.uleb128 0x3a
- 614 0045 0B       		.uleb128 0xb
- 615 0046 3B       		.uleb128 0x3b
- 616 0047 0B       		.uleb128 0xb
- 617 0048 27       		.uleb128 0x27
- 618 0049 19       		.uleb128 0x19
- 619 004a 11       		.uleb128 0x11
- 620 004b 01       		.uleb128 0x1
- 621 004c 12       		.uleb128 0x12
- 622 004d 06       		.uleb128 0x6
- 623 004e 40       		.uleb128 0x40
- 624 004f 18       		.uleb128 0x18
- 625 0050 9742     		.uleb128 0x2117
- 626 0052 19       		.uleb128 0x19
- 627 0053 01       		.uleb128 0x1
- 628 0054 13       		.uleb128 0x13
- 629 0055 00       		.byte	0
- 630 0056 00       		.byte	0
- 631 0057 07       		.uleb128 0x7
- 632 0058 05       		.uleb128 0x5
- 633 0059 00       		.byte	0
- 634 005a 03       		.uleb128 0x3
- 635 005b 0E       		.uleb128 0xe
- 636 005c 3A       		.uleb128 0x3a
- 637 005d 0B       		.uleb128 0xb
- 638 005e 3B       		.uleb128 0x3b
- 639 005f 0B       		.uleb128 0xb
- 640 0060 49       		.uleb128 0x49
- 641 0061 13       		.uleb128 0x13
- 642 0062 02       		.uleb128 0x2
- 643 0063 18       		.uleb128 0x18
- 644 0064 00       		.byte	0
- 645 0065 00       		.byte	0
- 646 0066 08       		.uleb128 0x8
- 647 0067 34       		.uleb128 0x34
- 648 0068 00       		.byte	0
- 649 0069 03       		.uleb128 0x3
- 650 006a 0E       		.uleb128 0xe
- 651 006b 3A       		.uleb128 0x3a
- 652 006c 0B       		.uleb128 0xb
- 653 006d 3B       		.uleb128 0x3b
- 654 006e 0B       		.uleb128 0xb
- 655 006f 49       		.uleb128 0x49
- 656 0070 13       		.uleb128 0x13
- 657 0071 02       		.uleb128 0x2
- 658 0072 18       		.uleb128 0x18
- 659 0073 00       		.byte	0
- 660 0074 00       		.byte	0
- 661 0075 09       		.uleb128 0x9
- 662 0076 2E       		.uleb128 0x2e
- 663 0077 00       		.byte	0
- 664 0078 3F       		.uleb128 0x3f
- 665 0079 19       		.uleb128 0x19
- 666 007a 03       		.uleb128 0x3
- 667 007b 0E       		.uleb128 0xe
- 668 007c 3A       		.uleb128 0x3a
- 669 007d 0B       		.uleb128 0xb
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccV2fz1Q.s 			page 17
+ 670 0079 19       		.uleb128 0x19
+ 671 007a 03       		.uleb128 0x3
+ 672 007b 0E       		.uleb128 0xe
+ 673 007c 3A       		.uleb128 0x3a
+ 674 007d 0B       		.uleb128 0xb
+ 675 007e 3B       		.uleb128 0x3b
+ 676 007f 0B       		.uleb128 0xb
+ 677 0080 27       		.uleb128 0x27
+ 678 0081 19       		.uleb128 0x19
+ 679 0082 49       		.uleb128 0x49
+ 680 0083 13       		.uleb128 0x13
+ 681 0084 11       		.uleb128 0x11
+ 682 0085 01       		.uleb128 0x1
+ 683 0086 12       		.uleb128 0x12
+ 684 0087 06       		.uleb128 0x6
+ 685 0088 40       		.uleb128 0x40
+ 686 0089 18       		.uleb128 0x18
+ 687 008a 9742     		.uleb128 0x2117
+ 688 008c 19       		.uleb128 0x19
+ 689 008d 00       		.byte	0
+ 690 008e 00       		.byte	0
+ 691 008f 0A       		.uleb128 0xa
+ 692 0090 2E       		.uleb128 0x2e
+ 693 0091 01       		.byte	0x1
+ 694 0092 3F       		.uleb128 0x3f
+ 695 0093 19       		.uleb128 0x19
+ 696 0094 03       		.uleb128 0x3
+ 697 0095 0E       		.uleb128 0xe
+ 698 0096 3A       		.uleb128 0x3a
+ 699 0097 0B       		.uleb128 0xb
+ 700 0098 3B       		.uleb128 0x3b
+ 701 0099 0B       		.uleb128 0xb
+ 702 009a 27       		.uleb128 0x27
+ 703 009b 19       		.uleb128 0x19
+ 704 009c 49       		.uleb128 0x49
+ 705 009d 13       		.uleb128 0x13
+ 706 009e 11       		.uleb128 0x11
+ 707 009f 01       		.uleb128 0x1
+ 708 00a0 12       		.uleb128 0x12
+ 709 00a1 06       		.uleb128 0x6
+ 710 00a2 40       		.uleb128 0x40
+ 711 00a3 18       		.uleb128 0x18
+ 712 00a4 9742     		.uleb128 0x2117
+ 713 00a6 19       		.uleb128 0x19
+ 714 00a7 00       		.byte	0
+ 715 00a8 00       		.byte	0
+ 716 00a9 00       		.byte	0
+ 717              		.section	.debug_aranges,"",%progbits
+ 718 0000 44000000 		.4byte	0x44
+ 719 0004 0200     		.2byte	0x2
+ 720 0006 00000000 		.4byte	.Ldebug_info0
+ 721 000a 04       		.byte	0x4
+ 722 000b 00       		.byte	0
+ 723 000c 0000     		.2byte	0
+ 724 000e 0000     		.2byte	0
+ 725 0010 00000000 		.4byte	.LFB0
+ 726 0014 60000000 		.4byte	.LFE0-.LFB0
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccU580za.s 			page 18
 
 
- 670 007e 3B       		.uleb128 0x3b
- 671 007f 0B       		.uleb128 0xb
- 672 0080 27       		.uleb128 0x27
- 673 0081 19       		.uleb128 0x19
- 674 0082 49       		.uleb128 0x49
- 675 0083 13       		.uleb128 0x13
- 676 0084 11       		.uleb128 0x11
- 677 0085 01       		.uleb128 0x1
- 678 0086 12       		.uleb128 0x12
- 679 0087 06       		.uleb128 0x6
- 680 0088 40       		.uleb128 0x40
- 681 0089 18       		.uleb128 0x18
- 682 008a 9742     		.uleb128 0x2117
- 683 008c 19       		.uleb128 0x19
- 684 008d 00       		.byte	0
- 685 008e 00       		.byte	0
- 686 008f 0A       		.uleb128 0xa
- 687 0090 2E       		.uleb128 0x2e
- 688 0091 01       		.byte	0x1
- 689 0092 3F       		.uleb128 0x3f
- 690 0093 19       		.uleb128 0x19
- 691 0094 03       		.uleb128 0x3
- 692 0095 0E       		.uleb128 0xe
- 693 0096 3A       		.uleb128 0x3a
- 694 0097 0B       		.uleb128 0xb
- 695 0098 3B       		.uleb128 0x3b
- 696 0099 0B       		.uleb128 0xb
- 697 009a 27       		.uleb128 0x27
- 698 009b 19       		.uleb128 0x19
- 699 009c 49       		.uleb128 0x49
- 700 009d 13       		.uleb128 0x13
- 701 009e 11       		.uleb128 0x11
- 702 009f 01       		.uleb128 0x1
- 703 00a0 12       		.uleb128 0x12
- 704 00a1 06       		.uleb128 0x6
- 705 00a2 40       		.uleb128 0x40
- 706 00a3 18       		.uleb128 0x18
- 707 00a4 9742     		.uleb128 0x2117
- 708 00a6 19       		.uleb128 0x19
- 709 00a7 00       		.byte	0
- 710 00a8 00       		.byte	0
- 711 00a9 00       		.byte	0
- 712              		.section	.debug_aranges,"",%progbits
- 713 0000 44000000 		.4byte	0x44
- 714 0004 0200     		.2byte	0x2
- 715 0006 00000000 		.4byte	.Ldebug_info0
- 716 000a 04       		.byte	0x4
- 717 000b 00       		.byte	0
- 718 000c 0000     		.2byte	0
- 719 000e 0000     		.2byte	0
- 720 0010 00000000 		.4byte	.LFB0
- 721 0014 5C000000 		.4byte	.LFE0-.LFB0
- 722 0018 00000000 		.4byte	.LFB1
- 723 001c 4C000000 		.4byte	.LFE1-.LFB1
- 724 0020 00000000 		.4byte	.LFB2
- 725 0024 1C000000 		.4byte	.LFE2-.LFB2
- 726 0028 00000000 		.4byte	.LFB3
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccV2fz1Q.s 			page 18
+ 727 0018 00000000 		.4byte	.LFB1
+ 728 001c 50000000 		.4byte	.LFE1-.LFB1
+ 729 0020 00000000 		.4byte	.LFB2
+ 730 0024 1C000000 		.4byte	.LFE2-.LFB2
+ 731 0028 00000000 		.4byte	.LFB3
+ 732 002c 1C000000 		.4byte	.LFE3-.LFB3
+ 733 0030 00000000 		.4byte	.LFB4
+ 734 0034 44000000 		.4byte	.LFE4-.LFB4
+ 735 0038 00000000 		.4byte	.LFB5
+ 736 003c 30000000 		.4byte	.LFE5-.LFB5
+ 737 0040 00000000 		.4byte	0
+ 738 0044 00000000 		.4byte	0
+ 739              		.section	.debug_ranges,"",%progbits
+ 740              	.Ldebug_ranges0:
+ 741 0000 00000000 		.4byte	.LFB0
+ 742 0004 60000000 		.4byte	.LFE0
+ 743 0008 00000000 		.4byte	.LFB1
+ 744 000c 50000000 		.4byte	.LFE1
+ 745 0010 00000000 		.4byte	.LFB2
+ 746 0014 1C000000 		.4byte	.LFE2
+ 747 0018 00000000 		.4byte	.LFB3
+ 748 001c 1C000000 		.4byte	.LFE3
+ 749 0020 00000000 		.4byte	.LFB4
+ 750 0024 44000000 		.4byte	.LFE4
+ 751 0028 00000000 		.4byte	.LFB5
+ 752 002c 30000000 		.4byte	.LFE5
+ 753 0030 00000000 		.4byte	0
+ 754 0034 00000000 		.4byte	0
+ 755              		.section	.debug_line,"",%progbits
+ 756              	.Ldebug_line0:
+ 757 0000 BD000000 		.section	.debug_str,"MS",%progbits,1
+ 757      02004400 
+ 757      00000201 
+ 757      FB0E0D00 
+ 757      01010101 
+ 758              	.LASF15:
+ 759 0000 72656733 		.ascii	"reg32\000"
+ 759      3200
+ 760              	.LASF30:
+ 761 0006 443A5C44 		.ascii	"D:\\Documents\\GitHub\\XID_483\\Workspace\\BLE_HID_"
+ 761      6F63756D 
+ 761      656E7473 
+ 761      5C476974 
+ 761      4875625C 
+ 762 0034 4B657962 		.ascii	"Keyboard01.cydsn\000"
+ 762      6F617264 
+ 762      30312E63 
+ 762      7964736E 
+ 762      00
+ 763              	.LASF16:
+ 764 0045 436F6C75 		.ascii	"Columns_SetDriveMode\000"
+ 764      6D6E735F 
+ 764      53657444 
+ 764      72697665 
+ 764      4D6F6465 
+ 765              	.LASF19:
+ 766 005a 76616C75 		.ascii	"value\000"
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccU580za.s 			page 19
 
 
- 727 002c 1C000000 		.4byte	.LFE3-.LFB3
- 728 0030 00000000 		.4byte	.LFB4
- 729 0034 44000000 		.4byte	.LFE4-.LFB4
- 730 0038 00000000 		.4byte	.LFB5
- 731 003c 2C000000 		.4byte	.LFE5-.LFB5
- 732 0040 00000000 		.4byte	0
- 733 0044 00000000 		.4byte	0
- 734              		.section	.debug_ranges,"",%progbits
- 735              	.Ldebug_ranges0:
- 736 0000 00000000 		.4byte	.LFB0
- 737 0004 5C000000 		.4byte	.LFE0
- 738 0008 00000000 		.4byte	.LFB1
- 739 000c 4C000000 		.4byte	.LFE1
- 740 0010 00000000 		.4byte	.LFB2
- 741 0014 1C000000 		.4byte	.LFE2
- 742 0018 00000000 		.4byte	.LFB3
- 743 001c 1C000000 		.4byte	.LFE3
- 744 0020 00000000 		.4byte	.LFB4
- 745 0024 44000000 		.4byte	.LFE4
- 746 0028 00000000 		.4byte	.LFB5
- 747 002c 2C000000 		.4byte	.LFE5
- 748 0030 00000000 		.4byte	0
- 749 0034 00000000 		.4byte	0
- 750              		.section	.debug_line,"",%progbits
- 751              	.Ldebug_line0:
- 752 0000 BD000000 		.section	.debug_str,"MS",%progbits,1
- 752      02004400 
- 752      00000201 
- 752      FB0E0D00 
- 752      01010101 
- 753              	.LASF15:
- 754 0000 72656733 		.ascii	"reg32\000"
- 754      3200
- 755              	.LASF30:
- 756 0006 443A5C44 		.ascii	"D:\\Documents\\GitHub\\XID_483\\Workspace\\BLE_HID_"
- 756      6F63756D 
- 756      656E7473 
- 756      5C476974 
- 756      4875625C 
- 757 0034 4B657962 		.ascii	"Keyboard01.cydsn\000"
- 757      6F617264 
- 757      30312E63 
- 757      7964736E 
- 757      00
- 758              	.LASF16:
- 759 0045 436F6C75 		.ascii	"Columns_SetDriveMode\000"
- 759      6D6E735F 
- 759      53657444 
- 759      72697665 
- 759      4D6F6465 
- 760              	.LASF19:
- 761 005a 76616C75 		.ascii	"value\000"
- 761      6500
- 762              	.LASF29:
- 763 0060 47656E65 		.ascii	"Generated_Source\\PSoC4\\Columns.c\000"
- 763      72617465 
- 763      645F536F 
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccV2fz1Q.s 			page 19
+ 766      6500
+ 767              	.LASF29:
+ 768 0060 47656E65 		.ascii	"Generated_Source\\PSoC4\\Columns.c\000"
+ 768      72617465 
+ 768      645F536F 
+ 768      75726365 
+ 768      5C50536F 
+ 769              	.LASF12:
+ 770 0081 666C6F61 		.ascii	"float\000"
+ 770      7400
+ 771              	.LASF1:
+ 772 0087 756E7369 		.ascii	"unsigned char\000"
+ 772      676E6564 
+ 772      20636861 
+ 772      7200
+ 773              	.LASF24:
+ 774 0095 64725661 		.ascii	"drVal\000"
+ 774      6C00
+ 775              	.LASF5:
+ 776 009b 6C6F6E67 		.ascii	"long unsigned int\000"
+ 776      20756E73 
+ 776      69676E65 
+ 776      6420696E 
+ 776      7400
+ 777              	.LASF3:
+ 778 00ad 73686F72 		.ascii	"short unsigned int\000"
+ 778      7420756E 
+ 778      7369676E 
+ 778      65642069 
+ 778      6E7400
+ 779              	.LASF28:
+ 780 00c0 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 780      43313120 
+ 780      352E342E 
+ 780      31203230 
+ 780      31363036 
+ 781 00f3 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 781      20726576 
+ 781      6973696F 
+ 781      6E203233 
+ 781      37373135 
+ 782 0126 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 782      66756E63 
+ 782      74696F6E 
+ 782      2D736563 
+ 782      74696F6E 
+ 783              	.LASF13:
+ 784 014e 646F7562 		.ascii	"double\000"
+ 784      6C6500
+ 785              	.LASF10:
+ 786 0155 75696E74 		.ascii	"uint16\000"
+ 786      313600
+ 787              	.LASF23:
+ 788 015c 706F7369 		.ascii	"position\000"
+ 788      74696F6E 
+ 788      00
+ 789              	.LASF11:
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccU580za.s 			page 20
 
 
- 763      75726365 
- 763      5C50536F 
- 764              	.LASF12:
- 765 0081 666C6F61 		.ascii	"float\000"
- 765      7400
- 766              	.LASF1:
- 767 0087 756E7369 		.ascii	"unsigned char\000"
- 767      676E6564 
- 767      20636861 
- 767      7200
- 768              	.LASF24:
- 769 0095 64725661 		.ascii	"drVal\000"
- 769      6C00
- 770              	.LASF5:
- 771 009b 6C6F6E67 		.ascii	"long unsigned int\000"
- 771      20756E73 
- 771      69676E65 
- 771      6420696E 
- 771      7400
- 772              	.LASF3:
- 773 00ad 73686F72 		.ascii	"short unsigned int\000"
- 773      7420756E 
- 773      7369676E 
- 773      65642069 
- 773      6E7400
- 774              	.LASF28:
- 775 00c0 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
- 775      43313120 
- 775      352E342E 
- 775      31203230 
- 775      31363036 
- 776 00f3 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
- 776      20726576 
- 776      6973696F 
- 776      6E203233 
- 776      37373135 
- 777 0126 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
- 777      66756E63 
- 777      74696F6E 
- 777      2D736563 
- 777      74696F6E 
- 778              	.LASF13:
- 779 014e 646F7562 		.ascii	"double\000"
- 779      6C6500
- 780              	.LASF10:
- 781 0155 75696E74 		.ascii	"uint16\000"
- 781      313600
- 782              	.LASF23:
- 783 015c 706F7369 		.ascii	"position\000"
- 783      74696F6E 
- 783      00
- 784              	.LASF11:
- 785 0165 75696E74 		.ascii	"uint32\000"
- 785      333200
- 786              	.LASF25:
- 787 016c 696E7472 		.ascii	"intrCfg\000"
- 787      43666700 
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccV2fz1Q.s 			page 20
+ 790 0165 75696E74 		.ascii	"uint32\000"
+ 790      333200
+ 791              	.LASF25:
+ 792 016c 696E7472 		.ascii	"intrCfg\000"
+ 792      43666700 
+ 793              	.LASF8:
+ 794 0174 756E7369 		.ascii	"unsigned int\000"
+ 794      676E6564 
+ 794      20696E74 
+ 794      00
+ 795              	.LASF21:
+ 796 0181 436F6C75 		.ascii	"Columns_ReadDataReg\000"
+ 796      6D6E735F 
+ 796      52656164 
+ 796      44617461 
+ 796      52656700 
+ 797              	.LASF7:
+ 798 0195 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 798      206C6F6E 
+ 798      6720756E 
+ 798      7369676E 
+ 798      65642069 
+ 799              	.LASF26:
+ 800 01ac 436F6C75 		.ascii	"Columns_ClearInterrupt\000"
+ 800      6D6E735F 
+ 800      436C6561 
+ 800      72496E74 
+ 800      65727275 
+ 801              	.LASF18:
+ 802 01c3 6D6F6465 		.ascii	"mode\000"
+ 802      00
+ 803              	.LASF6:
+ 804 01c8 6C6F6E67 		.ascii	"long long int\000"
+ 804      206C6F6E 
+ 804      6720696E 
+ 804      7400
+ 805              	.LASF27:
+ 806 01d6 6D61736B 		.ascii	"maskedStatus\000"
+ 806      65645374 
+ 806      61747573 
+ 806      00
+ 807              	.LASF14:
+ 808 01e3 63686172 		.ascii	"char\000"
+ 808      00
+ 809              	.LASF2:
+ 810 01e8 73686F72 		.ascii	"short int\000"
+ 810      7420696E 
+ 810      7400
+ 811              	.LASF9:
+ 812 01f2 75696E74 		.ascii	"uint8\000"
+ 812      3800
+ 813              	.LASF4:
+ 814 01f8 6C6F6E67 		.ascii	"long int\000"
+ 814      20696E74 
+ 814      00
+ 815              	.LASF22:
+ 816 0201 436F6C75 		.ascii	"Columns_SetInterruptMode\000"
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccU580za.s 			page 21
 
 
- 788              	.LASF8:
- 789 0174 756E7369 		.ascii	"unsigned int\000"
- 789      676E6564 
- 789      20696E74 
- 789      00
- 790              	.LASF21:
- 791 0181 436F6C75 		.ascii	"Columns_ReadDataReg\000"
- 791      6D6E735F 
- 791      52656164 
- 791      44617461 
- 791      52656700 
- 792              	.LASF7:
- 793 0195 6C6F6E67 		.ascii	"long long unsigned int\000"
- 793      206C6F6E 
- 793      6720756E 
- 793      7369676E 
- 793      65642069 
- 794              	.LASF26:
- 795 01ac 436F6C75 		.ascii	"Columns_ClearInterrupt\000"
- 795      6D6E735F 
- 795      436C6561 
- 795      72496E74 
- 795      65727275 
- 796              	.LASF18:
- 797 01c3 6D6F6465 		.ascii	"mode\000"
- 797      00
- 798              	.LASF6:
- 799 01c8 6C6F6E67 		.ascii	"long long int\000"
- 799      206C6F6E 
- 799      6720696E 
- 799      7400
- 800              	.LASF27:
- 801 01d6 6D61736B 		.ascii	"maskedStatus\000"
- 801      65645374 
- 801      61747573 
- 801      00
- 802              	.LASF14:
- 803 01e3 63686172 		.ascii	"char\000"
- 803      00
- 804              	.LASF2:
- 805 01e8 73686F72 		.ascii	"short int\000"
- 805      7420696E 
- 805      7400
- 806              	.LASF9:
- 807 01f2 75696E74 		.ascii	"uint8\000"
- 807      3800
- 808              	.LASF4:
- 809 01f8 6C6F6E67 		.ascii	"long int\000"
- 809      20696E74 
- 809      00
- 810              	.LASF22:
- 811 0201 436F6C75 		.ascii	"Columns_SetInterruptMode\000"
- 811      6D6E735F 
- 811      53657449 
- 811      6E746572 
- 811      72757074 
- 812              	.LASF0:
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccV2fz1Q.s 			page 21
-
-
- 813 021a 7369676E 		.ascii	"signed char\000"
- 813      65642063 
- 813      68617200 
- 814              	.LASF20:
- 815 0226 436F6C75 		.ascii	"Columns_Read\000"
- 815      6D6E735F 
- 815      52656164 
- 815      00
- 816              	.LASF17:
- 817 0233 436F6C75 		.ascii	"Columns_Write\000"
- 817      6D6E735F 
- 817      57726974 
- 817      6500
- 818              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
+ 816      6D6E735F 
+ 816      53657449 
+ 816      6E746572 
+ 816      72757074 
+ 817              	.LASF0:
+ 818 021a 7369676E 		.ascii	"signed char\000"
+ 818      65642063 
+ 818      68617200 
+ 819              	.LASF20:
+ 820 0226 436F6C75 		.ascii	"Columns_Read\000"
+ 820      6D6E735F 
+ 820      52656164 
+ 820      00
+ 821              	.LASF17:
+ 822 0233 436F6C75 		.ascii	"Columns_Write\000"
+ 822      6D6E735F 
+ 822      57726974 
+ 822      6500
+ 823              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

@@ -65,27 +65,27 @@
   <file name="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn\codegentemp\Rows.h" value="HEADER;;;;;Rows" />
   <file name="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn\codegentemp\Rows_aliases.h" value="HEADER;;;;;Rows" />
   <file name="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn\codegentemp\Rows_PM.c" value="SOURCE_C;CortexM0;;;;Rows" />
-  <file name="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn\codegentemp\Pin_4.c" value="SOURCE_C;CortexM0;;;;Pin_4" />
-  <file name="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn\codegentemp\Pin_4.h" value="HEADER;;;;;Pin_4" />
-  <file name="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn\codegentemp\Pin_4_aliases.h" value="HEADER;;;;;Pin_4" />
-  <file name="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn\codegentemp\Pin_4_PM.c" value="SOURCE_C;CortexM0;;;;Pin_4" />
-  <file name="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn\codegentemp\Pin_3.c" value="SOURCE_C;CortexM0;;;;Pin_3" />
-  <file name="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn\codegentemp\Pin_3.h" value="HEADER;;;;;Pin_3" />
-  <file name="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn\codegentemp\Pin_3_aliases.h" value="HEADER;;;;;Pin_3" />
-  <file name="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn\codegentemp\Pin_3_PM.c" value="SOURCE_C;CortexM0;;;;Pin_3" />
+  <file name="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn\codegentemp\CP_MISO.c" value="SOURCE_C;CortexM0;;;;CP_MISO" />
+  <file name="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn\codegentemp\CP_MISO.h" value="HEADER;;;;;CP_MISO" />
+  <file name="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn\codegentemp\CP_MISO_aliases.h" value="HEADER;;;;;CP_MISO" />
+  <file name="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn\codegentemp\CP_MISO_PM.c" value="SOURCE_C;CortexM0;;;;CP_MISO" />
+  <file name="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn\codegentemp\DP_CLR.c" value="SOURCE_C;CortexM0;;;;DP_CLR" />
+  <file name="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn\codegentemp\DP_CLR.h" value="HEADER;;;;;DP_CLR" />
+  <file name="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn\codegentemp\DP_CLR_aliases.h" value="HEADER;;;;;DP_CLR" />
+  <file name="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn\codegentemp\DP_CLR_PM.c" value="SOURCE_C;CortexM0;;;;DP_CLR" />
   <file name="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn\codegentemp\SPIM_1.c" value="SOURCE_C;CortexM0;;;;SPIM_1" />
   <file name="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn\codegentemp\SPIM_1.h" value="HEADER;;;;;SPIM_1" />
   <file name="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn\codegentemp\SPIM_1_PM.c" value="SOURCE_C;CortexM0;;;;SPIM_1" />
   <file name="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn\codegentemp\SPIM_1_INT.c" value="SOURCE_C;CortexM0;;;;SPIM_1" />
   <file name="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn\codegentemp\SPIM_1_PVT.h" value="HEADER;;;;;SPIM_1" />
-  <file name="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn\codegentemp\Pin_1.c" value="SOURCE_C;CortexM0;;;;Pin_1" />
-  <file name="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn\codegentemp\Pin_1.h" value="HEADER;;;;;Pin_1" />
-  <file name="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn\codegentemp\Pin_1_aliases.h" value="HEADER;;;;;Pin_1" />
-  <file name="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn\codegentemp\Pin_1_PM.c" value="SOURCE_C;CortexM0;;;;Pin_1" />
-  <file name="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn\codegentemp\Pin_2.c" value="SOURCE_C;CortexM0;;;;Pin_2" />
-  <file name="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn\codegentemp\Pin_2.h" value="HEADER;;;;;Pin_2" />
-  <file name="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn\codegentemp\Pin_2_aliases.h" value="HEADER;;;;;Pin_2" />
-  <file name="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn\codegentemp\Pin_2_PM.c" value="SOURCE_C;CortexM0;;;;Pin_2" />
+  <file name="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn\codegentemp\DP_DAT.c" value="SOURCE_C;CortexM0;;;;DP_DAT" />
+  <file name="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn\codegentemp\DP_DAT.h" value="HEADER;;;;;DP_DAT" />
+  <file name="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn\codegentemp\DP_DAT_aliases.h" value="HEADER;;;;;DP_DAT" />
+  <file name="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn\codegentemp\DP_DAT_PM.c" value="SOURCE_C;CortexM0;;;;DP_DAT" />
+  <file name="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn\codegentemp\DP_CLK.c" value="SOURCE_C;CortexM0;;;;DP_CLK" />
+  <file name="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn\codegentemp\DP_CLK.h" value="HEADER;;;;;DP_CLK" />
+  <file name="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn\codegentemp\DP_CLK_aliases.h" value="HEADER;;;;;DP_CLK" />
+  <file name="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn\codegentemp\DP_CLK_PM.c" value="SOURCE_C;CortexM0;;;;DP_CLK" />
   <file name="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn\codegentemp\BLE_bless_isr.c" value="SOURCE_C;CortexM0;;;;BLE_bless_isr" />
   <file name="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn\codegentemp\BLE_bless_isr.h" value="HEADER;;;;;BLE_bless_isr" />
   <file name="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn\codegentemp\SPIM_1_IntClock.c" value="SOURCE_C;CortexM0;;;;SPIM_1_IntClock" />

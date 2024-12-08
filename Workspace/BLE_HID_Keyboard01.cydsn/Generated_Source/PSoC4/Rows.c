@@ -75,6 +75,7 @@
 		Rows_SetP4PinDriveMode(Rows__1__SHIFT, mode);
 		Rows_SetP4PinDriveMode(Rows__2__SHIFT, mode);
 		Rows_SetP4PinDriveMode(Rows__3__SHIFT, mode);
+		Rows_SetP4PinDriveMode(Rows__4__SHIFT, mode);
     }
 #endif
 

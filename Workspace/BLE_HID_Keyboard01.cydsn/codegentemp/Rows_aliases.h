@@ -54,7 +54,14 @@
 #define Rows_3_SHIFT	(Rows__3__SHIFT)
 #define Rows_3_INTR	((uint16)((uint16)0x0003u << (Rows__3__SHIFT*2u)))
 
-#define Rows_INTR_ALL	 ((uint16)(Rows_0_INTR| Rows_1_INTR| Rows_2_INTR| Rows_3_INTR))
+#define Rows_4			(Rows__4__PC)
+#define Rows_4_PS		(Rows__4__PS)
+#define Rows_4_PC		(Rows__4__PC)
+#define Rows_4_DR		(Rows__4__DR)
+#define Rows_4_SHIFT	(Rows__4__SHIFT)
+#define Rows_4_INTR	((uint16)((uint16)0x0003u << (Rows__4__SHIFT*2u)))
+
+#define Rows_INTR_ALL	 ((uint16)(Rows_0_INTR| Rows_1_INTR| Rows_2_INTR| Rows_3_INTR| Rows_4_INTR))
 
 
 #endif /* End Pins Rows_ALIASES_H */

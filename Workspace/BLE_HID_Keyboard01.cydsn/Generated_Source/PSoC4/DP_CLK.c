@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name: Pin_4.c  
+* File Name: DP_CLK.c  
 * Version 2.20
 *
 * Description:
@@ -13,35 +13,35 @@
 *******************************************************************************/
 
 #include "cytypes.h"
-#include "Pin_4.h"
+#include "DP_CLK.h"
 
 
-#if defined(Pin_4__PC)
-    #define Pin_4_SetP4PinDriveMode(shift, mode)  \
+#if defined(DP_CLK__PC)
+    #define DP_CLK_SetP4PinDriveMode(shift, mode)  \
     do { \
-        Pin_4_PC =   (Pin_4_PC & \
-                                (uint32)(~(uint32)(Pin_4_DRIVE_MODE_IND_MASK << \
-                                (Pin_4_DRIVE_MODE_BITS * (shift))))) | \
+        DP_CLK_PC =   (DP_CLK_PC & \
+                                (uint32)(~(uint32)(DP_CLK_DRIVE_MODE_IND_MASK << \
+                                (DP_CLK_DRIVE_MODE_BITS * (shift))))) | \
                                 (uint32)((uint32)(mode) << \
-                                (Pin_4_DRIVE_MODE_BITS * (shift))); \
+                                (DP_CLK_DRIVE_MODE_BITS * (shift))); \
     } while (0)
 #else
     #if (CY_PSOC4_4200L)
-        #define Pin_4_SetP4PinDriveMode(shift, mode)  \
+        #define DP_CLK_SetP4PinDriveMode(shift, mode)  \
         do { \
-            Pin_4_USBIO_CTRL_REG = (Pin_4_USBIO_CTRL_REG & \
-                                    (uint32)(~(uint32)(Pin_4_DRIVE_MODE_IND_MASK << \
-                                    (Pin_4_DRIVE_MODE_BITS * (shift))))) | \
+            DP_CLK_USBIO_CTRL_REG = (DP_CLK_USBIO_CTRL_REG & \
+                                    (uint32)(~(uint32)(DP_CLK_DRIVE_MODE_IND_MASK << \
+                                    (DP_CLK_DRIVE_MODE_BITS * (shift))))) | \
                                     (uint32)((uint32)(mode) << \
-                                    (Pin_4_DRIVE_MODE_BITS * (shift))); \
+                                    (DP_CLK_DRIVE_MODE_BITS * (shift))); \
         } while (0)
     #endif
 #endif
   
 
-#if defined(Pin_4__PC) || (CY_PSOC4_4200L) 
+#if defined(DP_CLK__PC) || (CY_PSOC4_4200L) 
     /*******************************************************************************
-    * Function Name: Pin_4_SetDriveMode
+    * Function Name: DP_CLK_SetDriveMode
     ****************************************************************************//**
     *
     * \brief Sets the drive mode for each of the Pins component's pins.
@@ -67,17 +67,17 @@
     *  APIs (primary method) or disable interrupts around this function.
     *
     * \funcusage
-    *  \snippet Pin_4_SUT.c usage_Pin_4_SetDriveMode
+    *  \snippet DP_CLK_SUT.c usage_DP_CLK_SetDriveMode
     *******************************************************************************/
-    void Pin_4_SetDriveMode(uint8 mode)
+    void DP_CLK_SetDriveMode(uint8 mode)
     {
-		Pin_4_SetP4PinDriveMode(Pin_4__0__SHIFT, mode);
+		DP_CLK_SetP4PinDriveMode(DP_CLK__0__SHIFT, mode);
     }
 #endif
 
 
 /*******************************************************************************
-* Function Name: Pin_4_Write
+* Function Name: DP_CLK_Write
 ****************************************************************************//**
 *
 * \brief Writes the value to the physical port (data output register), masking
@@ -106,18 +106,18 @@
 *  this function.
 *
 * \funcusage
-*  \snippet Pin_4_SUT.c usage_Pin_4_Write
+*  \snippet DP_CLK_SUT.c usage_DP_CLK_Write
 *******************************************************************************/
-void Pin_4_Write(uint8 value)
+void DP_CLK_Write(uint8 value)
 {
-    uint8 drVal = (uint8)(Pin_4_DR & (uint8)(~Pin_4_MASK));
-    drVal = (drVal | ((uint8)(value << Pin_4_SHIFT) & Pin_4_MASK));
-    Pin_4_DR = (uint32)drVal;
+    uint8 drVal = (uint8)(DP_CLK_DR & (uint8)(~DP_CLK_MASK));
+    drVal = (drVal | ((uint8)(value << DP_CLK_SHIFT) & DP_CLK_MASK));
+    DP_CLK_DR = (uint32)drVal;
 }
 
 
 /*******************************************************************************
-* Function Name: Pin_4_Read
+* Function Name: DP_CLK_Read
 ****************************************************************************//**
 *
 * \brief Reads the associated physical port (pin status register) and masks 
@@ -131,16 +131,16 @@ void Pin_4_Write(uint8 value)
 *  The current value for the pins in the component as a right justified number.
 *
 * \funcusage
-*  \snippet Pin_4_SUT.c usage_Pin_4_Read  
+*  \snippet DP_CLK_SUT.c usage_DP_CLK_Read  
 *******************************************************************************/
-uint8 Pin_4_Read(void)
+uint8 DP_CLK_Read(void)
 {
-    return (uint8)((Pin_4_PS & Pin_4_MASK) >> Pin_4_SHIFT);
+    return (uint8)((DP_CLK_PS & DP_CLK_MASK) >> DP_CLK_SHIFT);
 }
 
 
 /*******************************************************************************
-* Function Name: Pin_4_ReadDataReg
+* Function Name: DP_CLK_ReadDataReg
 ****************************************************************************//**
 *
 * \brief Reads the associated physical port's data output register and masks 
@@ -149,8 +149,8 @@ uint8 Pin_4_Read(void)
 *
 * The data output register controls the signal applied to the physical pin in 
 * conjunction with the drive mode parameter. This is not the same as the 
-* preferred Pin_4_Read() API because the 
-* Pin_4_ReadDataReg() reads the data register instead of the status 
+* preferred DP_CLK_Read() API because the 
+* DP_CLK_ReadDataReg() reads the data register instead of the status 
 * register. For output pins this is a useful function to determine the value 
 * just written to the pin.
 *
@@ -159,16 +159,16 @@ uint8 Pin_4_Read(void)
 *  justified number for the component instance.
 *
 * \funcusage
-*  \snippet Pin_4_SUT.c usage_Pin_4_ReadDataReg 
+*  \snippet DP_CLK_SUT.c usage_DP_CLK_ReadDataReg 
 *******************************************************************************/
-uint8 Pin_4_ReadDataReg(void)
+uint8 DP_CLK_ReadDataReg(void)
 {
-    return (uint8)((Pin_4_DR & Pin_4_MASK) >> Pin_4_SHIFT);
+    return (uint8)((DP_CLK_DR & DP_CLK_MASK) >> DP_CLK_SHIFT);
 }
 
 
 /*******************************************************************************
-* Function Name: Pin_4_SetInterruptMode
+* Function Name: DP_CLK_SetInterruptMode
 ****************************************************************************//**
 *
 * \brief Configures the interrupt mode for each of the Pins component's
@@ -181,12 +181,12 @@ uint8 Pin_4_ReadDataReg(void)
 * \param position
 *  The pin position as listed in the Pins component. You may OR these to be 
 *  able to configure the interrupt mode of multiple pins within a Pins 
-*  component. Or you may use Pin_4_INTR_ALL to configure the
+*  component. Or you may use DP_CLK_INTR_ALL to configure the
 *  interrupt mode of all the pins in the Pins component.       
-*  - Pin_4_0_INTR       (First pin in the list)
-*  - Pin_4_1_INTR       (Second pin in the list)
+*  - DP_CLK_0_INTR       (First pin in the list)
+*  - DP_CLK_1_INTR       (Second pin in the list)
 *  - ...
-*  - Pin_4_INTR_ALL     (All pins in Pins component)
+*  - DP_CLK_INTR_ALL     (All pins in Pins component)
 *
 * \param mode
 *  Interrupt mode for the selected pins. Valid options are documented in
@@ -202,19 +202,19 @@ uint8 Pin_4_ReadDataReg(void)
 *  port.
 *
 * \funcusage
-*  \snippet Pin_4_SUT.c usage_Pin_4_SetInterruptMode
+*  \snippet DP_CLK_SUT.c usage_DP_CLK_SetInterruptMode
 *******************************************************************************/
-void Pin_4_SetInterruptMode(uint16 position, uint16 mode)
+void DP_CLK_SetInterruptMode(uint16 position, uint16 mode)
 {
     uint32 intrCfg;
     
-    intrCfg =  Pin_4_INTCFG & (uint32)(~(uint32)position);
-    Pin_4_INTCFG = intrCfg | ((uint32)position & (uint32)mode);
+    intrCfg =  DP_CLK_INTCFG & (uint32)(~(uint32)position);
+    DP_CLK_INTCFG = intrCfg | ((uint32)position & (uint32)mode);
 }
 
 
 /*******************************************************************************
-* Function Name: Pin_4_ClearInterrupt
+* Function Name: DP_CLK_ClearInterrupt
 ****************************************************************************//**
 *
 * \brief Clears any active interrupts attached with the component and returns 
@@ -231,13 +231,13 @@ void Pin_4_SetInterruptMode(uint16 position, uint16 mode)
 *  those associated with the Pins component.
 *
 * \funcusage
-*  \snippet Pin_4_SUT.c usage_Pin_4_ClearInterrupt
+*  \snippet DP_CLK_SUT.c usage_DP_CLK_ClearInterrupt
 *******************************************************************************/
-uint8 Pin_4_ClearInterrupt(void)
+uint8 DP_CLK_ClearInterrupt(void)
 {
-	uint8 maskedStatus = (uint8)(Pin_4_INTSTAT & Pin_4_MASK);
-	Pin_4_INTSTAT = maskedStatus;
-    return maskedStatus >> Pin_4_SHIFT;
+	uint8 maskedStatus = (uint8)(DP_CLK_INTSTAT & DP_CLK_MASK);
+	DP_CLK_INTSTAT = maskedStatus;
+    return maskedStatus >> DP_CLK_SHIFT;
 }
 
 

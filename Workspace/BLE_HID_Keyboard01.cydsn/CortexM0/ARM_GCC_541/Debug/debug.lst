@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccX07HSO.s 			page 1
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccswoVji.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccX07HSO.s 			page 1
   28:debug.c       ****     int handle;  
   29:debug.c       **** };
   30:debug.c       **** 
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccX07HSO.s 			page 2
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccswoVji.s 			page 2
 
 
   31:debug.c       **** enum 
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccX07HSO.s 			page 1
   85:debug.c       ****     }
   86:debug.c       **** 
   87:debug.c       ****     return (nChars);
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccX07HSO.s 			page 3
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccswoVji.s 			page 3
 
 
   88:debug.c       **** }
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccX07HSO.s 			page 1
   56 0020 0E23     		movs	r3, #14
   57 0022 FB18     		adds	r3, r7, r3
   58 0024 1A80     		strh	r2, [r3]
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccX07HSO.s 			page 4
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccswoVji.s 			page 4
 
 
   59              	.L2:
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccX07HSO.s 			page 1
  103 000e 7B68     		ldr	r3, [r7, #4]
  104 0010 1A70     		strb	r2, [r3]
  124:debug.c       ****     ptr[1u] = (uint8) (value >> 8u);    
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccX07HSO.s 			page 5
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccswoVji.s 			page 5
 
 
  105              		.loc 1 124 0
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccX07HSO.s 			page 1
  144              		.cfi_startproc
  145              		@ args = 0, pretend = 0, frame = 0
  146              		@ frame_needed = 1, uses_anonymous_args = 0
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccX07HSO.s 			page 6
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccswoVji.s 			page 6
 
 
  147 0000 80B5     		push	{r7, lr}
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccX07HSO.s 			page 1
  195 002c 02       		.uleb128 0x2
  196 002d 01       		.byte	0x1
  197 002e 08       		.byte	0x8
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccX07HSO.s 			page 7
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccswoVji.s 			page 7
 
 
  198 002f 8A000000 		.4byte	.LASF1
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccX07HSO.s 			page 1
  252 009c 04       		.byte	0x4
  253 009d 04       		.byte	0x4
  254 009e 6D000000 		.4byte	.LASF13
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccX07HSO.s 			page 8
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccswoVji.s 			page 8
 
 
  255 00a2 02       		.uleb128 0x2
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccX07HSO.s 			page 1
  309 010d 6D       		.byte	0x6d
  310 010e 00000000 		.4byte	.LFB36
  311 0112 3E000000 		.4byte	.LFE36-.LFB36
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccX07HSO.s 			page 9
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccswoVji.s 			page 9
 
 
  312 0116 01       		.uleb128 0x1
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccX07HSO.s 			page 1
  366 017a 00       		.byte	0
  367              		.section	.debug_abbrev,"",%progbits
  368              	.Ldebug_abbrev0:
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccX07HSO.s 			page 10
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccswoVji.s 			page 10
 
 
  369 0000 01       		.uleb128 0x1
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccX07HSO.s 			page 1
  423 0036 05       		.uleb128 0x5
  424 0037 0F       		.uleb128 0xf
  425 0038 00       		.byte	0
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccX07HSO.s 			page 11
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccswoVji.s 			page 11
 
 
  426 0039 0B       		.uleb128 0xb
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccX07HSO.s 			page 1
  480 006f 03       		.uleb128 0x3
  481 0070 0E       		.uleb128 0xe
  482 0071 3A       		.uleb128 0x3a
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccX07HSO.s 			page 12
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccswoVji.s 			page 12
 
 
  483 0072 0B       		.uleb128 0xb
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccX07HSO.s 			page 1
  537 00a9 3B       		.uleb128 0x3b
  538 00aa 0B       		.uleb128 0xb
  539 00ab 49       		.uleb128 0x49
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccX07HSO.s 			page 13
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccswoVji.s 			page 13
 
 
  540 00ac 13       		.uleb128 0x13
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccX07HSO.s 			page 1
  594 001c 00000000 		.4byte	0
  595              		.section	.debug_line,"",%progbits
  596              	.Ldebug_line0:
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccX07HSO.s 			page 14
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccswoVji.s 			page 14
 
 
  597 0000 A3000000 		.section	.debug_str,"MS",%progbits,1
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccX07HSO.s 			page 1
  618      6420696E 
  618      7400
  619              	.LASF23:
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccX07HSO.s 			page 15
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccswoVji.s 			page 15
 
 
  620 00b0 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccX07HSO.s 			page 1
  643              	.LASF9:
  644 01a1 75696E74 		.ascii	"uint8\000"
  644      3800
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccX07HSO.s 			page 16
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccswoVji.s 			page 16
 
 
  645              	.LASF4:

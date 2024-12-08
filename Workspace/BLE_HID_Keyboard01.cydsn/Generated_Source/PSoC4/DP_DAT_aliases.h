@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name: Pin_4.h  
+* File Name: DP_DAT.h  
 * Version 2.20
 *
 * Description:
@@ -15,8 +15,8 @@
 * the software package with which this file was provided.
 *******************************************************************************/
 
-#if !defined(CY_PINS_Pin_4_ALIASES_H) /* Pins Pin_4_ALIASES_H */
-#define CY_PINS_Pin_4_ALIASES_H
+#if !defined(CY_PINS_DP_DAT_ALIASES_H) /* Pins DP_DAT_ALIASES_H */
+#define CY_PINS_DP_DAT_ALIASES_H
 
 #include "cytypes.h"
 #include "cyfitter.h"
@@ -26,17 +26,17 @@
 /***************************************
 *              Constants        
 ***************************************/
-#define Pin_4_0			(Pin_4__0__PC)
-#define Pin_4_0_PS		(Pin_4__0__PS)
-#define Pin_4_0_PC		(Pin_4__0__PC)
-#define Pin_4_0_DR		(Pin_4__0__DR)
-#define Pin_4_0_SHIFT	(Pin_4__0__SHIFT)
-#define Pin_4_0_INTR	((uint16)((uint16)0x0003u << (Pin_4__0__SHIFT*2u)))
+#define DP_DAT_0			(DP_DAT__0__PC)
+#define DP_DAT_0_PS		(DP_DAT__0__PS)
+#define DP_DAT_0_PC		(DP_DAT__0__PC)
+#define DP_DAT_0_DR		(DP_DAT__0__DR)
+#define DP_DAT_0_SHIFT	(DP_DAT__0__SHIFT)
+#define DP_DAT_0_INTR	((uint16)((uint16)0x0003u << (DP_DAT__0__SHIFT*2u)))
 
-#define Pin_4_INTR_ALL	 ((uint16)(Pin_4_0_INTR))
+#define DP_DAT_INTR_ALL	 ((uint16)(DP_DAT_0_INTR))
 
 
-#endif /* End Pins Pin_4_ALIASES_H */
+#endif /* End Pins DP_DAT_ALIASES_H */
 
 
 /* [] END OF FILE */
