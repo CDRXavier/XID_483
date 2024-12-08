@@ -25,7 +25,7 @@
       <Tool Name="postbuild" Command="" Options="" />
     </Toolchain>
   </Toolchains>
-  <Project Name="BLE_HID_Keyboard01" Path="D:\Documents\PSoC Creator\Workspace\BLE_HID_Keyboard01.cydsn" Version="5.60" Type="Normal">
+  <Project Name="BLE_HID_Keyboard01" Path="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn" Version="5.60" Type="Normal">
     <CMSIS_SVD_File>BLE_HID_Keyboard01.svd</CMSIS_SVD_File>
     <Datasheet />
     <LinkerFiles>
@@ -34,8 +34,8 @@
       <LinkerFile Toolchain="ARM IAR Generic">.\Generated_Source\PSoC4\Cm0Iar.icf</LinkerFile>
     </LinkerFiles>
     <Folders>
-      <Folder BuildType="STRICT" Path="D:\Documents\PSoC Creator\Workspace\BLE_HID_Keyboard01.cydsn">
-        <Files Root="D:\Documents\PSoC Creator\Workspace\BLE_HID_Keyboard01.cydsn">
+      <Folder BuildType="STRICT" Path="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn">
+        <Files Root="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn">
           <File BuildType="BUILD" Toolchain="">main.c</File>
           <File BuildType="BUILD" Toolchain="">bas.c</File>
           <File BuildType="BUILD" Toolchain="">debug.c</File>
@@ -48,8 +48,8 @@
           <File BuildType="BUILD" Toolchain="">cyapicallbacks.h</File>
         </Files>
       </Folder>
-      <Folder BuildType="STRICT" Path="D:\Documents\PSoC Creator\Workspace\BLE_HID_Keyboard01.cydsn\Generated_Source\PSoC4">
-        <Files Root="D:\Documents\PSoC Creator\Workspace\BLE_HID_Keyboard01.cydsn">
+      <Folder BuildType="STRICT" Path="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn\Generated_Source\PSoC4">
+        <Files Root="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn">
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\cyfitter_cfg.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\cyfitter_cfg.c</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\cymetadata.c</File>
@@ -172,50 +172,50 @@
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC4\SPIM_1_IntClock.h</File>
         </Files>
       </Folder>
-      <Folder BuildType="STRICT" Path="D:\Documents\PSoC Creator\Workspace\BLE_HID_Keyboard01.cydsn\Export\ARM_GCC_Generic\BLE_v3_30">
-        <Files Root="D:\Documents\PSoC Creator\Workspace\BLE_HID_Keyboard01.cydsn">
+      <Folder BuildType="STRICT" Path="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn\Export\ARM_GCC_Generic\BLE_v3_30">
+        <Files Root="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn">
           <File BuildType="BUILD" Toolchain="ARM GCC Generic">.\Export\ARM_GCC_Generic\BLE_v3_30\gccCyBLEStack_BLE_SOC_PERIPHERAL.a</File>
         </Files>
       </Folder>
-      <Folder BuildType="STRICT" Path="D:\Documents\PSoC Creator\Workspace\BLE_HID_Keyboard01.cydsn\Export\ARM_MDK_Generic\BLE_v3_30">
-        <Files Root="D:\Documents\PSoC Creator\Workspace\BLE_HID_Keyboard01.cydsn">
+      <Folder BuildType="STRICT" Path="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn\Export\ARM_MDK_Generic\BLE_v3_30">
+        <Files Root="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn">
           <File BuildType="BUILD" Toolchain="ARM MDK Generic">.\Export\ARM_MDK_Generic\BLE_v3_30\mdkCyBLEStack_BLE_SOC_PERIPHERAL.a</File>
         </Files>
       </Folder>
-      <Folder BuildType="STRICT" Path="D:\Documents\PSoC Creator\Workspace\BLE_HID_Keyboard01.cydsn\Export\ARM_IAR_Generic\BLE_v3_30">
-        <Files Root="D:\Documents\PSoC Creator\Workspace\BLE_HID_Keyboard01.cydsn">
+      <Folder BuildType="STRICT" Path="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn\Export\ARM_IAR_Generic\BLE_v3_30">
+        <Files Root="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn">
           <File BuildType="BUILD" Toolchain="ARM IAR Generic">.\Export\ARM_IAR_Generic\BLE_v3_30\mdkCyBLEStack_BLE_SOC_PERIPHERAL.a</File>
         </Files>
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\codegentemp">
-        <Files Root="D:\Documents\PSoC Creator\Workspace\BLE_HID_Keyboard01.cydsn" />
+        <Files Root="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\ARM_GCC_441">
-        <Files Root="D:\Documents\PSoC Creator\Workspace\BLE_HID_Keyboard01.cydsn" />
+        <Files Root="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\ARM_GCC_473">
-        <Files Root="D:\Documents\PSoC Creator\Workspace\BLE_HID_Keyboard01.cydsn" />
+        <Files Root="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\DP8051_Keil_952">
-        <Files Root="D:\Documents\PSoC Creator\Workspace\BLE_HID_Keyboard01.cydsn" />
+        <Files Root="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\DP8051">
-        <Files Root="D:\Documents\PSoC Creator\Workspace\BLE_HID_Keyboard01.cydsn" />
+        <Files Root="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\CortexM0">
-        <Files Root="D:\Documents\PSoC Creator\Workspace\BLE_HID_Keyboard01.cydsn" />
+        <Files Root="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\CortexM0p">
-        <Files Root="D:\Documents\PSoC Creator\Workspace\BLE_HID_Keyboard01.cydsn" />
+        <Files Root="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\CortexM3">
-        <Files Root="D:\Documents\PSoC Creator\Workspace\BLE_HID_Keyboard01.cydsn" />
+        <Files Root="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\CortexM4">
-        <Files Root="D:\Documents\PSoC Creator\Workspace\BLE_HID_Keyboard01.cydsn" />
+        <Files Root="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\CortexM7">
-        <Files Root="D:\Documents\PSoC Creator\Workspace\BLE_HID_Keyboard01.cydsn" />
+        <Files Root="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn" />
       </Folder>
     </Folders>
   </Project>

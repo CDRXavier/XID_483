@@ -1,8 +1,8 @@
-D:/Documents/PSoC\ Creator/Workspace/BLE_HID_Keyboard01.cydsn/CortexM0/ARM_GCC_541/Debug/CyBootAsmGnu.o : D:/Documents/PSoC\ Creator/Workspace/BLE_HID_Keyboard01.cydsn/Generated_Source/PSoC4/CyBootAsmGnu.s D:/Documents/PSoC\ Creator/Workspace/BLE_HID_Keyboard01.cydsn/Generated_Source/PSoC4/cydevicegnu_trm.inc D:/Documents/PSoC\ Creator/Workspace/BLE_HID_Keyboard01.cydsn/Generated_Source/PSoC4/cyfittergnu.inc 
+D:/Documents/GitHub/XID_483/Workspace/BLE_HID_Keyboard01.cydsn/CortexM0/ARM_GCC_541/Debug/CyBootAsmGnu.o : D:/Documents/GitHub/XID_483/Workspace/BLE_HID_Keyboard01.cydsn/Generated_Source/PSoC4/CyBootAsmGnu.s D:/Documents/GitHub/XID_483/Workspace/BLE_HID_Keyboard01.cydsn/Generated_Source/PSoC4/cydevicegnu_trm.inc D:/Documents/GitHub/XID_483/Workspace/BLE_HID_Keyboard01.cydsn/Generated_Source/PSoC4/cyfittergnu.inc 
 
-D:/Documents/PSoC\ Creator/Workspace/BLE_HID_Keyboard01.cydsn/Generated_Source/PSoC4/CyBootAsmGnu.s : 
+D:/Documents/GitHub/XID_483/Workspace/BLE_HID_Keyboard01.cydsn/Generated_Source/PSoC4/CyBootAsmGnu.s : 
 
-D:/Documents/PSoC\ Creator/Workspace/BLE_HID_Keyboard01.cydsn/Generated_Source/PSoC4/cydevicegnu_trm.inc : 
+D:/Documents/GitHub/XID_483/Workspace/BLE_HID_Keyboard01.cydsn/Generated_Source/PSoC4/cydevicegnu_trm.inc : 
 
-D:/Documents/PSoC\ Creator/Workspace/BLE_HID_Keyboard01.cydsn/Generated_Source/PSoC4/cyfittergnu.inc : 
+D:/Documents/GitHub/XID_483/Workspace/BLE_HID_Keyboard01.cydsn/Generated_Source/PSoC4/cyfittergnu.inc : 
 

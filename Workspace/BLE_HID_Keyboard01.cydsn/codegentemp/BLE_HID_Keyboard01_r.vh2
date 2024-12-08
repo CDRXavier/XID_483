@@ -1,5 +1,5 @@
 -- Project:   BLE_HID_Keyboard01
--- Generated: 12/05/2024 22:03:53
+-- Generated: 12/08/2024 16:19:44
 -- PSoC Creator  4.4
 
 ENTITY BLE_HID_Keyboard01 IS

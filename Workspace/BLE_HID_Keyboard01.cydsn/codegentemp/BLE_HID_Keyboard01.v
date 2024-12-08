@@ -1,6 +1,6 @@
 // ======================================================================
 // BLE_HID_Keyboard01.v generated from TopDesign.cysch
-// 12/05/2024 at 22:03
+// 12/08/2024 at 16:19
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -280,7 +280,7 @@ module SPI_Master_v2_50_1 (
 		  .divisor(0),
 		  .period("500000000"),
 		  .is_direct(0),
-		  .is_digital(0))
+		  .is_digital(1))
 		IntClock
 		 (.clock_out(Net_288));
 
@@ -342,13 +342,14 @@ module top ;
           wire  Net_133;
           wire  Net_132;
           wire  Net_130;
+          wire  Net_984;
+          wire  Net_129;
           wire  Net_128;
           wire  Net_127;
           wire  Net_909;
           wire  Net_915;
           wire  Net_981;
           wire  Net_979;
-          wire  Net_129;
     electrical  Net_898;
     electrical  Net_765;
     electrical  Net_757;

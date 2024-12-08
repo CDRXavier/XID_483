@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccU1DWb6.s 			page 1
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\cc8vbK83.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccU1DWb6.s 			page 1
   22:Generated_Source\PSoC4/Disconnect_LED_PM.c **** 
   23:Generated_Source\PSoC4/Disconnect_LED_PM.c **** /*******************************************************************************
   24:Generated_Source\PSoC4/Disconnect_LED_PM.c **** * Function Name: Disconnect_LED_Sleep
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccU1DWb6.s 			page 2
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\cc8vbK83.s 			page 2
 
 
   25:Generated_Source\PSoC4/Disconnect_LED_PM.c **** ****************************************************************************//**
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccU1DWb6.s 			page 1
   49 000e BD46     		mov	sp, r7
   50              		@ sp needed
   51 0010 80BD     		pop	{r7, pc}
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccU1DWb6.s 			page 3
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\cc8vbK83.s 			page 3
 
 
   52              	.L3:
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccU1DWb6.s 			page 1
   82 000a 1360     		str	r3, [r2]
   86:Generated_Source\PSoC4/Disconnect_LED_PM.c ****     #else
   87:Generated_Source\PSoC4/Disconnect_LED_PM.c ****         #if (CY_PSOC4_4200L)
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccU1DWb6.s 			page 4
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\cc8vbK83.s 			page 4
 
 
   88:Generated_Source\PSoC4/Disconnect_LED_PM.c ****             /* Restore the regulator state and come out of suspend mode */
@@ -215,9 +215,9 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccU1DWb6.s 			page 1
  104 0006 00000000 		.4byte	.Ldebug_abbrev0
  105 000a 04       		.byte	0x4
  106 000b 01       		.uleb128 0x1
- 107 000c 9A000000 		.4byte	.LASF20
+ 107 000c 9C000000 		.4byte	.LASF20
  108 0010 0C       		.byte	0xc
- 109 0011 BF010000 		.4byte	.LASF21
+ 109 0011 C1010000 		.4byte	.LASF21
  110 0015 24000000 		.4byte	.LASF22
  111 0019 00000000 		.4byte	.Ldebug_ranges0+0
  112 001d 00000000 		.4byte	0
@@ -225,38 +225,38 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccU1DWb6.s 			page 1
  114 0025 02       		.uleb128 0x2
  115 0026 01       		.byte	0x1
  116 0027 06       		.byte	0x6
- 117 0028 05020000 		.4byte	.LASF0
+ 117 0028 07020000 		.4byte	.LASF0
  118 002c 02       		.uleb128 0x2
  119 002d 01       		.byte	0x1
  120 002e 08       		.byte	0x8
- 121 002f 67000000 		.4byte	.LASF1
+ 121 002f 69000000 		.4byte	.LASF1
  122 0033 02       		.uleb128 0x2
  123 0034 02       		.byte	0x2
  124 0035 05       		.byte	0x5
- 125 0036 EA010000 		.4byte	.LASF2
+ 125 0036 EC010000 		.4byte	.LASF2
  126 003a 02       		.uleb128 0x2
  127 003b 02       		.byte	0x2
  128 003c 07       		.byte	0x7
- 129 003d 87000000 		.4byte	.LASF3
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccU1DWb6.s 			page 5
+ 129 003d 89000000 		.4byte	.LASF3
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\cc8vbK83.s 			page 5
 
 
  130 0041 02       		.uleb128 0x2
  131 0042 04       		.byte	0x4
  132 0043 05       		.byte	0x5
- 133 0044 FC010000 		.4byte	.LASF4
+ 133 0044 FE010000 		.4byte	.LASF4
  134 0048 02       		.uleb128 0x2
  135 0049 04       		.byte	0x4
  136 004a 07       		.byte	0x7
- 137 004b 75000000 		.4byte	.LASF5
+ 137 004b 77000000 		.4byte	.LASF5
  138 004f 02       		.uleb128 0x2
  139 0050 08       		.byte	0x8
  140 0051 05       		.byte	0x5
- 141 0052 AC010000 		.4byte	.LASF6
+ 141 0052 AE010000 		.4byte	.LASF6
  142 0056 02       		.uleb128 0x2
  143 0057 08       		.byte	0x8
  144 0058 07       		.byte	0x7
- 145 0059 59010000 		.4byte	.LASF7
+ 145 0059 5B010000 		.4byte	.LASF7
  146 005d 03       		.uleb128 0x3
  147 005e 04       		.byte	0x4
  148 005f 05       		.byte	0x5
@@ -264,24 +264,24 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccU1DWb6.s 			page 1
  150 0064 02       		.uleb128 0x2
  151 0065 04       		.byte	0x4
  152 0066 07       		.byte	0x7
- 153 0067 4C010000 		.4byte	.LASF8
+ 153 0067 4E010000 		.4byte	.LASF8
  154 006b 04       		.uleb128 0x4
- 155 006c 45010000 		.4byte	.LASF12
+ 155 006c 47010000 		.4byte	.LASF12
  156 0070 02       		.byte	0x2
  157 0071 D401     		.2byte	0x1d4
  158 0073 48000000 		.4byte	0x48
  159 0077 02       		.uleb128 0x2
  160 0078 04       		.byte	0x4
  161 0079 04       		.byte	0x4
- 162 007a 61000000 		.4byte	.LASF9
+ 162 007a 63000000 		.4byte	.LASF9
  163 007e 02       		.uleb128 0x2
  164 007f 08       		.byte	0x8
  165 0080 04       		.byte	0x4
- 166 0081 28010000 		.4byte	.LASF10
+ 166 0081 2A010000 		.4byte	.LASF10
  167 0085 02       		.uleb128 0x2
  168 0086 01       		.byte	0x1
  169 0087 08       		.byte	0x8
- 170 0088 BA010000 		.4byte	.LASF11
+ 170 0088 BC010000 		.4byte	.LASF11
  171 008c 04       		.uleb128 0x4
  172 008d 00000000 		.4byte	.LASF13
  173 0091 02       		.byte	0x2
@@ -295,16 +295,16 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccU1DWb6.s 			page 1
  181 00a0 21       		.byte	0x21
  182 00a1 CA000000 		.4byte	0xca
  183 00a5 07       		.uleb128 0x7
- 184 00a6 F4010000 		.4byte	.LASF14
+ 184 00a6 F6010000 		.4byte	.LASF14
  185 00aa 03       		.byte	0x3
  186 00ab 23       		.byte	0x23
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccU1DWb6.s 			page 6
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\cc8vbK83.s 			page 6
 
 
  187 00ac 6B000000 		.4byte	0x6b
  188 00b0 00       		.byte	0
  189 00b1 07       		.uleb128 0x7
- 190 00b2 A3010000 		.4byte	.LASF15
+ 190 00b2 A5010000 		.4byte	.LASF15
  191 00b6 03       		.byte	0x3
  192 00b7 24       		.byte	0x24
  193 00b8 6B000000 		.4byte	0x6b
@@ -317,7 +317,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccU1DWb6.s 			page 1
  200 00c8 08       		.byte	0x8
  201 00c9 00       		.byte	0
  202 00ca 08       		.uleb128 0x8
- 203 00cb 86010000 		.4byte	.LASF17
+ 203 00cb 88010000 		.4byte	.LASF17
  204 00cf 03       		.byte	0x3
  205 00d0 26       		.byte	0x26
  206 00d1 9D000000 		.4byte	0x9d
@@ -330,7 +330,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccU1DWb6.s 			page 1
  213 00e4 01       		.uleb128 0x1
  214 00e5 9C       		.byte	0x9c
  215 00e6 09       		.uleb128 0x9
- 216 00e7 70010000 		.4byte	.LASF19
+ 216 00e7 72010000 		.4byte	.LASF19
  217 00eb 01       		.byte	0x1
  218 00ec 52       		.byte	0x52
  219 00ed 00000000 		.4byte	.LFB1
@@ -338,7 +338,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccU1DWb6.s 			page 1
  221 00f5 01       		.uleb128 0x1
  222 00f6 9C       		.byte	0x9c
  223 00f7 0A       		.uleb128 0xa
- 224 00f8 2F010000 		.4byte	.LASF23
+ 224 00f8 31010000 		.4byte	.LASF23
  225 00fc 01       		.byte	0x1
  226 00fd 14       		.byte	0x14
  227 00fe CA000000 		.4byte	0xca
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccU1DWb6.s 			page 1
  241 0007 03       		.uleb128 0x3
  242 0008 0E       		.uleb128 0xe
  243 0009 1B       		.uleb128 0x1b
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccU1DWb6.s 			page 7
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\cc8vbK83.s 			page 7
 
 
  244 000a 0E       		.uleb128 0xe
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccU1DWb6.s 			page 1
  298 0040 0B       		.uleb128 0xb
  299 0041 0B       		.uleb128 0xb
  300 0042 3A       		.uleb128 0x3a
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccU1DWb6.s 			page 8
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\cc8vbK83.s 			page 8
 
 
  301 0043 0B       		.uleb128 0xb
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccU1DWb6.s 			page 1
  355 0079 9742     		.uleb128 0x2117
  356 007b 19       		.uleb128 0x19
  357 007c 00       		.byte	0
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccU1DWb6.s 			page 9
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\cc8vbK83.s 			page 9
 
 
  358 007d 00       		.byte	0
@@ -538,129 +538,130 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccU1DWb6.s 			page 1
  403      6C656570 
  404              	.LASF16:
  405 001b 75736253 		.ascii	"usbState\000"
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccU1DWb6.s 			page 10
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\cc8vbK83.s 			page 10
 
 
  405      74617465 
  405      00
  406              	.LASF22:
- 407 0024 443A5C44 		.ascii	"D:\\Documents\\PSoC Creator\\Workspace\\BLE_HID_Key"
+ 407 0024 443A5C44 		.ascii	"D:\\Documents\\GitHub\\XID_483\\Workspace\\BLE_HID_"
  407      6F63756D 
  407      656E7473 
- 407      5C50536F 
- 407      43204372 
- 408 0053 626F6172 		.ascii	"board01.cydsn\000"
- 408      6430312E 
- 408      63796473 
- 408      6E00
+ 407      5C476974 
+ 407      4875625C 
+ 408 0052 4B657962 		.ascii	"Keyboard01.cydsn\000"
+ 408      6F617264 
+ 408      30312E63 
+ 408      7964736E 
+ 408      00
  409              	.LASF9:
- 410 0061 666C6F61 		.ascii	"float\000"
+ 410 0063 666C6F61 		.ascii	"float\000"
  410      7400
  411              	.LASF1:
- 412 0067 756E7369 		.ascii	"unsigned char\000"
+ 412 0069 756E7369 		.ascii	"unsigned char\000"
  412      676E6564 
  412      20636861 
  412      7200
  413              	.LASF5:
- 414 0075 6C6F6E67 		.ascii	"long unsigned int\000"
+ 414 0077 6C6F6E67 		.ascii	"long unsigned int\000"
  414      20756E73 
  414      69676E65 
  414      6420696E 
  414      7400
  415              	.LASF3:
- 416 0087 73686F72 		.ascii	"short unsigned int\000"
+ 416 0089 73686F72 		.ascii	"short unsigned int\000"
  416      7420756E 
  416      7369676E 
  416      65642069 
  416      6E7400
  417              	.LASF20:
- 418 009a 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 418 009c 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
  418      43313120 
  418      352E342E 
  418      31203230 
  418      31363036 
- 419 00cd 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 419 00cf 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
  419      20726576 
  419      6973696F 
  419      6E203233 
  419      37373135 
- 420 0100 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 420 0102 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
  420      66756E63 
  420      74696F6E 
  420      2D736563 
  420      74696F6E 
  421              	.LASF10:
- 422 0128 646F7562 		.ascii	"double\000"
+ 422 012a 646F7562 		.ascii	"double\000"
  422      6C6500
  423              	.LASF23:
- 424 012f 44697363 		.ascii	"Disconnect_LED_backup\000"
+ 424 0131 44697363 		.ascii	"Disconnect_LED_backup\000"
  424      6F6E6E65 
  424      63745F4C 
  424      45445F62 
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\cc8vbK83.s 			page 11
+
+
  424      61636B75 
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccU1DWb6.s 			page 11
-
-
  425              	.LASF12:
- 426 0145 75696E74 		.ascii	"uint32\000"
+ 426 0147 75696E74 		.ascii	"uint32\000"
  426      333200
  427              	.LASF8:
- 428 014c 756E7369 		.ascii	"unsigned int\000"
+ 428 014e 756E7369 		.ascii	"unsigned int\000"
  428      676E6564 
  428      20696E74 
  428      00
  429              	.LASF7:
- 430 0159 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 430 015b 6C6F6E67 		.ascii	"long long unsigned int\000"
  430      206C6F6E 
  430      6720756E 
  430      7369676E 
  430      65642069 
  431              	.LASF19:
- 432 0170 44697363 		.ascii	"Disconnect_LED_Wakeup\000"
+ 432 0172 44697363 		.ascii	"Disconnect_LED_Wakeup\000"
  432      6F6E6E65 
  432      63745F4C 
  432      45445F57 
  432      616B6575 
  433              	.LASF17:
- 434 0186 44697363 		.ascii	"Disconnect_LED_BACKUP_STRUCT\000"
+ 434 0188 44697363 		.ascii	"Disconnect_LED_BACKUP_STRUCT\000"
  434      6F6E6E65 
  434      63745F4C 
  434      45445F42 
  434      41434B55 
  435              	.LASF15:
- 436 01a3 73696F53 		.ascii	"sioState\000"
+ 436 01a5 73696F53 		.ascii	"sioState\000"
  436      74617465 
  436      00
  437              	.LASF6:
- 438 01ac 6C6F6E67 		.ascii	"long long int\000"
+ 438 01ae 6C6F6E67 		.ascii	"long long int\000"
  438      206C6F6E 
  438      6720696E 
  438      7400
  439              	.LASF11:
- 440 01ba 63686172 		.ascii	"char\000"
+ 440 01bc 63686172 		.ascii	"char\000"
  440      00
  441              	.LASF21:
- 442 01bf 47656E65 		.ascii	"Generated_Source\\PSoC4\\Disconnect_LED_PM.c\000"
+ 442 01c1 47656E65 		.ascii	"Generated_Source\\PSoC4\\Disconnect_LED_PM.c\000"
  442      72617465 
  442      645F536F 
  442      75726365 
  442      5C50536F 
  443              	.LASF2:
- 444 01ea 73686F72 		.ascii	"short int\000"
+ 444 01ec 73686F72 		.ascii	"short int\000"
  444      7420696E 
  444      7400
  445              	.LASF14:
- 446 01f4 70635374 		.ascii	"pcState\000"
+ 446 01f6 70635374 		.ascii	"pcState\000"
  446      61746500 
  447              	.LASF4:
- 448 01fc 6C6F6E67 		.ascii	"long int\000"
+ 448 01fe 6C6F6E67 		.ascii	"long int\000"
  448      20696E74 
  448      00
  449              	.LASF0:
- 450 0205 7369676E 		.ascii	"signed char\000"
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccU1DWb6.s 			page 12
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\cc8vbK83.s 			page 12
 
 
+ 450 0207 7369676E 		.ascii	"signed char\000"
  450      65642063 
  450      68617200 
  451              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

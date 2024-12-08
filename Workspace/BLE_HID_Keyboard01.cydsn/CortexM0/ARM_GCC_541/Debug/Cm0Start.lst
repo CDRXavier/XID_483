@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 1
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccDJwXxb.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 1
   22:Generated_Source\PSoC4/Cm0Start.c **** 
   23:Generated_Source\PSoC4/Cm0Start.c **** #define CY_NUM_VECTORS              (CY_INT_IRQ_BASE + CY_NUM_INTERRUPTS)
   24:Generated_Source\PSoC4/Cm0Start.c **** 
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 2
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccDJwXxb.s 			page 2
 
 
   25:Generated_Source\PSoC4/Cm0Start.c **** #if (CY_IP_CPUSS_CM0)
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 1
   79:Generated_Source\PSoC4/Cm0Start.c **** #endif  /* !defined (__ICCARM__) */
   80:Generated_Source\PSoC4/Cm0Start.c **** 
   81:Generated_Source\PSoC4/Cm0Start.c **** 
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 3
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccDJwXxb.s 			page 3
 
 
   82:Generated_Source\PSoC4/Cm0Start.c **** #if (CYDEV_PROJ_TYPE != CYDEV_PROJ_TYPE_STANDARD)
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 1
  119:Generated_Source\PSoC4/Cm0Start.c ****             #ifdef CY_BOOT_INT_DEFAULT_HANDLER_ENOMEM_EXCEPTION_CALLBACK
  120:Generated_Source\PSoC4/Cm0Start.c ****                 CyBoot_IntDefaultHandler_Enomem_Exception_Callback();
  121:Generated_Source\PSoC4/Cm0Start.c ****             #endif /* CY_BOOT_INT_DEFAULT_HANDLER_ENOMEM_EXCEPTION_CALLBACK */
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 4
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccDJwXxb.s 			page 4
 
 
  122:Generated_Source\PSoC4/Cm0Start.c ****             
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 1
  160:Generated_Source\PSoC4/Cm0Start.c **** * Function Name: Reset
  161:Generated_Source\PSoC4/Cm0Start.c **** ****************************************************************************//**
  162:Generated_Source\PSoC4/Cm0Start.c **** *
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 5
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccDJwXxb.s 			page 5
 
 
  163:Generated_Source\PSoC4/Cm0Start.c **** * This function handles the reset interrupt for the MDK toolchains.
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 1
  217:Generated_Source\PSoC4/Cm0Start.c **** extern int main(void);
  218:Generated_Source\PSoC4/Cm0Start.c **** 
  219:Generated_Source\PSoC4/Cm0Start.c **** /* The static objects constructors initializer */
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 6
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccDJwXxb.s 			page 6
 
 
  220:Generated_Source\PSoC4/Cm0Start.c **** extern void __libc_init_array(void);
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 1
   84 000e FFF7FEFF 		bl	CyHalt
   85              	.L5:
  257:Generated_Source\PSoC4/Cm0Start.c **** 
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 7
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccDJwXxb.s 			page 7
 
 
  258:Generated_Source\PSoC4/Cm0Start.c ****     while(1)
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 1
  286:Generated_Source\PSoC4/Cm0Start.c ****     static uint8 *heapPointer = (uint8 *) &end;                 /* Previous end */
  287:Generated_Source\PSoC4/Cm0Start.c **** 
  288:Generated_Source\PSoC4/Cm0Start.c ****     if (((heapPointer + nbytes) - (uint8 *) &end) <= CYDEV_HEAP_SIZE)
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 8
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccDJwXxb.s 			page 8
 
 
  112              		.loc 1 288 0
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 1
  154 004a 80BD     		pop	{r7, pc}
  155              	.L11:
  156              		.align	2
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 9
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccDJwXxb.s 			page 9
 
 
  157              	.L10:
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 1
  189              		.loc 1 322 0
  190 000e 204B     		ldr	r3, .L20
  191 0010 7B61     		str	r3, [r7, #20]
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 10
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccDJwXxb.s 			page 10
 
 
  192 0012 35E0     		b	.L13
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 1
  233 004a 9A42     		cmp	r2, r3
  234 004c EED1     		bne	.L15
  334:Generated_Source\PSoC4/Cm0Start.c ****             }
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 11
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccDJwXxb.s 			page 11
 
 
  335:Generated_Source\PSoC4/Cm0Start.c ****             limit = rptr->zero_size;
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 1
  344:Generated_Source\PSoC4/Cm0Start.c **** 
  345:Generated_Source\PSoC4/Cm0Start.c ****         /* Invoke static objects constructors */
  346:Generated_Source\PSoC4/Cm0Start.c ****         __libc_init_array();
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 12
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccDJwXxb.s 			page 12
 
 
  276              		.loc 1 346 0 is_stmt 1
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 1
  368:Generated_Source\PSoC4/Cm0Start.c ****     #if (CYDEV_PROJ_TYPE == CYDEV_PROJ_TYPE_LOADABLE || CYDEV_PROJ_TYPE == CYDEV_PROJ_TYPE_LOADABLE
  369:Generated_Source\PSoC4/Cm0Start.c **** 
  370:Generated_Source\PSoC4/Cm0Start.c ****         /* The bootloadable application image is started at Reset() handler
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 13
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccDJwXxb.s 			page 13
 
 
  371:Generated_Source\PSoC4/Cm0Start.c ****         * as a result of a branch instruction execution from the bootloader.
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 1
  391:Generated_Source\PSoC4/Cm0Start.c **** /*******************************************************************************
  392:Generated_Source\PSoC4/Cm0Start.c **** * Function Name: __low_level_init
  393:Generated_Source\PSoC4/Cm0Start.c **** ****************************************************************************//**
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 14
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccDJwXxb.s 			page 14
 
 
  394:Generated_Source\PSoC4/Cm0Start.c **** *
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 1
  448:Generated_Source\PSoC4/Cm0Start.c **** * Rom Interrupt Vector table storage area. Must be 256-byte aligned.
  449:Generated_Source\PSoC4/Cm0Start.c **** *******************************************************************************/
  450:Generated_Source\PSoC4/Cm0Start.c **** 
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 15
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccDJwXxb.s 			page 15
 
 
  451:Generated_Source\PSoC4/Cm0Start.c **** #if defined(__ARMCC_VERSION)
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 1
  350              		.cfi_def_cfa_register 7
  494:Generated_Source\PSoC4/Cm0Start.c ****     uint32 indexInit;
  495:Generated_Source\PSoC4/Cm0Start.c **** 
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 16
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccDJwXxb.s 			page 16
 
 
  496:Generated_Source\PSoC4/Cm0Start.c ****     #if(CY_IP_CPUSSV2)
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 1
  383 0032 7B68     		ldr	r3, [r7, #4]
  384 0034 0133     		adds	r3, r3, #1
  385 0036 7B60     		str	r3, [r7, #4]
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 17
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccDJwXxb.s 			page 17
 
 
  386              	.L24:
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 1
  411              		.align	2
  412              	.L28:
  413 005c 00001040 		.word	1074790400
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 18
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccDJwXxb.s 			page 18
 
 
  414 0060 00000000 		.word	RomVectors
@@ -1049,48 +1049,48 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 1
  439 0006 00000000 		.4byte	.Ldebug_abbrev0
  440 000a 04       		.byte	0x4
  441 000b 01       		.uleb128 0x1
- 442 000c 12010000 		.4byte	.LASF41
+ 442 000c 14010000 		.4byte	.LASF41
  443 0010 0C       		.byte	0xc
- 444 0011 D5010000 		.4byte	.LASF42
- 445 0015 6D000000 		.4byte	.LASF43
+ 444 0011 D7010000 		.4byte	.LASF42
+ 445 0015 1A000000 		.4byte	.LASF43
  446 0019 00000000 		.4byte	.Ldebug_ranges0+0
  447 001d 00000000 		.4byte	0
  448 0021 00000000 		.4byte	.Ldebug_line0
  449 0025 02       		.uleb128 0x2
  450 0026 01       		.byte	0x1
  451 0027 06       		.byte	0x6
- 452 0028 95020000 		.4byte	.LASF0
+ 452 0028 97020000 		.4byte	.LASF0
  453 002c 02       		.uleb128 0x2
  454 002d 01       		.byte	0x1
  455 002e 08       		.byte	0x8
- 456 002f BA000000 		.4byte	.LASF1
+ 456 002f BC000000 		.4byte	.LASF1
  457 0033 02       		.uleb128 0x2
  458 0034 02       		.byte	0x2
  459 0035 05       		.byte	0x5
- 460 0036 76020000 		.4byte	.LASF2
+ 460 0036 78020000 		.4byte	.LASF2
  461 003a 02       		.uleb128 0x2
  462 003b 02       		.byte	0x2
  463 003c 07       		.byte	0x7
- 464 003d 34000000 		.4byte	.LASF3
+ 464 003d 73000000 		.4byte	.LASF3
  465 0041 02       		.uleb128 0x2
  466 0042 04       		.byte	0x4
  467 0043 05       		.byte	0x5
- 468 0044 80020000 		.4byte	.LASF4
+ 468 0044 82020000 		.4byte	.LASF4
  469 0048 02       		.uleb128 0x2
  470 0049 04       		.byte	0x4
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 19
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccDJwXxb.s 			page 19
 
 
  471 004a 07       		.byte	0x7
- 472 004b DF000000 		.4byte	.LASF5
+ 472 004b E1000000 		.4byte	.LASF5
  473 004f 02       		.uleb128 0x2
  474 0050 08       		.byte	0x8
  475 0051 05       		.byte	0x5
- 476 0052 63020000 		.4byte	.LASF6
+ 476 0052 65020000 		.4byte	.LASF6
  477 0056 02       		.uleb128 0x2
  478 0057 08       		.byte	0x8
  479 0058 07       		.byte	0x7
- 480 0059 15020000 		.4byte	.LASF7
+ 480 0059 17020000 		.4byte	.LASF7
  481 005d 03       		.uleb128 0x3
  482 005e 04       		.byte	0x4
  483 005f 05       		.byte	0x5
@@ -1098,7 +1098,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 1
  485 0064 02       		.uleb128 0x2
  486 0065 04       		.byte	0x4
  487 0066 07       		.byte	0x7
- 488 0067 08020000 		.4byte	.LASF8
+ 488 0067 0A020000 		.4byte	.LASF8
  489 006b 04       		.uleb128 0x4
  490 006c 06000000 		.4byte	.LASF10
  491 0070 02       		.byte	0x2
@@ -1107,29 +1107,29 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 1
  494 0076 02       		.uleb128 0x2
  495 0077 08       		.byte	0x8
  496 0078 04       		.byte	0x4
- 497 0079 89020000 		.4byte	.LASF9
+ 497 0079 8B020000 		.4byte	.LASF9
  498 007d 05       		.uleb128 0x5
- 499 007e 06010000 		.4byte	.LASF11
+ 499 007e 08010000 		.4byte	.LASF11
  500 0082 03       		.byte	0x3
  501 0083 D201     		.2byte	0x1d2
  502 0085 2C000000 		.4byte	0x2c
  503 0089 05       		.uleb128 0x5
- 504 008a F7010000 		.4byte	.LASF12
+ 504 008a F9010000 		.4byte	.LASF12
  505 008e 03       		.byte	0x3
  506 008f D401     		.2byte	0x1d4
  507 0091 48000000 		.4byte	0x48
  508 0095 02       		.uleb128 0x2
  509 0096 04       		.byte	0x4
  510 0097 04       		.byte	0x4
- 511 0098 AF000000 		.4byte	.LASF13
+ 511 0098 B1000000 		.4byte	.LASF13
  512 009c 02       		.uleb128 0x2
  513 009d 08       		.byte	0x8
  514 009e 04       		.byte	0x4
- 515 009f BE010000 		.4byte	.LASF14
+ 515 009f C0010000 		.4byte	.LASF14
  516 00a3 02       		.uleb128 0x2
  517 00a4 01       		.byte	0x1
  518 00a5 08       		.byte	0x8
- 519 00a6 71020000 		.4byte	.LASF15
+ 519 00a6 73020000 		.4byte	.LASF15
  520 00aa 05       		.uleb128 0x5
  521 00ab 00000000 		.4byte	.LASF16
  522 00af 03       		.byte	0x3
@@ -1138,10 +1138,10 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 1
  525 00b6 06       		.uleb128 0x6
  526 00b7 89000000 		.4byte	0x89
  527 00bb 05       		.uleb128 0x5
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 20
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccDJwXxb.s 			page 20
 
 
- 528 00bc 32020000 		.4byte	.LASF17
+ 528 00bc 34020000 		.4byte	.LASF17
  529 00c0 03       		.byte	0x3
  530 00c1 8E02     		.2byte	0x28e
  531 00c3 C7000000 		.4byte	0xc7
@@ -1152,42 +1152,42 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 1
  536 00ce 02       		.uleb128 0x2
  537 00cf 04       		.byte	0x4
  538 00d0 07       		.byte	0x7
- 539 00d1 5A020000 		.4byte	.LASF18
+ 539 00d1 5C020000 		.4byte	.LASF18
  540 00d5 09       		.uleb128 0x9
  541 00d6 04       		.byte	0x4
  542 00d7 0A       		.uleb128 0xa
  543 00d8 A3000000 		.4byte	0xa3
  544 00dc 04       		.uleb128 0x4
- 545 00dd 49020000 		.4byte	.LASF19
+ 545 00dd 4B020000 		.4byte	.LASF19
  546 00e1 01       		.byte	0x1
  547 00e2 DE       		.byte	0xde
  548 00e3 2C000000 		.4byte	0x2c
  549 00e7 0B       		.uleb128 0xb
- 550 00e8 BD020000 		.4byte	.LASF44
+ 550 00e8 BF020000 		.4byte	.LASF44
  551 00ec 10       		.byte	0x10
  552 00ed 01       		.byte	0x1
  553 00ee E0       		.byte	0xe0
  554 00ef 24010000 		.4byte	0x124
  555 00f3 0C       		.uleb128 0xc
- 556 00f4 57000000 		.4byte	.LASF20
+ 556 00f4 96000000 		.4byte	.LASF20
  557 00f8 01       		.byte	0x1
  558 00f9 E2       		.byte	0xe2
  559 00fa 24010000 		.4byte	0x124
  560 00fe 00       		.byte	0
  561 00ff 0C       		.uleb128 0xc
- 562 0100 B5000000 		.4byte	.LASF21
+ 562 0100 B7000000 		.4byte	.LASF21
  563 0104 01       		.byte	0x1
  564 0105 E3       		.byte	0xe3
  565 0106 24010000 		.4byte	0x124
  566 010a 04       		.byte	0x4
  567 010b 0C       		.uleb128 0xc
- 568 010c 3F020000 		.4byte	.LASF22
+ 568 010c 41020000 		.4byte	.LASF22
  569 0110 01       		.byte	0x1
  570 0111 E4       		.byte	0xe4
  571 0112 6B000000 		.4byte	0x6b
  572 0116 08       		.byte	0x8
  573 0117 0C       		.uleb128 0xc
- 574 0118 63000000 		.4byte	.LASF23
+ 574 0118 A2000000 		.4byte	.LASF23
  575 011c 01       		.byte	0x1
  576 011d E5       		.byte	0xe5
  577 011e 6B000000 		.4byte	0x6b
@@ -1197,8 +1197,8 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 1
  581 0125 04       		.byte	0x4
  582 0126 DC000000 		.4byte	0xdc
  583 012a 0D       		.uleb128 0xd
- 584 012b A6010000 		.4byte	.LASF45
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 21
+ 584 012b A8010000 		.4byte	.LASF45
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccDJwXxb.s 			page 21
 
 
  585 012f 01       		.byte	0x1
@@ -1208,7 +1208,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 1
  589 0139 01       		.uleb128 0x1
  590 013a 9C       		.byte	0x9c
  591 013b 0E       		.uleb128 0xe
- 592 013c A0010000 		.4byte	.LASF24
+ 592 013c A2010000 		.4byte	.LASF24
  593 0140 01       		.byte	0x1
  594 0141 FE       		.byte	0xfe
  595 0142 00000000 		.4byte	.LFB3
@@ -1217,7 +1217,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 1
  598 014b 9C       		.byte	0x9c
  599 014c 5F010000 		.4byte	0x15f
  600 0150 0F       		.uleb128 0xf
- 601 0151 5C000000 		.4byte	.LASF26
+ 601 0151 9B000000 		.4byte	.LASF26
  602 0155 01       		.byte	0x1
  603 0156 FE       		.byte	0xfe
  604 0157 5D000000 		.4byte	0x5d
@@ -1226,7 +1226,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 1
  607 015d 74       		.sleb128 -12
  608 015e 00       		.byte	0
  609 015f 10       		.uleb128 0x10
- 610 0160 B8010000 		.4byte	.LASF25
+ 610 0160 BA010000 		.4byte	.LASF25
  611 0164 01       		.byte	0x1
  612 0165 1801     		.2byte	0x118
  613 0167 D5000000 		.4byte	0xd5
@@ -1236,7 +1236,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 1
  617 0174 9C       		.byte	0x9c
  618 0175 B6010000 		.4byte	0x1b6
  619 0179 11       		.uleb128 0x11
- 620 017a B6020000 		.4byte	.LASF27
+ 620 017a B8020000 		.4byte	.LASF27
  621 017e 01       		.byte	0x1
  622 017f 1801     		.2byte	0x118
  623 0181 5D000000 		.4byte	0x5d
@@ -1249,7 +1249,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 1
  630 018e 1A01     		.2byte	0x11a
  631 0190 5D000000 		.4byte	0x5d
  632 0194 13       		.uleb128 0x13
- 633 0195 C8000000 		.4byte	.LASF28
+ 633 0195 CA000000 		.4byte	.LASF28
  634 0199 01       		.byte	0x1
  635 019a 1B01     		.2byte	0x11b
  636 019c D5000000 		.4byte	0xd5
@@ -1257,8 +1257,8 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 1
  638 01a1 91       		.byte	0x91
  639 01a2 74       		.sleb128 -12
  640 01a3 13       		.uleb128 0x13
- 641 01a4 28000000 		.4byte	.LASF29
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 22
+ 641 01a4 67000000 		.4byte	.LASF29
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccDJwXxb.s 			page 22
 
 
  642 01a8 01       		.byte	0x1
@@ -1272,7 +1272,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 1
  650 01b7 04       		.byte	0x4
  651 01b8 7D000000 		.4byte	0x7d
  652 01bc 14       		.uleb128 0x14
- 653 01bd 1A000000 		.4byte	.LASF30
+ 653 01bd 59000000 		.4byte	.LASF30
  654 01c1 01       		.byte	0x1
  655 01c2 3901     		.2byte	0x139
  656 01c4 00000000 		.4byte	.LFB5
@@ -1281,7 +1281,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 1
  659 01cd 9C       		.byte	0x9c
  660 01ce 37020000 		.4byte	0x237
  661 01d2 13       		.uleb128 0x13
- 662 01d3 AE020000 		.4byte	.LASF31
+ 662 01d3 B0020000 		.4byte	.LASF31
  663 01d7 01       		.byte	0x1
  664 01d8 3E01     		.2byte	0x13e
  665 01da 64000000 		.4byte	0x64
@@ -1289,7 +1289,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 1
  667 01df 91       		.byte	0x91
  668 01e0 74       		.sleb128 -12
  669 01e1 13       		.uleb128 0x13
- 670 01e2 AA000000 		.4byte	.LASF32
+ 670 01e2 AC000000 		.4byte	.LASF32
  671 01e6 01       		.byte	0x1
  672 01e7 3F01     		.2byte	0x13f
  673 01e9 37020000 		.4byte	0x237
@@ -1316,9 +1316,9 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 1
  694 0215 91       		.byte	0x91
  695 0216 68       		.sleb128 -24
  696 0217 13       		.uleb128 0x13
- 697 0218 2C020000 		.4byte	.LASF33
+ 697 0218 2E020000 		.4byte	.LASF33
  698 021c 01       		.byte	0x1
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 23
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccDJwXxb.s 			page 23
 
 
  699 021d 4601     		.2byte	0x146
@@ -1327,7 +1327,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 1
  702 0224 91       		.byte	0x91
  703 0225 60       		.sleb128 -32
  704 0226 13       		.uleb128 0x13
- 705 0227 22000000 		.4byte	.LASF34
+ 705 0227 61000000 		.4byte	.LASF34
  706 022b 01       		.byte	0x1
  707 022c 4701     		.2byte	0x147
  708 022e 64000000 		.4byte	0x64
@@ -1345,7 +1345,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 1
  720 0243 04       		.byte	0x4
  721 0244 89000000 		.4byte	0x89
  722 0248 17       		.uleb128 0x17
- 723 0249 0C010000 		.4byte	.LASF46
+ 723 0249 0E010000 		.4byte	.LASF46
  724 024d 01       		.byte	0x1
  725 024e 6E01     		.2byte	0x16e
  726 0250 00000000 		.4byte	.LFB6
@@ -1353,7 +1353,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 1
  728 0258 01       		.uleb128 0x1
  729 0259 9C       		.byte	0x9c
  730 025a 18       		.uleb128 0x18
- 731 025b C5010000 		.4byte	.LASF47
+ 731 025b C7010000 		.4byte	.LASF47
  732 025f 01       		.byte	0x1
  733 0260 EC01     		.2byte	0x1ec
  734 0262 00000000 		.4byte	.LFB7
@@ -1362,7 +1362,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 1
  737 026b 9C       		.byte	0x9c
  738 026c 80020000 		.4byte	0x280
  739 0270 13       		.uleb128 0x13
- 740 0271 FE010000 		.4byte	.LASF35
+ 740 0271 00020000 		.4byte	.LASF35
  741 0275 01       		.byte	0x1
  742 0276 EE01     		.2byte	0x1ee
  743 0278 89000000 		.4byte	0x89
@@ -1371,14 +1371,14 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 1
  746 027e 74       		.sleb128 -12
  747 027f 00       		.byte	0
  748 0280 19       		.uleb128 0x19
- 749 0281 F1000000 		.4byte	.LASF36
+ 749 0281 F3000000 		.4byte	.LASF36
  750 0285 01       		.byte	0x1
  751 0286 4E       		.byte	0x4e
  752 0287 89000000 		.4byte	0x89
  753 028b 05       		.uleb128 0x5
  754 028c 03       		.byte	0x3
  755 028d 00000000 		.4byte	cySysNoInitDataValid
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 24
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccDJwXxb.s 			page 24
 
 
  756 0291 12       		.uleb128 0x12
@@ -1392,14 +1392,14 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 1
  764 02a6 1B       		.uleb128 0x1b
  765 02a7 00       		.byte	0
  766 02a8 1C       		.uleb128 0x1c
- 767 02a9 A1020000 		.4byte	.LASF37
+ 767 02a9 A3020000 		.4byte	.LASF37
  768 02ad 01       		.byte	0x1
  769 02ae E8       		.byte	0xe8
  770 02af B3020000 		.4byte	0x2b3
  771 02b3 0A       		.uleb128 0xa
  772 02b4 9D020000 		.4byte	0x29d
  773 02b8 1C       		.uleb128 0x1c
- 774 02b9 47000000 		.4byte	.LASF38
+ 774 02b9 86000000 		.4byte	.LASF38
  775 02bd 01       		.byte	0x1
  776 02be E9       		.byte	0xe9
  777 02bf D7000000 		.4byte	0xd7
@@ -1428,7 +1428,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 1
  800 02f5 0A       		.uleb128 0xa
  801 02f6 BB000000 		.4byte	0xbb
  802 02fa 1E       		.uleb128 0x1e
- 803 02fb D4000000 		.4byte	.LASF40
+ 803 02fb D6000000 		.4byte	.LASF40
  804 02ff 01       		.byte	0x1
  805 0300 D001     		.2byte	0x1d0
  806 0302 0C030000 		.4byte	0x30c
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 1
  810 030c 0A       		.uleb128 0xa
  811 030d E5020000 		.4byte	0x2e5
  812 0311 00       		.byte	0
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 25
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccDJwXxb.s 			page 25
 
 
  813              		.section	.debug_abbrev,"",%progbits
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 1
  867 0034 00       		.byte	0
  868 0035 00       		.byte	0
  869 0036 05       		.uleb128 0x5
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 26
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccDJwXxb.s 			page 26
 
 
  870 0037 16       		.uleb128 0x16
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 1
  924 006d 0B       		.uleb128 0xb
  925 006e 0B       		.uleb128 0xb
  926 006f 3A       		.uleb128 0x3a
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 27
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccDJwXxb.s 			page 27
 
 
  927 0070 0B       		.uleb128 0xb
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 1
  981 00a8 3A       		.uleb128 0x3a
  982 00a9 0B       		.uleb128 0xb
  983 00aa 3B       		.uleb128 0x3b
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 28
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccDJwXxb.s 			page 28
 
 
  984 00ab 0B       		.uleb128 0xb
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 1
  1038 00e4 19       		.uleb128 0x19
  1039 00e5 01       		.uleb128 0x1
  1040 00e6 13       		.uleb128 0x13
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 29
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccDJwXxb.s 			page 29
 
 
  1041 00e7 00       		.byte	0
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 1
  1095 011d 03       		.uleb128 0x3
  1096 011e 0E       		.uleb128 0xe
  1097 011f 3A       		.uleb128 0x3a
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 30
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccDJwXxb.s 			page 30
 
 
  1098 0120 0B       		.uleb128 0xb
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 1
  1152 0158 27       		.uleb128 0x27
  1153 0159 19       		.uleb128 0x19
  1154 015a 11       		.uleb128 0x11
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 31
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccDJwXxb.s 			page 31
 
 
  1155 015b 01       		.uleb128 0x1
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 1
  1209 0193 01       		.uleb128 0x1
  1210 0194 13       		.uleb128 0x13
  1211 0195 00       		.byte	0
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 32
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccDJwXxb.s 			page 32
 
 
  1212 0196 00       		.byte	0
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 1
  1266 000a 04       		.byte	0x4
  1267 000b 00       		.byte	0
  1268 000c 0000     		.2byte	0
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 33
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccDJwXxb.s 			page 33
 
 
  1269 000e 0000     		.2byte	0
@@ -1970,218 +1970,219 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 1
  1308      6D566563 
  1308      746F7273 
  1308      00
- 1309              	.LASF30:
- 1310 001a 53746172 		.ascii	"Start_c\000"
- 1310      745F6300 
- 1311              	.LASF34:
- 1312 0022 636F756E 		.ascii	"count\000"
- 1312      7400
- 1313              	.LASF29:
- 1314 0028 68656170 		.ascii	"heapPointer\000"
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 34
+ 1309              	.LASF43:
+ 1310 001a 443A5C44 		.ascii	"D:\\Documents\\GitHub\\XID_483\\Workspace\\BLE_HID_"
+ 1310      6F63756D 
+ 1310      656E7473 
+ 1310      5C476974 
+ 1310      4875625C 
+ 1311 0048 4B657962 		.ascii	"Keyboard01.cydsn\000"
+ 1311      6F617264 
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccDJwXxb.s 			page 34
 
 
- 1314      506F696E 
- 1314      74657200 
- 1315              	.LASF3:
- 1316 0034 73686F72 		.ascii	"short unsigned int\000"
- 1316      7420756E 
- 1316      7369676E 
- 1316      65642069 
- 1316      6E7400
- 1317              	.LASF38:
- 1318 0047 5F5F6379 		.ascii	"__cy_region_num\000"
- 1318      5F726567 
- 1318      696F6E5F 
- 1318      6E756D00 
- 1319              	.LASF20:
- 1320 0057 696E6974 		.ascii	"init\000"
- 1320      00
- 1321              	.LASF26:
- 1322 005c 73746174 		.ascii	"status\000"
- 1322      757300
- 1323              	.LASF23:
- 1324 0063 7A65726F 		.ascii	"zero_size\000"
- 1324      5F73697A 
- 1324      6500
- 1325              	.LASF43:
- 1326 006d 443A5C44 		.ascii	"D:\\Documents\\PSoC Creator\\Workspace\\BLE_HID_Key"
- 1326      6F63756D 
- 1326      656E7473 
- 1326      5C50536F 
- 1326      43204372 
- 1327 009c 626F6172 		.ascii	"board01.cydsn\000"
- 1327      6430312E 
- 1327      63796473 
- 1327      6E00
+ 1311      30312E63 
+ 1311      7964736E 
+ 1311      00
+ 1312              	.LASF30:
+ 1313 0059 53746172 		.ascii	"Start_c\000"
+ 1313      745F6300 
+ 1314              	.LASF34:
+ 1315 0061 636F756E 		.ascii	"count\000"
+ 1315      7400
+ 1316              	.LASF29:
+ 1317 0067 68656170 		.ascii	"heapPointer\000"
+ 1317      506F696E 
+ 1317      74657200 
+ 1318              	.LASF3:
+ 1319 0073 73686F72 		.ascii	"short unsigned int\000"
+ 1319      7420756E 
+ 1319      7369676E 
+ 1319      65642069 
+ 1319      6E7400
+ 1320              	.LASF38:
+ 1321 0086 5F5F6379 		.ascii	"__cy_region_num\000"
+ 1321      5F726567 
+ 1321      696F6E5F 
+ 1321      6E756D00 
+ 1322              	.LASF20:
+ 1323 0096 696E6974 		.ascii	"init\000"
+ 1323      00
+ 1324              	.LASF26:
+ 1325 009b 73746174 		.ascii	"status\000"
+ 1325      757300
+ 1326              	.LASF23:
+ 1327 00a2 7A65726F 		.ascii	"zero_size\000"
+ 1327      5F73697A 
+ 1327      6500
  1328              	.LASF32:
- 1329 00aa 72707472 		.ascii	"rptr\000"
+ 1329 00ac 72707472 		.ascii	"rptr\000"
  1329      00
  1330              	.LASF13:
- 1331 00af 666C6F61 		.ascii	"float\000"
+ 1331 00b1 666C6F61 		.ascii	"float\000"
  1331      7400
  1332              	.LASF21:
- 1333 00b5 64617461 		.ascii	"data\000"
+ 1333 00b7 64617461 		.ascii	"data\000"
  1333      00
  1334              	.LASF1:
- 1335 00ba 756E7369 		.ascii	"unsigned char\000"
+ 1335 00bc 756E7369 		.ascii	"unsigned char\000"
  1335      676E6564 
  1335      20636861 
  1335      7200
  1336              	.LASF28:
- 1337 00c8 72657475 		.ascii	"returnValue\000"
+ 1337 00ca 72657475 		.ascii	"returnValue\000"
  1337      726E5661 
  1337      6C756500 
  1338              	.LASF40:
- 1339 00d4 526F6D56 		.ascii	"RomVectors\000"
+ 1339 00d6 526F6D56 		.ascii	"RomVectors\000"
  1339      6563746F 
  1339      727300
  1340              	.LASF5:
- 1341 00df 6C6F6E67 		.ascii	"long unsigned int\000"
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 35
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccDJwXxb.s 			page 35
 
 
+ 1341 00e1 6C6F6E67 		.ascii	"long unsigned int\000"
  1341      20756E73 
  1341      69676E65 
  1341      6420696E 
  1341      7400
  1342              	.LASF36:
- 1343 00f1 63795379 		.ascii	"cySysNoInitDataValid\000"
+ 1343 00f3 63795379 		.ascii	"cySysNoInitDataValid\000"
  1343      734E6F49 
  1343      6E697444 
  1343      61746156 
  1343      616C6964 
  1344              	.LASF11:
- 1345 0106 75696E74 		.ascii	"uint8\000"
+ 1345 0108 75696E74 		.ascii	"uint8\000"
  1345      3800
  1346              	.LASF46:
- 1347 010c 52657365 		.ascii	"Reset\000"
+ 1347 010e 52657365 		.ascii	"Reset\000"
  1347      7400
  1348              	.LASF41:
- 1349 0112 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1349 0114 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
  1349      43313120 
  1349      352E342E 
  1349      31203230 
  1349      31363036 
- 1350 0145 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 1350 0147 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
  1350      20726576 
  1350      6973696F 
  1350      6E203233 
  1350      37373135 
- 1351 0178 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 1351 017a 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
  1351      66756E63 
  1351      74696F6E 
  1351      2D736563 
  1351      74696F6E 
  1352              	.LASF24:
- 1353 01a0 5F657869 		.ascii	"_exit\000"
+ 1353 01a2 5F657869 		.ascii	"_exit\000"
  1353      7400
  1354              	.LASF45:
- 1355 01a6 496E7444 		.ascii	"IntDefaultHandler\000"
+ 1355 01a8 496E7444 		.ascii	"IntDefaultHandler\000"
  1355      65666175 
  1355      6C744861 
  1355      6E646C65 
  1355      7200
  1356              	.LASF25:
- 1357 01b8 5F736272 		.ascii	"_sbrk\000"
+ 1357 01ba 5F736272 		.ascii	"_sbrk\000"
  1357      6B00
  1358              	.LASF14:
- 1359 01be 646F7562 		.ascii	"double\000"
+ 1359 01c0 646F7562 		.ascii	"double\000"
  1359      6C6500
  1360              	.LASF47:
- 1361 01c5 696E6974 		.ascii	"initialize_psoc\000"
+ 1361 01c7 696E6974 		.ascii	"initialize_psoc\000"
  1361      69616C69 
  1361      7A655F70 
  1361      736F6300 
  1362              	.LASF42:
- 1363 01d5 47656E65 		.ascii	"Generated_Source\\PSoC4\\Cm0Start.c\000"
+ 1363 01d7 47656E65 		.ascii	"Generated_Source\\PSoC4\\Cm0Start.c\000"
  1363      72617465 
  1363      645F536F 
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccDJwXxb.s 			page 36
+
+
  1363      75726365 
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 36
-
-
  1363      5C50536F 
  1364              	.LASF12:
- 1365 01f7 75696E74 		.ascii	"uint32\000"
+ 1365 01f9 75696E74 		.ascii	"uint32\000"
  1365      333200
  1366              	.LASF35:
- 1367 01fe 696E6465 		.ascii	"indexInit\000"
+ 1367 0200 696E6465 		.ascii	"indexInit\000"
  1367      78496E69 
  1367      7400
  1368              	.LASF8:
- 1369 0208 756E7369 		.ascii	"unsigned int\000"
+ 1369 020a 756E7369 		.ascii	"unsigned int\000"
  1369      676E6564 
  1369      20696E74 
  1369      00
  1370              	.LASF7:
- 1371 0215 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1371 0217 6C6F6E67 		.ascii	"long long unsigned int\000"
  1371      206C6F6E 
  1371      6720756E 
  1371      7369676E 
  1371      65642069 
  1372              	.LASF33:
- 1373 022c 6C696D69 		.ascii	"limit\000"
+ 1373 022e 6C696D69 		.ascii	"limit\000"
  1373      7400
  1374              	.LASF17:
- 1375 0232 63796973 		.ascii	"cyisraddress\000"
+ 1375 0234 63796973 		.ascii	"cyisraddress\000"
  1375      72616464 
  1375      72657373 
  1375      00
  1376              	.LASF22:
- 1377 023f 696E6974 		.ascii	"init_size\000"
+ 1377 0241 696E6974 		.ascii	"init_size\000"
  1377      5F73697A 
  1377      6500
  1378              	.LASF19:
- 1379 0249 5F5F6379 		.ascii	"__cy_byte_align8\000"
+ 1379 024b 5F5F6379 		.ascii	"__cy_byte_align8\000"
  1379      5F627974 
  1379      655F616C 
  1379      69676E38 
  1379      00
  1380              	.LASF18:
- 1381 025a 73697A65 		.ascii	"sizetype\000"
+ 1381 025c 73697A65 		.ascii	"sizetype\000"
  1381      74797065 
  1381      00
  1382              	.LASF6:
- 1383 0263 6C6F6E67 		.ascii	"long long int\000"
+ 1383 0265 6C6F6E67 		.ascii	"long long int\000"
  1383      206C6F6E 
  1383      6720696E 
  1383      7400
  1384              	.LASF15:
- 1385 0271 63686172 		.ascii	"char\000"
+ 1385 0273 63686172 		.ascii	"char\000"
  1385      00
  1386              	.LASF2:
- 1387 0276 73686F72 		.ascii	"short int\000"
+ 1387 0278 73686F72 		.ascii	"short int\000"
  1387      7420696E 
  1387      7400
  1388              	.LASF4:
- 1389 0280 6C6F6E67 		.ascii	"long int\000"
+ 1389 0282 6C6F6E67 		.ascii	"long int\000"
  1389      20696E74 
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccDJwXxb.s 			page 37
+
+
  1389      00
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccPKalqr.s 			page 37
-
-
  1390              	.LASF9:
- 1391 0289 6C6F6E67 		.ascii	"long double\000"
+ 1391 028b 6C6F6E67 		.ascii	"long double\000"
  1391      20646F75 
  1391      626C6500 
  1392              	.LASF0:
- 1393 0295 7369676E 		.ascii	"signed char\000"
+ 1393 0297 7369676E 		.ascii	"signed char\000"
  1393      65642063 
  1393      68617200 
  1394              	.LASF37:
- 1395 02a1 5F5F6379 		.ascii	"__cy_regions\000"
+ 1395 02a3 5F5F6379 		.ascii	"__cy_regions\000"
  1395      5F726567 
  1395      696F6E73 
  1395      00
  1396              	.LASF31:
- 1397 02ae 72656769 		.ascii	"regions\000"
+ 1397 02b0 72656769 		.ascii	"regions\000"
  1397      6F6E7300 
  1398              	.LASF27:
- 1399 02b6 6E627974 		.ascii	"nbytes\000"
+ 1399 02b8 6E627974 		.ascii	"nbytes\000"
  1399      657300
  1400              	.LASF44:
- 1401 02bd 5F5F6379 		.ascii	"__cy_region\000"
+ 1401 02bf 5F5F6379 		.ascii	"__cy_region\000"
  1401      5F726567 
  1401      696F6E00 
  1402              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

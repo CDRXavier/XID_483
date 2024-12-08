@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
   51              	CySysTickInitVar:
   52 0014 00000000 		.space	4
   53              		.global	cyImoFreqMhz2Reg
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 2
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 2
 
 
   54              		.section	.rodata
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  108              		.type	CySysClkPumpConfig, %object
  109              		.size	CySysClkPumpConfig, 4
  110              	CySysClkPumpConfig:
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 3
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 3
 
 
  111 0010 01000000 		.word	1
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
   45:Generated_Source\PSoC4/CyLib.c **** * initialized to 0 and set to 1 the first time CySysTickStart() is called.
   46:Generated_Source\PSoC4/CyLib.c **** *
   47:Generated_Source\PSoC4/CyLib.c **** * This allows the component to restart without reinitialization after the first
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 4
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 4
 
 
   48:Generated_Source\PSoC4/CyLib.c **** * call to the CySysTickStart() routine.
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  102:Generated_Source\PSoC4/CyLib.c **** *
  103:Generated_Source\PSoC4/CyLib.c **** * For PSoC 4200L / devices, this function will also enable USB lock if selected
  104:Generated_Source\PSoC4/CyLib.c **** * in the Design Wide Resources tab.
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 5
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 5
 
 
  105:Generated_Source\PSoC4/CyLib.c **** *
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  155              		.thumb_func
  156              		.type	CySysClkImoStop, %function
  157              	CySysClkImoStop:
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 6
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 6
 
 
  158              	.LFB3:
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  186              	.LFE3:
  187              		.size	CySysClkImoStop, .-CySysClkImoStop
  188              		.section	.text.CySysClkWriteHfclkDirect,"ax",%progbits
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 7
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 7
 
 
  189              		.align	2
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  198:Generated_Source\PSoC4/CyLib.c ****             /* Get current IMO frequency based on the register value */
  199:Generated_Source\PSoC4/CyLib.c ****             #if(CY_IP_SRSSV2)
  200:Generated_Source\PSoC4/CyLib.c ****                 freq = CY_SYS_CLK_IMO_MIN_FREQ_MHZ;
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 8
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 8
 
 
  201:Generated_Source\PSoC4/CyLib.c ****                 for(i = 0u; i < CY_SYS_CLK_IMO_FREQ_TABLE_SIZE; i++)
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  255:Generated_Source\PSoC4/CyLib.c **** 
  256:Generated_Source\PSoC4/CyLib.c ****                 regTmp |= (lfLimit << CY_SYS_CLK_WCO_CONFIG_DPLL_LF_LIMIT_SHIFT);
  257:Generated_Source\PSoC4/CyLib.c ****             }
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 9
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 9
 
 
  258:Generated_Source\PSoC4/CyLib.c **** 
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  312:Generated_Source\PSoC4/CyLib.c **** 
  313:Generated_Source\PSoC4/CyLib.c **** 
  314:Generated_Source\PSoC4/CyLib.c **** #if (CY_IP_IMO_TRIMMABLE_BY_USB)
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 10
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 10
 
 
  315:Generated_Source\PSoC4/CyLib.c **** 
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  369:Generated_Source\PSoC4/CyLib.c ****             CY_SYS_CLK_IMO_TRIM4_REG = (CY_SYS_CLK_IMO_TRIM4_REG & (uint32) ~CY_SYS_CLK_IMO_TRIM4_G
  370:Generated_Source\PSoC4/CyLib.c ****                                     CySysClkImoTrim4;
  371:Generated_Source\PSoC4/CyLib.c ****         #endif  /* (CY_IP_SRSSV2) */
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 11
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 11
 
 
  372:Generated_Source\PSoC4/CyLib.c ****     }
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  426:Generated_Source\PSoC4/CyLib.c **** * CY_SYS_CLK_HFCLK_PLL1    PLL#1. Applicable for PSoC 4200L.
  427:Generated_Source\PSoC4/CyLib.c **** *
  428:Generated_Source\PSoC4/CyLib.c **** *******************************************************************************/
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 12
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 12
 
 
  429:Generated_Source\PSoC4/CyLib.c **** void CySysClkWriteHfclkDirect(uint32 clkSelect)
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  450:Generated_Source\PSoC4/CyLib.c **** 
  451:Generated_Source\PSoC4/CyLib.c ****     CY_SYS_CLK_SELECT_REG = tmpReg;
  229              		.loc 1 451 0
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 13
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 13
 
 
  230 002a 064B     		ldr	r3, .L8
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  261              		.cfi_startproc
  262              		@ args = 0, pretend = 0, frame = 8
  263              		@ frame_needed = 1, uses_anonymous_args = 0
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 14
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 14
 
 
  264 0000 80B5     		push	{r7, lr}
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  293 0026 5B0E     		lsrs	r3, r3, #25
  294 0028 0722     		movs	r2, #7
  295 002a 1A40     		ands	r2, r3
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 15
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 15
 
 
  296 002c 064B     		ldr	r3, .L14+4
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  336              		.cfi_offset 7, -8
  337              		.cfi_offset 14, -4
  338 0002 83B0     		sub	sp, sp, #12
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 16
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 16
 
 
  339              		.cfi_def_cfa_offset 24
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  373              		.section	.text.CySysClkWriteSysclkDiv,"ax",%progbits
  374              		.align	2
  375              		.global	CySysClkWriteSysclkDiv
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 17
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 17
 
 
  376              		.code	16
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  567:Generated_Source\PSoC4/CyLib.c ****     uint8  interruptState;
  568:Generated_Source\PSoC4/CyLib.c **** 
  569:Generated_Source\PSoC4/CyLib.c ****     interruptState = CyEnterCriticalSection();
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 18
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 18
 
 
  395              		.loc 1 569 0
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  439              		.global	CySysClkWriteImoFreq
  440              		.code	16
  441              		.thumb_func
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 19
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 19
 
 
  442              		.type	CySysClkWriteImoFreq, %function
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  449 0000 90B5     		push	{r4, r7, lr}
  450              		.cfi_def_cfa_offset 12
  451              		.cfi_offset 4, -12
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 20
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 20
 
 
  452              		.cfi_offset 7, -8
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  666:Generated_Source\PSoC4/CyLib.c ****                 {
  667:Generated_Source\PSoC4/CyLib.c ****                     usbLock = 1u;
  668:Generated_Source\PSoC4/CyLib.c ****                     CySysClkImoDisableUsbLock();
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 21
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 21
 
 
  669:Generated_Source\PSoC4/CyLib.c ****                 }
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  498 004a 0C23     		movs	r3, #12
  499 004c FA18     		adds	r2, r7, r3
  500 004e 1C23     		movs	r3, #28
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 22
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 22
 
 
  501 0050 FB18     		adds	r3, r7, r3
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  730:Generated_Source\PSoC4/CyLib.c ****             * The IMO can have a different trim per frequency. To avoid possible corner
  731:Generated_Source\PSoC4/CyLib.c ****             * cases where a trim change can exceed the maximum frequency, the trim must
  732:Generated_Source\PSoC4/CyLib.c ****             * be applied at a frequency that is low enough.
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 23
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 23
 
 
  733:Generated_Source\PSoC4/CyLib.c ****             *
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  787:Generated_Source\PSoC4/CyLib.c **** 
  788:Generated_Source\PSoC4/CyLib.c **** 
  789:Generated_Source\PSoC4/CyLib.c ****             CY_SYS_CLK_IMO_TRIM1_REG = (uint32) imoTrim1Value;
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 24
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 24
 
 
  790:Generated_Source\PSoC4/CyLib.c ****             CY_PWR_BG_TRIM4_REG  = bgTrim4;
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  534 008c B6EA0000 		.word	60086
  535 0090 08001040 		.word	1074790408
  536 0094 04001040 		.word	1074790404
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 25
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 25
 
 
  537 0098 17000080 		.word	-2147483625
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  867:Generated_Source\PSoC4/CyLib.c **** 
  868:Generated_Source\PSoC4/CyLib.c ****                     if (48u == freq)
  869:Generated_Source\PSoC4/CyLib.c ****                     {
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 26
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 26
 
 
  870:Generated_Source\PSoC4/CyLib.c ****                         usbLock = 1u;
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  924:Generated_Source\PSoC4/CyLib.c ****                     (((freq - CY_SYS_CLK_IMO_MIN_FREQ_MHZ) >> 2u) & CY_SYS_CLK_IMO_SELECT_FREQ_MASK
  925:Generated_Source\PSoC4/CyLib.c ****             }
  926:Generated_Source\PSoC4/CyLib.c **** 
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 27
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 27
 
 
  927:Generated_Source\PSoC4/CyLib.c ****             #if (CY_IP_IMO_TRIMMABLE_BY_WCO)
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  981:Generated_Source\PSoC4/CyLib.c ****     void CySysClkWriteHfclkDiv(uint32 divider)
  982:Generated_Source\PSoC4/CyLib.c ****     {
  983:Generated_Source\PSoC4/CyLib.c ****         uint8  interruptState;
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 28
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 28
 
 
  984:Generated_Source\PSoC4/CyLib.c **** 
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  558              		.cfi_def_cfa_offset 24
  559 0004 00AF     		add	r7, sp, #0
  560              		.cfi_def_cfa_register 7
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 29
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 29
 
 
  561 0006 7860     		str	r0, [r7, #4]
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
 1060:Generated_Source\PSoC4/CyLib.c ****                 CY_SYS_RCB_CTRL_REG = regConfig;
 1061:Generated_Source\PSoC4/CyLib.c ****                 
 1062:Generated_Source\PSoC4/CyLib.c ****                 intrRegMaskStore = CY_SYS_BLESS_INTR_MASK_REG;
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 30
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 30
 
 
 1063:Generated_Source\PSoC4/CyLib.c ****                 if(0u != (CY_SYS_BLESS_BLERD_ACTIVE_INTR_MASK & intrRegMaskStore))
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
 1117:Generated_Source\PSoC4/CyLib.c ****                 while (0u == (CY_SYS_RCB_INTR_RCB_DONE & CY_SYS_RCB_INTR_REG))
 1118:Generated_Source\PSoC4/CyLib.c ****                 {
 1119:Generated_Source\PSoC4/CyLib.c ****                     /* Wait until RCB_DONE state */
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 31
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 31
 
 
 1120:Generated_Source\PSoC4/CyLib.c ****                 }
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  608 004c 7B68     		ldr	r3, [r7, #4]
  609 004e 013B     		subs	r3, r3, #1
  610 0050 7B60     		str	r3, [r7, #4]
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 32
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 32
 
 
  611              	.L28:
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
 1170:Generated_Source\PSoC4/CyLib.c ****     {
  643              		.loc 1 1170 0
  644              		.cfi_startproc
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 33
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 33
 
 
  645              		@ args = 0, pretend = 0, frame = 0
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  687              	CySysClkEcoReadStatus:
  688              	.LFB11:
 1183:Generated_Source\PSoC4/CyLib.c **** 
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 34
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 34
 
 
 1184:Generated_Source\PSoC4/CyLib.c **** 
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
 1220:Generated_Source\PSoC4/CyLib.c ****         return (returnValue);
  707              		.loc 1 1220 0
  708 0010 7B68     		ldr	r3, [r7, #4]
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 35
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 35
 
 
 1221:Generated_Source\PSoC4/CyLib.c ****     }
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  732              		@ args = 0, pretend = 0, frame = 16
  733              		@ frame_needed = 1, uses_anonymous_args = 0
  734 0000 90B5     		push	{r4, r7, lr}
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 36
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 36
 
 
  735              		.cfi_def_cfa_offset 12
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
 1264:Generated_Source\PSoC4/CyLib.c ****             {
 1265:Generated_Source\PSoC4/CyLib.c ****                 /* Halt CPU in debug mode if ECO sources HFCLK */
 1266:Generated_Source\PSoC4/CyLib.c ****                 CYASSERT(0u != 0u);
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 37
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 37
 
 
 1267:Generated_Source\PSoC4/CyLib.c ****             }
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
 1291:Generated_Source\PSoC4/CyLib.c ****         *
 1292:Generated_Source\PSoC4/CyLib.c ****         * Feedback resistor trim - This bit field sets the feedback resistor trim and
 1293:Generated_Source\PSoC4/CyLib.c ****         * impacts the oscillation amplitude.
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 38
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 38
 
 
 1294:Generated_Source\PSoC4/CyLib.c ****         *
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
 1348:Generated_Source\PSoC4/CyLib.c ****             regTmp |= ((uint32) (aTrim << CY_SYS_CLK_ECO_TRIM0_ATRIM_SHIFT) & CY_SYS_CLK_ECO_TRIM0_
 1349:Generated_Source\PSoC4/CyLib.c ****             CY_SYS_CLK_ECO_TRIM0_REG = regTmp;
 1350:Generated_Source\PSoC4/CyLib.c **** 
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 39
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 39
 
 
 1351:Generated_Source\PSoC4/CyLib.c ****             regTmp  = CY_SYS_CLK_ECO_TRIM1_REG & ~(CY_SYS_CLK_ECO_TRIM1_FTRIM_MASK |
@@ -2338,7 +2338,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
 1405:Generated_Source\PSoC4/CyLib.c ****             {
 1406:Generated_Source\PSoC4/CyLib.c ****                 returnStatus = CYRET_BAD_PARAM;
 1407:Generated_Source\PSoC4/CyLib.c ****             }
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 40
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 40
 
 
 1408:Generated_Source\PSoC4/CyLib.c ****             else
@@ -2398,7 +2398,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
 1462:Generated_Source\PSoC4/CyLib.c ****                     gTrim = (gmMin == 1u) ? 0u : 1u;
 1463:Generated_Source\PSoC4/CyLib.c ****                 }
 1464:Generated_Source\PSoC4/CyLib.c **** 
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 41
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 41
 
 
 1465:Generated_Source\PSoC4/CyLib.c ****                 /* Calculate feedback resistor trim */
@@ -2458,7 +2458,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
 1519:Generated_Source\PSoC4/CyLib.c ****     * Clears the unlock occurred status bit by calling CySysClkPllGetUnlockStatus(),
 1520:Generated_Source\PSoC4/CyLib.c ****     * once the PLL is locked if the wait parameter is 1).
 1521:Generated_Source\PSoC4/CyLib.c ****     *
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 42
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 42
 
 
 1522:Generated_Source\PSoC4/CyLib.c ****     * This API is available only for PSoC 4200L devices.
@@ -2518,7 +2518,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
 1576:Generated_Source\PSoC4/CyLib.c ****                         break;
 1577:Generated_Source\PSoC4/CyLib.c ****                     }
 1578:Generated_Source\PSoC4/CyLib.c **** 
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 43
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 43
 
 
 1579:Generated_Source\PSoC4/CyLib.c ****                     CyDelayUs(1u);
@@ -2578,7 +2578,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
 1633:Generated_Source\PSoC4/CyLib.c ****     * Disables the PLL.
 1634:Generated_Source\PSoC4/CyLib.c ****     *
 1635:Generated_Source\PSoC4/CyLib.c ****     * Ensures that either PLL is not the source of HFCLK before it is disabled,
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 44
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 44
 
 
 1636:Generated_Source\PSoC4/CyLib.c ****     * otherwise, the CPU will halt.
@@ -2638,7 +2638,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
 1690:Generated_Source\PSoC4/CyLib.c ****     cystatus CySysClkPllSetPQ(uint32 pll, uint32 feedback, uint32 reference, uint32 current)
 1691:Generated_Source\PSoC4/CyLib.c ****     {
 1692:Generated_Source\PSoC4/CyLib.c ****         uint32   regTmp;
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 45
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 45
 
 
 1693:Generated_Source\PSoC4/CyLib.c ****         cystatus tmp;
@@ -2698,7 +2698,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
 1747:Generated_Source\PSoC4/CyLib.c ****     * \param bypass: The bypass mode.
 1748:Generated_Source\PSoC4/CyLib.c ****     * CY_SYS_PLL_BYPASS_AUTO - Automatic usage of the lock indicator. When unlocked,
 1749:Generated_Source\PSoC4/CyLib.c ****     * automatically selects PLL the reference input (bypass mode). When locked,
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 46
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 46
 
 
 1750:Generated_Source\PSoC4/CyLib.c ****     * automatically selects the PLL output.
@@ -2758,7 +2758,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
 1804:Generated_Source\PSoC4/CyLib.c **** 
 1805:Generated_Source\PSoC4/CyLib.c ****         return (returnValue);
 1806:Generated_Source\PSoC4/CyLib.c ****     }
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 47
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 47
 
 
 1807:Generated_Source\PSoC4/CyLib.c **** 
@@ -2818,7 +2818,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
 1861:Generated_Source\PSoC4/CyLib.c ****     * \return Non-zero value when the specified PLL was unlocked.
 1862:Generated_Source\PSoC4/CyLib.c ****     *
 1863:Generated_Source\PSoC4/CyLib.c ****     *******************************************************************************/
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 48
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 48
 
 
 1864:Generated_Source\PSoC4/CyLib.c ****     uint32 CySysClkPllGetUnlockStatus(uint32 pll)
@@ -2878,7 +2878,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
 1918:Generated_Source\PSoC4/CyLib.c ****         uint32 qMin;
 1919:Generated_Source\PSoC4/CyLib.c ****         uint32 qMax;
 1920:Generated_Source\PSoC4/CyLib.c **** 
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 49
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 49
 
 
 1921:Generated_Source\PSoC4/CyLib.c ****         uint32 qVal = CY_SYS_CLK_PLL_INVALID;
@@ -2938,7 +2938,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
 1975:Generated_Source\PSoC4/CyLib.c **** 
 1976:Generated_Source\PSoC4/CyLib.c ****                 if ((pVal != CY_SYS_CLK_PLL_INVALID) && (qVal != CY_SYS_CLK_PLL_INVALID))
 1977:Generated_Source\PSoC4/CyLib.c ****                 {
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 50
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 50
 
 
 1978:Generated_Source\PSoC4/CyLib.c ****                     if (CySysClkPllSetPQ(pll, pVal, qVal, CY_SYS_CLK_PLL_CURRENT_DEFAULT) == CYRET_
@@ -2998,7 +2998,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
 2032:Generated_Source\PSoC4/CyLib.c ****     /*******************************************************************************
 2033:Generated_Source\PSoC4/CyLib.c ****     * Function Name: CySysClkPllSetOutputDivider
 2034:Generated_Source\PSoC4/CyLib.c ****     ****************************************************************************//**
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 51
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 51
 
 
 2035:Generated_Source\PSoC4/CyLib.c ****     *
@@ -3058,7 +3058,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
 2089:Generated_Source\PSoC4/CyLib.c ****     /*******************************************************************************
 2090:Generated_Source\PSoC4/CyLib.c ****     * Function Name: CySysLvdEnable
 2091:Generated_Source\PSoC4/CyLib.c ****     ****************************************************************************//**
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 52
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 52
 
 
 2092:Generated_Source\PSoC4/CyLib.c ****     *
@@ -3118,7 +3118,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  826 0014 124B     		ldr	r3, .L48+4
  827 0016 124A     		ldr	r2, .L48+4
  828 0018 1268     		ldr	r2, [r2]
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 53
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 53
 
 
  829 001a 1E21     		movs	r1, #30
@@ -3178,7 +3178,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  868 005a C046     		.align	2
  869              	.L48:
  870 005c 08000B40 		.word	1074462728
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 54
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 54
 
 
  871 0060 18000B40 		.word	1074462744
@@ -3238,7 +3238,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  911 0020 80BD     		pop	{r7, pc}
  912              	.L52:
  913 0022 C046     		.align	2
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 55
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 55
 
 
  914              	.L51:
@@ -3298,7 +3298,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  951 0014 04000B40 		.word	1074462724
  952              		.cfi_endproc
  953              	.LFE15:
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 56
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 56
 
 
  954              		.size	CySysLvdGetInterruptSource, .-CySysLvdGetInterruptSource
@@ -3358,7 +3358,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  992              		.code	16
  993              		.thumb_func
  994              		.type	CySysGetResetReason, %function
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 57
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 57
 
 
  995              	CySysGetResetReason:
@@ -3418,7 +3418,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
 2214:Generated_Source\PSoC4/CyLib.c ****                   (CY_SYS_RESET_WDT | CY_SYS_RESET_PROTFAULT | CY_SYS_RESET_SW);
 2215:Generated_Source\PSoC4/CyLib.c ****     CY_SYS_RES_CAUSE_REG = reason;
  1021              		.loc 1 2215 0
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 58
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 58
 
 
  1022 001a 044B     		ldr	r3, .L62
@@ -3478,7 +3478,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  1059              		.cfi_def_cfa_register 7
 2233:Generated_Source\PSoC4/CyLib.c ****     uint32 intState;
 2234:Generated_Source\PSoC4/CyLib.c **** 
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 59
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 59
 
 
 2235:Generated_Source\PSoC4/CyLib.c ****     /* Get current interrupt state. */
@@ -3538,7 +3538,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  1093              		.cfi_startproc
  1094              		@ args = 0, pretend = 0, frame = 8
  1095              		@ frame_needed = 1, uses_anonymous_args = 0
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 60
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 60
 
 
  1096 0000 80B5     		push	{r7, lr}
@@ -3598,7 +3598,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
 2276:Generated_Source\PSoC4/CyLib.c **** * \return The old ISR vector at this location.
 2277:Generated_Source\PSoC4/CyLib.c **** *
 2278:Generated_Source\PSoC4/CyLib.c **** *******************************************************************************/
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 61
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 61
 
 
 2279:Generated_Source\PSoC4/CyLib.c **** cyisraddress CyIntSetSysVector(uint8 number, cyisraddress address)
@@ -3658,7 +3658,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  1172 0038 D318     		adds	r3, r2, r3
  1173 003a 3A68     		ldr	r2, [r7]
  1174 003c 1A60     		str	r2, [r3]
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 62
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 62
 
 
 2291:Generated_Source\PSoC4/CyLib.c **** 
@@ -3718,7 +3718,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  1205              		.cfi_def_cfa_register 7
  1206 0006 0200     		movs	r2, r0
  1207 0008 FB1D     		adds	r3, r7, #7
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 63
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 63
 
 
  1208 000a 1A70     		strb	r2, [r3]
@@ -3778,7 +3778,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
 2331:Generated_Source\PSoC4/CyLib.c **** *
 2332:Generated_Source\PSoC4/CyLib.c **** * \return Previous interrupt vector value.
 2333:Generated_Source\PSoC4/CyLib.c **** *
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 64
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 64
 
 
 2334:Generated_Source\PSoC4/CyLib.c **** *******************************************************************************/
@@ -3838,7 +3838,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  1287 0036 1033     		adds	r3, r3, #16
  1288 0038 9B00     		lsls	r3, r3, #2
  1289 003a FA68     		ldr	r2, [r7, #12]
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 65
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 65
 
 
  1290 003c D318     		adds	r3, r2, r3
@@ -3898,7 +3898,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  1326 000a 1A70     		strb	r2, [r3]
 2365:Generated_Source\PSoC4/CyLib.c ****     cyisraddress *ramVectorTable = (cyisraddress *) CY_INT_VECT_TABLE;
  1327              		.loc 1 2365 0
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 66
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 66
 
 
  1328 000c 8023     		movs	r3, #128
@@ -3958,7 +3958,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
 2383:Generated_Source\PSoC4/CyLib.c **** {
  1365              		.loc 1 2383 0
  1366              		.cfi_startproc
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 67
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 67
 
 
  1367              		@ args = 0, pretend = 0, frame = 24
@@ -4018,7 +4018,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  1411 003c 1323     		movs	r3, #19
  1412 003e FC18     		adds	r4, r7, r3
  1413 0040 FFF7FEFF 		bl	CyEnterCriticalSection
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 68
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 68
 
 
  1414 0044 0300     		movs	r3, r0
@@ -4078,7 +4078,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  1461 0098 FFF7FEFF 		bl	CyExitCriticalSection
 2401:Generated_Source\PSoC4/CyLib.c **** }
  1462              		.loc 1 2401 0
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 69
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 69
 
 
  1463 009c C046     		nop
@@ -4138,7 +4138,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  1498              		.loc 1 2420 0
  1499 000c FB1D     		adds	r3, r7, #7
  1500 000e 1B78     		ldrb	r3, [r3]
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 70
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 70
 
 
  1501 0010 1F2B     		cmp	r3, #31
@@ -4198,7 +4198,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  1550              		.code	16
  1551              		.thumb_func
  1552              		.type	CyIntEnable, %function
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 71
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 71
 
 
  1553              	CyIntEnable:
@@ -4258,7 +4258,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  1592              		.size	CyIntEnable, .-CyIntEnable
  1593              		.section	.text.CyIntGetState,"ax",%progbits
  1594              		.align	2
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 72
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 72
 
 
  1595              		.global	CyIntGetState
@@ -4318,7 +4318,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  1630 0024 1800     		movs	r0, r3
  1631 0026 BD46     		mov	sp, r7
  1632 0028 02B0     		add	sp, sp, #8
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 73
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 73
 
 
  1633              		@ sp needed
@@ -4378,7 +4378,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  1673 001a 0A00     		movs	r2, r1
  1674 001c 1A60     		str	r2, [r3]
 2474:Generated_Source\PSoC4/CyLib.c **** }
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 74
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 74
 
 
  1675              		.loc 1 2474 0
@@ -4438,7 +4438,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  1716 0014 0A40     		ands	r2, r1
  1717 0016 0121     		movs	r1, #1
  1718 0018 9140     		lsls	r1, r1, r2
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 75
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 75
 
 
  1719 001a 0A00     		movs	r2, r1
@@ -4498,7 +4498,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  1758 000c 064B     		ldr	r3, .L107
  1759 000e FA1D     		adds	r2, r7, #7
  1760 0010 1278     		ldrb	r2, [r2]
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 76
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 76
 
 
  1761 0012 1F21     		movs	r1, #31
@@ -4558,7 +4558,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  1801 0008 FB1D     		adds	r3, r7, #7
  1802 000a 1A70     		strb	r2, [r3]
 2517:Generated_Source\PSoC4/CyLib.c ****     if(0u != reason)
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 77
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 77
 
 
 2518:Generated_Source\PSoC4/CyLib.c ****     {
@@ -4618,7 +4618,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  1834              		.cfi_offset 14, -4
  1835 0002 00AF     		add	r7, sp, #0
  1836              		.cfi_def_cfa_register 7
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 78
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 78
 
 
 2541:Generated_Source\PSoC4/CyLib.c ****     /***************************************************************************
@@ -4678,7 +4678,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  1870              		.cfi_startproc
  1871              		@ args = 0, pretend = 0, frame = 8
  1872              		@ frame_needed = 1, uses_anonymous_args = 0
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 79
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 79
 
 
  1873 0000 80B5     		push	{r7, lr}
@@ -4738,7 +4738,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  1915 003c 80BD     		pop	{r7, pc}
  1916              	.L117:
  1917 003e C046     		.align	2
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 80
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 80
 
 
  1918              	.L116:
@@ -4798,7 +4798,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  1958 001e BD46     		mov	sp, r7
  1959 0020 02B0     		add	sp, sp, #8
  1960              		@ sp needed
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 81
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 81
 
 
  1961 0022 80BD     		pop	{r7, pc}
@@ -4858,7 +4858,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  2000              	.L122:
 2601:Generated_Source\PSoC4/CyLib.c ****     }
 2602:Generated_Source\PSoC4/CyLib.c ****     else
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 82
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 82
 
 
 2603:Generated_Source\PSoC4/CyLib.c ****     {
@@ -4918,7 +4918,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  2047 0064 00000000 		.word	cydelayFreqHz
  2048 0068 00366E01 		.word	24000000
  2049 006c 3F420F00 		.word	999999
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 83
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 83
 
 
  2050 0070 40420F00 		.word	1000000
@@ -4978,7 +4978,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  2082 000c FFF7FEFF 		bl	CySysTickInit
 2633:Generated_Source\PSoC4/CyLib.c ****         CySysTickInitVar = 1u;
  2083              		.loc 1 2633 0
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 84
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 84
 
 
  2084 0010 034B     		ldr	r3, .L128
@@ -5038,7 +5038,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  2113              		@ frame_needed = 1, uses_anonymous_args = 0
  2114 0000 80B5     		push	{r7, lr}
  2115              		.cfi_def_cfa_offset 8
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 85
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 85
 
 
  2116              		.cfi_offset 7, -8
@@ -5098,7 +5098,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  2154 0038 9900     		lsls	r1, r3, #2
  2155 003a 1000     		movs	r0, r2
  2156 003c FFF7FEFF 		bl	__aeabi_uidiv
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 86
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 86
 
 
  2157 0040 0300     		movs	r3, r0
@@ -5158,7 +5158,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
 2689:Generated_Source\PSoC4/CyLib.c ****     CySysTickEnableInterrupt();
  2195              		.loc 1 2689 0
  2196 0004 FFF7FEFF 		bl	CySysTickEnableInterrupt
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 87
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 87
 
 
 2690:Generated_Source\PSoC4/CyLib.c ****     CY_SYS_SYST_CSR_REG |= CY_SYS_SYST_CSR_ENABLE;
@@ -5218,7 +5218,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  2234              		.loc 1 2706 0
  2235 0004 044B     		ldr	r3, .L139
  2236 0006 044A     		ldr	r2, .L139
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 88
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 88
 
 
  2237 0008 1268     		ldr	r2, [r2]
@@ -5278,7 +5278,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  2275 000a 0221     		movs	r1, #2
  2276 000c 0A43     		orrs	r2, r1
  2277 000e 1A60     		str	r2, [r3]
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 89
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 89
 
 
 2723:Generated_Source\PSoC4/CyLib.c **** }
@@ -5338,7 +5338,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  2315              		.loc 1 2739 0
  2316 0010 C046     		nop
  2317 0012 BD46     		mov	sp, r7
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 90
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 90
 
 
  2318              		@ sp needed
@@ -5398,7 +5398,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  2355 0012 C046     		nop
  2356 0014 BD46     		mov	sp, r7
  2357 0016 02B0     		add	sp, sp, #8
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 91
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 91
 
 
  2358              		@ sp needed
@@ -5458,7 +5458,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  2396 0012 C046     		.align	2
  2397              	.L152:
  2398 0014 14E000E0 		.word	-536813548
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 92
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 92
 
 
  2399              		.cfi_endproc
@@ -5518,7 +5518,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  2437              		.section	.text.CySysTickSetClockSource,"ax",%progbits
  2438              		.align	2
  2439              		.global	CySysTickSetClockSource
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 93
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 93
 
 
  2440              		.code	16
@@ -5578,7 +5578,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
 2821:Generated_Source\PSoC4/CyLib.c ****             CY_SYS_SYST_CSR_REG |= (uint32)(CY_SYS_SYST_CSR_CLK_SRC_SYSCLK << CY_SYS_SYST_CSR_CLK_S
  2462              		.loc 1 2821 0
  2463 000e 084B     		ldr	r3, .L162
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 94
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 94
 
 
  2464 0010 074A     		ldr	r2, .L162
@@ -5638,7 +5638,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
 2838:Generated_Source\PSoC4/CyLib.c ****     *   CY_SYS_SYST_CSR_CLK_SRC_LFCLK      SysTick is clocked by the low frequency
 2839:Generated_Source\PSoC4/CyLib.c ****     *                                      clock. (ILO 100 KHz for PSoC 5LP, and
 2840:Generated_Source\PSoC4/CyLib.c ****     *                                      LFCLK for PSoC 4).
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 95
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 95
 
 
 2841:Generated_Source\PSoC4/CyLib.c ****     *******************************************************************************/
@@ -5698,7 +5698,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
 2859:Generated_Source\PSoC4/CyLib.c **** *
 2860:Generated_Source\PSoC4/CyLib.c **** *
 2861:Generated_Source\PSoC4/CyLib.c **** * \sideeffect
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 96
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 96
 
 
 2862:Generated_Source\PSoC4/CyLib.c **** *  Clears SysTick count flag if it was set.
@@ -5758,7 +5758,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  2573              		.loc 1 2879 0
  2574              		.cfi_startproc
  2575              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 97
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 97
 
 
  2576              		@ frame_needed = 1, uses_anonymous_args = 0
@@ -5818,7 +5818,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
 2903:Generated_Source\PSoC4/CyLib.c **** *                                specified number.
 2904:Generated_Source\PSoC4/CyLib.c **** *
 2905:Generated_Source\PSoC4/CyLib.c **** * \return
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 98
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 98
 
 
 2906:Generated_Source\PSoC4/CyLib.c **** *  Returns the address of the previous callback function.
@@ -5878,7 +5878,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  2646              	.LFE49:
  2647              		.size	CySysTickSetCallback, .-CySysTickSetCallback
  2648              		.section	.text.CySysTickGetCallback,"ax",%progbits
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 99
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 99
 
 
  2649              		.align	2
@@ -5938,7 +5938,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  2683 0018 00000000 		.word	CySysTickCallbacks
  2684              		.cfi_endproc
  2685              	.LFE50:
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 100
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 100
 
 
  2686              		.size	CySysTickGetCallback, .-CySysTickGetCallback
@@ -5998,7 +5998,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  2721 001e 002B     		cmp	r3, #0
  2722 0020 04D0     		beq	.L186
 2960:Generated_Source\PSoC4/CyLib.c ****             {
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 101
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 101
 
 
 2961:Generated_Source\PSoC4/CyLib.c ****                 (void)(CySysTickCallbacks[i])();
@@ -6058,7 +6058,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
 2975:Generated_Source\PSoC4/CyLib.c **** *  numbers is very small.
 2976:Generated_Source\PSoC4/CyLib.c **** *
 2977:Generated_Source\PSoC4/CyLib.c **** *  \param uniqueId: The pointer to a two element 32-bit unsigned integer array. Returns
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 102
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 102
 
 
 2978:Generated_Source\PSoC4/CyLib.c **** *  the 64-bit unique ID of the device by loading them into the integer array
@@ -6118,7 +6118,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  2804 003c DBB2     		uxtb	r3, r3
  2805 003e 1A06     		lsls	r2, r3, #24
  2806 0040 7B68     		ldr	r3, [r7, #4]
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 103
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 103
 
 
  2807 0042 1B68     		ldr	r3, [r3]
@@ -6178,7 +6178,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
 2996:Generated_Source\PSoC4/CyLib.c ****     uniqueId[0u] |= ((uint32) CY_GET_XTND_REG8((void CYFAR *) (CYREG_FLSHID_CUST_TABLES_LOT_MSB   )
 2997:Generated_Source\PSoC4/CyLib.c ****     uniqueId[0u] |= ((uint32) CY_GET_XTND_REG8((void CYFAR *) (CYREG_MLOGIC_REV_ID                )
 2998:Generated_Source\PSoC4/CyLib.c ****     uniqueId[0u] |= ((uint32) CY_GET_XTND_REG8((void CYFAR *) (CYREG_FLSHID_CUST_TABLES_WAFER_NUM )
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 104
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 104
 
 
 2999:Generated_Source\PSoC4/CyLib.c **** 
@@ -6219,10 +6219,10 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  2882 0006 00000000 		.4byte	.Ldebug_abbrev0
  2883 000a 04       		.byte	0x4
  2884 000b 01       		.uleb128 0x1
- 2885 000c 34030000 		.4byte	.LASF109
+ 2885 000c 46030000 		.4byte	.LASF109
  2886 0010 0C       		.byte	0xc
- 2887 0011 8F060000 		.4byte	.LASF110
- 2888 0015 5F020000 		.4byte	.LASF111
+ 2887 0011 91060000 		.4byte	.LASF110
+ 2888 0015 5D010000 		.4byte	.LASF111
  2889 0019 00000000 		.4byte	.Ldebug_ranges0+0
  2890 001d 00000000 		.4byte	0
  2891 0021 00000000 		.4byte	.Ldebug_line0
@@ -6233,18 +6233,18 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  2896 002c 02       		.uleb128 0x2
  2897 002d 01       		.byte	0x1
  2898 002e 08       		.byte	0x8
- 2899 002f 0C050000 		.4byte	.LASF1
+ 2899 002f 0E050000 		.4byte	.LASF1
  2900 0033 02       		.uleb128 0x2
  2901 0034 02       		.byte	0x2
  2902 0035 05       		.byte	0x5
- 2903 0036 1A050000 		.4byte	.LASF2
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 105
+ 2903 0036 1C050000 		.4byte	.LASF2
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 105
 
 
  2904 003a 02       		.uleb128 0x2
  2905 003b 02       		.byte	0x2
  2906 003c 07       		.byte	0x7
- 2907 003d D5020000 		.4byte	.LASF3
+ 2907 003d E7020000 		.4byte	.LASF3
  2908 0041 02       		.uleb128 0x2
  2909 0042 04       		.byte	0x4
  2910 0043 05       		.byte	0x5
@@ -6252,7 +6252,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  2912 0048 02       		.uleb128 0x2
  2913 0049 04       		.byte	0x4
  2914 004a 07       		.byte	0x7
- 2915 004b 32020000 		.4byte	.LASF5
+ 2915 004b 71020000 		.4byte	.LASF5
  2916 004f 02       		.uleb128 0x2
  2917 0050 08       		.byte	0x8
  2918 0051 05       		.byte	0x5
@@ -6268,7 +6268,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  2928 0064 02       		.uleb128 0x2
  2929 0065 04       		.byte	0x4
  2930 0066 07       		.byte	0x7
- 2931 0067 16020000 		.4byte	.LASF8
+ 2931 0067 55020000 		.4byte	.LASF8
  2932 006b 04       		.uleb128 0x4
  2933 006c 3A010000 		.4byte	.LASF9
  2934 0070 02       		.byte	0x2
@@ -6280,14 +6280,14 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  2940 007d D301     		.2byte	0x1d3
  2941 007f 3A000000 		.4byte	0x3a
  2942 0083 04       		.uleb128 0x4
- 2943 0084 7A010000 		.4byte	.LASF11
+ 2943 0084 B9010000 		.4byte	.LASF11
  2944 0088 02       		.byte	0x2
  2945 0089 D401     		.2byte	0x1d4
  2946 008b 48000000 		.4byte	0x48
  2947 008f 02       		.uleb128 0x2
  2948 0090 04       		.byte	0x4
  2949 0091 04       		.byte	0x4
- 2950 0092 B3040000 		.4byte	.LASF12
+ 2950 0092 B5040000 		.4byte	.LASF12
  2951 0096 02       		.uleb128 0x2
  2952 0097 08       		.byte	0x8
  2953 0098 04       		.byte	0x4
@@ -6295,31 +6295,31 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  2955 009d 02       		.uleb128 0x2
  2956 009e 01       		.byte	0x1
  2957 009f 08       		.byte	0x8
- 2958 00a0 6E050000 		.4byte	.LASF14
+ 2958 00a0 70050000 		.4byte	.LASF14
  2959 00a4 04       		.uleb128 0x4
- 2960 00a5 75060000 		.4byte	.LASF15
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 106
+ 2960 00a5 77060000 		.4byte	.LASF15
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 106
 
 
  2961 00a9 02       		.byte	0x2
  2962 00aa 7402     		.2byte	0x274
  2963 00ac 48000000 		.4byte	0x48
  2964 00b0 04       		.uleb128 0x4
- 2965 00b1 F6040000 		.4byte	.LASF16
+ 2965 00b1 F8040000 		.4byte	.LASF16
  2966 00b5 02       		.byte	0x2
  2967 00b6 7C02     		.2byte	0x27c
  2968 00b8 BC000000 		.4byte	0xbc
  2969 00bc 05       		.uleb128 0x5
  2970 00bd 6B000000 		.4byte	0x6b
  2971 00c1 04       		.uleb128 0x4
- 2972 00c2 E9030000 		.4byte	.LASF17
+ 2972 00c2 FB030000 		.4byte	.LASF17
  2973 00c6 02       		.byte	0x2
  2974 00c7 7E02     		.2byte	0x27e
  2975 00c9 CD000000 		.4byte	0xcd
  2976 00cd 05       		.uleb128 0x5
  2977 00ce 83000000 		.4byte	0x83
  2978 00d2 04       		.uleb128 0x4
- 2979 00d3 73050000 		.4byte	.LASF18
+ 2979 00d3 75050000 		.4byte	.LASF18
  2980 00d7 02       		.byte	0x2
  2981 00d8 8E02     		.2byte	0x28e
  2982 00da DE000000 		.4byte	0xde
@@ -6330,18 +6330,18 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  2987 00e5 02       		.uleb128 0x2
  2988 00e6 08       		.byte	0x8
  2989 00e7 04       		.byte	0x4
- 2990 00e8 47040000 		.4byte	.LASF19
+ 2990 00e8 49040000 		.4byte	.LASF19
  2991 00ec 02       		.uleb128 0x2
  2992 00ed 04       		.byte	0x4
  2993 00ee 07       		.byte	0x7
- 2994 00ef 1B040000 		.4byte	.LASF20
+ 2994 00ef 1D040000 		.4byte	.LASF20
  2995 00f3 08       		.uleb128 0x8
- 2996 00f4 C8040000 		.4byte	.LASF21
+ 2996 00f4 CA040000 		.4byte	.LASF21
  2997 00f8 03       		.byte	0x3
  2998 00f9 F5       		.byte	0xf5
  2999 00fa DE000000 		.4byte	0xde
  3000 00fe 09       		.uleb128 0x9
- 3001 00ff 7E060000 		.4byte	.LASF22
+ 3001 00ff 80060000 		.4byte	.LASF22
  3002 0103 01       		.byte	0x1
  3003 0104 6B       		.byte	0x6b
  3004 0105 00000000 		.4byte	.LFB2
@@ -6349,7 +6349,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3006 010d 01       		.uleb128 0x1
  3007 010e 9C       		.byte	0x9c
  3008 010f 09       		.uleb128 0x9
- 3009 0110 0B040000 		.4byte	.LASF23
+ 3009 0110 9E020000 		.4byte	.LASF23
  3010 0114 01       		.byte	0x1
  3011 0115 8B       		.byte	0x8b
  3012 0116 00000000 		.4byte	.LFB3
@@ -6358,7 +6358,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3015 011f 9C       		.byte	0x9c
  3016 0120 0A       		.uleb128 0xa
  3017 0121 1F000000 		.4byte	.LASF26
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 107
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 107
 
 
  3018 0125 01       		.byte	0x1
@@ -6369,7 +6369,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3023 0131 9C       		.byte	0x9c
  3024 0132 64010000 		.4byte	0x164
  3025 0136 0B       		.uleb128 0xb
- 3026 0137 42050000 		.4byte	.LASF28
+ 3026 0137 44050000 		.4byte	.LASF28
  3027 013b 01       		.byte	0x1
  3028 013c AD01     		.2byte	0x1ad
  3029 013e 83000000 		.4byte	0x83
@@ -6385,7 +6385,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3039 0152 91       		.byte	0x91
  3040 0153 6F       		.sleb128 -17
  3041 0154 0C       		.uleb128 0xc
- 3042 0155 BB060000 		.4byte	.LASF25
+ 3042 0155 BD060000 		.4byte	.LASF25
  3043 0159 01       		.byte	0x1
  3044 015a B001     		.2byte	0x1b0
  3045 015c 83000000 		.4byte	0x83
@@ -6394,7 +6394,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3048 0162 68       		.sleb128 -24
  3049 0163 00       		.byte	0
  3050 0164 0D       		.uleb128 0xd
- 3051 0165 D4030000 		.4byte	.LASF27
+ 3051 0165 E6030000 		.4byte	.LASF27
  3052 0169 01       		.byte	0x1
  3053 016a D901     		.2byte	0x1d9
  3054 016c 00000000 		.4byte	.LFB5
@@ -6412,13 +6412,13 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3066 0188 74       		.sleb128 -12
  3067 0189 00       		.byte	0
  3068 018a 0E       		.uleb128 0xe
- 3069 018b 9C010000 		.4byte	.LASF37
+ 3069 018b DB010000 		.4byte	.LASF37
  3070 018f 01       		.byte	0x1
  3071 0190 FE01     		.2byte	0x1fe
  3072 0192 83000000 		.4byte	0x83
  3073 0196 00000000 		.4byte	.LFB6
  3074 019a 34000000 		.4byte	.LFE6-.LFB6
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 108
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 108
 
 
  3075 019e 01       		.uleb128 0x1
@@ -6433,7 +6433,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3084 01b1 91       		.byte	0x91
  3085 01b2 6F       		.sleb128 -17
  3086 01b3 0C       		.uleb128 0xc
- 3087 01b4 5B040000 		.4byte	.LASF30
+ 3087 01b4 5D040000 		.4byte	.LASF30
  3088 01b8 01       		.byte	0x1
  3089 01b9 0102     		.2byte	0x201
  3090 01bb 83000000 		.4byte	0x83
@@ -6442,7 +6442,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3093 01c1 68       		.sleb128 -24
  3094 01c2 00       		.byte	0
  3095 01c3 0A       		.uleb128 0xa
- 3096 01c4 90050000 		.4byte	.LASF31
+ 3096 01c4 92050000 		.4byte	.LASF31
  3097 01c8 01       		.byte	0x1
  3098 01c9 3502     		.2byte	0x235
  3099 01cb 00000000 		.4byte	.LFB7
@@ -6451,7 +6451,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3102 01d4 9C       		.byte	0x9c
  3103 01d5 F8010000 		.4byte	0x1f8
  3104 01d9 0B       		.uleb128 0xb
- 3105 01da 59060000 		.4byte	.LASF32
+ 3105 01da 5B060000 		.4byte	.LASF32
  3106 01de 01       		.byte	0x1
  3107 01df 3502     		.2byte	0x235
  3108 01e1 83000000 		.4byte	0x83
@@ -6468,7 +6468,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3119 01f6 6F       		.sleb128 -17
  3120 01f7 00       		.byte	0
  3121 01f8 0A       		.uleb128 0xa
- 3122 01f9 1F030000 		.4byte	.LASF33
+ 3122 01f9 31030000 		.4byte	.LASF33
  3123 01fd 01       		.byte	0x1
  3124 01fe 6F02     		.2byte	0x26f
  3125 0200 00000000 		.4byte	.LFB8
@@ -6478,7 +6478,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3129 020a 4B020000 		.4byte	0x24b
  3130 020e 0B       		.uleb128 0xb
  3131 020f E7000000 		.4byte	.LASF34
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 109
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 109
 
 
  3132 0213 01       		.byte	0x1
@@ -6531,20 +6531,20 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3179 0270 05       		.uleb128 0x5
  3180 0271 60020000 		.4byte	0x260
  3181 0275 0E       		.uleb128 0xe
- 3182 0276 4C050000 		.4byte	.LASF38
+ 3182 0276 4E050000 		.4byte	.LASF38
  3183 027a 01       		.byte	0x1
  3184 027b 0304     		.2byte	0x403
  3185 027d A4000000 		.4byte	0xa4
  3186 0281 00000000 		.4byte	.LFB9
  3187 0285 74000000 		.4byte	.LFE9-.LFB9
  3188 0289 01       		.uleb128 0x1
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 110
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 110
 
 
  3189 028a 9C       		.byte	0x9c
  3190 028b AE020000 		.4byte	0x2ae
  3191 028f 0B       		.uleb128 0xb
- 3192 0290 4F060000 		.4byte	.LASF39
+ 3192 0290 51060000 		.4byte	.LASF39
  3193 0294 01       		.byte	0x1
  3194 0295 0304     		.2byte	0x403
  3195 0297 83000000 		.4byte	0x83
@@ -6552,7 +6552,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3197 029c 91       		.byte	0x91
  3198 029d 6C       		.sleb128 -20
  3199 029e 0C       		.uleb128 0xc
- 3200 029f FE030000 		.4byte	.LASF40
+ 3200 029f 10040000 		.4byte	.LASF40
  3201 02a3 01       		.byte	0x1
  3202 02a4 0504     		.2byte	0x405
  3203 02a6 A4000000 		.4byte	0xa4
@@ -6561,7 +6561,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3206 02ac 74       		.sleb128 -12
  3207 02ad 00       		.byte	0
  3208 02ae 11       		.uleb128 0x11
- 3209 02af 31060000 		.4byte	.LASF41
+ 3209 02af 33060000 		.4byte	.LASF41
  3210 02b3 01       		.byte	0x1
  3211 02b4 9104     		.2byte	0x491
  3212 02b6 00000000 		.4byte	.LFB10
@@ -6569,7 +6569,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3214 02be 01       		.uleb128 0x1
  3215 02bf 9C       		.byte	0x9c
  3216 02c0 12       		.uleb128 0x12
- 3217 02c1 81010000 		.4byte	.LASF42
+ 3217 02c1 C0010000 		.4byte	.LASF42
  3218 02c5 01       		.byte	0x1
  3219 02c6 B304     		.2byte	0x4b3
  3220 02c8 83000000 		.4byte	0x83
@@ -6579,7 +6579,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3224 02d5 9C       		.byte	0x9c
  3225 02d6 EA020000 		.4byte	0x2ea
  3226 02da 0C       		.uleb128 0xc
- 3227 02db EF060000 		.4byte	.LASF43
+ 3227 02db F1060000 		.4byte	.LASF43
  3228 02df 01       		.byte	0x1
  3229 02e0 B504     		.2byte	0x4b5
  3230 02e2 83000000 		.4byte	0x83
@@ -6588,7 +6588,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3233 02e8 74       		.sleb128 -12
  3234 02e9 00       		.byte	0
  3235 02ea 0A       		.uleb128 0xa
- 3236 02eb 61060000 		.4byte	.LASF44
+ 3236 02eb 63060000 		.4byte	.LASF44
  3237 02ef 01       		.byte	0x1
  3238 02f0 E204     		.2byte	0x4e2
  3239 02f2 00000000 		.4byte	.LFB12
@@ -6597,8 +6597,8 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3242 02fb 9C       		.byte	0x9c
  3243 02fc 1F030000 		.4byte	0x31f
  3244 0300 0B       		.uleb128 0xb
- 3245 0301 59060000 		.4byte	.LASF32
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 111
+ 3245 0301 5B060000 		.4byte	.LASF32
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 111
 
 
  3246 0305 01       		.byte	0x1
@@ -6617,7 +6617,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3259 031d 6F       		.sleb128 -17
  3260 031e 00       		.byte	0
  3261 031f 0A       		.uleb128 0xa
- 3262 0320 B9040000 		.4byte	.LASF45
+ 3262 0320 BB040000 		.4byte	.LASF45
  3263 0324 01       		.byte	0x1
  3264 0325 4608     		.2byte	0x846
  3265 0327 00000000 		.4byte	.LFB13
@@ -6626,7 +6626,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3268 0330 9C       		.byte	0x9c
  3269 0331 45030000 		.4byte	0x345
  3270 0335 0B       		.uleb128 0xb
- 3271 0336 FB040000 		.4byte	.LASF46
+ 3271 0336 FD040000 		.4byte	.LASF46
  3272 033a 01       		.byte	0x1
  3273 033b 4608     		.2byte	0x846
  3274 033d 83000000 		.4byte	0x83
@@ -6635,7 +6635,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3277 0343 74       		.sleb128 -12
  3278 0344 00       		.byte	0
  3279 0345 11       		.uleb128 0x11
- 3280 0346 12060000 		.4byte	.LASF47
+ 3280 0346 14060000 		.4byte	.LASF47
  3281 034a 01       		.byte	0x1
  3282 034b 6408     		.2byte	0x864
  3283 034d 00000000 		.4byte	.LFB14
@@ -6643,7 +6643,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3285 0355 01       		.uleb128 0x1
  3286 0356 9C       		.byte	0x9c
  3287 0357 13       		.uleb128 0x13
- 3288 0358 44020000 		.4byte	.LASF87
+ 3288 0358 83020000 		.4byte	.LASF87
  3289 035c 01       		.byte	0x1
  3290 035d 7608     		.2byte	0x876
  3291 035f 83000000 		.4byte	0x83
@@ -6652,18 +6652,18 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3294 036b 01       		.uleb128 0x1
  3295 036c 9C       		.byte	0x9c
  3296 036d 11       		.uleb128 0x11
- 3297 036e 63010000 		.4byte	.LASF48
+ 3297 036e A2010000 		.4byte	.LASF48
  3298 0372 01       		.byte	0x1
  3299 0373 8608     		.2byte	0x886
  3300 0375 00000000 		.4byte	.LFB16
  3301 0379 14000000 		.4byte	.LFE16-.LFB16
  3302 037d 01       		.uleb128 0x1
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 112
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 112
 
 
  3303 037e 9C       		.byte	0x9c
  3304 037f 12       		.uleb128 0x12
- 3305 0380 C1020000 		.4byte	.LASF49
+ 3305 0380 D3020000 		.4byte	.LASF49
  3306 0384 01       		.byte	0x1
  3307 0385 A008     		.2byte	0x8a0
  3308 0387 83000000 		.4byte	0x83
@@ -6673,7 +6673,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3312 0394 9C       		.byte	0x9c
  3313 0395 B8030000 		.4byte	0x3b8
  3314 0399 0B       		.uleb128 0xb
- 3315 039a 67050000 		.4byte	.LASF50
+ 3315 039a 69050000 		.4byte	.LASF50
  3316 039e 01       		.byte	0x1
  3317 039f A008     		.2byte	0x8a0
  3318 03a1 83000000 		.4byte	0x83
@@ -6681,7 +6681,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3320 03a6 91       		.byte	0x91
  3321 03a7 6C       		.sleb128 -20
  3322 03a8 0C       		.uleb128 0xc
- 3323 03a9 FE030000 		.4byte	.LASF40
+ 3323 03a9 10040000 		.4byte	.LASF40
  3324 03ad 01       		.byte	0x1
  3325 03ae A208     		.2byte	0x8a2
  3326 03b0 83000000 		.4byte	0x83
@@ -6718,10 +6718,10 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3357 03f3 9C       		.byte	0x9c
  3358 03f4 08040000 		.4byte	0x408
  3359 03f8 0B       		.uleb128 0xb
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 113
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 113
 
 
- 3360 03f9 97010000 		.4byte	.LASF54
+ 3360 03f9 D6010000 		.4byte	.LASF54
  3361 03fd 01       		.byte	0x1
  3362 03fe CE08     		.2byte	0x8ce
  3363 0400 83000000 		.4byte	0x83
@@ -6730,7 +6730,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3366 0406 74       		.sleb128 -12
  3367 0407 00       		.byte	0
  3368 0408 0E       		.uleb128 0xe
- 3369 0409 C2030000 		.4byte	.LASF55
+ 3369 0409 D4030000 		.4byte	.LASF55
  3370 040d 01       		.byte	0x1
  3371 040e E708     		.2byte	0x8e7
  3372 0410 D2000000 		.4byte	0xd2
@@ -6740,7 +6740,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3376 041d 9C       		.byte	0x9c
  3377 041e 5F040000 		.4byte	0x45f
  3378 0422 0B       		.uleb128 0xb
- 3379 0423 0F030000 		.4byte	.LASF56
+ 3379 0423 21030000 		.4byte	.LASF56
  3380 0427 01       		.byte	0x1
  3381 0428 E708     		.2byte	0x8e7
  3382 042a 6B000000 		.4byte	0x6b
@@ -6748,7 +6748,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3384 042f 91       		.byte	0x91
  3385 0430 6F       		.sleb128 -17
  3386 0431 0B       		.uleb128 0xb
- 3387 0432 53040000 		.4byte	.LASF57
+ 3387 0432 55040000 		.4byte	.LASF57
  3388 0436 01       		.byte	0x1
  3389 0437 E708     		.2byte	0x8e7
  3390 0439 D2000000 		.4byte	0xd2
@@ -6776,9 +6776,9 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3412 0460 04       		.byte	0x4
  3413 0461 D2000000 		.4byte	0xd2
  3414 0465 0E       		.uleb128 0xe
- 3415 0466 30050000 		.4byte	.LASF60
+ 3415 0466 32050000 		.4byte	.LASF60
  3416 046a 01       		.byte	0x1
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 114
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 114
 
 
  3417 046b 0909     		.2byte	0x909
@@ -6789,7 +6789,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3422 047a 9C       		.byte	0x9c
  3423 047b 9E040000 		.4byte	0x49e
  3424 047f 0B       		.uleb128 0xb
- 3425 0480 0F030000 		.4byte	.LASF56
+ 3425 0480 21030000 		.4byte	.LASF56
  3426 0484 01       		.byte	0x1
  3427 0485 0909     		.2byte	0x909
  3428 0487 6B000000 		.4byte	0x6b
@@ -6806,7 +6806,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3439 049c 74       		.sleb128 -12
  3440 049d 00       		.byte	0
  3441 049e 0E       		.uleb128 0xe
- 3442 049f 00030000 		.4byte	.LASF61
+ 3442 049f 12030000 		.4byte	.LASF61
  3443 04a3 01       		.byte	0x1
  3444 04a4 1F09     		.2byte	0x91f
  3445 04a6 D2000000 		.4byte	0xd2
@@ -6816,7 +6816,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3449 04b3 9C       		.byte	0x9c
  3450 04b4 F5040000 		.4byte	0x4f5
  3451 04b8 0B       		.uleb128 0xb
- 3452 04b9 0F030000 		.4byte	.LASF56
+ 3452 04b9 21030000 		.4byte	.LASF56
  3453 04bd 01       		.byte	0x1
  3454 04be 1F09     		.2byte	0x91f
  3455 04c0 6B000000 		.4byte	0x6b
@@ -6824,7 +6824,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3457 04c5 91       		.byte	0x91
  3458 04c6 6F       		.sleb128 -17
  3459 04c7 0B       		.uleb128 0xb
- 3460 04c8 53040000 		.4byte	.LASF57
+ 3460 04c8 55040000 		.4byte	.LASF57
  3461 04cc 01       		.byte	0x1
  3462 04cd 1F09     		.2byte	0x91f
  3463 04cf D2000000 		.4byte	0xd2
@@ -6838,7 +6838,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3471 04de D2000000 		.4byte	0xd2
  3472 04e2 02       		.uleb128 0x2
  3473 04e3 91       		.byte	0x91
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 115
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 115
 
 
  3474 04e4 70       		.sleb128 -16
@@ -6852,7 +6852,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3482 04f3 74       		.sleb128 -12
  3483 04f4 00       		.byte	0
  3484 04f5 0E       		.uleb128 0xe
- 3485 04f6 DA040000 		.4byte	.LASF62
+ 3485 04f6 DC040000 		.4byte	.LASF62
  3486 04fa 01       		.byte	0x1
  3487 04fb 3B09     		.2byte	0x93b
  3488 04fd D2000000 		.4byte	0xd2
@@ -6862,7 +6862,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3492 050a 9C       		.byte	0x9c
  3493 050b 2E050000 		.4byte	0x52e
  3494 050f 0B       		.uleb128 0xb
- 3495 0510 0F030000 		.4byte	.LASF56
+ 3495 0510 21030000 		.4byte	.LASF56
  3496 0514 01       		.byte	0x1
  3497 0515 3B09     		.2byte	0x93b
  3498 0517 6B000000 		.4byte	0x6b
@@ -6879,7 +6879,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3509 052c 74       		.sleb128 -12
  3510 052d 00       		.byte	0
  3511 052e 0A       		.uleb128 0xa
- 3512 052f A2040000 		.4byte	.LASF63
+ 3512 052f A4040000 		.4byte	.LASF63
  3513 0533 01       		.byte	0x1
  3514 0534 4E09     		.2byte	0x94e
  3515 0536 00000000 		.4byte	.LFB24
@@ -6888,7 +6888,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3518 053f 9C       		.byte	0x9c
  3519 0540 90050000 		.4byte	0x590
  3520 0544 0B       		.uleb128 0xb
- 3521 0545 0F030000 		.4byte	.LASF56
+ 3521 0545 21030000 		.4byte	.LASF56
  3522 0549 01       		.byte	0x1
  3523 054a 4E09     		.2byte	0x94e
  3524 054c 6B000000 		.4byte	0x6b
@@ -6896,9 +6896,9 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3526 0551 91       		.byte	0x91
  3527 0552 5F       		.sleb128 -33
  3528 0553 0B       		.uleb128 0xb
- 3529 0554 16030000 		.4byte	.LASF64
+ 3529 0554 28030000 		.4byte	.LASF64
  3530 0558 01       		.byte	0x1
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 116
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 116
 
 
  3531 0559 4E09     		.2byte	0x94e
@@ -6915,7 +6915,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3542 056f 91       		.byte	0x91
  3543 0570 6B       		.sleb128 -21
  3544 0571 0C       		.uleb128 0xc
- 3545 0572 5D010000 		.4byte	.LASF65
+ 3545 0572 9C010000 		.4byte	.LASF65
  3546 0576 01       		.byte	0x1
  3547 0577 5109     		.2byte	0x951
  3548 0579 83000000 		.4byte	0x83
@@ -6923,7 +6923,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3550 057e 91       		.byte	0x91
  3551 057f 6C       		.sleb128 -20
  3552 0580 0C       		.uleb128 0xc
- 3553 0581 E0010000 		.4byte	.LASF66
+ 3553 0581 1F020000 		.4byte	.LASF66
  3554 0585 01       		.byte	0x1
  3555 0586 5209     		.2byte	0x952
  3556 0588 83000000 		.4byte	0x83
@@ -6932,7 +6932,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3559 058e 64       		.sleb128 -28
  3560 058f 00       		.byte	0
  3561 0590 0E       		.uleb128 0xe
- 3562 0591 B4010000 		.4byte	.LASF67
+ 3562 0591 F3010000 		.4byte	.LASF67
  3563 0595 01       		.byte	0x1
  3564 0596 7009     		.2byte	0x970
  3565 0598 6B000000 		.4byte	0x6b
@@ -6942,7 +6942,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3569 05a5 9C       		.byte	0x9c
  3570 05a6 C9050000 		.4byte	0x5c9
  3571 05aa 0B       		.uleb128 0xb
- 3572 05ab 0F030000 		.4byte	.LASF56
+ 3572 05ab 21030000 		.4byte	.LASF56
  3573 05af 01       		.byte	0x1
  3574 05b0 7009     		.2byte	0x970
  3575 05b2 6B000000 		.4byte	0x6b
@@ -6950,7 +6950,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3577 05b7 91       		.byte	0x91
  3578 05b8 6F       		.sleb128 -17
  3579 05b9 0C       		.uleb128 0xc
- 3580 05ba 16030000 		.4byte	.LASF64
+ 3580 05ba 28030000 		.4byte	.LASF64
  3581 05be 01       		.byte	0x1
  3582 05bf 7209     		.2byte	0x972
  3583 05c1 6B000000 		.4byte	0x6b
@@ -6958,11 +6958,11 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3585 05c6 91       		.byte	0x91
  3586 05c7 77       		.sleb128 -9
  3587 05c8 00       		.byte	0
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 117
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 117
 
 
  3588 05c9 0D       		.uleb128 0xd
- 3589 05ca 24050000 		.4byte	.LASF68
+ 3589 05ca 26050000 		.4byte	.LASF68
  3590 05ce 01       		.byte	0x1
  3591 05cf 8509     		.2byte	0x985
  3592 05d1 00000000 		.4byte	.LFB26
@@ -6971,7 +6971,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3595 05da 9C       		.byte	0x9c
  3596 05db EF050000 		.4byte	0x5ef
  3597 05df 0B       		.uleb128 0xb
- 3598 05e0 0F030000 		.4byte	.LASF56
+ 3598 05e0 21030000 		.4byte	.LASF56
  3599 05e4 01       		.byte	0x1
  3600 05e5 8509     		.2byte	0x985
  3601 05e7 6B000000 		.4byte	0x6b
@@ -6990,7 +6990,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3614 0604 9C       		.byte	0x9c
  3615 0605 19060000 		.4byte	0x619
  3616 0609 0B       		.uleb128 0xb
- 3617 060a 0F030000 		.4byte	.LASF56
+ 3617 060a 21030000 		.4byte	.LASF56
  3618 060e 01       		.byte	0x1
  3619 060f 9709     		.2byte	0x997
  3620 0611 6B000000 		.4byte	0x6b
@@ -7008,7 +7008,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3632 062a 9C       		.byte	0x9c
  3633 062b 3F060000 		.4byte	0x63f
  3634 062f 0B       		.uleb128 0xb
- 3635 0630 0F030000 		.4byte	.LASF56
+ 3635 0630 21030000 		.4byte	.LASF56
  3636 0634 01       		.byte	0x1
  3637 0635 A709     		.2byte	0x9a7
  3638 0637 6B000000 		.4byte	0x6b
@@ -7017,8 +7017,8 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3641 063d 77       		.sleb128 -9
  3642 063e 00       		.byte	0
  3643 063f 0D       		.uleb128 0xd
- 3644 0640 9C020000 		.4byte	.LASF71
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 118
+ 3644 0640 AE020000 		.4byte	.LASF71
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 118
 
 
  3645 0644 01       		.byte	0x1
@@ -7029,7 +7029,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3650 0650 9C       		.byte	0x9c
  3651 0651 65060000 		.4byte	0x665
  3652 0655 0B       		.uleb128 0xb
- 3653 0656 0F030000 		.4byte	.LASF56
+ 3653 0656 21030000 		.4byte	.LASF56
  3654 065a 01       		.byte	0x1
  3655 065b B509     		.2byte	0x9b5
  3656 065d 6B000000 		.4byte	0x6b
@@ -7038,7 +7038,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3659 0663 77       		.sleb128 -9
  3660 0664 00       		.byte	0
  3661 0665 0D       		.uleb128 0xd
- 3662 0666 35040000 		.4byte	.LASF72
+ 3662 0666 37040000 		.4byte	.LASF72
  3663 066a 01       		.byte	0x1
  3664 066b C409     		.2byte	0x9c4
  3665 066d 00000000 		.4byte	.LFB30
@@ -7047,7 +7047,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3668 0676 9C       		.byte	0x9c
  3669 0677 8B060000 		.4byte	0x68b
  3670 067b 0B       		.uleb128 0xb
- 3671 067c 0F030000 		.4byte	.LASF56
+ 3671 067c 21030000 		.4byte	.LASF56
  3672 0680 01       		.byte	0x1
  3673 0681 C409     		.2byte	0x9c4
  3674 0683 6B000000 		.4byte	0x6b
@@ -7056,7 +7056,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3677 0689 77       		.sleb128 -9
  3678 068a 00       		.byte	0
  3679 068b 0D       		.uleb128 0xd
- 3680 068c 05050000 		.4byte	.LASF73
+ 3680 068c 07050000 		.4byte	.LASF73
  3681 0690 01       		.byte	0x1
  3682 0691 D309     		.2byte	0x9d3
  3683 0693 00000000 		.4byte	.LFB31
@@ -7065,7 +7065,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3686 069c 9C       		.byte	0x9c
  3687 069d B1060000 		.4byte	0x6b1
  3688 06a1 0B       		.uleb128 0xb
- 3689 06a2 67050000 		.4byte	.LASF50
+ 3689 06a2 69050000 		.4byte	.LASF50
  3690 06a6 01       		.byte	0x1
  3691 06a7 D309     		.2byte	0x9d3
  3692 06a9 6B000000 		.4byte	0x6b
@@ -7078,14 +7078,14 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3699 06b6 01       		.byte	0x1
  3700 06b7 EB09     		.2byte	0x9eb
  3701 06b9 00000000 		.4byte	.LFB32
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 119
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 119
 
 
  3702 06bd 24000000 		.4byte	.LFE32-.LFB32
  3703 06c1 01       		.uleb128 0x1
  3704 06c2 9C       		.byte	0x9c
  3705 06c3 0A       		.uleb128 0xa
- 3706 06c4 D8050000 		.4byte	.LASF75
+ 3706 06c4 DA050000 		.4byte	.LASF75
  3707 06c8 01       		.byte	0x1
  3708 06c9 FF09     		.2byte	0x9ff
  3709 06cb 00000000 		.4byte	.LFB33
@@ -7094,7 +7094,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3712 06d4 9C       		.byte	0x9c
  3713 06d5 E9060000 		.4byte	0x6e9
  3714 06d9 0B       		.uleb128 0xb
- 3715 06da E9040000 		.4byte	.LASF76
+ 3715 06da EB040000 		.4byte	.LASF76
  3716 06de 01       		.byte	0x1
  3717 06df FF09     		.2byte	0x9ff
  3718 06e1 83000000 		.4byte	0x83
@@ -7103,7 +7103,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3721 06e7 74       		.sleb128 -12
  3722 06e8 00       		.byte	0
  3723 06e9 0A       		.uleb128 0xa
- 3724 06ea 5D050000 		.4byte	.LASF77
+ 3724 06ea 5F050000 		.4byte	.LASF77
  3725 06ee 01       		.byte	0x1
  3726 06ef 160A     		.2byte	0xa16
  3727 06f1 00000000 		.4byte	.LFB34
@@ -7112,7 +7112,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3730 06fa 9C       		.byte	0x9c
  3731 06fb 0F070000 		.4byte	0x70f
  3732 06ff 0B       		.uleb128 0xb
- 3733 0700 AE060000 		.4byte	.LASF78
+ 3733 0700 B0060000 		.4byte	.LASF78
  3734 0704 01       		.byte	0x1
  3735 0705 160A     		.2byte	0xa16
  3736 0707 77000000 		.4byte	0x77
@@ -7138,11 +7138,11 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3756 0732 91       		.byte	0x91
  3757 0733 74       		.sleb128 -12
  3758 0734 00       		.byte	0
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 120
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 120
 
 
  3759 0735 14       		.uleb128 0x14
- 3760 0736 EF030000 		.4byte	.LASF80
+ 3760 0736 01040000 		.4byte	.LASF80
  3761 073a 01       		.byte	0x1
  3762 073b 440A     		.2byte	0xa44
  3763 073d 00000000 		.4byte	.LFB36
@@ -7150,7 +7150,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3765 0745 01       		.uleb128 0x1
  3766 0746 9C       		.byte	0x9c
  3767 0747 0A       		.uleb128 0xa
- 3768 0748 D2010000 		.4byte	.LASF81
+ 3768 0748 11020000 		.4byte	.LASF81
  3769 074c 01       		.byte	0x1
  3770 074d 610A     		.2byte	0xa61
  3771 074f 00000000 		.4byte	.LFB37
@@ -7168,7 +7168,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3783 0769 74       		.sleb128 -12
  3784 076a 00       		.byte	0
  3785 076b 14       		.uleb128 0x14
- 3786 076c 80050000 		.4byte	.LASF82
+ 3786 076c 82050000 		.4byte	.LASF82
  3787 0770 01       		.byte	0x1
  3788 0771 7F0A     		.2byte	0xa7f
  3789 0773 00000000 		.4byte	.LFB38
@@ -7176,7 +7176,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3791 077b 01       		.uleb128 0x1
  3792 077c 9C       		.byte	0x9c
  3793 077d 11       		.uleb128 0x11
- 3794 077e 41060000 		.4byte	.LASF83
+ 3794 077e 43060000 		.4byte	.LASF83
  3795 0782 01       		.byte	0x1
  3796 0783 900A     		.2byte	0xa90
  3797 0785 00000000 		.4byte	.LFB39
@@ -7192,18 +7192,18 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3807 079f 01       		.uleb128 0x1
  3808 07a0 9C       		.byte	0x9c
  3809 07a1 11       		.uleb128 0x11
- 3810 07a2 F8050000 		.4byte	.LASF85
+ 3810 07a2 FA050000 		.4byte	.LASF85
  3811 07a6 01       		.byte	0x1
  3812 07a7 B00A     		.2byte	0xab0
  3813 07a9 00000000 		.4byte	.LFB41
  3814 07ad 1C000000 		.4byte	.LFE41-.LFB41
  3815 07b1 01       		.uleb128 0x1
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 121
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 121
 
 
  3816 07b2 9C       		.byte	0x9c
  3817 07b3 0D       		.uleb128 0xd
- 3818 07b4 C2060000 		.4byte	.LASF86
+ 3818 07b4 C4060000 		.4byte	.LASF86
  3819 07b8 01       		.byte	0x1
  3820 07b9 C10A     		.2byte	0xac1
  3821 07bb 00000000 		.4byte	.LFB42
@@ -7212,7 +7212,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3824 07c4 9C       		.byte	0x9c
  3825 07c5 D9070000 		.4byte	0x7d9
  3826 07c9 0B       		.uleb128 0xb
- 3827 07ca E0010000 		.4byte	.LASF66
+ 3827 07ca 1F020000 		.4byte	.LASF66
  3828 07ce 01       		.byte	0x1
  3829 07cf C10A     		.2byte	0xac1
  3830 07d1 83000000 		.4byte	0x83
@@ -7230,7 +7230,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3842 07ed 01       		.uleb128 0x1
  3843 07ee 9C       		.byte	0x9c
  3844 07ef 13       		.uleb128 0x13
- 3845 07f0 82040000 		.4byte	.LASF89
+ 3845 07f0 84040000 		.4byte	.LASF89
  3846 07f4 01       		.byte	0x1
  3847 07f5 E10A     		.2byte	0xae1
  3848 07f7 83000000 		.4byte	0x83
@@ -7239,7 +7239,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3851 0803 01       		.uleb128 0x1
  3852 0804 9C       		.byte	0x9c
  3853 0805 0D       		.uleb128 0xd
- 3854 0806 E8020000 		.4byte	.LASF90
+ 3854 0806 FA020000 		.4byte	.LASF90
  3855 080a 01       		.byte	0x1
  3856 080b 010B     		.2byte	0xb01
  3857 080d 00000000 		.4byte	.LFB45
@@ -7248,7 +7248,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3860 0816 9C       		.byte	0x9c
  3861 0817 2B080000 		.4byte	0x82b
  3862 081b 0B       		.uleb128 0xb
- 3863 081c E6010000 		.4byte	.LASF91
+ 3863 081c 25020000 		.4byte	.LASF91
  3864 0820 01       		.byte	0x1
  3865 0821 010B     		.2byte	0xb01
  3866 0823 83000000 		.4byte	0x83
@@ -7257,8 +7257,8 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3869 0829 74       		.sleb128 -12
  3870 082a 00       		.byte	0
  3871 082b 13       		.uleb128 0x13
- 3872 082c E0050000 		.4byte	.LASF92
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 122
+ 3872 082c E2050000 		.4byte	.LASF92
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 122
 
 
  3873 0830 01       		.byte	0x1
@@ -7269,7 +7269,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3878 083f 01       		.uleb128 0x1
  3879 0840 9C       		.byte	0x9c
  3880 0841 13       		.uleb128 0x13
- 3881 0842 00020000 		.4byte	.LASF93
+ 3881 0842 3F020000 		.4byte	.LASF93
  3882 0846 01       		.byte	0x1
  3883 0847 310B     		.2byte	0xb31
  3884 0849 83000000 		.4byte	0x83
@@ -7278,7 +7278,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3887 0855 01       		.uleb128 0x1
  3888 0856 9C       		.byte	0x9c
  3889 0857 11       		.uleb128 0x11
- 3890 0858 23020000 		.4byte	.LASF94
+ 3890 0858 62020000 		.4byte	.LASF94
  3891 085c 01       		.byte	0x1
  3892 085d 3E0B     		.2byte	0xb3e
  3893 085f 00000000 		.4byte	.LFB48
@@ -7286,7 +7286,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3895 0867 01       		.uleb128 0x1
  3896 0868 9C       		.byte	0x9c
  3897 0869 12       		.uleb128 0x12
- 3898 086a A7050000 		.4byte	.LASF95
+ 3898 086a A9050000 		.4byte	.LASF95
  3899 086e 01       		.byte	0x1
  3900 086f 610B     		.2byte	0xb61
  3901 0871 F3000000 		.4byte	0xf3
@@ -7296,7 +7296,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3905 087e 9C       		.byte	0x9c
  3906 087f B1080000 		.4byte	0x8b1
  3907 0883 0B       		.uleb128 0xb
- 3908 0884 0F030000 		.4byte	.LASF56
+ 3908 0884 21030000 		.4byte	.LASF56
  3909 0888 01       		.byte	0x1
  3910 0889 610B     		.2byte	0xb61
  3911 088b 83000000 		.4byte	0x83
@@ -7304,7 +7304,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3913 0890 91       		.byte	0x91
  3914 0891 6C       		.sleb128 -20
  3915 0892 0B       		.uleb128 0xb
- 3916 0893 68040000 		.4byte	.LASF96
+ 3916 0893 6A040000 		.4byte	.LASF96
  3917 0897 01       		.byte	0x1
  3918 0898 610B     		.2byte	0xb61
  3919 089a F3000000 		.4byte	0xf3
@@ -7318,13 +7318,13 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3927 08a9 F3000000 		.4byte	0xf3
  3928 08ad 02       		.uleb128 0x2
  3929 08ae 91       		.byte	0x91
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 123
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 123
 
 
  3930 08af 74       		.sleb128 -12
  3931 08b0 00       		.byte	0
  3932 08b1 12       		.uleb128 0x12
- 3933 08b2 AC020000 		.4byte	.LASF98
+ 3933 08b2 BE020000 		.4byte	.LASF98
  3934 08b6 01       		.byte	0x1
  3935 08b7 790B     		.2byte	0xb79
  3936 08b9 F3000000 		.4byte	0xf3
@@ -7334,7 +7334,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3940 08c6 9C       		.byte	0x9c
  3941 08c7 DB080000 		.4byte	0x8db
  3942 08cb 0B       		.uleb128 0xb
- 3943 08cc 0F030000 		.4byte	.LASF56
+ 3943 08cc 21030000 		.4byte	.LASF56
  3944 08d0 01       		.byte	0x1
  3945 08d1 790B     		.2byte	0xb79
  3946 08d3 83000000 		.4byte	0x83
@@ -7343,7 +7343,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3949 08d9 74       		.sleb128 -12
  3950 08da 00       		.byte	0
  3951 08db 16       		.uleb128 0x16
- 3952 08dc D5060000 		.4byte	.LASF112
+ 3952 08dc D7060000 		.4byte	.LASF112
  3953 08e0 01       		.byte	0x1
  3954 08e1 860B     		.2byte	0xb86
  3955 08e3 00000000 		.4byte	.LFB51
@@ -7361,7 +7361,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3967 08fd 74       		.sleb128 -12
  3968 08fe 00       		.byte	0
  3969 08ff 0D       		.uleb128 0xd
- 3970 0900 F2010000 		.4byte	.LASF99
+ 3970 0900 31020000 		.4byte	.LASF99
  3971 0904 01       		.byte	0x1
  3972 0905 A60B     		.2byte	0xba6
  3973 0907 00000000 		.4byte	.LFB52
@@ -7370,7 +7370,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3976 0910 9C       		.byte	0x9c
  3977 0911 25090000 		.4byte	0x925
  3978 0915 0B       		.uleb128 0xb
- 3979 0916 CF050000 		.4byte	.LASF100
+ 3979 0916 D1050000 		.4byte	.LASF100
  3980 091a 01       		.byte	0x1
  3981 091b A60B     		.2byte	0xba6
  3982 091d 25090000 		.4byte	0x925
@@ -7378,7 +7378,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3984 0922 91       		.byte	0x91
  3985 0923 74       		.sleb128 -12
  3986 0924 00       		.byte	0
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 124
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 124
 
 
  3987 0925 06       		.uleb128 0x6
@@ -7392,7 +7392,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  3995 0939 04       		.byte	0x4
  3996 093a 00       		.byte	0
  3997 093b 17       		.uleb128 0x17
- 3998 093c BC050000 		.4byte	.LASF101
+ 3998 093c BE050000 		.4byte	.LASF101
  3999 0940 01       		.byte	0x1
  4000 0941 22       		.byte	0x22
  4001 0942 2B090000 		.4byte	0x92b
@@ -7400,7 +7400,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  4003 0947 03       		.byte	0x3
  4004 0948 00000000 		.4byte	CySysTickCallbacks
  4005 094c 18       		.uleb128 0x18
- 4006 094d 94040000 		.4byte	.LASF102
+ 4006 094d 96040000 		.4byte	.LASF102
  4007 0951 01       		.byte	0x1
  4008 0952 1B       		.byte	0x1b
  4009 0953 83000000 		.4byte	0x83
@@ -7416,7 +7416,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  4019 0969 03       		.byte	0x3
  4020 096a 00000000 		.4byte	cydelayFreqKhz
  4021 096e 18       		.uleb128 0x18
- 4022 096f 22060000 		.4byte	.LASF104
+ 4022 096f 24060000 		.4byte	.LASF104
  4023 0973 01       		.byte	0x1
  4024 0974 1D       		.byte	0x1d
  4025 0975 6B000000 		.4byte	0x6b
@@ -7424,7 +7424,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  4027 097a 03       		.byte	0x3
  4028 097b 00000000 		.4byte	cydelayFreqMhz
  4029 097f 18       		.uleb128 0x18
- 4030 0980 C5010000 		.4byte	.LASF105
+ 4030 0980 04020000 		.4byte	.LASF105
  4031 0984 01       		.byte	0x1
  4032 0985 1E       		.byte	0x1e
  4033 0986 83000000 		.4byte	0x83
@@ -7432,13 +7432,13 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  4035 098b 03       		.byte	0x3
  4036 098c 00000000 		.4byte	cydelay32kMs
  4037 0990 18       		.uleb128 0x18
- 4038 0991 24040000 		.4byte	.LASF106
+ 4038 0991 26040000 		.4byte	.LASF106
  4039 0995 01       		.byte	0x1
  4040 0996 36       		.byte	0x36
  4041 0997 83000000 		.4byte	0x83
  4042 099b 05       		.uleb128 0x5
  4043 099c 03       		.byte	0x3
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 125
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 125
 
 
  4044 099d 00000000 		.4byte	CySysTickInitVar
@@ -7452,7 +7452,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  4052 09b1 19       		.uleb128 0x19
  4053 09b2 6B000000 		.4byte	0x6b
  4054 09b6 18       		.uleb128 0x18
- 4055 09b7 71040000 		.4byte	.LASF107
+ 4055 09b7 73040000 		.4byte	.LASF107
  4056 09bb 01       		.byte	0x1
  4057 09bc 3B       		.byte	0x3b
  4058 09bd C7090000 		.4byte	0x9c7
@@ -7498,7 +7498,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  4098 0017 0B       		.uleb128 0xb
  4099 0018 3E       		.uleb128 0x3e
  4100 0019 0B       		.uleb128 0xb
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 126
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 126
 
 
  4101 001a 03       		.uleb128 0x3
@@ -7558,7 +7558,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  4155 0050 03       		.uleb128 0x3
  4156 0051 0E       		.uleb128 0xe
  4157 0052 3A       		.uleb128 0x3a
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 127
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 127
 
 
  4158 0053 0B       		.uleb128 0xb
@@ -7618,7 +7618,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  4212 008b 00       		.byte	0
  4213 008c 0B       		.uleb128 0xb
  4214 008d 05       		.uleb128 0x5
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 128
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 128
 
 
  4215 008e 00       		.byte	0
@@ -7678,7 +7678,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  4269 00c5 2E       		.uleb128 0x2e
  4270 00c6 01       		.byte	0x1
  4271 00c7 3F       		.uleb128 0x3f
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 129
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 129
 
 
  4272 00c8 19       		.uleb128 0x19
@@ -7738,7 +7738,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  4326 00ff 11       		.uleb128 0x11
  4327 0100 01       		.uleb128 0x1
  4328 0101 12       		.uleb128 0x12
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 130
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 130
 
 
  4329 0102 06       		.uleb128 0x6
@@ -7798,7 +7798,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  4383 013a 18       		.uleb128 0x18
  4384 013b 9742     		.uleb128 0x2117
  4385 013d 19       		.uleb128 0x19
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 131
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 131
 
 
  4386 013e 00       		.byte	0
@@ -7858,7 +7858,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  4440 0175 06       		.uleb128 0x6
  4441 0176 40       		.uleb128 0x40
  4442 0177 18       		.uleb128 0x18
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 132
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 132
 
 
  4443 0178 9642     		.uleb128 0x2116
@@ -7918,7 +7918,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  4497 0010 00000000 		.4byte	.LFB2
  4498 0014 1C000000 		.4byte	.LFE2-.LFB2
  4499 0018 00000000 		.4byte	.LFB3
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 133
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 133
 
 
  4500 001c 1C000000 		.4byte	.LFE3-.LFB3
@@ -7978,7 +7978,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  4554 00f4 2C000000 		.4byte	.LFE30-.LFB30
  4555 00f8 00000000 		.4byte	.LFB31
  4556 00fc 16000000 		.4byte	.LFE31-.LFB31
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 134
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 134
 
 
  4557 0100 00000000 		.4byte	.LFB32
@@ -8038,7 +8038,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  4611 0020 00000000 		.4byte	.LFB6
  4612 0024 34000000 		.4byte	.LFE6
  4613 0028 00000000 		.4byte	.LFB7
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 135
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 135
 
 
  4614 002c 48000000 		.4byte	.LFE7
@@ -8098,7 +8098,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  4668 0104 28000000 		.4byte	.LFE34
  4669 0108 00000000 		.4byte	.LFB35
  4670 010c 84000000 		.4byte	.LFE35
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 136
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 136
 
 
  4671 0110 00000000 		.4byte	.LFB36
@@ -8158,7 +8158,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  4715      00
  4716              	.LASF26:
  4717 001f 43795379 		.ascii	"CySysClkWriteHfclkDirect\000"
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 137
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 137
 
 
  4717      73436C6B 
@@ -8218,7 +8218,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  4739      206C6F6E 
  4739      6720696E 
  4739      7400
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 138
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 138
 
 
  4740              	.LASF0:
@@ -8270,462 +8270,463 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 1
  4762              	.LASF13:
  4763 0156 646F7562 		.ascii	"double\000"
  4763      6C6500
- 4764              	.LASF65:
- 4765 015d 73686966 		.ascii	"shift\000"
- 4765      7400
- 4766              	.LASF48:
- 4767 0163 43795379 		.ascii	"CySysLvdClearInterrupt\000"
- 4767      734C7664 
- 4767      436C6561 
- 4767      72496E74 
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 139
+ 4764              	.LASF111:
+ 4765 015d 443A5C44 		.ascii	"D:\\Documents\\GitHub\\XID_483\\Workspace\\BLE_HID_"
+ 4765      6F63756D 
+ 4765      656E7473 
+ 4765      5C476974 
+ 4765      4875625C 
+ 4766 018b 4B657962 		.ascii	"Keyboard01.cydsn\000"
+ 4766      6F617264 
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 139
 
 
- 4767      65727275 
- 4768              	.LASF11:
- 4769 017a 75696E74 		.ascii	"uint32\000"
- 4769      333200
- 4770              	.LASF42:
- 4771 0181 43795379 		.ascii	"CySysClkEcoReadStatus\000"
- 4771      73436C6B 
- 4771      45636F52 
- 4771      65616453 
- 4771      74617475 
- 4772              	.LASF54:
- 4773 0197 6D61736B 		.ascii	"mask\000"
- 4773      00
- 4774              	.LASF37:
- 4775 019c 43795379 		.ascii	"CySysClkGetSysclkSource\000"
- 4775      73436C6B 
- 4775      47657453 
- 4775      7973636C 
- 4775      6B536F75 
- 4776              	.LASF67:
- 4777 01b4 4379496E 		.ascii	"CyIntGetPriority\000"
- 4777      74476574 
- 4777      5072696F 
- 4777      72697479 
- 4777      00
- 4778              	.LASF105:
- 4779 01c5 63796465 		.ascii	"cydelay32kMs\000"
- 4779      6C617933 
- 4779      326B4D73 
- 4779      00
- 4780              	.LASF81:
- 4781 01d2 43795379 		.ascii	"CySysTickInit\000"
- 4781      73546963 
- 4781      6B496E69 
- 4781      7400
- 4782              	.LASF66:
- 4783 01e0 76616C75 		.ascii	"value\000"
- 4783      6500
- 4784              	.LASF91:
- 4785 01e6 636C6F63 		.ascii	"clockSource\000"
- 4785      6B536F75 
- 4785      72636500 
- 4786              	.LASF99:
- 4787 01f2 43794765 		.ascii	"CyGetUniqueId\000"
- 4787      74556E69 
- 4787      71756549 
- 4787      6400
- 4788              	.LASF93:
- 4789 0200 43795379 		.ascii	"CySysTickGetCountFlag\000"
- 4789      73546963 
- 4789      6B476574 
- 4789      436F756E 
- 4789      74466C61 
- 4790              	.LASF8:
- 4791 0216 756E7369 		.ascii	"unsigned int\000"
- 4791      676E6564 
- 4791      20696E74 
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 140
+ 4766      30312E63 
+ 4766      7964736E 
+ 4766      00
+ 4767              	.LASF65:
+ 4768 019c 73686966 		.ascii	"shift\000"
+ 4768      7400
+ 4769              	.LASF48:
+ 4770 01a2 43795379 		.ascii	"CySysLvdClearInterrupt\000"
+ 4770      734C7664 
+ 4770      436C6561 
+ 4770      72496E74 
+ 4770      65727275 
+ 4771              	.LASF11:
+ 4772 01b9 75696E74 		.ascii	"uint32\000"
+ 4772      333200
+ 4773              	.LASF42:
+ 4774 01c0 43795379 		.ascii	"CySysClkEcoReadStatus\000"
+ 4774      73436C6B 
+ 4774      45636F52 
+ 4774      65616453 
+ 4774      74617475 
+ 4775              	.LASF54:
+ 4776 01d6 6D61736B 		.ascii	"mask\000"
+ 4776      00
+ 4777              	.LASF37:
+ 4778 01db 43795379 		.ascii	"CySysClkGetSysclkSource\000"
+ 4778      73436C6B 
+ 4778      47657453 
+ 4778      7973636C 
+ 4778      6B536F75 
+ 4779              	.LASF67:
+ 4780 01f3 4379496E 		.ascii	"CyIntGetPriority\000"
+ 4780      74476574 
+ 4780      5072696F 
+ 4780      72697479 
+ 4780      00
+ 4781              	.LASF105:
+ 4782 0204 63796465 		.ascii	"cydelay32kMs\000"
+ 4782      6C617933 
+ 4782      326B4D73 
+ 4782      00
+ 4783              	.LASF81:
+ 4784 0211 43795379 		.ascii	"CySysTickInit\000"
+ 4784      73546963 
+ 4784      6B496E69 
+ 4784      7400
+ 4785              	.LASF66:
+ 4786 021f 76616C75 		.ascii	"value\000"
+ 4786      6500
+ 4787              	.LASF91:
+ 4788 0225 636C6F63 		.ascii	"clockSource\000"
+ 4788      6B536F75 
+ 4788      72636500 
+ 4789              	.LASF99:
+ 4790 0231 43794765 		.ascii	"CyGetUniqueId\000"
+ 4790      74556E69 
+ 4790      71756549 
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 140
 
 
- 4791      00
- 4792              	.LASF94:
- 4793 0223 43795379 		.ascii	"CySysTickClear\000"
- 4793      73546963 
- 4793      6B436C65 
- 4793      617200
- 4794              	.LASF5:
- 4795 0232 6C6F6E67 		.ascii	"long unsigned int\000"
- 4795      20756E73 
- 4795      69676E65 
- 4795      6420696E 
- 4795      7400
- 4796              	.LASF87:
- 4797 0244 43795379 		.ascii	"CySysLvdGetInterruptSource\000"
- 4797      734C7664 
- 4797      47657449 
- 4797      6E746572 
- 4797      72757074 
- 4798              	.LASF111:
- 4799 025f 443A5C44 		.ascii	"D:\\Documents\\PSoC Creator\\Workspace\\BLE_HID_Key"
- 4799      6F63756D 
- 4799      656E7473 
- 4799      5C50536F 
- 4799      43204372 
- 4800 028e 626F6172 		.ascii	"board01.cydsn\000"
- 4800      6430312E 
- 4800      63796473 
- 4800      6E00
- 4801              	.LASF71:
- 4802 029c 4379496E 		.ascii	"CyIntSetPending\000"
- 4802      74536574 
- 4802      50656E64 
- 4802      696E6700 
- 4803              	.LASF98:
- 4804 02ac 43795379 		.ascii	"CySysTickGetCallback\000"
- 4804      73546963 
- 4804      6B476574 
- 4804      43616C6C 
- 4804      6261636B 
- 4805              	.LASF49:
- 4806 02c1 43795379 		.ascii	"CySysGetResetReason\000"
- 4806      73476574 
- 4806      52657365 
- 4806      74526561 
- 4806      736F6E00 
- 4807              	.LASF3:
- 4808 02d5 73686F72 		.ascii	"short unsigned int\000"
- 4808      7420756E 
- 4808      7369676E 
- 4808      65642069 
- 4808      6E7400
- 4809              	.LASF90:
- 4810 02e8 43795379 		.ascii	"CySysTickSetClockSource\000"
- 4810      73546963 
- 4810      6B536574 
- 4810      436C6F63 
- 4810      6B536F75 
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 141
+ 4790      6400
+ 4791              	.LASF93:
+ 4792 023f 43795379 		.ascii	"CySysTickGetCountFlag\000"
+ 4792      73546963 
+ 4792      6B476574 
+ 4792      436F756E 
+ 4792      74466C61 
+ 4793              	.LASF8:
+ 4794 0255 756E7369 		.ascii	"unsigned int\000"
+ 4794      676E6564 
+ 4794      20696E74 
+ 4794      00
+ 4795              	.LASF94:
+ 4796 0262 43795379 		.ascii	"CySysTickClear\000"
+ 4796      73546963 
+ 4796      6B436C65 
+ 4796      617200
+ 4797              	.LASF5:
+ 4798 0271 6C6F6E67 		.ascii	"long unsigned int\000"
+ 4798      20756E73 
+ 4798      69676E65 
+ 4798      6420696E 
+ 4798      7400
+ 4799              	.LASF87:
+ 4800 0283 43795379 		.ascii	"CySysLvdGetInterruptSource\000"
+ 4800      734C7664 
+ 4800      47657449 
+ 4800      6E746572 
+ 4800      72757074 
+ 4801              	.LASF23:
+ 4802 029e 43795379 		.ascii	"CySysClkImoStop\000"
+ 4802      73436C6B 
+ 4802      496D6F53 
+ 4802      746F7000 
+ 4803              	.LASF71:
+ 4804 02ae 4379496E 		.ascii	"CyIntSetPending\000"
+ 4804      74536574 
+ 4804      50656E64 
+ 4804      696E6700 
+ 4805              	.LASF98:
+ 4806 02be 43795379 		.ascii	"CySysTickGetCallback\000"
+ 4806      73546963 
+ 4806      6B476574 
+ 4806      43616C6C 
+ 4806      6261636B 
+ 4807              	.LASF49:
+ 4808 02d3 43795379 		.ascii	"CySysGetResetReason\000"
+ 4808      73476574 
+ 4808      52657365 
+ 4808      74526561 
+ 4808      736F6E00 
+ 4809              	.LASF3:
+ 4810 02e7 73686F72 		.ascii	"short unsigned int\000"
+ 4810      7420756E 
+ 4810      7369676E 
+ 4810      65642069 
+ 4810      6E7400
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 141
 
 
- 4811              	.LASF61:
- 4812 0300 4379496E 		.ascii	"CyIntSetVector\000"
- 4812      74536574 
- 4812      56656374 
- 4812      6F7200
- 4813              	.LASF56:
- 4814 030f 6E756D62 		.ascii	"number\000"
- 4814      657200
- 4815              	.LASF64:
- 4816 0316 7072696F 		.ascii	"priority\000"
- 4816      72697479 
- 4816      00
- 4817              	.LASF33:
- 4818 031f 43795379 		.ascii	"CySysClkWriteImoFreq\000"
- 4818      73436C6B 
- 4818      57726974 
- 4818      65496D6F 
- 4818      46726571 
- 4819              	.LASF109:
- 4820 0334 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
- 4820      43313120 
- 4820      352E342E 
- 4820      31203230 
- 4820      31363036 
- 4821 0367 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
- 4821      20726576 
- 4821      6973696F 
- 4821      6E203233 
- 4821      37373135 
- 4822 039a 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
- 4822      66756E63 
- 4822      74696F6E 
- 4822      2D736563 
- 4822      74696F6E 
- 4823              	.LASF55:
- 4824 03c2 4379496E 		.ascii	"CyIntSetSysVector\000"
- 4824      74536574 
- 4824      53797356 
- 4824      6563746F 
- 4824      7200
- 4825              	.LASF27:
- 4826 03d4 43795379 		.ascii	"CySysEnablePumpClock\000"
- 4826      73456E61 
- 4826      626C6550 
- 4826      756D7043 
- 4826      6C6F636B 
- 4827              	.LASF17:
- 4828 03e9 72656733 		.ascii	"reg32\000"
- 4828      3200
- 4829              	.LASF80:
- 4830 03ef 43795379 		.ascii	"CySysTickStart\000"
- 4830      73546963 
- 4830      6B537461 
- 4830      727400
- 4831              	.LASF40:
- 4832 03fe 72657475 		.ascii	"returnStatus\000"
- 4832      726E5374 
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 142
+ 4811              	.LASF90:
+ 4812 02fa 43795379 		.ascii	"CySysTickSetClockSource\000"
+ 4812      73546963 
+ 4812      6B536574 
+ 4812      436C6F63 
+ 4812      6B536F75 
+ 4813              	.LASF61:
+ 4814 0312 4379496E 		.ascii	"CyIntSetVector\000"
+ 4814      74536574 
+ 4814      56656374 
+ 4814      6F7200
+ 4815              	.LASF56:
+ 4816 0321 6E756D62 		.ascii	"number\000"
+ 4816      657200
+ 4817              	.LASF64:
+ 4818 0328 7072696F 		.ascii	"priority\000"
+ 4818      72697479 
+ 4818      00
+ 4819              	.LASF33:
+ 4820 0331 43795379 		.ascii	"CySysClkWriteImoFreq\000"
+ 4820      73436C6B 
+ 4820      57726974 
+ 4820      65496D6F 
+ 4820      46726571 
+ 4821              	.LASF109:
+ 4822 0346 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 4822      43313120 
+ 4822      352E342E 
+ 4822      31203230 
+ 4822      31363036 
+ 4823 0379 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 4823      20726576 
+ 4823      6973696F 
+ 4823      6E203233 
+ 4823      37373135 
+ 4824 03ac 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 4824      66756E63 
+ 4824      74696F6E 
+ 4824      2D736563 
+ 4824      74696F6E 
+ 4825              	.LASF55:
+ 4826 03d4 4379496E 		.ascii	"CyIntSetSysVector\000"
+ 4826      74536574 
+ 4826      53797356 
+ 4826      6563746F 
+ 4826      7200
+ 4827              	.LASF27:
+ 4828 03e6 43795379 		.ascii	"CySysEnablePumpClock\000"
+ 4828      73456E61 
+ 4828      626C6550 
+ 4828      756D7043 
+ 4828      6C6F636B 
+ 4829              	.LASF17:
+ 4830 03fb 72656733 		.ascii	"reg32\000"
+ 4830      3200
+ 4831              	.LASF80:
+ 4832 0401 43795379 		.ascii	"CySysTickStart\000"
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 142
 
 
- 4832      61747573 
- 4832      00
- 4833              	.LASF23:
- 4834 040b 43795379 		.ascii	"CySysClkImoStop\000"
- 4834      73436C6B 
- 4834      496D6F53 
- 4834      746F7000 
+ 4832      73546963 
+ 4832      6B537461 
+ 4832      727400
+ 4833              	.LASF40:
+ 4834 0410 72657475 		.ascii	"returnStatus\000"
+ 4834      726E5374 
+ 4834      61747573 
+ 4834      00
  4835              	.LASF20:
- 4836 041b 73697A65 		.ascii	"sizetype\000"
+ 4836 041d 73697A65 		.ascii	"sizetype\000"
  4836      74797065 
  4836      00
  4837              	.LASF106:
- 4838 0424 43795379 		.ascii	"CySysTickInitVar\000"
+ 4838 0426 43795379 		.ascii	"CySysTickInitVar\000"
  4838      73546963 
  4838      6B496E69 
  4838      74566172 
  4838      00
  4839              	.LASF72:
- 4840 0435 4379496E 		.ascii	"CyIntClearPending\000"
+ 4840 0437 4379496E 		.ascii	"CyIntClearPending\000"
  4840      74436C65 
  4840      61725065 
  4840      6E64696E 
  4840      6700
  4841              	.LASF19:
- 4842 0447 6C6F6E67 		.ascii	"long double\000"
+ 4842 0449 6C6F6E67 		.ascii	"long double\000"
  4842      20646F75 
  4842      626C6500 
  4843              	.LASF57:
- 4844 0453 61646472 		.ascii	"address\000"
+ 4844 0455 61646472 		.ascii	"address\000"
  4844      65737300 
  4845              	.LASF30:
- 4846 045b 73797363 		.ascii	"sysclkSource\000"
+ 4846 045d 73797363 		.ascii	"sysclkSource\000"
  4846      6C6B536F 
  4846      75726365 
  4846      00
  4847              	.LASF96:
- 4848 0468 66756E63 		.ascii	"function\000"
+ 4848 046a 66756E63 		.ascii	"function\000"
  4848      74696F6E 
  4848      00
  4849              	.LASF107:
- 4850 0471 6379496D 		.ascii	"cyImoFreqMhz2Reg\000"
+ 4850 0473 6379496D 		.ascii	"cyImoFreqMhz2Reg\000"
  4850      6F467265 
  4850      714D687A 
  4850      32526567 
  4850      00
  4851              	.LASF89:
- 4852 0482 43795379 		.ascii	"CySysTickGetValue\000"
+ 4852 0484 43795379 		.ascii	"CySysTickGetValue\000"
  4852      73546963 
  4852      6B476574 
  4852      56616C75 
  4852      6500
  4853              	.LASF102:
- 4854 0494 63796465 		.ascii	"cydelayFreqHz\000"
+ 4854 0496 63796465 		.ascii	"cydelayFreqHz\000"
  4854      6C617946 
  4854      72657148 
  4854      7A00
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 143
+
+
  4855              	.LASF63:
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 143
-
-
- 4856 04a2 4379496E 		.ascii	"CyIntSetPriority\000"
+ 4856 04a4 4379496E 		.ascii	"CyIntSetPriority\000"
  4856      74536574 
  4856      5072696F 
  4856      72697479 
  4856      00
  4857              	.LASF12:
- 4858 04b3 666C6F61 		.ascii	"float\000"
+ 4858 04b5 666C6F61 		.ascii	"float\000"
  4858      7400
  4859              	.LASF45:
- 4860 04b9 43795379 		.ascii	"CySysLvdEnable\000"
+ 4860 04bb 43795379 		.ascii	"CySysLvdEnable\000"
  4860      734C7664 
  4860      456E6162 
  4860      6C6500
  4861              	.LASF21:
- 4862 04c8 63795379 		.ascii	"cySysTickCallback\000"
+ 4862 04ca 63795379 		.ascii	"cySysTickCallback\000"
  4862      73546963 
  4862      6B43616C 
  4862      6C626163 
  4862      6B00
  4863              	.LASF62:
- 4864 04da 4379496E 		.ascii	"CyIntGetVector\000"
+ 4864 04dc 4379496E 		.ascii	"CyIntGetVector\000"
  4864      74476574 
  4864      56656374 
  4864      6F7200
  4865              	.LASF76:
- 4866 04e9 6D696C6C 		.ascii	"milliseconds\000"
+ 4866 04eb 6D696C6C 		.ascii	"milliseconds\000"
  4866      69736563 
  4866      6F6E6473 
  4866      00
  4867              	.LASF16:
- 4868 04f6 72656738 		.ascii	"reg8\000"
+ 4868 04f8 72656738 		.ascii	"reg8\000"
  4868      00
  4869              	.LASF46:
- 4870 04fb 74687265 		.ascii	"threshold\000"
+ 4870 04fd 74687265 		.ascii	"threshold\000"
  4870      73686F6C 
  4870      6400
  4871              	.LASF73:
- 4872 0505 43794861 		.ascii	"CyHalt\000"
+ 4872 0507 43794861 		.ascii	"CyHalt\000"
  4872      6C7400
  4873              	.LASF1:
- 4874 050c 756E7369 		.ascii	"unsigned char\000"
+ 4874 050e 756E7369 		.ascii	"unsigned char\000"
  4874      676E6564 
  4874      20636861 
  4874      7200
  4875              	.LASF2:
- 4876 051a 73686F72 		.ascii	"short int\000"
+ 4876 051c 73686F72 		.ascii	"short int\000"
  4876      7420696E 
  4876      7400
  4877              	.LASF68:
- 4878 0524 4379496E 		.ascii	"CyIntEnable\000"
+ 4878 0526 4379496E 		.ascii	"CyIntEnable\000"
  4878      74456E61 
  4878      626C6500 
  4879              	.LASF60:
- 4880 0530 4379496E 		.ascii	"CyIntGetSysVector\000"
+ 4880 0532 4379496E 		.ascii	"CyIntGetSysVector\000"
  4880      74476574 
  4880      53797356 
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 144
+
+
  4880      6563746F 
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 144
-
-
  4880      7200
  4881              	.LASF28:
- 4882 0542 636C6B53 		.ascii	"clkSelect\000"
+ 4882 0544 636C6B53 		.ascii	"clkSelect\000"
  4882      656C6563 
  4882      7400
  4883              	.LASF38:
- 4884 054c 43795379 		.ascii	"CySysClkEcoStart\000"
+ 4884 054e 43795379 		.ascii	"CySysClkEcoStart\000"
  4884      73436C6B 
  4884      45636F53 
  4884      74617274 
  4884      00
  4885              	.LASF77:
- 4886 055d 43794465 		.ascii	"CyDelayUs\000"
+ 4886 055f 43794465 		.ascii	"CyDelayUs\000"
  4886      6C617955 
  4886      7300
  4887              	.LASF50:
- 4888 0567 72656173 		.ascii	"reason\000"
+ 4888 0569 72656173 		.ascii	"reason\000"
  4888      6F6E00
  4889              	.LASF14:
- 4890 056e 63686172 		.ascii	"char\000"
+ 4890 0570 63686172 		.ascii	"char\000"
  4890      00
  4891              	.LASF18:
- 4892 0573 63796973 		.ascii	"cyisraddress\000"
+ 4892 0575 63796973 		.ascii	"cyisraddress\000"
  4892      72616464 
  4892      72657373 
  4892      00
  4893              	.LASF82:
- 4894 0580 43795379 		.ascii	"CySysTickEnable\000"
+ 4894 0582 43795379 		.ascii	"CySysTickEnable\000"
  4894      73546963 
  4894      6B456E61 
  4894      626C6500 
  4895              	.LASF31:
- 4896 0590 43795379 		.ascii	"CySysClkWriteSysclkDiv\000"
+ 4896 0592 43795379 		.ascii	"CySysClkWriteSysclkDiv\000"
  4896      73436C6B 
  4896      57726974 
  4896      65537973 
  4896      636C6B44 
  4897              	.LASF95:
- 4898 05a7 43795379 		.ascii	"CySysTickSetCallback\000"
+ 4898 05a9 43795379 		.ascii	"CySysTickSetCallback\000"
  4898      73546963 
  4898      6B536574 
  4898      43616C6C 
  4898      6261636B 
  4899              	.LASF101:
- 4900 05bc 43795379 		.ascii	"CySysTickCallbacks\000"
+ 4900 05be 43795379 		.ascii	"CySysTickCallbacks\000"
  4900      73546963 
  4900      6B43616C 
  4900      6C626163 
  4900      6B7300
  4901              	.LASF100:
- 4902 05cf 756E6971 		.ascii	"uniqueId\000"
+ 4902 05d1 756E6971 		.ascii	"uniqueId\000"
  4902      75654964 
  4902      00
  4903              	.LASF75:
- 4904 05d8 43794465 		.ascii	"CyDelay\000"
+ 4904 05da 43794465 		.ascii	"CyDelay\000"
  4904      6C617900 
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 145
+
+
  4905              	.LASF92:
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 145
-
-
- 4906 05e0 43795379 		.ascii	"CySysTickGetClockSource\000"
+ 4906 05e2 43795379 		.ascii	"CySysTickGetClockSource\000"
  4906      73546963 
  4906      6B476574 
  4906      436C6F63 
  4906      6B536F75 
  4907              	.LASF85:
- 4908 05f8 43795379 		.ascii	"CySysTickDisableInterrupt\000"
+ 4908 05fa 43795379 		.ascii	"CySysTickDisableInterrupt\000"
  4908      73546963 
  4908      6B446973 
  4908      61626C65 
  4908      496E7465 
  4909              	.LASF47:
- 4910 0612 43795379 		.ascii	"CySysLvdDisable\000"
+ 4910 0614 43795379 		.ascii	"CySysLvdDisable\000"
  4910      734C7664 
  4910      44697361 
  4910      626C6500 
  4911              	.LASF104:
- 4912 0622 63796465 		.ascii	"cydelayFreqMhz\000"
+ 4912 0624 63796465 		.ascii	"cydelayFreqMhz\000"
  4912      6C617946 
  4912      7265714D 
  4912      687A00
  4913              	.LASF41:
- 4914 0631 43795379 		.ascii	"CySysClkEcoStop\000"
+ 4914 0633 43795379 		.ascii	"CySysClkEcoStop\000"
  4914      73436C6B 
  4914      45636F53 
  4914      746F7000 
  4915              	.LASF83:
- 4916 0641 43795379 		.ascii	"CySysTickStop\000"
+ 4916 0643 43795379 		.ascii	"CySysTickStop\000"
  4916      73546963 
  4916      6B53746F 
  4916      7000
  4917              	.LASF39:
- 4918 064f 74696D65 		.ascii	"timeoutUs\000"
+ 4918 0651 74696D65 		.ascii	"timeoutUs\000"
  4918      6F757455 
  4918      7300
  4919              	.LASF32:
- 4920 0659 64697669 		.ascii	"divider\000"
+ 4920 065b 64697669 		.ascii	"divider\000"
  4920      64657200 
  4921              	.LASF44:
- 4922 0661 43795379 		.ascii	"CySysClkWriteEcoDiv\000"
+ 4922 0663 43795379 		.ascii	"CySysClkWriteEcoDiv\000"
  4922      73436C6B 
  4922      57726974 
  4922      6545636F 
  4922      44697600 
  4923              	.LASF15:
- 4924 0675 63797374 		.ascii	"cystatus\000"
+ 4924 0677 63797374 		.ascii	"cystatus\000"
  4924      61747573 
  4924      00
  4925              	.LASF22:
- 4926 067e 43795379 		.ascii	"CySysClkImoStart\000"
+ 4926 0680 43795379 		.ascii	"CySysClkImoStart\000"
  4926      73436C6B 
  4926      496D6F53 
  4926      74617274 
  4926      00
  4927              	.LASF110:
- 4928 068f 47656E65 		.ascii	"Generated_Source\\PSoC4\\CyLib.c\000"
+ 4928 0691 47656E65 		.ascii	"Generated_Source\\PSoC4\\CyLib.c\000"
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccnVSqLl.s 			page 146
+
+
  4928      72617465 
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccp7kIZI.s 			page 146
-
-
  4928      645F536F 
  4928      75726365 
  4928      5C50536F 
  4929              	.LASF78:
- 4930 06ae 6D696372 		.ascii	"microseconds\000"
+ 4930 06b0 6D696372 		.ascii	"microseconds\000"
  4930      6F736563 
  4930      6F6E6473 
  4930      00
  4931              	.LASF25:
- 4932 06bb 746D7052 		.ascii	"tmpReg\000"
+ 4932 06bd 746D7052 		.ascii	"tmpReg\000"
  4932      656700
  4933              	.LASF86:
- 4934 06c2 43795379 		.ascii	"CySysTickSetReload\000"
+ 4934 06c4 43795379 		.ascii	"CySysTickSetReload\000"
  4934      73546963 
  4934      6B536574 
  4934      52656C6F 
  4934      616400
  4935              	.LASF112:
- 4936 06d5 43795379 		.ascii	"CySysTickServiceCallbacks\000"
+ 4936 06d7 43795379 		.ascii	"CySysTickServiceCallbacks\000"
  4936      73546963 
  4936      6B536572 
  4936      76696365 
  4936      43616C6C 
  4937              	.LASF43:
- 4938 06ef 72657475 		.ascii	"returnValue\000"
+ 4938 06f1 72657475 		.ascii	"returnValue\000"
  4938      726E5661 
  4938      6C756500 
  4939              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

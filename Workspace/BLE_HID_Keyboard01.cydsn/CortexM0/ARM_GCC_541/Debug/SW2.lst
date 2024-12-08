@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccs3IiL9.s 			page 1
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccg2cF84.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccs3IiL9.s 			page 1
   28:Generated_Source\PSoC4/SW2.c **** #else
   29:Generated_Source\PSoC4/SW2.c ****     #if (CY_PSOC4_4200L)
   30:Generated_Source\PSoC4/SW2.c ****         #define SW2_SetP4PinDriveMode(shift, mode)  \
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccs3IiL9.s 			page 2
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccg2cF84.s 			page 2
 
 
   31:Generated_Source\PSoC4/SW2.c ****         do { \
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccs3IiL9.s 			page 1
   39              		.cfi_def_cfa_register 7
   40 0006 0200     		movs	r2, r0
   41 0008 FB1D     		adds	r3, r7, #7
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccs3IiL9.s 			page 3
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccg2cF84.s 			page 3
 
 
   42 000a 1A70     		strb	r2, [r3]
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccs3IiL9.s 			page 1
   94:Generated_Source\PSoC4/SW2.c **** * \param value
   95:Generated_Source\PSoC4/SW2.c **** *  Value to write to the component instance.
   96:Generated_Source\PSoC4/SW2.c **** *
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccs3IiL9.s 			page 4
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccg2cF84.s 			page 4
 
 
   97:Generated_Source\PSoC4/SW2.c **** * \return 
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccs3IiL9.s 			page 1
  115:Generated_Source\PSoC4/SW2.c ****     SW2_DR = (uint32)drVal;
  112              		.loc 1 115 0
  113 0032 044B     		ldr	r3, .L5
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccs3IiL9.s 			page 5
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccg2cF84.s 			page 5
 
 
  114 0034 0F22     		movs	r2, #15
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccs3IiL9.s 			page 1
  146              		.cfi_offset 14, -4
  147 0002 00AF     		add	r7, sp, #0
  148              		.cfi_def_cfa_register 7
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccs3IiL9.s 			page 6
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccg2cF84.s 			page 6
 
 
  138:Generated_Source\PSoC4/SW2.c ****     return (uint8)((SW2_PS & SW2_MASK) >> SW2_SHIFT);
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccs3IiL9.s 			page 1
  165:Generated_Source\PSoC4/SW2.c **** {
  176              		.loc 1 165 0
  177              		.cfi_startproc
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccs3IiL9.s 			page 7
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccg2cF84.s 			page 7
 
 
  178              		@ args = 0, pretend = 0, frame = 0
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccs3IiL9.s 			page 1
  185:Generated_Source\PSoC4/SW2.c **** *  interrupt mode of all the pins in the Pins component.       
  186:Generated_Source\PSoC4/SW2.c **** *  - SW2_0_INTR       (First pin in the list)
  187:Generated_Source\PSoC4/SW2.c **** *  - SW2_1_INTR       (Second pin in the list)
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccs3IiL9.s 			page 8
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccg2cF84.s 			page 8
 
 
  188:Generated_Source\PSoC4/SW2.c **** *  - ...
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccs3IiL9.s 			page 1
  242 0024 391D     		adds	r1, r7, #4
  243 0026 1288     		ldrh	r2, [r2]
  244 0028 0988     		ldrh	r1, [r1]
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccs3IiL9.s 			page 9
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccg2cF84.s 			page 9
 
 
  245 002a 0A40     		ands	r2, r1
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccs3IiL9.s 			page 1
  274              		@ args = 0, pretend = 0, frame = 8
  275              		@ frame_needed = 1, uses_anonymous_args = 0
  276 0000 80B5     		push	{r7, lr}
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccs3IiL9.s 			page 10
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccg2cF84.s 			page 10
 
 
  277              		.cfi_def_cfa_offset 8
@@ -593,12 +593,12 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccs3IiL9.s 			page 1
  322 0006 00000000 		.4byte	.Ldebug_abbrev0
  323 000a 04       		.byte	0x4
  324 000b 01       		.uleb128 0x1
- 325 000c AE000000 		.4byte	.LASF28
+ 325 000c AA000000 		.4byte	.LASF28
  326 0010 0C       		.byte	0xc
- 327 0011 58000000 		.4byte	.LASF29
- 328 0015 1B000000 		.4byte	.LASF30
+ 327 0011 54000000 		.4byte	.LASF29
+ 328 0015 0F000000 		.4byte	.LASF30
  329 0019 00000000 		.4byte	.Ldebug_ranges0+0
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccs3IiL9.s 			page 11
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccg2cF84.s 			page 11
 
 
  330 001d 00000000 		.4byte	0
@@ -606,35 +606,35 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccs3IiL9.s 			page 1
  332 0025 02       		.uleb128 0x2
  333 0026 01       		.byte	0x1
  334 0027 06       		.byte	0x6
- 335 0028 06020000 		.4byte	.LASF0
+ 335 0028 08020000 		.4byte	.LASF0
  336 002c 02       		.uleb128 0x2
  337 002d 01       		.byte	0x1
  338 002e 08       		.byte	0x8
- 339 002f 75000000 		.4byte	.LASF1
+ 339 002f 71000000 		.4byte	.LASF1
  340 0033 02       		.uleb128 0x2
  341 0034 02       		.byte	0x2
  342 0035 05       		.byte	0x5
- 343 0036 D3010000 		.4byte	.LASF2
+ 343 0036 CF010000 		.4byte	.LASF2
  344 003a 02       		.uleb128 0x2
  345 003b 02       		.byte	0x2
  346 003c 07       		.byte	0x7
- 347 003d 9B000000 		.4byte	.LASF3
+ 347 003d 97000000 		.4byte	.LASF3
  348 0041 02       		.uleb128 0x2
  349 0042 04       		.byte	0x4
  350 0043 05       		.byte	0x5
- 351 0044 FD010000 		.4byte	.LASF4
+ 351 0044 F9010000 		.4byte	.LASF4
  352 0048 02       		.uleb128 0x2
  353 0049 04       		.byte	0x4
  354 004a 07       		.byte	0x7
- 355 004b 89000000 		.4byte	.LASF5
+ 355 004b 85000000 		.4byte	.LASF5
  356 004f 02       		.uleb128 0x2
  357 0050 08       		.byte	0x8
  358 0051 05       		.byte	0x5
- 359 0052 A0010000 		.4byte	.LASF6
+ 359 0052 9C010000 		.4byte	.LASF6
  360 0056 02       		.uleb128 0x2
  361 0057 08       		.byte	0x8
  362 0058 07       		.byte	0x7
- 363 0059 6F010000 		.4byte	.LASF7
+ 363 0059 6B010000 		.4byte	.LASF7
  364 005d 03       		.uleb128 0x3
  365 005e 04       		.byte	0x4
  366 005f 05       		.byte	0x5
@@ -642,37 +642,37 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccs3IiL9.s 			page 1
  368 0064 02       		.uleb128 0x2
  369 0065 04       		.byte	0x4
  370 0066 07       		.byte	0x7
- 371 0067 62010000 		.4byte	.LASF8
+ 371 0067 5E010000 		.4byte	.LASF8
  372 006b 04       		.uleb128 0x4
- 373 006c E7010000 		.4byte	.LASF9
+ 373 006c E3010000 		.4byte	.LASF9
  374 0070 02       		.byte	0x2
  375 0071 D201     		.2byte	0x1d2
  376 0073 2C000000 		.4byte	0x2c
  377 0077 04       		.uleb128 0x4
- 378 0078 43010000 		.4byte	.LASF10
+ 378 0078 3F010000 		.4byte	.LASF10
  379 007c 02       		.byte	0x2
  380 007d D301     		.2byte	0x1d3
  381 007f 3A000000 		.4byte	0x3a
  382 0083 04       		.uleb128 0x4
- 383 0084 53010000 		.4byte	.LASF11
+ 383 0084 4F010000 		.4byte	.LASF11
  384 0088 02       		.byte	0x2
  385 0089 D401     		.2byte	0x1d4
  386 008b 48000000 		.4byte	0x48
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccs3IiL9.s 			page 12
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccg2cF84.s 			page 12
 
 
  387 008f 02       		.uleb128 0x2
  388 0090 04       		.byte	0x4
  389 0091 04       		.byte	0x4
- 390 0092 0F000000 		.4byte	.LASF12
+ 390 0092 02020000 		.4byte	.LASF12
  391 0096 02       		.uleb128 0x2
  392 0097 08       		.byte	0x8
  393 0098 04       		.byte	0x4
- 394 0099 3C010000 		.4byte	.LASF13
+ 394 0099 38010000 		.4byte	.LASF13
  395 009d 02       		.uleb128 0x2
  396 009e 01       		.byte	0x1
  397 009f 08       		.byte	0x8
- 398 00a0 BB010000 		.4byte	.LASF14
+ 398 00a0 B7010000 		.4byte	.LASF14
  399 00a4 04       		.uleb128 0x4
  400 00a5 09000000 		.4byte	.LASF15
  401 00a9 02       		.byte	0x2
@@ -681,7 +681,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccs3IiL9.s 			page 1
  404 00b0 05       		.uleb128 0x5
  405 00b1 83000000 		.4byte	0x83
  406 00b5 06       		.uleb128 0x6
- 407 00b6 12020000 		.4byte	.LASF16
+ 407 00b6 14020000 		.4byte	.LASF16
  408 00ba 01       		.byte	0x1
  409 00bb 48       		.byte	0x48
  410 00bc 00000000 		.4byte	.LFB0
@@ -690,7 +690,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccs3IiL9.s 			page 1
  413 00c5 9C       		.byte	0x9c
  414 00c6 D9000000 		.4byte	0xd9
  415 00ca 07       		.uleb128 0x7
- 416 00cb 86010000 		.4byte	.LASF18
+ 416 00cb 82010000 		.4byte	.LASF18
  417 00cf 01       		.byte	0x1
  418 00d0 48       		.byte	0x48
  419 00d1 6B000000 		.4byte	0x6b
@@ -699,7 +699,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccs3IiL9.s 			page 1
  422 00d7 77       		.sleb128 -9
  423 00d8 00       		.byte	0
  424 00d9 06       		.uleb128 0x6
- 425 00da DD010000 		.4byte	.LASF17
+ 425 00da D9010000 		.4byte	.LASF17
  426 00de 01       		.byte	0x1
  427 00df 6F       		.byte	0x6f
  428 00e0 00000000 		.4byte	.LFB1
@@ -708,7 +708,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccs3IiL9.s 			page 1
  431 00e9 9C       		.byte	0x9c
  432 00ea 0B010000 		.4byte	0x10b
  433 00ee 07       		.uleb128 0x7
- 434 00ef 15000000 		.4byte	.LASF19
+ 434 00ef 4E000000 		.4byte	.LASF19
  435 00f3 01       		.byte	0x1
  436 00f4 6F       		.byte	0x6f
  437 00f5 6B000000 		.4byte	0x6b
@@ -716,9 +716,9 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccs3IiL9.s 			page 1
  439 00fa 91       		.byte	0x91
  440 00fb 6F       		.sleb128 -17
  441 00fc 08       		.uleb128 0x8
- 442 00fd 83000000 		.4byte	.LASF24
+ 442 00fd 7F000000 		.4byte	.LASF24
  443 0101 01       		.byte	0x1
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccs3IiL9.s 			page 13
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccg2cF84.s 			page 13
 
 
  444 0102 71       		.byte	0x71
@@ -737,7 +737,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccs3IiL9.s 			page 1
  457 011e 01       		.uleb128 0x1
  458 011f 9C       		.byte	0x9c
  459 0120 09       		.uleb128 0x9
- 460 0121 ED010000 		.4byte	.LASF21
+ 460 0121 E9010000 		.4byte	.LASF21
  461 0125 01       		.byte	0x1
  462 0126 A4       		.byte	0xa4
  463 0127 6B000000 		.4byte	0x6b
@@ -746,7 +746,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccs3IiL9.s 			page 1
  466 0133 01       		.uleb128 0x1
  467 0134 9C       		.byte	0x9c
  468 0135 06       		.uleb128 0x6
- 469 0136 8B010000 		.4byte	.LASF22
+ 469 0136 87010000 		.4byte	.LASF22
  470 013a 01       		.byte	0x1
  471 013b CF       		.byte	0xcf
  472 013c 00000000 		.4byte	.LFB4
@@ -755,7 +755,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccs3IiL9.s 			page 1
  475 0145 9C       		.byte	0x9c
  476 0146 75010000 		.4byte	0x175
  477 014a 07       		.uleb128 0x7
- 478 014b 4A010000 		.4byte	.LASF23
+ 478 014b 46010000 		.4byte	.LASF23
  479 014f 01       		.byte	0x1
  480 0150 CF       		.byte	0xcf
  481 0151 77000000 		.4byte	0x77
@@ -763,7 +763,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccs3IiL9.s 			page 1
  483 0156 91       		.byte	0x91
  484 0157 6E       		.sleb128 -18
  485 0158 07       		.uleb128 0x7
- 486 0159 86010000 		.4byte	.LASF18
+ 486 0159 82010000 		.4byte	.LASF18
  487 015d 01       		.byte	0x1
  488 015e CF       		.byte	0xcf
  489 015f 77000000 		.4byte	0x77
@@ -771,19 +771,19 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccs3IiL9.s 			page 1
  491 0164 91       		.byte	0x91
  492 0165 6C       		.sleb128 -20
  493 0166 08       		.uleb128 0x8
- 494 0167 5A010000 		.4byte	.LASF25
+ 494 0167 56010000 		.4byte	.LASF25
  495 016b 01       		.byte	0x1
  496 016c D1       		.byte	0xd1
  497 016d 83000000 		.4byte	0x83
  498 0171 02       		.uleb128 0x2
  499 0172 91       		.byte	0x91
  500 0173 74       		.sleb128 -12
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccs3IiL9.s 			page 14
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccg2cF84.s 			page 14
 
 
  501 0174 00       		.byte	0
  502 0175 0A       		.uleb128 0xa
- 503 0176 C0010000 		.4byte	.LASF26
+ 503 0176 BC010000 		.4byte	.LASF26
  504 017a 01       		.byte	0x1
  505 017b EC       		.byte	0xec
  506 017c 6B000000 		.4byte	0x6b
@@ -792,7 +792,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccs3IiL9.s 			page 1
  509 0188 01       		.uleb128 0x1
  510 0189 9C       		.byte	0x9c
  511 018a 08       		.uleb128 0x8
- 512 018b AE010000 		.4byte	.LASF27
+ 512 018b AA010000 		.4byte	.LASF27
  513 018f 01       		.byte	0x1
  514 0190 EE       		.byte	0xee
  515 0191 6B000000 		.4byte	0x6b
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccs3IiL9.s 			page 1
  555 0020 00       		.byte	0
  556 0021 0B       		.uleb128 0xb
  557 0022 0B       		.uleb128 0xb
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccs3IiL9.s 			page 15
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccg2cF84.s 			page 15
 
 
  558 0023 3E       		.uleb128 0x3e
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccs3IiL9.s 			page 1
  612 005a 03       		.uleb128 0x3
  613 005b 0E       		.uleb128 0xe
  614 005c 3A       		.uleb128 0x3a
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccs3IiL9.s 			page 16
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccg2cF84.s 			page 16
 
 
  615 005d 0B       		.uleb128 0xb
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccs3IiL9.s 			page 1
  669 0094 03       		.uleb128 0x3
  670 0095 0E       		.uleb128 0xe
  671 0096 3A       		.uleb128 0x3a
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccs3IiL9.s 			page 17
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccg2cF84.s 			page 17
 
 
  672 0097 0B       		.uleb128 0xb
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccs3IiL9.s 			page 1
  726 0030 00000000 		.4byte	0
  727 0034 00000000 		.4byte	0
  728              		.section	.debug_line,"",%progbits
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccs3IiL9.s 			page 18
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccg2cF84.s 			page 18
 
 
  729              	.Ldebug_line0:
@@ -1034,151 +1034,152 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccs3IiL9.s 			page 1
  733              	.LASF15:
  734 0009 72656733 		.ascii	"reg32\000"
  734      3200
- 735              	.LASF12:
- 736 000f 666C6F61 		.ascii	"float\000"
- 736      7400
- 737              	.LASF19:
- 738 0015 76616C75 		.ascii	"value\000"
- 738      6500
- 739              	.LASF30:
- 740 001b 443A5C44 		.ascii	"D:\\Documents\\PSoC Creator\\Workspace\\BLE_HID_Key"
- 740      6F63756D 
- 740      656E7473 
- 740      5C50536F 
- 740      43204372 
- 741 004a 626F6172 		.ascii	"board01.cydsn\000"
- 741      6430312E 
- 741      63796473 
- 741      6E00
- 742              	.LASF29:
- 743 0058 47656E65 		.ascii	"Generated_Source\\PSoC4\\SW2.c\000"
- 743      72617465 
- 743      645F536F 
- 743      75726365 
- 743      5C50536F 
- 744              	.LASF1:
- 745 0075 756E7369 		.ascii	"unsigned char\000"
- 745      676E6564 
- 745      20636861 
- 745      7200
- 746              	.LASF24:
- 747 0083 64725661 		.ascii	"drVal\000"
- 747      6C00
- 748              	.LASF5:
- 749 0089 6C6F6E67 		.ascii	"long unsigned int\000"
- 749      20756E73 
- 749      69676E65 
- 749      6420696E 
- 749      7400
- 750              	.LASF3:
- 751 009b 73686F72 		.ascii	"short unsigned int\000"
- 751      7420756E 
- 751      7369676E 
- 751      65642069 
- 751      6E7400
- 752              	.LASF28:
- 753 00ae 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccs3IiL9.s 			page 19
+ 735              	.LASF30:
+ 736 000f 443A5C44 		.ascii	"D:\\Documents\\GitHub\\XID_483\\Workspace\\BLE_HID_"
+ 736      6F63756D 
+ 736      656E7473 
+ 736      5C476974 
+ 736      4875625C 
+ 737 003d 4B657962 		.ascii	"Keyboard01.cydsn\000"
+ 737      6F617264 
+ 737      30312E63 
+ 737      7964736E 
+ 737      00
+ 738              	.LASF19:
+ 739 004e 76616C75 		.ascii	"value\000"
+ 739      6500
+ 740              	.LASF29:
+ 741 0054 47656E65 		.ascii	"Generated_Source\\PSoC4\\SW2.c\000"
+ 741      72617465 
+ 741      645F536F 
+ 741      75726365 
+ 741      5C50536F 
+ 742              	.LASF1:
+ 743 0071 756E7369 		.ascii	"unsigned char\000"
+ 743      676E6564 
+ 743      20636861 
+ 743      7200
+ 744              	.LASF24:
+ 745 007f 64725661 		.ascii	"drVal\000"
+ 745      6C00
+ 746              	.LASF5:
+ 747 0085 6C6F6E67 		.ascii	"long unsigned int\000"
+ 747      20756E73 
+ 747      69676E65 
+ 747      6420696E 
+ 747      7400
+ 748              	.LASF3:
+ 749 0097 73686F72 		.ascii	"short unsigned int\000"
+ 749      7420756E 
+ 749      7369676E 
+ 749      65642069 
+ 749      6E7400
+ 750              	.LASF28:
+ 751 00aa 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 751      43313120 
+ 751      352E342E 
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccg2cF84.s 			page 19
 
 
- 753      43313120 
- 753      352E342E 
- 753      31203230 
- 753      31363036 
- 754 00e1 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
- 754      20726576 
- 754      6973696F 
- 754      6E203233 
- 754      37373135 
- 755 0114 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
- 755      66756E63 
- 755      74696F6E 
- 755      2D736563 
- 755      74696F6E 
- 756              	.LASF13:
- 757 013c 646F7562 		.ascii	"double\000"
- 757      6C6500
- 758              	.LASF10:
- 759 0143 75696E74 		.ascii	"uint16\000"
- 759      313600
- 760              	.LASF23:
- 761 014a 706F7369 		.ascii	"position\000"
- 761      74696F6E 
- 761      00
- 762              	.LASF11:
- 763 0153 75696E74 		.ascii	"uint32\000"
- 763      333200
- 764              	.LASF25:
- 765 015a 696E7472 		.ascii	"intrCfg\000"
- 765      43666700 
- 766              	.LASF8:
- 767 0162 756E7369 		.ascii	"unsigned int\000"
- 767      676E6564 
- 767      20696E74 
- 767      00
- 768              	.LASF7:
- 769 016f 6C6F6E67 		.ascii	"long long unsigned int\000"
- 769      206C6F6E 
- 769      6720756E 
- 769      7369676E 
- 769      65642069 
- 770              	.LASF18:
- 771 0186 6D6F6465 		.ascii	"mode\000"
- 771      00
- 772              	.LASF22:
- 773 018b 5357325F 		.ascii	"SW2_SetInterruptMode\000"
- 773      53657449 
- 773      6E746572 
- 773      72757074 
- 773      4D6F6465 
- 774              	.LASF6:
- 775 01a0 6C6F6E67 		.ascii	"long long int\000"
- 775      206C6F6E 
- 775      6720696E 
- 775      7400
- 776              	.LASF27:
- 777 01ae 6D61736B 		.ascii	"maskedStatus\000"
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccs3IiL9.s 			page 20
+ 751      31203230 
+ 751      31363036 
+ 752 00dd 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 752      20726576 
+ 752      6973696F 
+ 752      6E203233 
+ 752      37373135 
+ 753 0110 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 753      66756E63 
+ 753      74696F6E 
+ 753      2D736563 
+ 753      74696F6E 
+ 754              	.LASF13:
+ 755 0138 646F7562 		.ascii	"double\000"
+ 755      6C6500
+ 756              	.LASF10:
+ 757 013f 75696E74 		.ascii	"uint16\000"
+ 757      313600
+ 758              	.LASF23:
+ 759 0146 706F7369 		.ascii	"position\000"
+ 759      74696F6E 
+ 759      00
+ 760              	.LASF11:
+ 761 014f 75696E74 		.ascii	"uint32\000"
+ 761      333200
+ 762              	.LASF25:
+ 763 0156 696E7472 		.ascii	"intrCfg\000"
+ 763      43666700 
+ 764              	.LASF8:
+ 765 015e 756E7369 		.ascii	"unsigned int\000"
+ 765      676E6564 
+ 765      20696E74 
+ 765      00
+ 766              	.LASF7:
+ 767 016b 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 767      206C6F6E 
+ 767      6720756E 
+ 767      7369676E 
+ 767      65642069 
+ 768              	.LASF18:
+ 769 0182 6D6F6465 		.ascii	"mode\000"
+ 769      00
+ 770              	.LASF22:
+ 771 0187 5357325F 		.ascii	"SW2_SetInterruptMode\000"
+ 771      53657449 
+ 771      6E746572 
+ 771      72757074 
+ 771      4D6F6465 
+ 772              	.LASF6:
+ 773 019c 6C6F6E67 		.ascii	"long long int\000"
+ 773      206C6F6E 
+ 773      6720696E 
+ 773      7400
+ 774              	.LASF27:
+ 775 01aa 6D61736B 		.ascii	"maskedStatus\000"
+ 775      65645374 
+ 775      61747573 
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccg2cF84.s 			page 20
 
 
- 777      65645374 
- 777      61747573 
+ 775      00
+ 776              	.LASF14:
+ 777 01b7 63686172 		.ascii	"char\000"
  777      00
- 778              	.LASF14:
- 779 01bb 63686172 		.ascii	"char\000"
- 779      00
- 780              	.LASF26:
- 781 01c0 5357325F 		.ascii	"SW2_ClearInterrupt\000"
- 781      436C6561 
- 781      72496E74 
- 781      65727275 
- 781      707400
- 782              	.LASF2:
- 783 01d3 73686F72 		.ascii	"short int\000"
- 783      7420696E 
- 783      7400
- 784              	.LASF17:
- 785 01dd 5357325F 		.ascii	"SW2_Write\000"
- 785      57726974 
- 785      6500
- 786              	.LASF9:
- 787 01e7 75696E74 		.ascii	"uint8\000"
- 787      3800
- 788              	.LASF21:
- 789 01ed 5357325F 		.ascii	"SW2_ReadDataReg\000"
- 789      52656164 
- 789      44617461 
- 789      52656700 
- 790              	.LASF4:
- 791 01fd 6C6F6E67 		.ascii	"long int\000"
- 791      20696E74 
- 791      00
+ 778              	.LASF26:
+ 779 01bc 5357325F 		.ascii	"SW2_ClearInterrupt\000"
+ 779      436C6561 
+ 779      72496E74 
+ 779      65727275 
+ 779      707400
+ 780              	.LASF2:
+ 781 01cf 73686F72 		.ascii	"short int\000"
+ 781      7420696E 
+ 781      7400
+ 782              	.LASF17:
+ 783 01d9 5357325F 		.ascii	"SW2_Write\000"
+ 783      57726974 
+ 783      6500
+ 784              	.LASF9:
+ 785 01e3 75696E74 		.ascii	"uint8\000"
+ 785      3800
+ 786              	.LASF21:
+ 787 01e9 5357325F 		.ascii	"SW2_ReadDataReg\000"
+ 787      52656164 
+ 787      44617461 
+ 787      52656700 
+ 788              	.LASF4:
+ 789 01f9 6C6F6E67 		.ascii	"long int\000"
+ 789      20696E74 
+ 789      00
+ 790              	.LASF12:
+ 791 0202 666C6F61 		.ascii	"float\000"
+ 791      7400
  792              	.LASF0:
- 793 0206 7369676E 		.ascii	"signed char\000"
+ 793 0208 7369676E 		.ascii	"signed char\000"
  793      65642063 
  793      68617200 
  794              	.LASF16:
- 795 0212 5357325F 		.ascii	"SW2_SetDriveMode\000"
+ 795 0214 5357325F 		.ascii	"SW2_SetDriveMode\000"
  795      53657444 
  795      72697665 
  795      4D6F6465 

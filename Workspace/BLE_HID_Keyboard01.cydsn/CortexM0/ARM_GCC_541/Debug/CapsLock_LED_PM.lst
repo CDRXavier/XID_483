@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccG066WU.s 			page 1
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmTxoLW.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccG066WU.s 			page 1
   22:Generated_Source\PSoC4/CapsLock_LED_PM.c **** 
   23:Generated_Source\PSoC4/CapsLock_LED_PM.c **** /*******************************************************************************
   24:Generated_Source\PSoC4/CapsLock_LED_PM.c **** * Function Name: CapsLock_LED_Sleep
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccG066WU.s 			page 2
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmTxoLW.s 			page 2
 
 
   25:Generated_Source\PSoC4/CapsLock_LED_PM.c **** ****************************************************************************//**
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccG066WU.s 			page 1
   49 000e BD46     		mov	sp, r7
   50              		@ sp needed
   51 0010 80BD     		pop	{r7, pc}
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccG066WU.s 			page 3
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmTxoLW.s 			page 3
 
 
   52              	.L3:
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccG066WU.s 			page 1
   82 000a 1360     		str	r3, [r2]
   86:Generated_Source\PSoC4/CapsLock_LED_PM.c ****     #else
   87:Generated_Source\PSoC4/CapsLock_LED_PM.c ****         #if (CY_PSOC4_4200L)
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccG066WU.s 			page 4
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmTxoLW.s 			page 4
 
 
   88:Generated_Source\PSoC4/CapsLock_LED_PM.c ****             /* Restore the regulator state and come out of suspend mode */
@@ -215,48 +215,48 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccG066WU.s 			page 1
  104 0006 00000000 		.4byte	.Ldebug_abbrev0
  105 000a 04       		.byte	0x4
  106 000b 01       		.uleb128 0x1
- 107 000c C1000000 		.4byte	.LASF20
+ 107 000c C3000000 		.4byte	.LASF20
  108 0010 0C       		.byte	0xc
- 109 0011 22000000 		.4byte	.LASF21
- 110 0015 4B000000 		.4byte	.LASF22
+ 109 0011 61000000 		.4byte	.LASF21
+ 110 0015 0F000000 		.4byte	.LASF22
  111 0019 00000000 		.4byte	.Ldebug_ranges0+0
  112 001d 00000000 		.4byte	0
  113 0021 00000000 		.4byte	.Ldebug_line0
  114 0025 02       		.uleb128 0x2
  115 0026 01       		.byte	0x1
  116 0027 06       		.byte	0x6
- 117 0028 E0010000 		.4byte	.LASF0
+ 117 0028 E2010000 		.4byte	.LASF0
  118 002c 02       		.uleb128 0x2
  119 002d 01       		.byte	0x1
  120 002e 08       		.byte	0x8
- 121 002f 8E000000 		.4byte	.LASF1
+ 121 002f 90000000 		.4byte	.LASF1
  122 0033 02       		.uleb128 0x2
  123 0034 02       		.byte	0x2
  124 0035 05       		.byte	0x5
- 125 0036 B1010000 		.4byte	.LASF2
+ 125 0036 B3010000 		.4byte	.LASF2
  126 003a 02       		.uleb128 0x2
  127 003b 02       		.byte	0x2
  128 003c 07       		.byte	0x7
- 129 003d AE000000 		.4byte	.LASF3
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccG066WU.s 			page 5
+ 129 003d B0000000 		.4byte	.LASF3
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmTxoLW.s 			page 5
 
 
  130 0041 02       		.uleb128 0x2
  131 0042 04       		.byte	0x4
  132 0043 05       		.byte	0x5
- 133 0044 C3010000 		.4byte	.LASF4
+ 133 0044 C5010000 		.4byte	.LASF4
  134 0048 02       		.uleb128 0x2
  135 0049 04       		.byte	0x4
  136 004a 07       		.byte	0x7
- 137 004b 9C000000 		.4byte	.LASF5
+ 137 004b 9E000000 		.4byte	.LASF5
  138 004f 02       		.uleb128 0x2
  139 0050 08       		.byte	0x8
  140 0051 05       		.byte	0x5
- 141 0052 9E010000 		.4byte	.LASF6
+ 141 0052 A0010000 		.4byte	.LASF6
  142 0056 02       		.uleb128 0x2
  143 0057 08       		.byte	0x8
  144 0058 07       		.byte	0x7
- 145 0059 6A010000 		.4byte	.LASF7
+ 145 0059 6C010000 		.4byte	.LASF7
  146 005d 03       		.uleb128 0x3
  147 005e 04       		.byte	0x4
  148 005f 05       		.byte	0x5
@@ -264,24 +264,24 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccG066WU.s 			page 1
  150 0064 02       		.uleb128 0x2
  151 0065 04       		.byte	0x4
  152 0066 07       		.byte	0x7
- 153 0067 5D010000 		.4byte	.LASF8
+ 153 0067 5F010000 		.4byte	.LASF8
  154 006b 04       		.uleb128 0x4
- 155 006c 56010000 		.4byte	.LASF12
+ 155 006c 58010000 		.4byte	.LASF12
  156 0070 02       		.byte	0x2
  157 0071 D401     		.2byte	0x1d4
  158 0073 48000000 		.4byte	0x48
  159 0077 02       		.uleb128 0x2
  160 0078 04       		.byte	0x4
  161 0079 04       		.byte	0x4
- 162 007a 88000000 		.4byte	.LASF9
+ 162 007a 8A000000 		.4byte	.LASF9
  163 007e 02       		.uleb128 0x2
  164 007f 08       		.byte	0x8
  165 0080 04       		.byte	0x4
- 166 0081 4F010000 		.4byte	.LASF10
+ 166 0081 51010000 		.4byte	.LASF10
  167 0085 02       		.uleb128 0x2
  168 0086 01       		.byte	0x1
  169 0087 08       		.byte	0x8
- 170 0088 AC010000 		.4byte	.LASF11
+ 170 0088 AE010000 		.4byte	.LASF11
  171 008c 04       		.uleb128 0x4
  172 008d 00000000 		.4byte	.LASF13
  173 0091 02       		.byte	0x2
@@ -295,16 +295,16 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccG066WU.s 			page 1
  181 00a0 21       		.byte	0x21
  182 00a1 CA000000 		.4byte	0xca
  183 00a5 07       		.uleb128 0x7
- 184 00a6 BB010000 		.4byte	.LASF14
+ 184 00a6 BD010000 		.4byte	.LASF14
  185 00aa 03       		.byte	0x3
  186 00ab 23       		.byte	0x23
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccG066WU.s 			page 6
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmTxoLW.s 			page 6
 
 
  187 00ac 6B000000 		.4byte	0x6b
  188 00b0 00       		.byte	0
  189 00b1 07       		.uleb128 0x7
- 190 00b2 95010000 		.4byte	.LASF15
+ 190 00b2 97010000 		.4byte	.LASF15
  191 00b6 03       		.byte	0x3
  192 00b7 24       		.byte	0x24
  193 00b8 6B000000 		.4byte	0x6b
@@ -317,12 +317,12 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccG066WU.s 			page 1
  200 00c8 08       		.byte	0x8
  201 00c9 00       		.byte	0
  202 00ca 08       		.uleb128 0x8
- 203 00cb EC010000 		.4byte	.LASF17
+ 203 00cb EE010000 		.4byte	.LASF17
  204 00cf 03       		.byte	0x3
  205 00d0 26       		.byte	0x26
  206 00d1 9D000000 		.4byte	0x9d
  207 00d5 09       		.uleb128 0x9
- 208 00d6 0F000000 		.4byte	.LASF18
+ 208 00d6 4E000000 		.4byte	.LASF18
  209 00da 01       		.byte	0x1
  210 00db 2C       		.byte	0x2c
  211 00dc 00000000 		.4byte	.LFB0
@@ -330,7 +330,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccG066WU.s 			page 1
  213 00e4 01       		.uleb128 0x1
  214 00e5 9C       		.byte	0x9c
  215 00e6 09       		.uleb128 0x9
- 216 00e7 CC010000 		.4byte	.LASF19
+ 216 00e7 CE010000 		.4byte	.LASF19
  217 00eb 01       		.byte	0x1
  218 00ec 52       		.byte	0x52
  219 00ed 00000000 		.4byte	.LFB1
@@ -338,7 +338,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccG066WU.s 			page 1
  221 00f5 01       		.uleb128 0x1
  222 00f6 9C       		.byte	0x9c
  223 00f7 0A       		.uleb128 0xa
- 224 00f8 81010000 		.4byte	.LASF23
+ 224 00f8 83010000 		.4byte	.LASF23
  225 00fc 01       		.byte	0x1
  226 00fd 14       		.byte	0x14
  227 00fe CA000000 		.4byte	0xca
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccG066WU.s 			page 1
  241 0007 03       		.uleb128 0x3
  242 0008 0E       		.uleb128 0xe
  243 0009 1B       		.uleb128 0x1b
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccG066WU.s 			page 7
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmTxoLW.s 			page 7
 
 
  244 000a 0E       		.uleb128 0xe
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccG066WU.s 			page 1
  298 0040 0B       		.uleb128 0xb
  299 0041 0B       		.uleb128 0xb
  300 0042 3A       		.uleb128 0x3a
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccG066WU.s 			page 8
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmTxoLW.s 			page 8
 
 
  301 0043 0B       		.uleb128 0xb
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccG066WU.s 			page 1
  355 0079 9742     		.uleb128 0x2117
  356 007b 19       		.uleb128 0x19
  357 007c 00       		.byte	0
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccG066WU.s 			page 9
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmTxoLW.s 			page 9
 
 
  358 007d 00       		.byte	0
@@ -534,133 +534,134 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccG066WU.s 			page 1
  403 0006 75736253 		.ascii	"usbState\000"
  403      74617465 
  403      00
- 404              	.LASF18:
- 405 000f 43617073 		.ascii	"CapsLock_LED_Sleep\000"
- 405      4C6F636B 
- 405      5F4C4544 
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccG066WU.s 			page 10
+ 404              	.LASF22:
+ 405 000f 443A5C44 		.ascii	"D:\\Documents\\GitHub\\XID_483\\Workspace\\BLE_HID_"
+ 405      6F63756D 
+ 405      656E7473 
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmTxoLW.s 			page 10
 
 
- 405      5F536C65 
- 405      657000
- 406              	.LASF21:
- 407 0022 47656E65 		.ascii	"Generated_Source\\PSoC4\\CapsLock_LED_PM.c\000"
- 407      72617465 
- 407      645F536F 
- 407      75726365 
- 407      5C50536F 
- 408              	.LASF22:
- 409 004b 443A5C44 		.ascii	"D:\\Documents\\PSoC Creator\\Workspace\\BLE_HID_Key"
- 409      6F63756D 
- 409      656E7473 
- 409      5C50536F 
- 409      43204372 
- 410 007a 626F6172 		.ascii	"board01.cydsn\000"
- 410      6430312E 
- 410      63796473 
- 410      6E00
+ 405      5C476974 
+ 405      4875625C 
+ 406 003d 4B657962 		.ascii	"Keyboard01.cydsn\000"
+ 406      6F617264 
+ 406      30312E63 
+ 406      7964736E 
+ 406      00
+ 407              	.LASF18:
+ 408 004e 43617073 		.ascii	"CapsLock_LED_Sleep\000"
+ 408      4C6F636B 
+ 408      5F4C4544 
+ 408      5F536C65 
+ 408      657000
+ 409              	.LASF21:
+ 410 0061 47656E65 		.ascii	"Generated_Source\\PSoC4\\CapsLock_LED_PM.c\000"
+ 410      72617465 
+ 410      645F536F 
+ 410      75726365 
+ 410      5C50536F 
  411              	.LASF9:
- 412 0088 666C6F61 		.ascii	"float\000"
+ 412 008a 666C6F61 		.ascii	"float\000"
  412      7400
  413              	.LASF1:
- 414 008e 756E7369 		.ascii	"unsigned char\000"
+ 414 0090 756E7369 		.ascii	"unsigned char\000"
  414      676E6564 
  414      20636861 
  414      7200
  415              	.LASF5:
- 416 009c 6C6F6E67 		.ascii	"long unsigned int\000"
+ 416 009e 6C6F6E67 		.ascii	"long unsigned int\000"
  416      20756E73 
  416      69676E65 
  416      6420696E 
  416      7400
  417              	.LASF3:
- 418 00ae 73686F72 		.ascii	"short unsigned int\000"
+ 418 00b0 73686F72 		.ascii	"short unsigned int\000"
  418      7420756E 
  418      7369676E 
  418      65642069 
  418      6E7400
  419              	.LASF20:
- 420 00c1 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 420 00c3 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
  420      43313120 
  420      352E342E 
  420      31203230 
  420      31363036 
- 421 00f4 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 421 00f6 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
  421      20726576 
  421      6973696F 
  421      6E203233 
  421      37373135 
- 422 0127 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 422 0129 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
  422      66756E63 
  422      74696F6E 
  422      2D736563 
  422      74696F6E 
  423              	.LASF10:
- 424 014f 646F7562 		.ascii	"double\000"
+ 424 0151 646F7562 		.ascii	"double\000"
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmTxoLW.s 			page 11
+
+
  424      6C6500
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccG066WU.s 			page 11
-
-
  425              	.LASF12:
- 426 0156 75696E74 		.ascii	"uint32\000"
+ 426 0158 75696E74 		.ascii	"uint32\000"
  426      333200
  427              	.LASF8:
- 428 015d 756E7369 		.ascii	"unsigned int\000"
+ 428 015f 756E7369 		.ascii	"unsigned int\000"
  428      676E6564 
  428      20696E74 
  428      00
  429              	.LASF7:
- 430 016a 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 430 016c 6C6F6E67 		.ascii	"long long unsigned int\000"
  430      206C6F6E 
  430      6720756E 
  430      7369676E 
  430      65642069 
  431              	.LASF23:
- 432 0181 43617073 		.ascii	"CapsLock_LED_backup\000"
+ 432 0183 43617073 		.ascii	"CapsLock_LED_backup\000"
  432      4C6F636B 
  432      5F4C4544 
  432      5F626163 
  432      6B757000 
  433              	.LASF15:
- 434 0195 73696F53 		.ascii	"sioState\000"
+ 434 0197 73696F53 		.ascii	"sioState\000"
  434      74617465 
  434      00
  435              	.LASF6:
- 436 019e 6C6F6E67 		.ascii	"long long int\000"
+ 436 01a0 6C6F6E67 		.ascii	"long long int\000"
  436      206C6F6E 
  436      6720696E 
  436      7400
  437              	.LASF11:
- 438 01ac 63686172 		.ascii	"char\000"
+ 438 01ae 63686172 		.ascii	"char\000"
  438      00
  439              	.LASF2:
- 440 01b1 73686F72 		.ascii	"short int\000"
+ 440 01b3 73686F72 		.ascii	"short int\000"
  440      7420696E 
  440      7400
  441              	.LASF14:
- 442 01bb 70635374 		.ascii	"pcState\000"
+ 442 01bd 70635374 		.ascii	"pcState\000"
  442      61746500 
  443              	.LASF4:
- 444 01c3 6C6F6E67 		.ascii	"long int\000"
+ 444 01c5 6C6F6E67 		.ascii	"long int\000"
  444      20696E74 
  444      00
  445              	.LASF19:
- 446 01cc 43617073 		.ascii	"CapsLock_LED_Wakeup\000"
+ 446 01ce 43617073 		.ascii	"CapsLock_LED_Wakeup\000"
  446      4C6F636B 
  446      5F4C4544 
  446      5F57616B 
  446      65757000 
  447              	.LASF0:
- 448 01e0 7369676E 		.ascii	"signed char\000"
+ 448 01e2 7369676E 		.ascii	"signed char\000"
  448      65642063 
  448      68617200 
  449              	.LASF17:
- 450 01ec 43617073 		.ascii	"CapsLock_LED_BACKUP_STRUCT\000"
+ 450 01ee 43617073 		.ascii	"CapsLock_LED_BACKUP_STRUCT\000"
  450      4C6F636B 
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmTxoLW.s 			page 12
+
+
  450      5F4C4544 
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccG066WU.s 			page 12
-
-
  450      5F424143 
  450      4B55505F 
  451              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

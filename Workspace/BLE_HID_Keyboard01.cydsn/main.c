@@ -251,21 +251,21 @@ CY_ISR(Timer_Interrupt)
 void WDT_Start(void)
 {
     /* Unlock the WDT registers for modification */
-    CySysWdtUnlock(); 
+//    CySysWdtUnlock(); 
     /* Setup ISR */
-    WDT_Interrupt_StartEx(&Timer_Interrupt);
+//    WDT_Interrupt_StartEx(&Timer_Interrupt);
     /* Write the mode to generate interrupt on match */
-    CySysWdtWriteMode(WDT_COUNTER, CY_SYS_WDT_MODE_INT);
+//    CySysWdtWriteMode(WDT_COUNTER, CY_SYS_WDT_MODE_INT);
     /* Configure the WDT counter clear on a match setting */
-    CySysWdtWriteClearOnMatch(WDT_COUNTER, WDT_COUNTER_ENABLE);
+//    CySysWdtWriteClearOnMatch(WDT_COUNTER, WDT_COUNTER_ENABLE);
     /* Configure the WDT counter match comparison value */
-    CySysWdtWriteMatch(WDT_COUNTER, WDT_TIMEOUT);
+//    CySysWdtWriteMatch(WDT_COUNTER, WDT_TIMEOUT);
     /* Reset WDT counter */
-    CySysWdtResetCounters(WDT_COUNTER);
+//    CySysWdtResetCounters(WDT_COUNTER);
     /* Enable the specified WDT counter */
-    CySysWdtEnable(WDT_COUNTER_MASK);
+//    CySysWdtEnable(WDT_COUNTER_MASK);
     /* Lock out configuration changes to the Watchdog timer registers */
-    CySysWdtLock();    
+//    CySysWdtLock();    
 }
 
 
@@ -280,11 +280,11 @@ void WDT_Start(void)
 void WDT_Stop(void)
 {
     /* Unlock the WDT registers for modification */
-    CySysWdtUnlock(); 
+//    CySysWdtUnlock(); 
     /* Disable the specified WDT counter */
-    CySysWdtDisable(WDT_COUNTER_MASK);
+//    CySysWdtDisable(WDT_COUNTER_MASK);
     /* Locks out configuration changes to the Watchdog timer registers */
-    CySysWdtLock();    
+//    CySysWdtLock();    
 }
 
 /*******************************************************************************
@@ -425,7 +425,7 @@ int main()
             }
             
             /* Store bonding data to flash only when all debug information has been sent */
-        //#if(CYBLE_BONDING_REQUIREMENT == CYBLE_BONDING_YES)
+        #if(CYBLE_BONDING_REQUIREMENT == CYBLE_BONDING_YES)
         //#if (DEBUG_UART_ENABLED == ENABLED)
         //    if((cyBle_pendingFlashWrite != 0u) &&
         //       ((UART_DEB_SpiUartGetTxBufferSize() + UART_DEB_GET_TX_FIFO_SR_VALID) == 0u))
@@ -436,11 +436,11 @@ int main()
             {
                 CYBLE_API_RESULT_T apiResult;
                 
-                apiResult = CyBle_StoreBondingData(0u);
+                /*apiResult = */CyBle_StoreBondingData(0u);
                 //(void)apiResult;
                 //DBG_PRINTF("Store bonding data, status: %x \r\n", apiResult);
             }
-        //#endif /* CYBLE_BONDING_REQUIREMENT == CYBLE_BONDING_YES */    
+        #endif /* CYBLE_BONDING_REQUIREMENT == CYBLE_BONDING_YES */    
         }
 	}   
 }  
