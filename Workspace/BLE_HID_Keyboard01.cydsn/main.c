@@ -393,6 +393,28 @@ int main()
     CyBle_Start(AppCallBack);
     WDT_Start();
 
+    //resets display
+    DP_CLR_Write(0);
+    
+    
+    
+    
+    
+    
+DP_CLR_Write(1);    
+    
+    
+
+SPIM_1_Enable();
+
+
+SPIM_1_Start();
+SPIM_1_WriteByte(0);
+SPIM_1_WriteByte(0);
+SPIM_1_Stop();
+
+
+    
 //#if (BAS_MEASURE_ENABLE != 0)
 //    ADC_Start();
 //#endif /* BAS_MEASURE_ENABLE != 0 */

@@ -13,7 +13,7 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Workspace">
 <ExpandedNodeIds>
 <v>Workspace</v>
 <v>Workspace\BLE_HID_Keyboard01</v>
@@ -195,6 +195,81 @@
 <VisibleNodeIds>
 <v>Workspace</v>
 <v>Workspace\BLE_HID_Keyboard01</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Debug</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Debug\Listing Files</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Debug\Listing Files\Advertising_LED.lst</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Debug\Listing Files\Advertising_LED_PM.lst</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Debug\Listing Files\bas.lst</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Debug\Listing Files\BLE.lst</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Debug\Listing Files\BLE_bas.lst</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Debug\Listing Files\BLE_bless_isr.lst</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Debug\Listing Files\BLE_dis.lst</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Debug\Listing Files\BLE_eventHandler.lst</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Debug\Listing Files\BLE_gatt.lst</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Debug\Listing Files\BLE_HAL_INT.lst</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Debug\Listing Files\BLE_HAL_PVT.lst</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Debug\Listing Files\BLE_hids.lst</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Debug\Listing Files\BLE_scps.lst</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Debug\Listing Files\CapsLock_LED.lst</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Debug\Listing Files\CapsLock_LED_PM.lst</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Debug\Listing Files\Cm0Start.lst</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Debug\Listing Files\Columns.lst</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Debug\Listing Files\Columns_PM.lst</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Debug\Listing Files\CP_MISO.lst</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Debug\Listing Files\CP_MISO_PM.lst</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Debug\Listing Files\cy_em_eeprom.lst</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Debug\Listing Files\CyFlash.lst</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Debug\Listing Files\CyLFClk.lst</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Debug\Listing Files\CyLib.lst</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Debug\Listing Files\cyPm.lst</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Debug\Listing Files\debug.lst</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Debug\Listing Files\Disconnect_LED.lst</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Debug\Listing Files\Disconnect_LED_PM.lst</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Debug\Listing Files\DP_CLK.lst</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Debug\Listing Files\DP_CLK_PM.lst</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Debug\Listing Files\DP_CLR.lst</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Debug\Listing Files\DP_CLR_PM.lst</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Debug\Listing Files\DP_DAT.lst</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Debug\Listing Files\DP_DAT_PM.lst</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Debug\Listing Files\hids.lst</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Debug\Listing Files\main.lst</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Debug\Listing Files\Rows.lst</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Debug\Listing Files\Rows_PM.lst</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Debug\Listing Files\scps.lst</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Debug\Listing Files\SPIM_1.lst</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Debug\Listing Files\SPIM_1_INT.lst</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Debug\Listing Files\SPIM_1_IntClock.lst</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Debug\Listing Files\SPIM_1_PM.lst</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Debug\Listing Files\SW2.lst</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Debug\Listing Files\SW2_PM.lst</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Debug\Listing Files\Wakeup_Interrupt.lst</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Debug\BLE_HID_Keyboard01.elf</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Debug\BLE_HID_Keyboard01.hex</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Debug\BLE_HID_Keyboard01.map</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Release</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Release\Listing Files</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Release\Listing Files\Advertising_LED.lst</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Release\Listing Files\Advertising_LED_PM.lst</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Release\Listing Files\bas.lst</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Release\Listing Files\BLE.lst</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Release\Listing Files\BLE_bas.lst</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Release\Listing Files\BLE_bless_isr.lst</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Release\Listing Files\BLE_dis.lst</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Release\Listing Files\BLE_eventHandler.lst</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Release\Listing Files\BLE_gatt.lst</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Release\Listing Files\BLE_HAL_INT.lst</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Release\Listing Files\BLE_HAL_PVT.lst</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Release\Listing Files\BLE_hids.lst</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Release\Listing Files\BLE_scps.lst</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Release\Listing Files\CapsLock_LED.lst</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Release\Listing Files\CapsLock_LED_PM.lst</v>
+<v>Workspace\BLE_HID_Keyboard01\CortexM0\ARM_GCC_541\Release\Listing Files\Cm0Start.lst</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStates>
@@ -273,6 +348,7 @@
 <name v=".\BLE_HID_Keyboard01.cydsn\hids.c" />
 <name v=".\BLE_HID_Keyboard01.cydsn\main.c" />
 <name v=".\BLE_HID_Keyboard01.cydsn\scps.c" />
+<name v=".\BLE_HID_Keyboard01.cydsn\Generated_Source\PSoC4\cyPm.c" />
 </OpenDocs>
 <OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
 
@@ -280,7 +356,7 @@
   Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
   http://www.actiprosoftware.com
 
---><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Vertical"><TabbedMdiContainer Size="1986, 1238" SelectedTabbedMdiWindow="dc5d7ef3-b658-4e67-ae1d-2e703d2bfa4d"><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="f04f5333-d38a-4968-8dd2-da9d092ec5e9" /><DocumentWindow Key="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn\TopDesign\TopDesign.cysch" Guid="636c7ecf-7d9a-45a2-b63c-4d6b9223cb5f" /><DocumentWindow Key="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn\BLE_HID_Keyboard01.cydwr" Guid="c88e5922-b4b1-4e85-898a-83036d8c970c" /><DocumentWindow Key="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn\bas.c" Guid="035a9c2b-25da-45f8-978a-15cabc518052" /><DocumentWindow Key="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn\debug.c" Guid="4c21f144-a8cd-4f3a-b8e9-254215d8d99d" /><DocumentWindow Key="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn\hids.c" Guid="3f75ec6c-91c5-4b56-bb1c-280babb56df8" /><DocumentWindow Key="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn\main.c" Guid="dc5d7ef3-b658-4e67-ae1d-2e703d2bfa4d" /><DocumentWindow Key="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn\scps.c" Guid="2210c03c-998f-49d5-9450-6147d1b295f4" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Vertical"><TabbedMdiContainer Size="1986, 1238" SelectedTabbedMdiWindow="636c7ecf-7d9a-45a2-b63c-4d6b9223cb5f"><DocumentWindow Key="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn\TopDesign\TopDesign.cysch" Guid="636c7ecf-7d9a-45a2-b63c-4d6b9223cb5f" /><DocumentWindow Key="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn\BLE_HID_Keyboard01.cydwr" Guid="c88e5922-b4b1-4e85-898a-83036d8c970c" /><DocumentWindow Key="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn\bas.c" Guid="035a9c2b-25da-45f8-978a-15cabc518052" /><DocumentWindow Key="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn\debug.c" Guid="4c21f144-a8cd-4f3a-b8e9-254215d8d99d" /><DocumentWindow Key="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn\hids.c" Guid="3f75ec6c-91c5-4b56-bb1c-280babb56df8" /><DocumentWindow Key="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn\main.c" Guid="dc5d7ef3-b658-4e67-ae1d-2e703d2bfa4d" /><DocumentWindow Key="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn\scps.c" Guid="2210c03c-998f-49d5-9450-6147d1b295f4" /><DocumentWindow Key="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn\Generated_Source\PSoC4\cyPm.c" Guid="92d1ec11-878d-44f7-bc8c-a01efea8b3f6" /><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="f04f5333-d38a-4968-8dd2-da9d092ec5e9" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
 <config v="" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>

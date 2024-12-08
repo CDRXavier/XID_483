@@ -105,18 +105,42 @@ void HidsCallBack(uint32 event, void *eventParam)
 					if( (CAPS_LOCK_LED & locEventParam->value->val[0u]) != 0u)
 					{
 						CapsLock_LED_Write(LED_ON);
+                        
+                        SPIM_1_Start();
+SPIM_1_WriteByte(0xFF);
+SPIM_1_WriteByte(0x00);
+SPIM_1_Stop();
+
 					}
 					else
 					{
 						CapsLock_LED_Write(LED_OFF);
+                        
+                        SPIM_1_Start();
+SPIM_1_WriteByte(0x00);
+SPIM_1_WriteByte(0x00);
+SPIM_1_Stop();
+
 					}
 					if( (NUM_LOCK_LED & locEventParam->value->val[0u]) != 0u)
 					{
 						Advertising_LED_Write(LED_ON);
+                        
+                        SPIM_1_Start();
+SPIM_1_WriteByte(0x00);
+SPIM_1_WriteByte(0xFF);
+SPIM_1_Stop();
+
 					}
 					else
 					{
 						Advertising_LED_Write(LED_OFF);
+                        
+                        SPIM_1_Start();
+SPIM_1_WriteByte(0x00);
+SPIM_1_WriteByte(0x00);
+SPIM_1_Stop();
+
 					}
 				}
 			}

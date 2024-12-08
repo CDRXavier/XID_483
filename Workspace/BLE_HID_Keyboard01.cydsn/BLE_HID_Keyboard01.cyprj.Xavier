@@ -1148,6 +1148,201 @@
 </dependency_info>
 <dependency_info name="c9323d49-d323-40b8-9b59-cc008d68a989@Debug@CortexM0" xml_contents_version="2">
 <CyGuid_1173175f-1b9b-4ad4-a065-754a48a27021 type_name="CyDesigner.Common.Base.CyFileDeps" version="1">
+<file name=".\CortexM0\ARM_GCC_541\Debug\hids.o">
+<dep name=".\Generated_Source\PSoC4\Advertising_LED.h" />
+<dep name=".\Generated_Source\PSoC4\Advertising_LED_aliases.h" />
+<dep name=".\Generated_Source\PSoC4\BLE.h" />
+<dep name=".\Generated_Source\PSoC4\BLE_HAL_PVT.h" />
+<dep name=".\Generated_Source\PSoC4\BLE_STACK_PVT.h" />
+<dep name=".\Generated_Source\PSoC4\BLE_Stack.h" />
+<dep name=".\Generated_Source\PSoC4\BLE_StackGap.h" />
+<dep name=".\Generated_Source\PSoC4\BLE_StackGatt.h" />
+<dep name=".\Generated_Source\PSoC4\BLE_StackGattClient.h" />
+<dep name=".\Generated_Source\PSoC4\BLE_StackGattDb.h" />
+<dep name=".\Generated_Source\PSoC4\BLE_StackGattServer.h" />
+<dep name=".\Generated_Source\PSoC4\BLE_StackHostMain.h" />
+<dep name=".\Generated_Source\PSoC4\BLE_StackL2cap.h" />
+<dep name=".\Generated_Source\PSoC4\BLE_bas.h" />
+<dep name=".\Generated_Source\PSoC4\BLE_bless_isr.h" />
+<dep name=".\Generated_Source\PSoC4\BLE_dis.h" />
+<dep name=".\Generated_Source\PSoC4\BLE_eventHandler.h" />
+<dep name=".\Generated_Source\PSoC4\BLE_gatt.h" />
+<dep name=".\Generated_Source\PSoC4\BLE_hids.h" />
+<dep name=".\Generated_Source\PSoC4\BLE_scps.h" />
+<dep name=".\Generated_Source\PSoC4\CP_MISO.h" />
+<dep name=".\Generated_Source\PSoC4\CP_MISO_aliases.h" />
+<dep name=".\Generated_Source\PSoC4\CapsLock_LED.h" />
+<dep name=".\Generated_Source\PSoC4\CapsLock_LED_aliases.h" />
+<dep name=".\Generated_Source\PSoC4\Columns.h" />
+<dep name=".\Generated_Source\PSoC4\Columns_aliases.h" />
+<dep name=".\Generated_Source\PSoC4\CyFlash.h" />
+<dep name=".\Generated_Source\PSoC4\CyLFClk.h" />
+<dep name=".\Generated_Source\PSoC4\CyLib.h" />
+<dep name=".\Generated_Source\PSoC4\DP_CLK.h" />
+<dep name=".\Generated_Source\PSoC4\DP_CLK_aliases.h" />
+<dep name=".\Generated_Source\PSoC4\DP_CLR.h" />
+<dep name=".\Generated_Source\PSoC4\DP_CLR_aliases.h" />
+<dep name=".\Generated_Source\PSoC4\DP_DAT.h" />
+<dep name=".\Generated_Source\PSoC4\DP_DAT_aliases.h" />
+<dep name=".\Generated_Source\PSoC4\Disconnect_LED.h" />
+<dep name=".\Generated_Source\PSoC4\Disconnect_LED_aliases.h" />
+<dep name=".\Generated_Source\PSoC4\Rows.h" />
+<dep name=".\Generated_Source\PSoC4\Rows_aliases.h" />
+<dep name=".\Generated_Source\PSoC4\SPIM_1.h" />
+<dep name=".\Generated_Source\PSoC4\SPIM_1_IntClock.h" />
+<dep name=".\Generated_Source\PSoC4\SPIM_1_PVT.h" />
+<dep name=".\Generated_Source\PSoC4\SW2.h" />
+<dep name=".\Generated_Source\PSoC4\SW2_aliases.h" />
+<dep name=".\Generated_Source\PSoC4\Wakeup_Interrupt.h" />
+<dep name=".\Generated_Source\PSoC4\cmsis_armcc.h" />
+<dep name=".\Generated_Source\PSoC4\cmsis_compiler.h" />
+<dep name=".\Generated_Source\PSoC4\cmsis_gcc.h" />
+<dep name=".\Generated_Source\PSoC4\core_cm0.h" />
+<dep name=".\Generated_Source\PSoC4\core_cm0_psoc4.h" />
+<dep name=".\Generated_Source\PSoC4\cyPm.h" />
+<dep name=".\Generated_Source\PSoC4\cy_em_eeprom.h" />
+<dep name=".\Generated_Source\PSoC4\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC4\cydisabledsheets.h" />
+<dep name=".\Generated_Source\PSoC4\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC4\cyfitter_cfg.h" />
+<dep name=".\Generated_Source\PSoC4\cypins.h" />
+<dep name=".\Generated_Source\PSoC4\cytypes.h" />
+<dep name=".\Generated_Source\PSoC4\project.h" />
+<dep name=".\common.h" />
+<dep name=".\hids.c" />
+<dep name=".\hids.h" />
+</file>
+<file name=".\Generated_Source\PSoC4\Advertising_LED.h" />
+<file name=".\Generated_Source\PSoC4\Advertising_LED_aliases.h" />
+<file name=".\Generated_Source\PSoC4\BLE.h" />
+<file name=".\Generated_Source\PSoC4\BLE_HAL_PVT.h" />
+<file name=".\Generated_Source\PSoC4\BLE_STACK_PVT.h" />
+<file name=".\Generated_Source\PSoC4\BLE_Stack.h" />
+<file name=".\Generated_Source\PSoC4\BLE_StackGap.h" />
+<file name=".\Generated_Source\PSoC4\BLE_StackGatt.h" />
+<file name=".\Generated_Source\PSoC4\BLE_StackGattClient.h" />
+<file name=".\Generated_Source\PSoC4\BLE_StackGattDb.h" />
+<file name=".\Generated_Source\PSoC4\BLE_StackGattServer.h" />
+<file name=".\Generated_Source\PSoC4\BLE_StackHostMain.h" />
+<file name=".\Generated_Source\PSoC4\BLE_StackL2cap.h" />
+<file name=".\Generated_Source\PSoC4\BLE_bas.h" />
+<file name=".\Generated_Source\PSoC4\BLE_bless_isr.h" />
+<file name=".\Generated_Source\PSoC4\BLE_dis.h" />
+<file name=".\Generated_Source\PSoC4\BLE_eventHandler.h" />
+<file name=".\Generated_Source\PSoC4\BLE_gatt.h" />
+<file name=".\Generated_Source\PSoC4\BLE_hids.h" />
+<file name=".\Generated_Source\PSoC4\BLE_scps.h" />
+<file name=".\Generated_Source\PSoC4\CP_MISO.h" />
+<file name=".\Generated_Source\PSoC4\CP_MISO_aliases.h" />
+<file name=".\Generated_Source\PSoC4\CapsLock_LED.h" />
+<file name=".\Generated_Source\PSoC4\CapsLock_LED_aliases.h" />
+<file name=".\Generated_Source\PSoC4\Columns.h" />
+<file name=".\Generated_Source\PSoC4\Columns_aliases.h" />
+<file name=".\Generated_Source\PSoC4\CyFlash.h" />
+<file name=".\Generated_Source\PSoC4\CyLFClk.h" />
+<file name=".\Generated_Source\PSoC4\CyLib.h" />
+<file name=".\Generated_Source\PSoC4\DP_CLK.h" />
+<file name=".\Generated_Source\PSoC4\DP_CLK_aliases.h" />
+<file name=".\Generated_Source\PSoC4\DP_CLR.h" />
+<file name=".\Generated_Source\PSoC4\DP_CLR_aliases.h" />
+<file name=".\Generated_Source\PSoC4\DP_DAT.h" />
+<file name=".\Generated_Source\PSoC4\DP_DAT_aliases.h" />
+<file name=".\Generated_Source\PSoC4\Disconnect_LED.h" />
+<file name=".\Generated_Source\PSoC4\Disconnect_LED_aliases.h" />
+<file name=".\Generated_Source\PSoC4\Rows.h" />
+<file name=".\Generated_Source\PSoC4\Rows_aliases.h" />
+<file name=".\Generated_Source\PSoC4\SPIM_1.h" />
+<file name=".\Generated_Source\PSoC4\SPIM_1_IntClock.h" />
+<file name=".\Generated_Source\PSoC4\SPIM_1_PVT.h" />
+<file name=".\Generated_Source\PSoC4\SW2.h" />
+<file name=".\Generated_Source\PSoC4\SW2_aliases.h" />
+<file name=".\Generated_Source\PSoC4\Wakeup_Interrupt.h" />
+<file name=".\Generated_Source\PSoC4\cmsis_armcc.h" />
+<file name=".\Generated_Source\PSoC4\cmsis_compiler.h" />
+<file name=".\Generated_Source\PSoC4\cmsis_gcc.h" />
+<file name=".\Generated_Source\PSoC4\core_cm0.h" />
+<file name=".\Generated_Source\PSoC4\core_cm0_psoc4.h" />
+<file name=".\Generated_Source\PSoC4\cyPm.h" />
+<file name=".\Generated_Source\PSoC4\cy_em_eeprom.h" />
+<file name=".\Generated_Source\PSoC4\cydevice_trm.h" />
+<file name=".\Generated_Source\PSoC4\cydisabledsheets.h" />
+<file name=".\Generated_Source\PSoC4\cyfitter.h" />
+<file name=".\Generated_Source\PSoC4\cyfitter_cfg.h" />
+<file name=".\Generated_Source\PSoC4\cypins.h" />
+<file name=".\Generated_Source\PSoC4\cytypes.h" />
+<file name=".\Generated_Source\PSoC4\project.h" />
+<file name=".\common.h" />
+<file name=".\hids.c" />
+<file name=".\hids.h" />
+<file name=".\CortexM0\ARM_GCC_541\Debug\main.o">
+<dep name=".\Generated_Source\PSoC4\Advertising_LED.h" />
+<dep name=".\Generated_Source\PSoC4\Advertising_LED_aliases.h" />
+<dep name=".\Generated_Source\PSoC4\BLE.h" />
+<dep name=".\Generated_Source\PSoC4\BLE_HAL_PVT.h" />
+<dep name=".\Generated_Source\PSoC4\BLE_STACK_PVT.h" />
+<dep name=".\Generated_Source\PSoC4\BLE_Stack.h" />
+<dep name=".\Generated_Source\PSoC4\BLE_StackGap.h" />
+<dep name=".\Generated_Source\PSoC4\BLE_StackGatt.h" />
+<dep name=".\Generated_Source\PSoC4\BLE_StackGattClient.h" />
+<dep name=".\Generated_Source\PSoC4\BLE_StackGattDb.h" />
+<dep name=".\Generated_Source\PSoC4\BLE_StackGattServer.h" />
+<dep name=".\Generated_Source\PSoC4\BLE_StackHostMain.h" />
+<dep name=".\Generated_Source\PSoC4\BLE_StackL2cap.h" />
+<dep name=".\Generated_Source\PSoC4\BLE_bas.h" />
+<dep name=".\Generated_Source\PSoC4\BLE_bless_isr.h" />
+<dep name=".\Generated_Source\PSoC4\BLE_dis.h" />
+<dep name=".\Generated_Source\PSoC4\BLE_eventHandler.h" />
+<dep name=".\Generated_Source\PSoC4\BLE_gatt.h" />
+<dep name=".\Generated_Source\PSoC4\BLE_hids.h" />
+<dep name=".\Generated_Source\PSoC4\BLE_scps.h" />
+<dep name=".\Generated_Source\PSoC4\CP_MISO.h" />
+<dep name=".\Generated_Source\PSoC4\CP_MISO_aliases.h" />
+<dep name=".\Generated_Source\PSoC4\CapsLock_LED.h" />
+<dep name=".\Generated_Source\PSoC4\CapsLock_LED_aliases.h" />
+<dep name=".\Generated_Source\PSoC4\Columns.h" />
+<dep name=".\Generated_Source\PSoC4\Columns_aliases.h" />
+<dep name=".\Generated_Source\PSoC4\CyFlash.h" />
+<dep name=".\Generated_Source\PSoC4\CyLFClk.h" />
+<dep name=".\Generated_Source\PSoC4\CyLib.h" />
+<dep name=".\Generated_Source\PSoC4\DP_CLK.h" />
+<dep name=".\Generated_Source\PSoC4\DP_CLK_aliases.h" />
+<dep name=".\Generated_Source\PSoC4\DP_CLR.h" />
+<dep name=".\Generated_Source\PSoC4\DP_CLR_aliases.h" />
+<dep name=".\Generated_Source\PSoC4\DP_DAT.h" />
+<dep name=".\Generated_Source\PSoC4\DP_DAT_aliases.h" />
+<dep name=".\Generated_Source\PSoC4\Disconnect_LED.h" />
+<dep name=".\Generated_Source\PSoC4\Disconnect_LED_aliases.h" />
+<dep name=".\Generated_Source\PSoC4\Rows.h" />
+<dep name=".\Generated_Source\PSoC4\Rows_aliases.h" />
+<dep name=".\Generated_Source\PSoC4\SPIM_1.h" />
+<dep name=".\Generated_Source\PSoC4\SPIM_1_IntClock.h" />
+<dep name=".\Generated_Source\PSoC4\SPIM_1_PVT.h" />
+<dep name=".\Generated_Source\PSoC4\SW2.h" />
+<dep name=".\Generated_Source\PSoC4\SW2_aliases.h" />
+<dep name=".\Generated_Source\PSoC4\Wakeup_Interrupt.h" />
+<dep name=".\Generated_Source\PSoC4\cmsis_armcc.h" />
+<dep name=".\Generated_Source\PSoC4\cmsis_compiler.h" />
+<dep name=".\Generated_Source\PSoC4\cmsis_gcc.h" />
+<dep name=".\Generated_Source\PSoC4\core_cm0.h" />
+<dep name=".\Generated_Source\PSoC4\core_cm0_psoc4.h" />
+<dep name=".\Generated_Source\PSoC4\cyPm.h" />
+<dep name=".\Generated_Source\PSoC4\cy_em_eeprom.h" />
+<dep name=".\Generated_Source\PSoC4\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC4\cydisabledsheets.h" />
+<dep name=".\Generated_Source\PSoC4\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC4\cyfitter_cfg.h" />
+<dep name=".\Generated_Source\PSoC4\cypins.h" />
+<dep name=".\Generated_Source\PSoC4\cytypes.h" />
+<dep name=".\Generated_Source\PSoC4\project.h" />
+<dep name=".\bas.h" />
+<dep name=".\common.h" />
+<dep name=".\hids.h" />
+<dep name=".\main.c" />
+<dep name=".\scps.h" />
+</file>
+<file name=".\bas.h" />
+<file name=".\main.c" />
+<file name=".\scps.h" />
 <file name=".\CortexM0\ARM_GCC_541\Debug\Advertising_LED.o">
 <dep name=".\Generated_Source\PSoC4\Advertising_LED.c" />
 <dep name=".\Generated_Source\PSoC4\Advertising_LED.h" />
@@ -1158,12 +1353,6 @@
 <dep name=".\Generated_Source\PSoC4\cytypes.h" />
 </file>
 <file name=".\Generated_Source\PSoC4\Advertising_LED.c" />
-<file name=".\Generated_Source\PSoC4\Advertising_LED.h" />
-<file name=".\Generated_Source\PSoC4\Advertising_LED_aliases.h" />
-<file name=".\Generated_Source\PSoC4\cydevice_trm.h" />
-<file name=".\Generated_Source\PSoC4\cyfitter.h" />
-<file name=".\Generated_Source\PSoC4\cypins.h" />
-<file name=".\Generated_Source\PSoC4\cytypes.h" />
 <file name=".\CortexM0\ARM_GCC_541\Debug\Advertising_LED_PM.o">
 <dep name=".\Generated_Source\PSoC4\Advertising_LED.h" />
 <dep name=".\Generated_Source\PSoC4\Advertising_LED_PM.c" />
@@ -1202,27 +1391,6 @@
 <dep name=".\Generated_Source\PSoC4\cytypes.h" />
 </file>
 <file name=".\Generated_Source\PSoC4\BLE.c" />
-<file name=".\Generated_Source\PSoC4\BLE.h" />
-<file name=".\Generated_Source\PSoC4\BLE_HAL_PVT.h" />
-<file name=".\Generated_Source\PSoC4\BLE_STACK_PVT.h" />
-<file name=".\Generated_Source\PSoC4\BLE_Stack.h" />
-<file name=".\Generated_Source\PSoC4\BLE_StackGap.h" />
-<file name=".\Generated_Source\PSoC4\BLE_StackGatt.h" />
-<file name=".\Generated_Source\PSoC4\BLE_StackGattClient.h" />
-<file name=".\Generated_Source\PSoC4\BLE_StackGattDb.h" />
-<file name=".\Generated_Source\PSoC4\BLE_StackGattServer.h" />
-<file name=".\Generated_Source\PSoC4\BLE_StackHostMain.h" />
-<file name=".\Generated_Source\PSoC4\BLE_StackL2cap.h" />
-<file name=".\Generated_Source\PSoC4\BLE_bas.h" />
-<file name=".\Generated_Source\PSoC4\BLE_bless_isr.h" />
-<file name=".\Generated_Source\PSoC4\BLE_dis.h" />
-<file name=".\Generated_Source\PSoC4\BLE_eventHandler.h" />
-<file name=".\Generated_Source\PSoC4\BLE_gatt.h" />
-<file name=".\Generated_Source\PSoC4\BLE_hids.h" />
-<file name=".\Generated_Source\PSoC4\BLE_scps.h" />
-<file name=".\Generated_Source\PSoC4\CyFlash.h" />
-<file name=".\Generated_Source\PSoC4\CyLFClk.h" />
-<file name=".\Generated_Source\PSoC4\CyLib.h" />
 <file name=".\CortexM0\ARM_GCC_541\Debug\BLE_HAL_INT.o">
 <dep name=".\Generated_Source\PSoC4\BLE.h" />
 <dep name=".\Generated_Source\PSoC4\BLE_HAL_INT.c" />
@@ -1451,8 +1619,6 @@
 <dep name=".\Generated_Source\PSoC4\cytypes.h" />
 </file>
 <file name=".\Generated_Source\PSoC4\CP_MISO.c" />
-<file name=".\Generated_Source\PSoC4\CP_MISO.h" />
-<file name=".\Generated_Source\PSoC4\CP_MISO_aliases.h" />
 <file name=".\CortexM0\ARM_GCC_541\Debug\CP_MISO_PM.o">
 <dep name=".\Generated_Source\PSoC4\CP_MISO.h" />
 <dep name=".\Generated_Source\PSoC4\CP_MISO_PM.c" />
@@ -1473,8 +1639,6 @@
 <dep name=".\Generated_Source\PSoC4\cytypes.h" />
 </file>
 <file name=".\Generated_Source\PSoC4\CapsLock_LED.c" />
-<file name=".\Generated_Source\PSoC4\CapsLock_LED.h" />
-<file name=".\Generated_Source\PSoC4\CapsLock_LED_aliases.h" />
 <file name=".\CortexM0\ARM_GCC_541\Debug\CapsLock_LED_PM.o">
 <dep name=".\Generated_Source\PSoC4\CapsLock_LED.h" />
 <dep name=".\Generated_Source\PSoC4\CapsLock_LED_PM.c" />
@@ -1496,7 +1660,6 @@
 <dep name=".\cyapicallbacks.h" />
 </file>
 <file name=".\Generated_Source\PSoC4\Cm0Start.c" />
-<file name=".\Generated_Source\PSoC4\cyfitter_cfg.h" />
 <file name=".\CortexM0\ARM_GCC_541\Debug\Columns.o">
 <dep name=".\Generated_Source\PSoC4\Columns.c" />
 <dep name=".\Generated_Source\PSoC4\Columns.h" />
@@ -1507,8 +1670,6 @@
 <dep name=".\Generated_Source\PSoC4\cytypes.h" />
 </file>
 <file name=".\Generated_Source\PSoC4\Columns.c" />
-<file name=".\Generated_Source\PSoC4\Columns.h" />
-<file name=".\Generated_Source\PSoC4\Columns_aliases.h" />
 <file name=".\CortexM0\ARM_GCC_541\Debug\Columns_PM.o">
 <dep name=".\Generated_Source\PSoC4\Columns.h" />
 <dep name=".\Generated_Source\PSoC4\Columns_PM.c" />
@@ -1558,8 +1719,6 @@
 <dep name=".\Generated_Source\PSoC4\cytypes.h" />
 </file>
 <file name=".\Generated_Source\PSoC4\DP_CLK.c" />
-<file name=".\Generated_Source\PSoC4\DP_CLK.h" />
-<file name=".\Generated_Source\PSoC4\DP_CLK_aliases.h" />
 <file name=".\CortexM0\ARM_GCC_541\Debug\DP_CLK_PM.o">
 <dep name=".\Generated_Source\PSoC4\DP_CLK.h" />
 <dep name=".\Generated_Source\PSoC4\DP_CLK_PM.c" />
@@ -1580,8 +1739,6 @@
 <dep name=".\Generated_Source\PSoC4\cytypes.h" />
 </file>
 <file name=".\Generated_Source\PSoC4\DP_CLR.c" />
-<file name=".\Generated_Source\PSoC4\DP_CLR.h" />
-<file name=".\Generated_Source\PSoC4\DP_CLR_aliases.h" />
 <file name=".\CortexM0\ARM_GCC_541\Debug\DP_CLR_PM.o">
 <dep name=".\Generated_Source\PSoC4\DP_CLR.h" />
 <dep name=".\Generated_Source\PSoC4\DP_CLR_PM.c" />
@@ -1602,8 +1759,6 @@
 <dep name=".\Generated_Source\PSoC4\cytypes.h" />
 </file>
 <file name=".\Generated_Source\PSoC4\DP_DAT.c" />
-<file name=".\Generated_Source\PSoC4\DP_DAT.h" />
-<file name=".\Generated_Source\PSoC4\DP_DAT_aliases.h" />
 <file name=".\CortexM0\ARM_GCC_541\Debug\DP_DAT_PM.o">
 <dep name=".\Generated_Source\PSoC4\DP_DAT.h" />
 <dep name=".\Generated_Source\PSoC4\DP_DAT_PM.c" />
@@ -1624,8 +1779,6 @@
 <dep name=".\Generated_Source\PSoC4\cytypes.h" />
 </file>
 <file name=".\Generated_Source\PSoC4\Disconnect_LED.c" />
-<file name=".\Generated_Source\PSoC4\Disconnect_LED.h" />
-<file name=".\Generated_Source\PSoC4\Disconnect_LED_aliases.h" />
 <file name=".\CortexM0\ARM_GCC_541\Debug\Disconnect_LED_PM.o">
 <dep name=".\Generated_Source\PSoC4\Disconnect_LED.h" />
 <dep name=".\Generated_Source\PSoC4\Disconnect_LED_PM.c" />
@@ -1646,8 +1799,6 @@
 <dep name=".\Generated_Source\PSoC4\cytypes.h" />
 </file>
 <file name=".\Generated_Source\PSoC4\Rows.c" />
-<file name=".\Generated_Source\PSoC4\Rows.h" />
-<file name=".\Generated_Source\PSoC4\Rows_aliases.h" />
 <file name=".\CortexM0\ARM_GCC_541\Debug\Rows_PM.o">
 <dep name=".\Generated_Source\PSoC4\Rows.h" />
 <dep name=".\Generated_Source\PSoC4\Rows_PM.c" />
@@ -1670,9 +1821,6 @@
 <dep name=".\Generated_Source\PSoC4\cytypes.h" />
 </file>
 <file name=".\Generated_Source\PSoC4\SPIM_1.c" />
-<file name=".\Generated_Source\PSoC4\SPIM_1.h" />
-<file name=".\Generated_Source\PSoC4\SPIM_1_IntClock.h" />
-<file name=".\Generated_Source\PSoC4\SPIM_1_PVT.h" />
 <file name=".\CortexM0\ARM_GCC_541\Debug\SPIM_1_INT.o">
 <dep name=".\Generated_Source\PSoC4\CyLFClk.h" />
 <dep name=".\Generated_Source\PSoC4\CyLib.h" />
@@ -1716,8 +1864,6 @@
 <dep name=".\Generated_Source\PSoC4\cytypes.h" />
 </file>
 <file name=".\Generated_Source\PSoC4\SW2.c" />
-<file name=".\Generated_Source\PSoC4\SW2.h" />
-<file name=".\Generated_Source\PSoC4\SW2_aliases.h" />
 <file name=".\CortexM0\ARM_GCC_541\Debug\SW2_PM.o">
 <dep name=".\Generated_Source\PSoC4\SW2.h" />
 <dep name=".\Generated_Source\PSoC4\SW2_PM.c" />
@@ -1739,7 +1885,6 @@
 <dep name=".\cyapicallbacks.h" />
 </file>
 <file name=".\Generated_Source\PSoC4\Wakeup_Interrupt.c" />
-<file name=".\Generated_Source\PSoC4\Wakeup_Interrupt.h" />
 <file name=".\CortexM0\ARM_GCC_541\Debug\cyPm.o">
 <dep name=".\Generated_Source\PSoC4\CyLFClk.h" />
 <dep name=".\Generated_Source\PSoC4\CyLib.h" />
@@ -1751,7 +1896,6 @@
 <dep name=".\Generated_Source\PSoC4\cytypes.h" />
 </file>
 <file name=".\Generated_Source\PSoC4\cyPm.c" />
-<file name=".\Generated_Source\PSoC4\cyPm.h" />
 <file name=".\CortexM0\ARM_GCC_541\Debug\cy_em_eeprom.o">
 <dep name=".\Generated_Source\PSoC4\CyFlash.h" />
 <dep name=".\Generated_Source\PSoC4\CyLFClk.h" />
@@ -1763,7 +1907,6 @@
 <dep name=".\Generated_Source\PSoC4\cytypes.h" />
 </file>
 <file name=".\Generated_Source\PSoC4\cy_em_eeprom.c" />
-<file name=".\Generated_Source\PSoC4\cy_em_eeprom.h" />
 <file name=".\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o">
 <dep name=".\Generated_Source\PSoC4\CyLFClk.h" />
 <dep name=".\Generated_Source\PSoC4\CyLib.h" />
@@ -1846,16 +1989,7 @@
 <dep name=".\bas.h" />
 <dep name=".\common.h" />
 </file>
-<file name=".\Generated_Source\PSoC4\cmsis_armcc.h" />
-<file name=".\Generated_Source\PSoC4\cmsis_compiler.h" />
-<file name=".\Generated_Source\PSoC4\cmsis_gcc.h" />
-<file name=".\Generated_Source\PSoC4\core_cm0.h" />
-<file name=".\Generated_Source\PSoC4\core_cm0_psoc4.h" />
-<file name=".\Generated_Source\PSoC4\cydisabledsheets.h" />
-<file name=".\Generated_Source\PSoC4\project.h" />
 <file name=".\bas.c" />
-<file name=".\bas.h" />
-<file name=".\common.h" />
 <file name=".\CortexM0\ARM_GCC_541\Debug\debug.o">
 <dep name=".\Generated_Source\PSoC4\cmsis_armcc.h" />
 <dep name=".\Generated_Source\PSoC4\cmsis_compiler.h" />
@@ -1920,140 +2054,6 @@
 <dep name=".\debug.c" />
 </file>
 <file name=".\debug.c" />
-<file name=".\CortexM0\ARM_GCC_541\Debug\hids.o">
-<dep name=".\Generated_Source\PSoC4\cmsis_armcc.h" />
-<dep name=".\Generated_Source\PSoC4\cmsis_compiler.h" />
-<dep name=".\Generated_Source\PSoC4\cmsis_gcc.h" />
-<dep name=".\Generated_Source\PSoC4\core_cm0.h" />
-<dep name=".\Generated_Source\PSoC4\core_cm0_psoc4.h" />
-<dep name=".\Generated_Source\PSoC4\cydisabledsheets.h" />
-<dep name=".\Generated_Source\PSoC4\project.h" />
-<dep name=".\Generated_Source\PSoC4\Advertising_LED.h" />
-<dep name=".\Generated_Source\PSoC4\Advertising_LED_aliases.h" />
-<dep name=".\Generated_Source\PSoC4\BLE.h" />
-<dep name=".\Generated_Source\PSoC4\BLE_HAL_PVT.h" />
-<dep name=".\Generated_Source\PSoC4\BLE_STACK_PVT.h" />
-<dep name=".\Generated_Source\PSoC4\BLE_Stack.h" />
-<dep name=".\Generated_Source\PSoC4\BLE_StackGap.h" />
-<dep name=".\Generated_Source\PSoC4\BLE_StackGatt.h" />
-<dep name=".\Generated_Source\PSoC4\BLE_StackGattClient.h" />
-<dep name=".\Generated_Source\PSoC4\BLE_StackGattDb.h" />
-<dep name=".\Generated_Source\PSoC4\BLE_StackGattServer.h" />
-<dep name=".\Generated_Source\PSoC4\BLE_StackHostMain.h" />
-<dep name=".\Generated_Source\PSoC4\BLE_StackL2cap.h" />
-<dep name=".\Generated_Source\PSoC4\BLE_bas.h" />
-<dep name=".\Generated_Source\PSoC4\BLE_bless_isr.h" />
-<dep name=".\Generated_Source\PSoC4\BLE_dis.h" />
-<dep name=".\Generated_Source\PSoC4\BLE_eventHandler.h" />
-<dep name=".\Generated_Source\PSoC4\BLE_gatt.h" />
-<dep name=".\Generated_Source\PSoC4\BLE_hids.h" />
-<dep name=".\Generated_Source\PSoC4\BLE_scps.h" />
-<dep name=".\Generated_Source\PSoC4\CP_MISO.h" />
-<dep name=".\Generated_Source\PSoC4\CP_MISO_aliases.h" />
-<dep name=".\Generated_Source\PSoC4\CapsLock_LED.h" />
-<dep name=".\Generated_Source\PSoC4\CapsLock_LED_aliases.h" />
-<dep name=".\Generated_Source\PSoC4\Columns.h" />
-<dep name=".\Generated_Source\PSoC4\Columns_aliases.h" />
-<dep name=".\Generated_Source\PSoC4\CyFlash.h" />
-<dep name=".\Generated_Source\PSoC4\CyLFClk.h" />
-<dep name=".\Generated_Source\PSoC4\CyLib.h" />
-<dep name=".\Generated_Source\PSoC4\DP_CLK.h" />
-<dep name=".\Generated_Source\PSoC4\DP_CLK_aliases.h" />
-<dep name=".\Generated_Source\PSoC4\DP_CLR.h" />
-<dep name=".\Generated_Source\PSoC4\DP_CLR_aliases.h" />
-<dep name=".\Generated_Source\PSoC4\DP_DAT.h" />
-<dep name=".\Generated_Source\PSoC4\DP_DAT_aliases.h" />
-<dep name=".\Generated_Source\PSoC4\Disconnect_LED.h" />
-<dep name=".\Generated_Source\PSoC4\Disconnect_LED_aliases.h" />
-<dep name=".\Generated_Source\PSoC4\Rows.h" />
-<dep name=".\Generated_Source\PSoC4\Rows_aliases.h" />
-<dep name=".\Generated_Source\PSoC4\SPIM_1.h" />
-<dep name=".\Generated_Source\PSoC4\SPIM_1_IntClock.h" />
-<dep name=".\Generated_Source\PSoC4\SPIM_1_PVT.h" />
-<dep name=".\Generated_Source\PSoC4\SW2.h" />
-<dep name=".\Generated_Source\PSoC4\SW2_aliases.h" />
-<dep name=".\Generated_Source\PSoC4\Wakeup_Interrupt.h" />
-<dep name=".\Generated_Source\PSoC4\cyPm.h" />
-<dep name=".\Generated_Source\PSoC4\cy_em_eeprom.h" />
-<dep name=".\Generated_Source\PSoC4\cydevice_trm.h" />
-<dep name=".\Generated_Source\PSoC4\cyfitter.h" />
-<dep name=".\Generated_Source\PSoC4\cyfitter_cfg.h" />
-<dep name=".\Generated_Source\PSoC4\cypins.h" />
-<dep name=".\Generated_Source\PSoC4\cytypes.h" />
-<dep name=".\common.h" />
-<dep name=".\hids.c" />
-<dep name=".\hids.h" />
-</file>
-<file name=".\hids.c" />
-<file name=".\hids.h" />
-<file name=".\CortexM0\ARM_GCC_541\Debug\main.o">
-<dep name=".\Generated_Source\PSoC4\cmsis_armcc.h" />
-<dep name=".\Generated_Source\PSoC4\cmsis_compiler.h" />
-<dep name=".\Generated_Source\PSoC4\cmsis_gcc.h" />
-<dep name=".\Generated_Source\PSoC4\core_cm0.h" />
-<dep name=".\Generated_Source\PSoC4\core_cm0_psoc4.h" />
-<dep name=".\Generated_Source\PSoC4\cydisabledsheets.h" />
-<dep name=".\Generated_Source\PSoC4\project.h" />
-<dep name=".\Generated_Source\PSoC4\Advertising_LED.h" />
-<dep name=".\Generated_Source\PSoC4\Advertising_LED_aliases.h" />
-<dep name=".\Generated_Source\PSoC4\BLE.h" />
-<dep name=".\Generated_Source\PSoC4\BLE_HAL_PVT.h" />
-<dep name=".\Generated_Source\PSoC4\BLE_STACK_PVT.h" />
-<dep name=".\Generated_Source\PSoC4\BLE_Stack.h" />
-<dep name=".\Generated_Source\PSoC4\BLE_StackGap.h" />
-<dep name=".\Generated_Source\PSoC4\BLE_StackGatt.h" />
-<dep name=".\Generated_Source\PSoC4\BLE_StackGattClient.h" />
-<dep name=".\Generated_Source\PSoC4\BLE_StackGattDb.h" />
-<dep name=".\Generated_Source\PSoC4\BLE_StackGattServer.h" />
-<dep name=".\Generated_Source\PSoC4\BLE_StackHostMain.h" />
-<dep name=".\Generated_Source\PSoC4\BLE_StackL2cap.h" />
-<dep name=".\Generated_Source\PSoC4\BLE_bas.h" />
-<dep name=".\Generated_Source\PSoC4\BLE_bless_isr.h" />
-<dep name=".\Generated_Source\PSoC4\BLE_dis.h" />
-<dep name=".\Generated_Source\PSoC4\BLE_eventHandler.h" />
-<dep name=".\Generated_Source\PSoC4\BLE_gatt.h" />
-<dep name=".\Generated_Source\PSoC4\BLE_hids.h" />
-<dep name=".\Generated_Source\PSoC4\BLE_scps.h" />
-<dep name=".\Generated_Source\PSoC4\CP_MISO.h" />
-<dep name=".\Generated_Source\PSoC4\CP_MISO_aliases.h" />
-<dep name=".\Generated_Source\PSoC4\CapsLock_LED.h" />
-<dep name=".\Generated_Source\PSoC4\CapsLock_LED_aliases.h" />
-<dep name=".\Generated_Source\PSoC4\Columns.h" />
-<dep name=".\Generated_Source\PSoC4\Columns_aliases.h" />
-<dep name=".\Generated_Source\PSoC4\CyFlash.h" />
-<dep name=".\Generated_Source\PSoC4\CyLFClk.h" />
-<dep name=".\Generated_Source\PSoC4\CyLib.h" />
-<dep name=".\Generated_Source\PSoC4\DP_CLK.h" />
-<dep name=".\Generated_Source\PSoC4\DP_CLK_aliases.h" />
-<dep name=".\Generated_Source\PSoC4\DP_CLR.h" />
-<dep name=".\Generated_Source\PSoC4\DP_CLR_aliases.h" />
-<dep name=".\Generated_Source\PSoC4\DP_DAT.h" />
-<dep name=".\Generated_Source\PSoC4\DP_DAT_aliases.h" />
-<dep name=".\Generated_Source\PSoC4\Disconnect_LED.h" />
-<dep name=".\Generated_Source\PSoC4\Disconnect_LED_aliases.h" />
-<dep name=".\Generated_Source\PSoC4\Rows.h" />
-<dep name=".\Generated_Source\PSoC4\Rows_aliases.h" />
-<dep name=".\Generated_Source\PSoC4\SPIM_1.h" />
-<dep name=".\Generated_Source\PSoC4\SPIM_1_IntClock.h" />
-<dep name=".\Generated_Source\PSoC4\SPIM_1_PVT.h" />
-<dep name=".\Generated_Source\PSoC4\SW2.h" />
-<dep name=".\Generated_Source\PSoC4\SW2_aliases.h" />
-<dep name=".\Generated_Source\PSoC4\Wakeup_Interrupt.h" />
-<dep name=".\Generated_Source\PSoC4\cyPm.h" />
-<dep name=".\Generated_Source\PSoC4\cy_em_eeprom.h" />
-<dep name=".\Generated_Source\PSoC4\cydevice_trm.h" />
-<dep name=".\Generated_Source\PSoC4\cyfitter.h" />
-<dep name=".\Generated_Source\PSoC4\cyfitter_cfg.h" />
-<dep name=".\Generated_Source\PSoC4\cypins.h" />
-<dep name=".\Generated_Source\PSoC4\cytypes.h" />
-<dep name=".\bas.h" />
-<dep name=".\common.h" />
-<dep name=".\hids.h" />
-<dep name=".\main.c" />
-<dep name=".\scps.h" />
-</file>
-<file name=".\main.c" />
-<file name=".\scps.h" />
 <file name=".\CortexM0\ARM_GCC_541\Debug\scps.o">
 <dep name=".\Generated_Source\PSoC4\cmsis_armcc.h" />
 <dep name=".\Generated_Source\PSoC4\cmsis_compiler.h" />
@@ -2523,7 +2523,7 @@
 <CyGuid_769d31ea-68b1-4f0c-b90a-7c10a43ee563 type_name="CyDesigner.Common.ProjMgmt.Model.CyLinkCustomData" version="1">
 <link_deps_times>
 <name_val_pair name="c9323d49-d323-40b8-9b59-cc008d68a989@Release@CortexM0" v="133328747031928447" />
-<name_val_pair name="c9323d49-d323-40b8-9b59-cc008d68a989@Debug@CortexM0" v="133781703652275598" />
+<name_val_pair name="c9323d49-d323-40b8-9b59-cc008d68a989@Debug@CortexM0" v="133781714235095405" />
 </link_deps_times>
 </CyGuid_769d31ea-68b1-4f0c-b90a-7c10a43ee563>
 </dataGuid>
@@ -2591,7 +2591,9 @@
 </dataGuid>
 <dataGuid v="504337dd-7d07-4bc7-9057-90e60cf6c469">
 <CyGuid_504337dd-7d07-4bc7-9057-90e60cf6c469 type_name="CyDesigner.Common.Debugger.CyBreakpointList" version="1">
-<debugger_breakpoint_list />
+<debugger_breakpoint_list>
+<CyGuid_76464711-0ae1-4583-b869-f07a0403fc6e type_name="CyDesigner.Common.Debugger.CyFileLineBreakpoint" version="1" hitcount="0" condition="" enabled="True" hardware="True" temparary="False" filename=".\main.c" linenumber="422" />
+</debugger_breakpoint_list>
 </CyGuid_504337dd-7d07-4bc7-9057-90e60cf6c469>
 </dataGuid>
 <dataGuid v="925cc1e1-309e-4e08-b0a1-09a83c35b157">
