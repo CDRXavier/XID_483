@@ -1,0 +1,4174 @@
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUMPGnq.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m0
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"main.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.global	mainTimer
+  20              		.bss
+  21              		.align	2
+  22              		.type	mainTimer, %object
+  23              		.size	mainTimer, 4
+  24              	mainTimer:
+  25 0000 00000000 		.space	4
+  26              		.section	.text.AppCallBack,"ax",%progbits
+  27              		.align	2
+  28              		.global	AppCallBack
+  29              		.code	16
+  30              		.thumb_func
+  31              		.type	AppCallBack, %function
+  32              	AppCallBack:
+  33              	.LFB36:
+  34              		.file 1 "main.c"
+   1:main.c        **** /*******************************************************************************
+   2:main.c        **** * File Name: main.c
+   3:main.c        **** *
+   4:main.c        **** * Version: 1.0
+   5:main.c        **** *
+   6:main.c        **** * Description:
+   7:main.c        **** *  BLE HID keyboard example project that supports both input and output reports
+   8:main.c        **** *  in boot and protocol mode. The example also demonstrates handling suspend 
+   9:main.c        **** *  event from the central device and enters low power mode when suspended.
+  10:main.c        **** *
+  11:main.c        **** * References:
+  12:main.c        **** *  BLUETOOTH SPECIFICATION Version 4.1
+  13:main.c        **** *  HID Usage Tables spec ver 1.12
+  14:main.c        **** *
+  15:main.c        **** * Hardware Dependency:
+  16:main.c        **** *  CY8CKIT-042 BLE
+  17:main.c        **** *
+  18:main.c        **** ********************************************************************************
+  19:main.c        **** * Copyright 2016, Cypress Semiconductor Corporation.  All rights reserved.
+  20:main.c        **** * You may use this file only in accordance with the license, terms, conditions,
+  21:main.c        **** * disclaimers, and limitations in the end user license agreement accompanying
+  22:main.c        **** * the software package with which this file was provided.
+  23:main.c        **** *******************************************************************************/
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUMPGnq.s 			page 2
+
+
+  24:main.c        **** 
+  25:main.c        **** #include "common.h"
+  26:main.c        **** #include "hids.h"
+  27:main.c        **** #include "bas.h"
+  28:main.c        **** #include "scps.h"
+  29:main.c        **** 
+  30:main.c        **** volatile uint32 mainTimer = 0;
+  31:main.c        **** 
+  32:main.c        **** 
+  33:main.c        **** /*******************************************************************************
+  34:main.c        **** * Function Name: AppCallBack()
+  35:main.c        **** ********************************************************************************
+  36:main.c        **** *
+  37:main.c        **** * Summary:
+  38:main.c        **** *   This is an event callback function to receive events from the BLE Component.
+  39:main.c        **** *
+  40:main.c        **** *******************************************************************************/
+  41:main.c        **** void AppCallBack(uint32 event, void* eventParam)
+  42:main.c        **** {
+  35              		.loc 1 42 0
+  36              		.cfi_startproc
+  37              		@ args = 0, pretend = 0, frame = 32
+  38              		@ frame_needed = 1, uses_anonymous_args = 0
+  39 0000 90B5     		push	{r4, r7, lr}
+  40              		.cfi_def_cfa_offset 12
+  41              		.cfi_offset 4, -12
+  42              		.cfi_offset 7, -8
+  43              		.cfi_offset 14, -4
+  44 0002 89B0     		sub	sp, sp, #36
+  45              		.cfi_def_cfa_offset 48
+  46 0004 00AF     		add	r7, sp, #0
+  47              		.cfi_def_cfa_register 7
+  48 0006 7860     		str	r0, [r7, #4]
+  49 0008 3960     		str	r1, [r7]
+  43:main.c        ****     CYBLE_API_RESULT_T apiResult;
+  44:main.c        ****     CYBLE_GAP_BD_ADDR_T localAddr;
+  45:main.c        ****     CYBLE_GAP_AUTH_INFO_T *authInfo;
+  46:main.c        ****     uint8 i;
+  47:main.c        ****     
+  48:main.c        ****     switch (event)
+  50              		.loc 1 48 0
+  51 000a 7B68     		ldr	r3, [r7, #4]
+  52 000c 262B     		cmp	r3, #38
+  53 000e 00D1     		bne	.LCB17
+  54 0010 6CE0     		b	.L3	@long jump
+  55              	.LCB17:
+  56 0012 22D8     		bhi	.L4
+  57 0014 052B     		cmp	r3, #5
+  58 0016 00D1     		bne	.LCB21
+  59 0018 A1E0     		b	.L36	@long jump
+  60              	.LCB21:
+  61 001a 0DD8     		bhi	.L6
+  62 001c 022B     		cmp	r3, #2
+  63 001e 00D1     		bne	.LCB25
+  64 0020 9FE0     		b	.L37	@long jump
+  65              	.LCB25:
+  66 0022 02D8     		bhi	.L8
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUMPGnq.s 			page 3
+
+
+  67 0024 012B     		cmp	r3, #1
+  68 0026 3CD0     		beq	.L9
+  49:main.c        **** 	{
+  50:main.c        ****         /**********************************************************
+  51:main.c        ****         *                       General Events
+  52:main.c        ****         ***********************************************************/
+  53:main.c        **** 		case CYBLE_EVT_STACK_ON: /* This event is received when the component is Started */
+  54:main.c        ****             /* Enter into discoverable mode so that remote can search it. */
+  55:main.c        ****             apiResult = CyBle_GappStartAdvertisement(CYBLE_ADVERTISING_FAST);
+  56:main.c        ****             if(apiResult != CYBLE_ERROR_OK)
+  57:main.c        ****             {
+  58:main.c        ****                 DBG_PRINTF("StartAdvertisement API Error: %d \r\n", apiResult);
+  59:main.c        ****             }
+  60:main.c        ****             DBG_PRINTF("Bluetooth On, StartAdvertisement with addr: ");
+  61:main.c        ****             localAddr.type = 0u;
+  62:main.c        ****             CyBle_GetDeviceAddress(&localAddr);
+  63:main.c        ****             for(i = CYBLE_GAP_BD_ADDR_SIZE; i > 0u; i--)
+  64:main.c        ****             {
+  65:main.c        ****                 DBG_PRINTF("%2.2x", localAddr.bdAddr[i-1]);
+  66:main.c        ****             }
+  67:main.c        ****             DBG_PRINTF("\r\n");
+  68:main.c        ****             break;
+  69:main.c        **** 		case CYBLE_EVT_TIMEOUT: 
+  70:main.c        ****             break;
+  71:main.c        **** 		case CYBLE_EVT_HARDWARE_ERROR:    /* This event indicates that some internal HW error has occurre
+  72:main.c        ****             DBG_PRINTF("CYBLE_EVT_HARDWARE_ERROR \r\n");
+  73:main.c        **** 			break;
+  74:main.c        ****             
+  75:main.c        ****     	/* This event will be triggered by host stack if BLE stack is busy or not busy.
+  76:main.c        ****     	 *  Parameter corresponding to this event will be the state of BLE stack.
+  77:main.c        ****     	 *  BLE stack busy = CYBLE_STACK_STATE_BUSY,
+  78:main.c        ****     	 *  BLE stack not busy = CYBLE_STACK_STATE_FREE 
+  79:main.c        ****          */
+  80:main.c        ****     	case CYBLE_EVT_STACK_BUSY_STATUS:
+  81:main.c        ****             DBG_PRINTF("CYBLE_EVT_STACK_BUSY_STATUS: %x\r\n", *(uint8 *)eventParam);
+  82:main.c        ****             break;
+  83:main.c        ****         case CYBLE_EVT_HCI_STATUS:
+  84:main.c        ****             DBG_PRINTF("CYBLE_EVT_HCI_STATUS: %x \r\n", *(uint8 *)eventParam);
+  85:main.c        **** 			break;
+  86:main.c        ****             
+  87:main.c        ****         /**********************************************************
+  88:main.c        ****         *                       GAP Events
+  89:main.c        ****         ***********************************************************/
+  90:main.c        ****         case CYBLE_EVT_GAP_AUTH_REQ:
+  91:main.c        ****             DBG_PRINTF("CYBLE_EVT_AUTH_REQ: security=%x, bonding=%x, ekeySize=%x, err=%x \r\n", 
+  92:main.c        ****                 (*(CYBLE_GAP_AUTH_INFO_T *)eventParam).security, 
+  93:main.c        ****                 (*(CYBLE_GAP_AUTH_INFO_T *)eventParam).bonding, 
+  94:main.c        ****                 (*(CYBLE_GAP_AUTH_INFO_T *)eventParam).ekeySize, 
+  95:main.c        ****                 (*(CYBLE_GAP_AUTH_INFO_T *)eventParam).authErr);
+  96:main.c        ****             break;
+  97:main.c        ****         case CYBLE_EVT_GAP_PASSKEY_ENTRY_REQUEST:
+  98:main.c        ****             DBG_PRINTF("CYBLE_EVT_PASSKEY_ENTRY_REQUEST press 'p' to enter passkey \r\n");
+  99:main.c        ****             break;
+ 100:main.c        ****         case CYBLE_EVT_GAP_PASSKEY_DISPLAY_REQUEST:
+ 101:main.c        ****             DBG_PRINTF("CYBLE_EVT_PASSKEY_DISPLAY_REQUEST %6.6ld \r\n", *(uint32 *)eventParam);
+ 102:main.c        ****             break;
+ 103:main.c        ****         case CYBLE_EVT_GAP_KEYINFO_EXCHNGE_CMPLT:
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUMPGnq.s 			page 4
+
+
+ 104:main.c        ****             DBG_PRINTF("CYBLE_EVT_GAP_KEYINFO_EXCHNGE_CMPLT \r\n");
+ 105:main.c        ****             break;
+ 106:main.c        ****         case CYBLE_EVT_GAP_AUTH_COMPLETE:
+ 107:main.c        ****             authInfo = (CYBLE_GAP_AUTH_INFO_T *)eventParam;
+ 108:main.c        ****             (void)authInfo;
+ 109:main.c        ****             DBG_PRINTF("AUTH_COMPLETE: security:%x, bonding:%x, ekeySize:%x, authErr %x \r\n", 
+ 110:main.c        ****                                     authInfo->security, authInfo->bonding, authInfo->ekeySize, auth
+ 111:main.c        ****             break;
+ 112:main.c        ****         case CYBLE_EVT_GAP_AUTH_FAILED:
+ 113:main.c        ****             DBG_PRINTF("CYBLE_EVT_AUTH_FAILED: %x \r\n", *(uint8 *)eventParam);
+ 114:main.c        ****             break;
+ 115:main.c        ****         case CYBLE_EVT_GAPP_ADVERTISEMENT_START_STOP:
+ 116:main.c        ****             DBG_PRINTF("CYBLE_EVT_ADVERTISING, state: %x \r\n", CyBle_GetState());
+ 117:main.c        ****             if(CYBLE_STATE_DISCONNECTED == CyBle_GetState())
+ 118:main.c        ****             {   
+ 119:main.c        ****                 /* Fast and slow advertising period complete, go to low power  
+ 120:main.c        ****                  * mode (Hibernate mode) and wait for an external
+ 121:main.c        ****                  * user event to wake up the device again */
+ 122:main.c        ****                 DBG_PRINTF("Hibernate \r\n");
+ 123:main.c        ****                 Advertising_LED_Write(LED_OFF);
+ 124:main.c        ****                 Disconnect_LED_Write(LED_ON);
+ 125:main.c        ****                 CapsLock_LED_Write(LED_OFF);
+ 126:main.c        ****                 SW2_ClearInterrupt();
+ 127:main.c        ****                 Wakeup_Interrupt_ClearPending();
+ 128:main.c        ****                 Wakeup_Interrupt_Start();
+ 129:main.c        ****             #if (DEBUG_UART_ENABLED == ENABLED)
+ 130:main.c        ****                 /* Wait until debug info is sent */
+ 131:main.c        ****                 while((UART_DEB_SpiUartGetTxBufferSize() + UART_DEB_GET_TX_FIFO_SR_VALID) != 0);
+ 132:main.c        ****             #endif /* (DEBUG_UART_ENABLED == ENABLED) */
+ 133:main.c        ****                 CySysPmHibernate();
+ 134:main.c        ****             }
+ 135:main.c        ****             break;
+ 136:main.c        ****         case CYBLE_EVT_GAP_DEVICE_CONNECTED:
+ 137:main.c        ****             DBG_PRINTF("CYBLE_EVT_GAP_DEVICE_CONNECTED \r\n");
+ 138:main.c        ****             Advertising_LED_Write(LED_OFF);
+ 139:main.c        ****             break;
+ 140:main.c        ****         case CYBLE_EVT_GAP_DEVICE_DISCONNECTED:
+ 141:main.c        ****             DBG_PRINTF("CYBLE_EVT_GAP_DEVICE_DISCONNECTED\r\n");
+ 142:main.c        ****             apiResult = CyBle_GappStartAdvertisement(CYBLE_ADVERTISING_FAST);
+ 143:main.c        ****             if(apiResult != CYBLE_ERROR_OK)
+ 144:main.c        ****             {
+ 145:main.c        ****                 DBG_PRINTF("StartAdvertisement API Error: %d \r\n", apiResult);
+ 146:main.c        ****             }
+ 147:main.c        ****             break;
+ 148:main.c        ****         case CYBLE_EVT_GATTS_XCNHG_MTU_REQ:
+ 149:main.c        ****             { 
+ 150:main.c        ****                 uint16 mtu;
+ 151:main.c        ****                 CyBle_GattGetMtuSize(&mtu);
+ 152:main.c        ****                 DBG_PRINTF("CYBLE_EVT_GATTS_XCNHG_MTU_REQ, final mtu= %d \r\n", mtu);
+ 153:main.c        ****             }
+ 154:main.c        ****             break;
+ 155:main.c        ****         case CYBLE_EVT_GATTS_WRITE_REQ:
+ 156:main.c        ****             DBG_PRINTF("CYBLE_EVT_GATT_WRITE_REQ: %x = ",((CYBLE_GATTS_WRITE_REQ_PARAM_T *)eventPar
+ 157:main.c        ****             ShowValue(&((CYBLE_GATTS_WRITE_REQ_PARAM_T *)eventParam)->handleValPair.value);
+ 158:main.c        ****             (void)CyBle_GattsWriteRsp(((CYBLE_GATTS_WRITE_REQ_PARAM_T *)eventParam)->connHandle);
+ 159:main.c        ****             break;
+ 160:main.c        ****         case CYBLE_EVT_GAP_ENCRYPT_CHANGE:
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUMPGnq.s 			page 5
+
+
+ 161:main.c        ****             DBG_PRINTF("CYBLE_EVT_GAP_ENCRYPT_CHANGE: %x \r\n", *(uint8 *)eventParam);
+ 162:main.c        ****             break;
+ 163:main.c        ****         case CYBLE_EVT_GAPC_CONNECTION_UPDATE_COMPLETE:
+ 164:main.c        ****             DBG_PRINTF("CYBLE_EVT_CONNECTION_UPDATE_COMPLETE: %x \r\n", *(uint8 *)eventParam);
+ 165:main.c        ****             break;
+ 166:main.c        ****             
+ 167:main.c        ****         /**********************************************************
+ 168:main.c        ****         *                       GATT Events
+ 169:main.c        ****         ***********************************************************/
+ 170:main.c        ****         case CYBLE_EVT_GATT_CONNECT_IND:
+ 171:main.c        ****             DBG_PRINTF("CYBLE_EVT_GATT_CONNECT_IND: %x, %x \r\n", cyBle_connHandle.attId, cyBle_con
+ 172:main.c        ****             /* Register service specific callback functions */
+ 173:main.c        ****             HidsInit();
+ 174:main.c        ****             BasInit();
+ 175:main.c        ****             ScpsInit();
+ 176:main.c        ****             break;
+ 177:main.c        ****         case CYBLE_EVT_GATT_DISCONNECT_IND:
+ 178:main.c        ****             DBG_PRINTF("CYBLE_EVT_GATT_DISCONNECT_IND \r\n");
+ 179:main.c        ****             break;
+ 180:main.c        ****         case CYBLE_EVT_GATTS_READ_CHAR_VAL_ACCESS_REQ:
+ 181:main.c        ****             /* Triggered on server side when client sends read request and when
+ 182:main.c        ****             * characteristic has CYBLE_GATT_DB_ATTR_CHAR_VAL_RD_EVENT property set.
+ 183:main.c        ****             * This event could be ignored by application unless it need to response
+ 184:main.c        ****             * by error response which needs to be set in gattErrorCode field of
+ 185:main.c        ****             * event parameter. */
+ 186:main.c        ****             DBG_PRINTF("CYBLE_EVT_GATTS_READ_CHAR_VAL_ACCESS_REQ: handle: %x \r\n", 
+ 187:main.c        ****                 ((CYBLE_GATTS_CHAR_VAL_READ_REQ_T *)eventParam)->attrHandle);
+ 188:main.c        ****             break;
+ 189:main.c        ****             
+ 190:main.c        ****         /**********************************************************
+ 191:main.c        ****         *                       Other Events
+ 192:main.c        ****         ***********************************************************/
+ 193:main.c        **** 		case CYBLE_EVT_PENDING_FLASH_WRITE:
+ 194:main.c        ****             /* Inform application that flash write is pending. Stack internal data 
+ 195:main.c        ****             * structures are modified and require to be stored in Flash using 
+ 196:main.c        ****             * CyBle_StoreBondingData() */
+ 197:main.c        ****             DBG_PRINTF("CYBLE_EVT_PENDING_FLASH_WRITE\r\n");
+ 198:main.c        ****             break;
+ 199:main.c        **** 
+ 200:main.c        ****         default:
+ 201:main.c        ****             DBG_PRINTF("OTHER event: %lx \r\n", event);
+ 202:main.c        **** 			break;
+  69              		.loc 1 202 0
+  70 0028 B6E0     		b	.L34
+  71              	.L8:
+  48:main.c        **** 	{
+  72              		.loc 1 48 0
+  73 002a 032B     		cmp	r3, #3
+  74 002c 00D1     		bne	.LCB35
+  75 002e 9AE0     		b	.L38	@long jump
+  76              	.LCB35:
+  77 0030 042B     		cmp	r3, #4
+  78 0032 00D1     		bne	.LCB37
+  79 0034 99E0     		b	.L39	@long jump
+  80              	.LCB37:
+  81              		.loc 1 202 0
+  82 0036 AFE0     		b	.L34
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUMPGnq.s 			page 6
+
+
+  83              	.L6:
+  48:main.c        **** 	{
+  84              		.loc 1 48 0
+  85 0038 232B     		cmp	r3, #35
+  86 003a 00D1     		bne	.LCB43
+  87 003c 97E0     		b	.L40	@long jump
+  88              	.LCB43:
+  89 003e 06D8     		bhi	.L13
+  90 0040 212B     		cmp	r3, #33
+  91 0042 00D1     		bne	.LCB47
+  92 0044 95E0     		b	.L41	@long jump
+  93              	.LCB47:
+  94 0046 222B     		cmp	r3, #34
+  95 0048 00D1     		bne	.LCB49
+  96 004a 94E0     		b	.L42	@long jump
+  97              	.LCB49:
+  98              		.loc 1 202 0
+  99 004c A4E0     		b	.L34
+ 100              	.L13:
+  48:main.c        **** 	{
+ 101              		.loc 1 48 0
+ 102 004e 242B     		cmp	r3, #36
+ 103 0050 49D0     		beq	.L16
+ 104 0052 252B     		cmp	r3, #37
+ 105 0054 00D1     		bne	.LCB57
+ 106 0056 90E0     		b	.L43	@long jump
+ 107              	.LCB57:
+ 108              		.loc 1 202 0
+ 109 0058 9EE0     		b	.L34
+ 110              	.L4:
+  48:main.c        **** 	{
+ 111              		.loc 1 48 0
+ 112 005a 412B     		cmp	r3, #65
+ 113 005c 00D1     		bne	.LCB63
+ 114 005e 77E0     		b	.L18	@long jump
+ 115              	.LCB63:
+ 116 0060 0FD8     		bhi	.L19
+ 117 0062 292B     		cmp	r3, #41
+ 118 0064 00D1     		bne	.LCB67
+ 119 0066 8AE0     		b	.L44	@long jump
+ 120              	.LCB67:
+ 121 0068 04D8     		bhi	.L21
+ 122 006a 272B     		cmp	r3, #39
+ 123 006c 54D0     		beq	.L22
+ 124 006e 282B     		cmp	r3, #40
+ 125 0070 56D0     		beq	.L23
+ 126              		.loc 1 202 0
+ 127 0072 91E0     		b	.L34
+ 128              	.L21:
+  48:main.c        **** 	{
+ 129              		.loc 1 48 0
+ 130 0074 2A2B     		cmp	r3, #42
+ 131 0076 00D1     		bne	.LCB79
+ 132 0078 83E0     		b	.L45	@long jump
+ 133              	.LCB79:
+ 134 007a 2C2B     		cmp	r3, #44
+ 135 007c 00D1     		bne	.LCB81
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUMPGnq.s 			page 7
+
+
+ 136 007e 82E0     		b	.L46	@long jump
+ 137              	.LCB81:
+ 138              		.loc 1 202 0
+ 139 0080 8AE0     		b	.L34
+ 140              	.L19:
+  48:main.c        **** 	{
+ 141              		.loc 1 48 0
+ 142 0082 4C2B     		cmp	r3, #76
+ 143 0084 5AD0     		beq	.L26
+ 144 0086 05D8     		bhi	.L27
+ 145 0088 422B     		cmp	r3, #66
+ 146 008a 00D1     		bne	.LCB91
+ 147 008c 7DE0     		b	.L47	@long jump
+ 148              	.LCB91:
+ 149 008e 432B     		cmp	r3, #67
+ 150 0090 4ED0     		beq	.L29
+ 151              		.loc 1 202 0
+ 152 0092 81E0     		b	.L34
+ 153              	.L27:
+  48:main.c        **** 	{
+ 154              		.loc 1 48 0
+ 155 0094 572B     		cmp	r3, #87
+ 156 0096 00D1     		bne	.LCB99
+ 157 0098 79E0     		b	.L48	@long jump
+ 158              	.LCB99:
+ 159 009a FA2B     		cmp	r3, #250
+ 160 009c 00D1     		bne	.LCB101
+ 161 009e 78E0     		b	.L49	@long jump
+ 162              	.LCB101:
+ 163              		.loc 1 202 0
+ 164 00a0 7AE0     		b	.L34
+ 165              	.L9:
+  55:main.c        ****             if(apiResult != CYBLE_ERROR_OK)
+ 166              		.loc 1 55 0
+ 167 00a2 1C23     		movs	r3, #28
+ 168 00a4 FC18     		adds	r4, r7, r3
+ 169 00a6 0020     		movs	r0, #0
+ 170 00a8 FFF7FEFF 		bl	CyBle_GappStartAdvertisement
+ 171 00ac 0300     		movs	r3, r0
+ 172 00ae 2380     		strh	r3, [r4]
+  61:main.c        ****             CyBle_GetDeviceAddress(&localAddr);
+ 173              		.loc 1 61 0
+ 174 00b0 1023     		movs	r3, #16
+ 175 00b2 FB18     		adds	r3, r7, r3
+ 176 00b4 0022     		movs	r2, #0
+ 177 00b6 9A71     		strb	r2, [r3, #6]
+  62:main.c        ****             for(i = CYBLE_GAP_BD_ADDR_SIZE; i > 0u; i--)
+ 178              		.loc 1 62 0
+ 179 00b8 1023     		movs	r3, #16
+ 180 00ba FB18     		adds	r3, r7, r3
+ 181 00bc 1800     		movs	r0, r3
+ 182 00be FFF7FEFF 		bl	CyBle_GetDeviceAddress
+  63:main.c        ****             {
+ 183              		.loc 1 63 0
+ 184 00c2 1F23     		movs	r3, #31
+ 185 00c4 FB18     		adds	r3, r7, r3
+ 186 00c6 0622     		movs	r2, #6
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUMPGnq.s 			page 8
+
+
+ 187 00c8 1A70     		strb	r2, [r3]
+ 188 00ca 06E0     		b	.L32
+ 189              	.L33:
+  63:main.c        ****             {
+ 190              		.loc 1 63 0 is_stmt 0 discriminator 3
+ 191 00cc 1F23     		movs	r3, #31
+ 192 00ce FB18     		adds	r3, r7, r3
+ 193 00d0 1A78     		ldrb	r2, [r3]
+ 194 00d2 1F23     		movs	r3, #31
+ 195 00d4 FB18     		adds	r3, r7, r3
+ 196 00d6 013A     		subs	r2, r2, #1
+ 197 00d8 1A70     		strb	r2, [r3]
+ 198              	.L32:
+  63:main.c        ****             {
+ 199              		.loc 1 63 0 discriminator 1
+ 200 00da 1F23     		movs	r3, #31
+ 201 00dc FB18     		adds	r3, r7, r3
+ 202 00de 1B78     		ldrb	r3, [r3]
+ 203 00e0 002B     		cmp	r3, #0
+ 204 00e2 F3D1     		bne	.L33
+  68:main.c        **** 		case CYBLE_EVT_TIMEOUT: 
+ 205              		.loc 1 68 0 is_stmt 1
+ 206 00e4 58E0     		b	.L34
+ 207              	.L16:
+ 107:main.c        ****             (void)authInfo;
+ 208              		.loc 1 107 0
+ 209 00e6 3B68     		ldr	r3, [r7]
+ 210 00e8 BB61     		str	r3, [r7, #24]
+ 111:main.c        ****         case CYBLE_EVT_GAP_AUTH_FAILED:
+ 211              		.loc 1 111 0
+ 212 00ea 55E0     		b	.L34
+ 213              	.L3:
+ 117:main.c        ****             {   
+ 214              		.loc 1 117 0
+ 215 00ec 2C4B     		ldr	r3, .L51
+ 216 00ee 1B78     		ldrb	r3, [r3]
+ 217 00f0 042B     		cmp	r3, #4
+ 218 00f2 50D1     		bne	.L50
+ 123:main.c        ****                 Disconnect_LED_Write(LED_ON);
+ 219              		.loc 1 123 0
+ 220 00f4 0120     		movs	r0, #1
+ 221 00f6 FFF7FEFF 		bl	Advertising_LED_Write
+ 124:main.c        ****                 CapsLock_LED_Write(LED_OFF);
+ 222              		.loc 1 124 0
+ 223 00fa 0020     		movs	r0, #0
+ 224 00fc FFF7FEFF 		bl	Disconnect_LED_Write
+ 125:main.c        ****                 SW2_ClearInterrupt();
+ 225              		.loc 1 125 0
+ 226 0100 0120     		movs	r0, #1
+ 227 0102 FFF7FEFF 		bl	CapsLock_LED_Write
+ 126:main.c        ****                 Wakeup_Interrupt_ClearPending();
+ 228              		.loc 1 126 0
+ 229 0106 FFF7FEFF 		bl	SW2_ClearInterrupt
+ 127:main.c        ****                 Wakeup_Interrupt_Start();
+ 230              		.loc 1 127 0
+ 231 010a FFF7FEFF 		bl	Wakeup_Interrupt_ClearPending
+ 128:main.c        ****             #if (DEBUG_UART_ENABLED == ENABLED)
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUMPGnq.s 			page 9
+
+
+ 232              		.loc 1 128 0
+ 233 010e FFF7FEFF 		bl	Wakeup_Interrupt_Start
+ 133:main.c        ****             }
+ 234              		.loc 1 133 0
+ 235 0112 FFF7FEFF 		bl	CySysPmHibernate
+ 135:main.c        ****         case CYBLE_EVT_GAP_DEVICE_CONNECTED:
+ 236              		.loc 1 135 0
+ 237 0116 3EE0     		b	.L50
+ 238              	.L22:
+ 138:main.c        ****             break;
+ 239              		.loc 1 138 0
+ 240 0118 0120     		movs	r0, #1
+ 241 011a FFF7FEFF 		bl	Advertising_LED_Write
+ 139:main.c        ****         case CYBLE_EVT_GAP_DEVICE_DISCONNECTED:
+ 242              		.loc 1 139 0
+ 243 011e 3BE0     		b	.L34
+ 244              	.L23:
+ 142:main.c        ****             if(apiResult != CYBLE_ERROR_OK)
+ 245              		.loc 1 142 0
+ 246 0120 1C23     		movs	r3, #28
+ 247 0122 FC18     		adds	r4, r7, r3
+ 248 0124 0020     		movs	r0, #0
+ 249 0126 FFF7FEFF 		bl	CyBle_GappStartAdvertisement
+ 250 012a 0300     		movs	r3, r0
+ 251 012c 2380     		strh	r3, [r4]
+ 147:main.c        ****         case CYBLE_EVT_GATTS_XCNHG_MTU_REQ:
+ 252              		.loc 1 147 0
+ 253 012e 33E0     		b	.L34
+ 254              	.L29:
+ 255              	.LBB2:
+ 151:main.c        ****                 DBG_PRINTF("CYBLE_EVT_GATTS_XCNHG_MTU_REQ, final mtu= %d \r\n", mtu);
+ 256              		.loc 1 151 0 discriminator 13
+ 257 0130 0E23     		movs	r3, #14
+ 258 0132 FB18     		adds	r3, r7, r3
+ 259 0134 1800     		movs	r0, r3
+ 260 0136 FFF7FEFF 		bl	CyBle_GattGetMtuSize
+ 261              	.LBE2:
+ 154:main.c        ****         case CYBLE_EVT_GATTS_WRITE_REQ:
+ 262              		.loc 1 154 0 discriminator 13
+ 263 013a 2DE0     		b	.L34
+ 264              	.L26:
+ 157:main.c        ****             (void)CyBle_GattsWriteRsp(((CYBLE_GATTS_WRITE_REQ_PARAM_T *)eventParam)->connHandle);
+ 265              		.loc 1 157 0
+ 266 013c 3B68     		ldr	r3, [r7]
+ 267 013e 0433     		adds	r3, r3, #4
+ 268 0140 1800     		movs	r0, r3
+ 269 0142 FFF7FEFF 		bl	ShowValue
+ 158:main.c        ****             break;
+ 270              		.loc 1 158 0
+ 271 0146 3B68     		ldr	r3, [r7]
+ 272 0148 1868     		ldr	r0, [r3]
+ 273 014a FFF7FEFF 		bl	CyBle_GattsWriteRsp
+ 159:main.c        ****         case CYBLE_EVT_GAP_ENCRYPT_CHANGE:
+ 274              		.loc 1 159 0
+ 275 014e 23E0     		b	.L34
+ 276              	.L18:
+ 173:main.c        ****             BasInit();
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUMPGnq.s 			page 10
+
+
+ 277              		.loc 1 173 0
+ 278 0150 FFF7FEFF 		bl	HidsInit
+ 174:main.c        ****             ScpsInit();
+ 279              		.loc 1 174 0
+ 280 0154 FFF7FEFF 		bl	BasInit
+ 175:main.c        ****             break;
+ 281              		.loc 1 175 0
+ 282 0158 FFF7FEFF 		bl	ScpsInit
+ 176:main.c        ****         case CYBLE_EVT_GATT_DISCONNECT_IND:
+ 283              		.loc 1 176 0
+ 284 015c 1CE0     		b	.L34
+ 285              	.L36:
+  82:main.c        ****         case CYBLE_EVT_HCI_STATUS:
+ 286              		.loc 1 82 0
+ 287 015e C046     		nop
+ 288 0160 1AE0     		b	.L34
+ 289              	.L37:
+  70:main.c        **** 		case CYBLE_EVT_HARDWARE_ERROR:    /* This event indicates that some internal HW error has occurre
+ 290              		.loc 1 70 0
+ 291 0162 C046     		nop
+ 292 0164 18E0     		b	.L34
+ 293              	.L38:
+  73:main.c        ****             
+ 294              		.loc 1 73 0
+ 295 0166 C046     		nop
+ 296 0168 16E0     		b	.L34
+ 297              	.L39:
+  85:main.c        ****             
+ 298              		.loc 1 85 0
+ 299 016a C046     		nop
+ 300 016c 14E0     		b	.L34
+ 301              	.L40:
+ 102:main.c        ****         case CYBLE_EVT_GAP_KEYINFO_EXCHNGE_CMPLT:
+ 302              		.loc 1 102 0
+ 303 016e C046     		nop
+ 304 0170 12E0     		b	.L34
+ 305              	.L41:
+  96:main.c        ****         case CYBLE_EVT_GAP_PASSKEY_ENTRY_REQUEST:
+ 306              		.loc 1 96 0
+ 307 0172 C046     		nop
+ 308 0174 10E0     		b	.L34
+ 309              	.L42:
+  99:main.c        ****         case CYBLE_EVT_GAP_PASSKEY_DISPLAY_REQUEST:
+ 310              		.loc 1 99 0
+ 311 0176 C046     		nop
+ 312 0178 0EE0     		b	.L34
+ 313              	.L43:
+ 114:main.c        ****         case CYBLE_EVT_GAPP_ADVERTISEMENT_START_STOP:
+ 314              		.loc 1 114 0
+ 315 017a C046     		nop
+ 316 017c 0CE0     		b	.L34
+ 317              	.L44:
+ 162:main.c        ****         case CYBLE_EVT_GAPC_CONNECTION_UPDATE_COMPLETE:
+ 318              		.loc 1 162 0
+ 319 017e C046     		nop
+ 320 0180 0AE0     		b	.L34
+ 321              	.L45:
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUMPGnq.s 			page 11
+
+
+ 165:main.c        ****             
+ 322              		.loc 1 165 0
+ 323 0182 C046     		nop
+ 324 0184 08E0     		b	.L34
+ 325              	.L46:
+ 105:main.c        ****         case CYBLE_EVT_GAP_AUTH_COMPLETE:
+ 326              		.loc 1 105 0
+ 327 0186 C046     		nop
+ 328 0188 06E0     		b	.L34
+ 329              	.L47:
+ 179:main.c        ****         case CYBLE_EVT_GATTS_READ_CHAR_VAL_ACCESS_REQ:
+ 330              		.loc 1 179 0
+ 331 018a C046     		nop
+ 332 018c 04E0     		b	.L34
+ 333              	.L48:
+ 188:main.c        ****             
+ 334              		.loc 1 188 0
+ 335 018e C046     		nop
+ 336 0190 02E0     		b	.L34
+ 337              	.L49:
+ 198:main.c        **** 
+ 338              		.loc 1 198 0
+ 339 0192 C046     		nop
+ 340 0194 00E0     		b	.L34
+ 341              	.L50:
+ 135:main.c        ****         case CYBLE_EVT_GAP_DEVICE_CONNECTED:
+ 342              		.loc 1 135 0
+ 343 0196 C046     		nop
+ 344              	.L34:
+ 203:main.c        **** 	}
+ 204:main.c        **** 
+ 205:main.c        **** }
+ 345              		.loc 1 205 0 discriminator 1
+ 346 0198 C046     		nop
+ 347 019a BD46     		mov	sp, r7
+ 348 019c 09B0     		add	sp, sp, #36
+ 349              		@ sp needed
+ 350 019e 90BD     		pop	{r4, r7, pc}
+ 351              	.L52:
+ 352              		.align	2
+ 353              	.L51:
+ 354 01a0 00000000 		.word	cyBle_state
+ 355              		.cfi_endproc
+ 356              	.LFE36:
+ 357              		.size	AppCallBack, .-AppCallBack
+ 358              		.section	.text.Timer_Interrupt,"ax",%progbits
+ 359              		.align	2
+ 360              		.global	Timer_Interrupt
+ 361              		.code	16
+ 362              		.thumb_func
+ 363              		.type	Timer_Interrupt, %function
+ 364              	Timer_Interrupt:
+ 365              	.LFB37:
+ 206:main.c        **** 
+ 207:main.c        **** 
+ 208:main.c        **** /*******************************************************************************
+ 209:main.c        **** * Function Name: Timer_Interrupt
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUMPGnq.s 			page 12
+
+
+ 210:main.c        **** ********************************************************************************
+ 211:main.c        **** *
+ 212:main.c        **** * Summary:
+ 213:main.c        **** *  Handles the Interrupt Service Routine for the WDT timer.
+ 214:main.c        **** *
+ 215:main.c        **** *******************************************************************************/
+ 216:main.c        **** CY_ISR(Timer_Interrupt)
+ 217:main.c        **** {
+ 366              		.loc 1 217 0
+ 367              		.cfi_startproc
+ 368              		@ args = 0, pretend = 0, frame = 0
+ 369              		@ frame_needed = 1, uses_anonymous_args = 0
+ 370 0000 80B5     		push	{r7, lr}
+ 371              		.cfi_def_cfa_offset 8
+ 372              		.cfi_offset 7, -8
+ 373              		.cfi_offset 14, -4
+ 374 0002 00AF     		add	r7, sp, #0
+ 375              		.cfi_def_cfa_register 7
+ 218:main.c        ****     if(CySysWdtGetInterruptSource() & WDT_INTERRUPT_SOURCE)
+ 376              		.loc 1 218 0
+ 377 0004 FFF7FEFF 		bl	CySysWdtGetInterruptSource
+ 378 0008 0200     		movs	r2, r0
+ 379 000a 8023     		movs	r3, #128
+ 380 000c DB00     		lsls	r3, r3, #3
+ 381 000e 1340     		ands	r3, r2
+ 382 0010 25D0     		beq	.L56
+ 383              	.LBB3:
+ 219:main.c        ****     {
+ 220:main.c        ****         static uint8 led = LED_OFF;
+ 221:main.c        ****         static uint32 ledTimer = LED_TIMEOUT;
+ 222:main.c        ****     
+ 223:main.c        ****         /* Blink green LED to indicate that device advertises */
+ 224:main.c        ****         if(CyBle_GetState() == CYBLE_STATE_ADVERTISING)
+ 384              		.loc 1 224 0
+ 385 0012 144B     		ldr	r3, .L57
+ 386 0014 1B78     		ldrb	r3, [r3]
+ 387 0016 032B     		cmp	r3, #3
+ 388 0018 17D1     		bne	.L55
+ 225:main.c        ****         {
+ 226:main.c        ****             if(--ledTimer == 0u) 
+ 389              		.loc 1 226 0
+ 390 001a 134B     		ldr	r3, .L57+4
+ 391 001c 1B68     		ldr	r3, [r3]
+ 392 001e 5A1E     		subs	r2, r3, #1
+ 393 0020 114B     		ldr	r3, .L57+4
+ 394 0022 1A60     		str	r2, [r3]
+ 395 0024 104B     		ldr	r3, .L57+4
+ 396 0026 1B68     		ldr	r3, [r3]
+ 397 0028 002B     		cmp	r3, #0
+ 398 002a 0ED1     		bne	.L55
+ 227:main.c        ****             {
+ 228:main.c        ****                 ledTimer = LED_TIMEOUT;
+ 399              		.loc 1 228 0
+ 400 002c 0E4B     		ldr	r3, .L57+4
+ 401 002e 0A22     		movs	r2, #10
+ 402 0030 1A60     		str	r2, [r3]
+ 229:main.c        ****                 led ^= LED_OFF;
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUMPGnq.s 			page 13
+
+
+ 403              		.loc 1 229 0
+ 404 0032 0E4B     		ldr	r3, .L57+8
+ 405 0034 1B78     		ldrb	r3, [r3]
+ 406 0036 0122     		movs	r2, #1
+ 407 0038 5340     		eors	r3, r2
+ 408 003a DAB2     		uxtb	r2, r3
+ 409 003c 0B4B     		ldr	r3, .L57+8
+ 410 003e 1A70     		strb	r2, [r3]
+ 230:main.c        ****                 Advertising_LED_Write(led);
+ 411              		.loc 1 230 0
+ 412 0040 0A4B     		ldr	r3, .L57+8
+ 413 0042 1B78     		ldrb	r3, [r3]
+ 414 0044 1800     		movs	r0, r3
+ 415 0046 FFF7FEFF 		bl	Advertising_LED_Write
+ 416              	.L55:
+ 231:main.c        ****             }
+ 232:main.c        ****         }
+ 233:main.c        ****         
+ 234:main.c        ****         /* Indicate that timer is raised to the main loop */
+ 235:main.c        ****         mainTimer++;
+ 417              		.loc 1 235 0
+ 418 004a 094B     		ldr	r3, .L57+12
+ 419 004c 1B68     		ldr	r3, [r3]
+ 420 004e 5A1C     		adds	r2, r3, #1
+ 421 0050 074B     		ldr	r3, .L57+12
+ 422 0052 1A60     		str	r2, [r3]
+ 236:main.c        ****         
+ 237:main.c        ****         /* Clears interrupt request  */
+ 238:main.c        ****         CySysWdtClearInterrupt(WDT_INTERRUPT_SOURCE);
+ 423              		.loc 1 238 0
+ 424 0054 8023     		movs	r3, #128
+ 425 0056 DB00     		lsls	r3, r3, #3
+ 426 0058 1800     		movs	r0, r3
+ 427 005a FFF7FEFF 		bl	CySysWdtClearInterrupt
+ 428              	.L56:
+ 429              	.LBE3:
+ 239:main.c        ****     }
+ 240:main.c        **** }
+ 430              		.loc 1 240 0
+ 431 005e C046     		nop
+ 432 0060 BD46     		mov	sp, r7
+ 433              		@ sp needed
+ 434 0062 80BD     		pop	{r7, pc}
+ 435              	.L58:
+ 436              		.align	2
+ 437              	.L57:
+ 438 0064 00000000 		.word	cyBle_state
+ 439 0068 00000000 		.word	ledTimer.8242
+ 440 006c 04000000 		.word	led.8241
+ 441 0070 00000000 		.word	mainTimer
+ 442              		.cfi_endproc
+ 443              	.LFE37:
+ 444              		.size	Timer_Interrupt, .-Timer_Interrupt
+ 445              		.section	.text.WDT_Start,"ax",%progbits
+ 446              		.align	2
+ 447              		.global	WDT_Start
+ 448              		.code	16
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUMPGnq.s 			page 14
+
+
+ 449              		.thumb_func
+ 450              		.type	WDT_Start, %function
+ 451              	WDT_Start:
+ 452              	.LFB38:
+ 241:main.c        **** 
+ 242:main.c        **** /*******************************************************************************
+ 243:main.c        **** * Function Name: WDT_Start
+ 244:main.c        **** ********************************************************************************
+ 245:main.c        **** *
+ 246:main.c        **** * Summary:
+ 247:main.c        **** *  Configures WDT to trigger an interrupt.
+ 248:main.c        **** *
+ 249:main.c        **** *******************************************************************************/
+ 250:main.c        **** 
+ 251:main.c        **** void WDT_Start(void)
+ 252:main.c        **** {
+ 453              		.loc 1 252 0
+ 454              		.cfi_startproc
+ 455              		@ args = 0, pretend = 0, frame = 0
+ 456              		@ frame_needed = 1, uses_anonymous_args = 0
+ 457 0000 80B5     		push	{r7, lr}
+ 458              		.cfi_def_cfa_offset 8
+ 459              		.cfi_offset 7, -8
+ 460              		.cfi_offset 14, -4
+ 461 0002 00AF     		add	r7, sp, #0
+ 462              		.cfi_def_cfa_register 7
+ 253:main.c        ****     /* Unlock the WDT registers for modification */
+ 254:main.c        ****     CySysWdtUnlock(); 
+ 463              		.loc 1 254 0
+ 464 0004 FFF7FEFF 		bl	CySysWdtUnlock
+ 255:main.c        ****     /* Setup ISR */
+ 256:main.c        ****     WDT_Interrupt_StartEx(&Timer_Interrupt);
+ 465              		.loc 1 256 0
+ 466 0008 0E4B     		ldr	r3, .L60
+ 467 000a 1800     		movs	r0, r3
+ 468 000c FFF7FEFF 		bl	WDT_Interrupt_StartEx
+ 257:main.c        ****     /* Write the mode to generate interrupt on match */
+ 258:main.c        ****     CySysWdtWriteMode(WDT_COUNTER, CY_SYS_WDT_MODE_INT);
+ 469              		.loc 1 258 0
+ 470 0010 0121     		movs	r1, #1
+ 471 0012 0120     		movs	r0, #1
+ 472 0014 FFF7FEFF 		bl	CySysWdtSetMode
+ 259:main.c        ****     /* Configure the WDT counter clear on a match setting */
+ 260:main.c        ****     CySysWdtWriteClearOnMatch(WDT_COUNTER, WDT_COUNTER_ENABLE);
+ 473              		.loc 1 260 0
+ 474 0018 0121     		movs	r1, #1
+ 475 001a 0120     		movs	r0, #1
+ 476 001c FFF7FEFF 		bl	CySysWdtSetClearOnMatch
+ 261:main.c        ****     /* Configure the WDT counter match comparison value */
+ 262:main.c        ****     CySysWdtWriteMatch(WDT_COUNTER, WDT_TIMEOUT);
+ 477              		.loc 1 262 0
+ 478 0020 094B     		ldr	r3, .L60+4
+ 479 0022 1900     		movs	r1, r3
+ 480 0024 0120     		movs	r0, #1
+ 481 0026 FFF7FEFF 		bl	CySysWdtSetMatch
+ 263:main.c        ****     /* Reset WDT counter */
+ 264:main.c        ****     CySysWdtResetCounters(WDT_COUNTER);
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUMPGnq.s 			page 15
+
+
+ 482              		.loc 1 264 0
+ 483 002a 0120     		movs	r0, #1
+ 484 002c FFF7FEFF 		bl	CySysWdtResetCounters
+ 265:main.c        ****     /* Enable the specified WDT counter */
+ 266:main.c        ****     CySysWdtEnable(WDT_COUNTER_MASK);
+ 485              		.loc 1 266 0
+ 486 0030 8023     		movs	r3, #128
+ 487 0032 5B00     		lsls	r3, r3, #1
+ 488 0034 1800     		movs	r0, r3
+ 489 0036 FFF7FEFF 		bl	CySysWdtEnable
+ 267:main.c        ****     /* Lock out configuration changes to the Watchdog timer registers */
+ 268:main.c        ****     CySysWdtLock();    
+ 490              		.loc 1 268 0
+ 491 003a FFF7FEFF 		bl	CySysWdtLock
+ 269:main.c        **** }
+ 492              		.loc 1 269 0
+ 493 003e C046     		nop
+ 494 0040 BD46     		mov	sp, r7
+ 495              		@ sp needed
+ 496 0042 80BD     		pop	{r7, pc}
+ 497              	.L61:
+ 498              		.align	2
+ 499              	.L60:
+ 500 0044 00000000 		.word	Timer_Interrupt
+ 501 0048 CC0C0000 		.word	3276
+ 502              		.cfi_endproc
+ 503              	.LFE38:
+ 504              		.size	WDT_Start, .-WDT_Start
+ 505              		.section	.text.WDT_Stop,"ax",%progbits
+ 506              		.align	2
+ 507              		.global	WDT_Stop
+ 508              		.code	16
+ 509              		.thumb_func
+ 510              		.type	WDT_Stop, %function
+ 511              	WDT_Stop:
+ 512              	.LFB39:
+ 270:main.c        **** 
+ 271:main.c        **** 
+ 272:main.c        **** /*******************************************************************************
+ 273:main.c        **** * Function Name: WDT_Stop
+ 274:main.c        **** ********************************************************************************
+ 275:main.c        **** *
+ 276:main.c        **** * Summary:
+ 277:main.c        **** *  This API stops the WDT timer.
+ 278:main.c        **** *
+ 279:main.c        **** *******************************************************************************/
+ 280:main.c        **** void WDT_Stop(void)
+ 281:main.c        **** {
+ 513              		.loc 1 281 0
+ 514              		.cfi_startproc
+ 515              		@ args = 0, pretend = 0, frame = 0
+ 516              		@ frame_needed = 1, uses_anonymous_args = 0
+ 517 0000 80B5     		push	{r7, lr}
+ 518              		.cfi_def_cfa_offset 8
+ 519              		.cfi_offset 7, -8
+ 520              		.cfi_offset 14, -4
+ 521 0002 00AF     		add	r7, sp, #0
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUMPGnq.s 			page 16
+
+
+ 522              		.cfi_def_cfa_register 7
+ 282:main.c        ****     /* Unlock the WDT registers for modification */
+ 283:main.c        ****     CySysWdtUnlock(); 
+ 523              		.loc 1 283 0
+ 524 0004 FFF7FEFF 		bl	CySysWdtUnlock
+ 284:main.c        ****     /* Disable the specified WDT counter */
+ 285:main.c        ****     CySysWdtDisable(WDT_COUNTER_MASK);
+ 525              		.loc 1 285 0
+ 526 0008 8023     		movs	r3, #128
+ 527 000a 5B00     		lsls	r3, r3, #1
+ 528 000c 1800     		movs	r0, r3
+ 529 000e FFF7FEFF 		bl	CySysWdtDisable
+ 286:main.c        ****     /* Locks out configuration changes to the Watchdog timer registers */
+ 287:main.c        ****     CySysWdtLock();    
+ 530              		.loc 1 287 0
+ 531 0012 FFF7FEFF 		bl	CySysWdtLock
+ 288:main.c        **** }
+ 532              		.loc 1 288 0
+ 533 0016 C046     		nop
+ 534 0018 BD46     		mov	sp, r7
+ 535              		@ sp needed
+ 536 001a 80BD     		pop	{r7, pc}
+ 537              		.cfi_endproc
+ 538              	.LFE39:
+ 539              		.size	WDT_Stop, .-WDT_Stop
+ 540              		.section	.text.LowPowerImplementation,"ax",%progbits
+ 541              		.align	2
+ 542              		.code	16
+ 543              		.thumb_func
+ 544              		.type	LowPowerImplementation, %function
+ 545              	LowPowerImplementation:
+ 546              	.LFB40:
+ 289:main.c        **** 
+ 290:main.c        **** /*******************************************************************************
+ 291:main.c        **** * Function Name: LowPowerImplementation()
+ 292:main.c        **** ********************************************************************************
+ 293:main.c        **** * Summary:
+ 294:main.c        **** * Implements low power in the project.
+ 295:main.c        **** *
+ 296:main.c        **** * Parameters:
+ 297:main.c        **** * None
+ 298:main.c        **** *
+ 299:main.c        **** * Return:
+ 300:main.c        **** * None
+ 301:main.c        **** *
+ 302:main.c        **** * Theory:
+ 303:main.c        **** * The function tries to enter deep sleep as much as possible - whenever the 
+ 304:main.c        **** * BLE is idle and the UART transmission/reception is not happening. At all other
+ 305:main.c        **** * times, the function tries to enter CPU sleep.
+ 306:main.c        **** *
+ 307:main.c        **** *******************************************************************************/
+ 308:main.c        **** static void LowPowerImplementation(void)
+ 309:main.c        **** {
+ 547              		.loc 1 309 0
+ 548              		.cfi_startproc
+ 549              		@ args = 0, pretend = 0, frame = 8
+ 550              		@ frame_needed = 1, uses_anonymous_args = 0
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUMPGnq.s 			page 17
+
+
+ 551 0000 90B5     		push	{r4, r7, lr}
+ 552              		.cfi_def_cfa_offset 12
+ 553              		.cfi_offset 4, -12
+ 554              		.cfi_offset 7, -8
+ 555              		.cfi_offset 14, -4
+ 556 0002 83B0     		sub	sp, sp, #12
+ 557              		.cfi_def_cfa_offset 24
+ 558 0004 00AF     		add	r7, sp, #0
+ 559              		.cfi_def_cfa_register 7
+ 310:main.c        ****     CYBLE_LP_MODE_T bleMode;
+ 311:main.c        ****     uint8 interruptStatus;
+ 312:main.c        ****     
+ 313:main.c        ****     /* For advertising and connected states, implement deep sleep 
+ 314:main.c        ****      * functionality to achieve low power in the system. For more details
+ 315:main.c        ****      * on the low power implementation, refer to the Low Power Application 
+ 316:main.c        ****      * Note.
+ 317:main.c        ****      */
+ 318:main.c        ****     if((CyBle_GetState() == CYBLE_STATE_ADVERTISING) || 
+ 560              		.loc 1 318 0
+ 561 0006 1A4B     		ldr	r3, .L71
+ 562 0008 1B78     		ldrb	r3, [r3]
+ 563 000a 032B     		cmp	r3, #3
+ 564 000c 03D0     		beq	.L64
+ 319:main.c        ****        (CyBle_GetState() == CYBLE_STATE_CONNECTED))
+ 565              		.loc 1 319 0 discriminator 1
+ 566 000e 184B     		ldr	r3, .L71
+ 567 0010 1B78     		ldrb	r3, [r3]
+ 318:main.c        ****        (CyBle_GetState() == CYBLE_STATE_CONNECTED))
+ 568              		.loc 1 318 0 discriminator 1
+ 569 0012 022B     		cmp	r3, #2
+ 570 0014 27D1     		bne	.L70
+ 571              	.L64:
+ 320:main.c        ****     {
+ 321:main.c        ****         /* Request BLE subsystem to enter into Deep-Sleep mode between connection and advertising i
+ 322:main.c        ****         bleMode = CyBle_EnterLPM(CYBLE_BLESS_DEEPSLEEP);
+ 572              		.loc 1 322 0
+ 573 0016 FC1D     		adds	r4, r7, #7
+ 574 0018 0320     		movs	r0, #3
+ 575 001a FFF7FEFF 		bl	CyBle_EnterLPM
+ 576 001e 0300     		movs	r3, r0
+ 577 0020 2370     		strb	r3, [r4]
+ 323:main.c        ****         /* Disable global interrupts */
+ 324:main.c        ****         interruptStatus = CyEnterCriticalSection();
+ 578              		.loc 1 324 0
+ 579 0022 BC1D     		adds	r4, r7, #6
+ 580 0024 FFF7FEFF 		bl	CyEnterCriticalSection
+ 581 0028 0300     		movs	r3, r0
+ 582 002a 2370     		strb	r3, [r4]
+ 325:main.c        ****         /* When BLE subsystem has been put into Deep-Sleep mode */
+ 326:main.c        ****         if(bleMode == CYBLE_BLESS_DEEPSLEEP)
+ 583              		.loc 1 326 0
+ 584 002c FB1D     		adds	r3, r7, #7
+ 585 002e 1B78     		ldrb	r3, [r3]
+ 586 0030 032B     		cmp	r3, #3
+ 587 0032 0CD1     		bne	.L66
+ 327:main.c        ****         {
+ 328:main.c        ****             /* And it is still there or ECO is on */
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUMPGnq.s 			page 18
+
+
+ 329:main.c        ****             if((CyBle_GetBleSsState() == CYBLE_BLESS_STATE_ECO_ON) || 
+ 588              		.loc 1 329 0
+ 589 0034 FFF7FEFF 		bl	CyBle_GetBleSsState
+ 590 0038 0300     		movs	r3, r0
+ 591 003a 042B     		cmp	r3, #4
+ 592 003c 04D0     		beq	.L67
+ 330:main.c        ****                (CyBle_GetBleSsState() == CYBLE_BLESS_STATE_DEEPSLEEP))
+ 593              		.loc 1 330 0 discriminator 1
+ 594 003e FFF7FEFF 		bl	CyBle_GetBleSsState
+ 595 0042 0300     		movs	r3, r0
+ 329:main.c        ****                (CyBle_GetBleSsState() == CYBLE_BLESS_STATE_DEEPSLEEP))
+ 596              		.loc 1 329 0 discriminator 1
+ 597 0044 062B     		cmp	r3, #6
+ 598 0046 09D1     		bne	.L69
+ 599              	.L67:
+ 331:main.c        ****             {
+ 332:main.c        ****             #if (DEBUG_UART_ENABLED == ENABLED)
+ 333:main.c        ****                 /* Put the CPU into the Deep-Sleep mode when all debug information has been sent */
+ 334:main.c        ****                 if((UART_DEB_SpiUartGetTxBufferSize() + UART_DEB_GET_TX_FIFO_SR_VALID) == 0u)
+ 335:main.c        ****                 {
+ 336:main.c        ****                     CySysPmDeepSleep();
+ 337:main.c        ****                 }
+ 338:main.c        ****                 else /* Put the CPU into Sleep mode and let SCB to continue sending debug data */
+ 339:main.c        ****                 {
+ 340:main.c        ****                     CySysPmSleep();
+ 341:main.c        ****                 }
+ 342:main.c        ****             #else
+ 343:main.c        ****                 CySysPmDeepSleep();
+ 600              		.loc 1 343 0
+ 601 0048 FFF7FEFF 		bl	CySysPmDeepSleep
+ 602 004c 06E0     		b	.L69
+ 603              	.L66:
+ 344:main.c        ****             #endif /* (DEBUG_UART_ENABLED == ENABLED) */
+ 345:main.c        ****             }
+ 346:main.c        ****         }
+ 347:main.c        ****         else /* When BLE subsystem has been put into Sleep mode or is active */
+ 348:main.c        ****         {
+ 349:main.c        ****             /* And hardware doesn't finish Tx/Rx opeation - put the CPU into Sleep mode */
+ 350:main.c        ****             if(CyBle_GetBleSsState() != CYBLE_BLESS_STATE_EVENT_CLOSE)
+ 604              		.loc 1 350 0
+ 605 004e FFF7FEFF 		bl	CyBle_GetBleSsState
+ 606 0052 0300     		movs	r3, r0
+ 607 0054 022B     		cmp	r3, #2
+ 608 0056 01D0     		beq	.L69
+ 351:main.c        ****             {
+ 352:main.c        ****                 CySysPmSleep();
+ 609              		.loc 1 352 0
+ 610 0058 FFF7FEFF 		bl	CySysPmSleep
+ 611              	.L69:
+ 353:main.c        ****             }
+ 354:main.c        ****         }
+ 355:main.c        ****         /* Enable global interrupt */
+ 356:main.c        ****         CyExitCriticalSection(interruptStatus);
+ 612              		.loc 1 356 0
+ 613 005c BB1D     		adds	r3, r7, #6
+ 614 005e 1B78     		ldrb	r3, [r3]
+ 615 0060 1800     		movs	r0, r3
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUMPGnq.s 			page 19
+
+
+ 616 0062 FFF7FEFF 		bl	CyExitCriticalSection
+ 617              	.L70:
+ 357:main.c        ****     }
+ 358:main.c        **** }
+ 618              		.loc 1 358 0
+ 619 0066 C046     		nop
+ 620 0068 BD46     		mov	sp, r7
+ 621 006a 03B0     		add	sp, sp, #12
+ 622              		@ sp needed
+ 623 006c 90BD     		pop	{r4, r7, pc}
+ 624              	.L72:
+ 625 006e C046     		.align	2
+ 626              	.L71:
+ 627 0070 00000000 		.word	cyBle_state
+ 628              		.cfi_endproc
+ 629              	.LFE40:
+ 630              		.size	LowPowerImplementation, .-LowPowerImplementation
+ 631              		.section	.text.main,"ax",%progbits
+ 632              		.align	2
+ 633              		.global	main
+ 634              		.code	16
+ 635              		.thumb_func
+ 636              		.type	main, %function
+ 637              	main:
+ 638              	.LFB41:
+ 359:main.c        **** 
+ 360:main.c        **** 
+ 361:main.c        **** /*******************************************************************************
+ 362:main.c        **** * Function Name: main()
+ 363:main.c        **** ********************************************************************************
+ 364:main.c        **** * Summary:
+ 365:main.c        **** *  Main function for the project.
+ 366:main.c        **** *
+ 367:main.c        **** * Parameters:
+ 368:main.c        **** *  None
+ 369:main.c        **** *
+ 370:main.c        **** * Return:
+ 371:main.c        **** *  None
+ 372:main.c        **** *
+ 373:main.c        **** * Theory:
+ 374:main.c        **** *  The function starts BLE and UART components.
+ 375:main.c        **** *  This function process all BLE events and also implements the low power 
+ 376:main.c        **** *  functionality.
+ 377:main.c        **** *
+ 378:main.c        **** *******************************************************************************/int main()
+ 379:main.c        **** {
+ 639              		.loc 1 379 0
+ 640              		.cfi_startproc
+ 641              		@ args = 0, pretend = 0, frame = 8
+ 642              		@ frame_needed = 1, uses_anonymous_args = 0
+ 643 0000 90B5     		push	{r4, r7, lr}
+ 644              		.cfi_def_cfa_offset 12
+ 645              		.cfi_offset 4, -12
+ 646              		.cfi_offset 7, -8
+ 647              		.cfi_offset 14, -4
+ 648 0002 83B0     		sub	sp, sp, #12
+ 649              		.cfi_def_cfa_offset 24
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUMPGnq.s 			page 20
+
+
+ 650 0004 00AF     		add	r7, sp, #0
+ 651              		.cfi_def_cfa_register 7
+ 380:main.c        ****     CyGlobalIntEnable;  
+ 652              		.loc 1 380 0
+ 653              		.syntax divided
+ 654              	@ 380 "main.c" 1
+ 655 0006 62B6     		CPSIE   i
+ 656              	@ 0 "" 2
+ 381:main.c        **** 
+ 382:main.c        **** #if (DEBUG_UART_ENABLED == ENABLED)
+ 383:main.c        ****     UART_DEB_Start();
+ 384:main.c        **** #endif /* (DEBUG_UART_ENABLED == ENABLED) */
+ 385:main.c        ****     DBG_PRINTF("BLE HID Keyboard Example Project \r\n");
+ 386:main.c        **** 
+ 387:main.c        ****     Disconnect_LED_Write(LED_OFF);
+ 657              		.loc 1 387 0
+ 658              		.thumb
+ 659              		.syntax unified
+ 660 0008 0120     		movs	r0, #1
+ 661 000a FFF7FEFF 		bl	Disconnect_LED_Write
+ 388:main.c        ****     Advertising_LED_Write(LED_OFF);
+ 662              		.loc 1 388 0
+ 663 000e 0120     		movs	r0, #1
+ 664 0010 FFF7FEFF 		bl	Advertising_LED_Write
+ 389:main.c        ****     CapsLock_LED_Write(LED_OFF);
+ 665              		.loc 1 389 0
+ 666 0014 0120     		movs	r0, #1
+ 667 0016 FFF7FEFF 		bl	CapsLock_LED_Write
+ 390:main.c        **** 
+ 391:main.c        ****     /* Start CYBLE component and register generic event handler */
+ 392:main.c        ****     CyBle_Start(AppCallBack);
+ 668              		.loc 1 392 0
+ 669 001a 174B     		ldr	r3, .L77
+ 670 001c 1800     		movs	r0, r3
+ 671 001e FFF7FEFF 		bl	CyBle_Start
+ 393:main.c        ****     WDT_Start();
+ 672              		.loc 1 393 0
+ 673 0022 FFF7FEFF 		bl	WDT_Start
+ 674              	.L76:
+ 394:main.c        **** 
+ 395:main.c        **** #if (BAS_MEASURE_ENABLE != 0)
+ 396:main.c        ****     ADC_Start();
+ 397:main.c        **** #endif /* BAS_MEASURE_ENABLE != 0 */
+ 398:main.c        **** 
+ 399:main.c        ****     while(1) 
+ 400:main.c        ****     {           
+ 401:main.c        ****         /* CyBle_ProcessEvents() allows BLE stack to process pending events */
+ 402:main.c        ****         CyBle_ProcessEvents();
+ 675              		.loc 1 402 0
+ 676 0026 FFF7FEFF 		bl	CyBle_ProcessEvents
+ 403:main.c        **** 
+ 404:main.c        ****         /* To achieve low power in the device */
+ 405:main.c        ****         LowPowerImplementation();
+ 677              		.loc 1 405 0
+ 678 002a FFF7FEFF 		bl	LowPowerImplementation
+ 406:main.c        **** 
+ 407:main.c        ****         if((CyBle_GetState() == CYBLE_STATE_CONNECTED) && (suspend != CYBLE_HIDS_CP_SUSPEND))
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUMPGnq.s 			page 21
+
+
+ 679              		.loc 1 407 0
+ 680 002e 134B     		ldr	r3, .L77+4
+ 681 0030 1B78     		ldrb	r3, [r3]
+ 682 0032 022B     		cmp	r3, #2
+ 683 0034 F7D1     		bne	.L76
+ 684              		.loc 1 407 0 is_stmt 0 discriminator 1
+ 685 0036 124B     		ldr	r3, .L77+8
+ 686 0038 1B78     		ldrb	r3, [r3]
+ 687 003a 002B     		cmp	r3, #0
+ 688 003c F3D0     		beq	.L76
+ 408:main.c        ****         {
+ 409:main.c        ****             if(mainTimer != 0u)
+ 689              		.loc 1 409 0 is_stmt 1
+ 690 003e 114B     		ldr	r3, .L77+12
+ 691 0040 1B68     		ldr	r3, [r3]
+ 692 0042 002B     		cmp	r3, #0
+ 693 0044 0CD0     		beq	.L75
+ 410:main.c        ****             {
+ 411:main.c        ****                 mainTimer = 0u;                
+ 694              		.loc 1 411 0
+ 695 0046 0F4B     		ldr	r3, .L77+12
+ 696 0048 0022     		movs	r2, #0
+ 697 004a 1A60     		str	r2, [r3]
+ 412:main.c        ****             #if (BAS_SIMULATE_ENABLE != 0)
+ 413:main.c        ****                 SimulateBattery();
+ 698              		.loc 1 413 0
+ 699 004c FFF7FEFF 		bl	SimulateBattery
+ 414:main.c        ****                 CyBle_ProcessEvents();
+ 700              		.loc 1 414 0
+ 701 0050 FFF7FEFF 		bl	CyBle_ProcessEvents
+ 415:main.c        ****             #endif /* BAS_SIMULATE_ENABLE != 0 */    
+ 416:main.c        ****             #if (BAS_MEASURE_ENABLE != 0)
+ 417:main.c        ****                 MeasureBattery();
+ 418:main.c        ****                 CyBle_ProcessEvents();
+ 419:main.c        ****             #endif /* BAS_MEASURE_ENABLE != 0 */
+ 420:main.c        ****                 if(keyboardSimulation == ENABLED)
+ 702              		.loc 1 420 0
+ 703 0054 0C4B     		ldr	r3, .L77+16
+ 704 0056 1B88     		ldrh	r3, [r3]
+ 705 0058 012B     		cmp	r3, #1
+ 706 005a 01D1     		bne	.L75
+ 421:main.c        ****                 {
+ 422:main.c        ****                     SimulateKeyboard();
+ 707              		.loc 1 422 0
+ 708 005c FFF7FEFF 		bl	SimulateKeyboard
+ 709              	.L75:
+ 423:main.c        ****                 }
+ 424:main.c        ****             }
+ 425:main.c        ****             /* Store bonding data to flash only when all debug information has been sent */
+ 426:main.c        ****         #if(CYBLE_BONDING_REQUIREMENT == CYBLE_BONDING_YES)
+ 427:main.c        ****         #if (DEBUG_UART_ENABLED == ENABLED)
+ 428:main.c        ****             if((cyBle_pendingFlashWrite != 0u) &&
+ 429:main.c        ****                ((UART_DEB_SpiUartGetTxBufferSize() + UART_DEB_GET_TX_FIFO_SR_VALID) == 0u))
+ 430:main.c        ****             
+ 431:main.c        ****         #else
+ 432:main.c        ****             if(cyBle_pendingFlashWrite != 0u)
+ 710              		.loc 1 432 0
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUMPGnq.s 			page 22
+
+
+ 711 0060 0A4B     		ldr	r3, .L77+20
+ 712 0062 1B78     		ldrb	r3, [r3]
+ 713 0064 002B     		cmp	r3, #0
+ 714 0066 DED0     		beq	.L76
+ 715              	.LBB4:
+ 433:main.c        ****         #endif /* (DEBUG_UART_ENABLED == ENABLED) */
+ 434:main.c        ****             {
+ 435:main.c        ****                 CYBLE_API_RESULT_T apiResult;
+ 436:main.c        ****                 
+ 437:main.c        ****                 apiResult = CyBle_StoreBondingData(0u);
+ 716              		.loc 1 437 0
+ 717 0068 BC1D     		adds	r4, r7, #6
+ 718 006a 0020     		movs	r0, #0
+ 719 006c FFF7FEFF 		bl	CyBle_StoreBondingData
+ 720 0070 0300     		movs	r3, r0
+ 721 0072 2380     		strh	r3, [r4]
+ 722              	.LBE4:
+ 438:main.c        ****                 (void)apiResult;
+ 439:main.c        ****                 DBG_PRINTF("Store bonding data, status: %x \r\n", apiResult);
+ 440:main.c        ****             }
+ 441:main.c        ****         #endif /* CYBLE_BONDING_REQUIREMENT == CYBLE_BONDING_YES */    
+ 442:main.c        ****         }
+ 443:main.c        **** 	}   
+ 723              		.loc 1 443 0
+ 724 0074 D7E7     		b	.L76
+ 725              	.L78:
+ 726 0076 C046     		.align	2
+ 727              	.L77:
+ 728 0078 00000000 		.word	AppCallBack
+ 729 007c 00000000 		.word	cyBle_state
+ 730 0080 00000000 		.word	suspend
+ 731 0084 00000000 		.word	mainTimer
+ 732 0088 00000000 		.word	keyboardSimulation
+ 733 008c 00000000 		.word	cyBle_pendingFlashWrite
+ 734              		.cfi_endproc
+ 735              	.LFE41:
+ 736              		.size	main, .-main
+ 737              		.data
+ 738              		.align	2
+ 739              		.type	ledTimer.8242, %object
+ 740              		.size	ledTimer.8242, 4
+ 741              	ledTimer.8242:
+ 742 0000 0A000000 		.word	10
+ 743              		.type	led.8241, %object
+ 744              		.size	led.8241, 1
+ 745              	led.8241:
+ 746 0004 01       		.byte	1
+ 747              		.text
+ 748              	.Letext0:
+ 749              		.file 2 "Generated_Source\\PSoC4/cytypes.h"
+ 750              		.file 3 "Generated_Source\\PSoC4/BLE_Stack.h"
+ 751              		.file 4 "Generated_Source\\PSoC4/BLE_StackGap.h"
+ 752              		.file 5 "Generated_Source\\PSoC4/BLE_StackGatt.h"
+ 753              		.file 6 "Generated_Source\\PSoC4/BLE_StackGattServer.h"
+ 754              		.file 7 "Generated_Source\\PSoC4/BLE_dis.h"
+ 755              		.file 8 "Generated_Source\\PSoC4/BLE_eventHandler.h"
+ 756              		.file 9 "Generated_Source\\PSoC4/BLE.h"
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUMPGnq.s 			page 23
+
+
+ 757              		.file 10 "hids.h"
+ 758              		.section	.debug_info,"",%progbits
+ 759              	.Ldebug_info0:
+ 760 0000 DB070000 		.4byte	0x7db
+ 761 0004 0400     		.2byte	0x4
+ 762 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 763 000a 04       		.byte	0x4
+ 764 000b 01       		.uleb128 0x1
+ 765 000c 710A0000 		.4byte	.LASF211
+ 766 0010 0C       		.byte	0xc
+ 767 0011 120A0000 		.4byte	.LASF212
+ 768 0015 5D130000 		.4byte	.LASF213
+ 769 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 770 001d 00000000 		.4byte	0
+ 771 0021 00000000 		.4byte	.Ldebug_line0
+ 772 0025 02       		.uleb128 0x2
+ 773 0026 01       		.byte	0x1
+ 774 0027 06       		.byte	0x6
+ 775 0028 23040000 		.4byte	.LASF0
+ 776 002c 02       		.uleb128 0x2
+ 777 002d 01       		.byte	0x1
+ 778 002e 08       		.byte	0x8
+ 779 002f 740E0000 		.4byte	.LASF1
+ 780 0033 02       		.uleb128 0x2
+ 781 0034 02       		.byte	0x2
+ 782 0035 05       		.byte	0x5
+ 783 0036 CE0E0000 		.4byte	.LASF2
+ 784 003a 02       		.uleb128 0x2
+ 785 003b 02       		.byte	0x2
+ 786 003c 07       		.byte	0x7
+ 787 003d 17120000 		.4byte	.LASF3
+ 788 0041 02       		.uleb128 0x2
+ 789 0042 04       		.byte	0x4
+ 790 0043 05       		.byte	0x5
+ 791 0044 60020000 		.4byte	.LASF4
+ 792 0048 02       		.uleb128 0x2
+ 793 0049 04       		.byte	0x4
+ 794 004a 07       		.byte	0x7
+ 795 004b 68080000 		.4byte	.LASF5
+ 796 004f 02       		.uleb128 0x2
+ 797 0050 08       		.byte	0x8
+ 798 0051 05       		.byte	0x5
+ 799 0052 15040000 		.4byte	.LASF6
+ 800 0056 02       		.uleb128 0x2
+ 801 0057 08       		.byte	0x8
+ 802 0058 07       		.byte	0x7
+ 803 0059 A7070000 		.4byte	.LASF7
+ 804 005d 03       		.uleb128 0x3
+ 805 005e 04       		.byte	0x4
+ 806 005f 05       		.byte	0x5
+ 807 0060 696E7400 		.ascii	"int\000"
+ 808 0064 02       		.uleb128 0x2
+ 809 0065 04       		.byte	0x4
+ 810 0066 07       		.byte	0x7
+ 811 0067 FF100000 		.4byte	.LASF8
+ 812 006b 04       		.uleb128 0x4
+ 813 006c EA050000 		.4byte	.LASF9
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUMPGnq.s 			page 24
+
+
+ 814 0070 02       		.byte	0x2
+ 815 0071 D201     		.2byte	0x1d2
+ 816 0073 2C000000 		.4byte	0x2c
+ 817 0077 04       		.uleb128 0x4
+ 818 0078 820E0000 		.4byte	.LASF10
+ 819 007c 02       		.byte	0x2
+ 820 007d D301     		.2byte	0x1d3
+ 821 007f 3A000000 		.4byte	0x3a
+ 822 0083 04       		.uleb128 0x4
+ 823 0084 D6060000 		.4byte	.LASF11
+ 824 0088 02       		.byte	0x2
+ 825 0089 D401     		.2byte	0x1d4
+ 826 008b 48000000 		.4byte	0x48
+ 827 008f 02       		.uleb128 0x2
+ 828 0090 04       		.byte	0x4
+ 829 0091 04       		.byte	0x4
+ 830 0092 E10D0000 		.4byte	.LASF12
+ 831 0096 02       		.uleb128 0x2
+ 832 0097 08       		.byte	0x8
+ 833 0098 04       		.byte	0x4
+ 834 0099 52060000 		.4byte	.LASF13
+ 835 009d 02       		.uleb128 0x2
+ 836 009e 01       		.byte	0x1
+ 837 009f 08       		.byte	0x8
+ 838 00a0 54100000 		.4byte	.LASF14
+ 839 00a4 05       		.uleb128 0x5
+ 840 00a5 83000000 		.4byte	0x83
+ 841 00a9 02       		.uleb128 0x2
+ 842 00aa 08       		.byte	0x8
+ 843 00ab 04       		.byte	0x4
+ 844 00ac 59100000 		.4byte	.LASF15
+ 845 00b0 02       		.uleb128 0x2
+ 846 00b1 04       		.byte	0x4
+ 847 00b2 07       		.byte	0x7
+ 848 00b3 F20B0000 		.4byte	.LASF16
+ 849 00b7 06       		.uleb128 0x6
+ 850 00b8 04       		.byte	0x4
+ 851 00b9 07       		.uleb128 0x7
+ 852 00ba 01       		.byte	0x1
+ 853 00bb 2C000000 		.4byte	0x2c
+ 854 00bf 03       		.byte	0x3
+ 855 00c0 4D01     		.2byte	0x14d
+ 856 00c2 77020000 		.4byte	0x277
+ 857 00c6 08       		.uleb128 0x8
+ 858 00c7 4E090000 		.4byte	.LASF17
+ 859 00cb 00       		.byte	0
+ 860 00cc 08       		.uleb128 0x8
+ 861 00cd 2F040000 		.4byte	.LASF18
+ 862 00d1 01       		.byte	0x1
+ 863 00d2 08       		.uleb128 0x8
+ 864 00d3 4E020000 		.4byte	.LASF19
+ 865 00d7 02       		.byte	0x2
+ 866 00d8 08       		.uleb128 0x8
+ 867 00d9 FE110000 		.4byte	.LASF20
+ 868 00dd 03       		.byte	0x3
+ 869 00de 08       		.uleb128 0x8
+ 870 00df D8020000 		.4byte	.LASF21
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUMPGnq.s 			page 25
+
+
+ 871 00e3 04       		.byte	0x4
+ 872 00e4 08       		.uleb128 0x8
+ 873 00e5 23000000 		.4byte	.LASF22
+ 874 00e9 05       		.byte	0x5
+ 875 00ea 08       		.uleb128 0x8
+ 876 00eb 83090000 		.4byte	.LASF23
+ 877 00ef 06       		.byte	0x6
+ 878 00f0 08       		.uleb128 0x8
+ 879 00f1 3C0B0000 		.4byte	.LASF24
+ 880 00f5 20       		.byte	0x20
+ 881 00f6 08       		.uleb128 0x8
+ 882 00f7 A7040000 		.4byte	.LASF25
+ 883 00fb 21       		.byte	0x21
+ 884 00fc 08       		.uleb128 0x8
+ 885 00fd CF090000 		.4byte	.LASF26
+ 886 0101 22       		.byte	0x22
+ 887 0102 08       		.uleb128 0x8
+ 888 0103 D8110000 		.4byte	.LASF27
+ 889 0107 23       		.byte	0x23
+ 890 0108 08       		.uleb128 0x8
+ 891 0109 DC0C0000 		.4byte	.LASF28
+ 892 010d 24       		.byte	0x24
+ 893 010e 08       		.uleb128 0x8
+ 894 010f 1D0C0000 		.4byte	.LASF29
+ 895 0113 25       		.byte	0x25
+ 896 0114 08       		.uleb128 0x8
+ 897 0115 97050000 		.4byte	.LASF30
+ 898 0119 26       		.byte	0x26
+ 899 011a 08       		.uleb128 0x8
+ 900 011b F3090000 		.4byte	.LASF31
+ 901 011f 27       		.byte	0x27
+ 902 0120 08       		.uleb128 0x8
+ 903 0121 6E030000 		.4byte	.LASF32
+ 904 0125 28       		.byte	0x28
+ 905 0126 08       		.uleb128 0x8
+ 906 0127 90030000 		.4byte	.LASF33
+ 907 012b 29       		.byte	0x29
+ 908 012c 08       		.uleb128 0x8
+ 909 012d E3000000 		.4byte	.LASF34
+ 910 0131 2A       		.byte	0x2a
+ 911 0132 08       		.uleb128 0x8
+ 912 0133 60010000 		.4byte	.LASF35
+ 913 0137 2B       		.byte	0x2b
+ 914 0138 08       		.uleb128 0x8
+ 915 0139 0F150000 		.4byte	.LASF36
+ 916 013d 2C       		.byte	0x2c
+ 917 013e 08       		.uleb128 0x8
+ 918 013f D4030000 		.4byte	.LASF37
+ 919 0143 2D       		.byte	0x2d
+ 920 0144 08       		.uleb128 0x8
+ 921 0145 35110000 		.4byte	.LASF38
+ 922 0149 2E       		.byte	0x2e
+ 923 014a 08       		.uleb128 0x8
+ 924 014b 2A120000 		.4byte	.LASF39
+ 925 014f 2F       		.byte	0x2f
+ 926 0150 08       		.uleb128 0x8
+ 927 0151 9E0C0000 		.4byte	.LASF40
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUMPGnq.s 			page 26
+
+
+ 928 0155 30       		.byte	0x30
+ 929 0156 08       		.uleb128 0x8
+ 930 0157 A8150000 		.4byte	.LASF41
+ 931 015b 31       		.byte	0x31
+ 932 015c 08       		.uleb128 0x8
+ 933 015d 670C0000 		.4byte	.LASF42
+ 934 0161 32       		.byte	0x32
+ 935 0162 08       		.uleb128 0x8
+ 936 0163 16100000 		.4byte	.LASF43
+ 937 0167 33       		.byte	0x33
+ 938 0168 08       		.uleb128 0x8
+ 939 0169 7A080000 		.4byte	.LASF44
+ 940 016d 34       		.byte	0x34
+ 941 016e 08       		.uleb128 0x8
+ 942 016f BF0C0000 		.4byte	.LASF45
+ 943 0173 35       		.byte	0x35
+ 944 0174 08       		.uleb128 0x8
+ 945 0175 330A0000 		.4byte	.LASF46
+ 946 0179 36       		.byte	0x36
+ 947 017a 08       		.uleb128 0x8
+ 948 017b 740B0000 		.4byte	.LASF47
+ 949 017f 37       		.byte	0x37
+ 950 0180 08       		.uleb128 0x8
+ 951 0181 38070000 		.4byte	.LASF48
+ 952 0185 40       		.byte	0x40
+ 953 0186 08       		.uleb128 0x8
+ 954 0187 FF0A0000 		.4byte	.LASF49
+ 955 018b 41       		.byte	0x41
+ 956 018c 08       		.uleb128 0x8
+ 957 018d F2150000 		.4byte	.LASF50
+ 958 0191 42       		.byte	0x42
+ 959 0192 08       		.uleb128 0x8
+ 960 0193 EA120000 		.4byte	.LASF51
+ 961 0197 43       		.byte	0x43
+ 962 0198 08       		.uleb128 0x8
+ 963 0199 A6080000 		.4byte	.LASF52
+ 964 019d 44       		.byte	0x44
+ 965 019e 08       		.uleb128 0x8
+ 966 019f BA0D0000 		.4byte	.LASF53
+ 967 01a3 45       		.byte	0x45
+ 968 01a4 08       		.uleb128 0x8
+ 969 01a5 D10B0000 		.4byte	.LASF54
+ 970 01a9 46       		.byte	0x46
+ 971 01aa 08       		.uleb128 0x8
+ 972 01ab 65090000 		.4byte	.LASF55
+ 973 01af 47       		.byte	0x47
+ 974 01b0 08       		.uleb128 0x8
+ 975 01b1 D3140000 		.4byte	.LASF56
+ 976 01b5 48       		.byte	0x48
+ 977 01b6 08       		.uleb128 0x8
+ 978 01b7 BE040000 		.4byte	.LASF57
+ 979 01bb 49       		.byte	0x49
+ 980 01bc 08       		.uleb128 0x8
+ 981 01bd 9A130000 		.4byte	.LASF58
+ 982 01c1 4A       		.byte	0x4a
+ 983 01c2 08       		.uleb128 0x8
+ 984 01c3 DD010000 		.4byte	.LASF59
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUMPGnq.s 			page 27
+
+
+ 985 01c7 4B       		.byte	0x4b
+ 986 01c8 08       		.uleb128 0x8
+ 987 01c9 190A0000 		.4byte	.LASF60
+ 988 01cd 4C       		.byte	0x4c
+ 989 01ce 08       		.uleb128 0x8
+ 990 01cf 410C0000 		.4byte	.LASF61
+ 991 01d3 4D       		.byte	0x4d
+ 992 01d4 08       		.uleb128 0x8
+ 993 01d5 3B050000 		.4byte	.LASF62
+ 994 01d9 4E       		.byte	0x4e
+ 995 01da 08       		.uleb128 0x8
+ 996 01db 750F0000 		.4byte	.LASF63
+ 997 01df 4F       		.byte	0x4f
+ 998 01e0 08       		.uleb128 0x8
+ 999 01e1 FC010000 		.4byte	.LASF64
+ 1000 01e5 50       		.byte	0x50
+ 1001 01e6 08       		.uleb128 0x8
+ 1002 01e7 33060000 		.4byte	.LASF65
+ 1003 01eb 51       		.byte	0x51
+ 1004 01ec 08       		.uleb128 0x8
+ 1005 01ed 2B0D0000 		.4byte	.LASF66
+ 1006 01f1 52       		.byte	0x52
+ 1007 01f2 08       		.uleb128 0x8
+ 1008 01f3 E20E0000 		.4byte	.LASF67
+ 1009 01f7 53       		.byte	0x53
+ 1010 01f8 08       		.uleb128 0x8
+ 1011 01f9 C10F0000 		.4byte	.LASF68
+ 1012 01fd 54       		.byte	0x54
+ 1013 01fe 08       		.uleb128 0x8
+ 1014 01ff C4080000 		.4byte	.LASF69
+ 1015 0203 55       		.byte	0x55
+ 1016 0204 08       		.uleb128 0x8
+ 1017 0205 C4070000 		.4byte	.LASF70
+ 1018 0209 56       		.byte	0x56
+ 1019 020a 08       		.uleb128 0x8
+ 1020 020b 0C110000 		.4byte	.LASF71
+ 1021 020f 57       		.byte	0x57
+ 1022 0210 08       		.uleb128 0x8
+ 1023 0211 E8080000 		.4byte	.LASF72
+ 1024 0215 58       		.byte	0x58
+ 1025 0216 08       		.uleb128 0x8
+ 1026 0217 52070000 		.4byte	.LASF73
+ 1027 021b 70       		.byte	0x70
+ 1028 021c 08       		.uleb128 0x8
+ 1029 021d 6A150000 		.4byte	.LASF74
+ 1030 0221 71       		.byte	0x71
+ 1031 0222 08       		.uleb128 0x8
+ 1032 0223 62050000 		.4byte	.LASF75
+ 1033 0227 72       		.byte	0x72
+ 1034 0228 08       		.uleb128 0x8
+ 1035 0229 2B020000 		.4byte	.LASF76
+ 1036 022d 73       		.byte	0x73
+ 1037 022e 08       		.uleb128 0x8
+ 1038 022f 9C0D0000 		.4byte	.LASF77
+ 1039 0233 74       		.byte	0x74
+ 1040 0234 08       		.uleb128 0x8
+ 1041 0235 59060000 		.4byte	.LASF78
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUMPGnq.s 			page 28
+
+
+ 1042 0239 75       		.byte	0x75
+ 1043 023a 08       		.uleb128 0x8
+ 1044 023b 0C010000 		.4byte	.LASF79
+ 1045 023f 76       		.byte	0x76
+ 1046 0240 08       		.uleb128 0x8
+ 1047 0241 5B000000 		.4byte	.LASF80
+ 1048 0245 77       		.byte	0x77
+ 1049 0246 08       		.uleb128 0x8
+ 1050 0247 00000000 		.4byte	.LASF81
+ 1051 024b 78       		.byte	0x78
+ 1052 024c 08       		.uleb128 0x8
+ 1053 024d 62110000 		.4byte	.LASF82
+ 1054 0251 79       		.byte	0x79
+ 1055 0252 08       		.uleb128 0x8
+ 1056 0253 78070000 		.4byte	.LASF83
+ 1057 0257 7A       		.byte	0x7a
+ 1058 0258 08       		.uleb128 0x8
+ 1059 0259 3C150000 		.4byte	.LASF84
+ 1060 025d FA       		.byte	0xfa
+ 1061 025e 08       		.uleb128 0x8
+ 1062 025f 04080000 		.4byte	.LASF85
+ 1063 0263 FB       		.byte	0xfb
+ 1064 0264 08       		.uleb128 0x8
+ 1065 0265 4C0F0000 		.4byte	.LASF86
+ 1066 0269 FC       		.byte	0xfc
+ 1067 026a 08       		.uleb128 0x8
+ 1068 026b 38160000 		.4byte	.LASF87
+ 1069 026f FD       		.byte	0xfd
+ 1070 0270 08       		.uleb128 0x8
+ 1071 0271 1B070000 		.4byte	.LASF88
+ 1072 0275 FF       		.byte	0xff
+ 1073 0276 00       		.byte	0
+ 1074 0277 07       		.uleb128 0x7
+ 1075 0278 02       		.byte	0x2
+ 1076 0279 3A000000 		.4byte	0x3a
+ 1077 027d 03       		.byte	0x3
+ 1078 027e 0204     		.2byte	0x402
+ 1079 0280 50030000 		.4byte	0x350
+ 1080 0284 08       		.uleb128 0x8
+ 1081 0285 29070000 		.4byte	.LASF89
+ 1082 0289 00       		.byte	0
+ 1083 028a 08       		.uleb128 0x8
+ 1084 028b 7A060000 		.4byte	.LASF90
+ 1085 028f 01       		.byte	0x1
+ 1086 0290 08       		.uleb128 0x8
+ 1087 0291 9C120000 		.4byte	.LASF91
+ 1088 0295 02       		.byte	0x2
+ 1089 0296 08       		.uleb128 0x8
+ 1090 0297 BE000000 		.4byte	.LASF92
+ 1091 029b 03       		.byte	0x3
+ 1092 029c 08       		.uleb128 0x8
+ 1093 029d 13130000 		.4byte	.LASF93
+ 1094 02a1 04       		.byte	0x4
+ 1095 02a2 08       		.uleb128 0x8
+ 1096 02a3 E6070000 		.4byte	.LASF94
+ 1097 02a7 05       		.byte	0x5
+ 1098 02a8 08       		.uleb128 0x8
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUMPGnq.s 			page 29
+
+
+ 1099 02a9 030F0000 		.4byte	.LASF95
+ 1100 02ad 06       		.byte	0x6
+ 1101 02ae 08       		.uleb128 0x8
+ 1102 02af 80040000 		.4byte	.LASF96
+ 1103 02b3 07       		.byte	0x7
+ 1104 02b4 08       		.uleb128 0x8
+ 1105 02b5 AF060000 		.4byte	.LASF97
+ 1106 02b9 08       		.byte	0x8
+ 1107 02ba 08       		.uleb128 0x8
+ 1108 02bb FA140000 		.4byte	.LASF98
+ 1109 02bf 09       		.byte	0x9
+ 1110 02c0 08       		.uleb128 0x8
+ 1111 02c1 370E0000 		.4byte	.LASF99
+ 1112 02c5 0A       		.byte	0xa
+ 1113 02c6 08       		.uleb128 0x8
+ 1114 02c7 8E100000 		.4byte	.LASF100
+ 1115 02cb 0B       		.byte	0xb
+ 1116 02cc 08       		.uleb128 0x8
+ 1117 02cd F0050000 		.4byte	.LASF101
+ 1118 02d1 0C       		.byte	0xc
+ 1119 02d2 08       		.uleb128 0x8
+ 1120 02d3 A0020000 		.4byte	.LASF102
+ 1121 02d7 0D       		.byte	0xd
+ 1122 02d8 08       		.uleb128 0x8
+ 1123 02d9 23080000 		.4byte	.LASF103
+ 1124 02dd 0E       		.byte	0xe
+ 1125 02de 08       		.uleb128 0x8
+ 1126 02df 58140000 		.4byte	.LASF104
+ 1127 02e3 0F       		.byte	0xf
+ 1128 02e4 08       		.uleb128 0x8
+ 1129 02e5 AA110000 		.4byte	.LASF105
+ 1130 02e9 10       		.byte	0x10
+ 1131 02ea 08       		.uleb128 0x8
+ 1132 02eb 0B090000 		.4byte	.LASF106
+ 1133 02ef 11       		.byte	0x11
+ 1134 02f0 08       		.uleb128 0x8
+ 1135 02f1 C7050000 		.4byte	.LASF107
+ 1136 02f5 12       		.byte	0x12
+ 1137 02f6 08       		.uleb128 0x8
+ 1138 02f7 10160000 		.4byte	.LASF108
+ 1139 02fb 13       		.byte	0x13
+ 1140 02fc 08       		.uleb128 0x8
+ 1141 02fd 5E040000 		.4byte	.LASF109
+ 1142 0301 27       		.byte	0x27
+ 1143 0302 08       		.uleb128 0x8
+ 1144 0303 85110000 		.4byte	.LASF110
+ 1145 0307 28       		.byte	0x28
+ 1146 0308 08       		.uleb128 0x8
+ 1147 0309 3C140000 		.4byte	.LASF111
+ 1148 030d 29       		.byte	0x29
+ 1149 030e 08       		.uleb128 0x8
+ 1150 030f 69020000 		.4byte	.LASF112
+ 1151 0313 2A       		.byte	0x2a
+ 1152 0314 08       		.uleb128 0x8
+ 1153 0315 2D010000 		.4byte	.LASF113
+ 1154 0319 2B       		.byte	0x2b
+ 1155 031a 08       		.uleb128 0x8
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUMPGnq.s 			page 30
+
+
+ 1156 031b B90B0000 		.4byte	.LASF114
+ 1157 031f 2C       		.byte	0x2c
+ 1158 0320 08       		.uleb128 0x8
+ 1159 0321 03140000 		.4byte	.LASF115
+ 1160 0325 FE       		.byte	0xfe
+ 1161 0326 08       		.uleb128 0x8
+ 1162 0327 A90B0000 		.4byte	.LASF116
+ 1163 032b FF       		.byte	0xff
+ 1164 032c 09       		.uleb128 0x9
+ 1165 032d 35090000 		.4byte	.LASF117
+ 1166 0331 0001     		.2byte	0x100
+ 1167 0333 09       		.uleb128 0x9
+ 1168 0334 4C0D0000 		.4byte	.LASF118
+ 1169 0338 0101     		.2byte	0x101
+ 1170 033a 09       		.uleb128 0x9
+ 1171 033b 510E0000 		.4byte	.LASF119
+ 1172 033f 0201     		.2byte	0x102
+ 1173 0341 09       		.uleb128 0x9
+ 1174 0342 02050000 		.4byte	.LASF120
+ 1175 0346 0301     		.2byte	0x103
+ 1176 0348 09       		.uleb128 0x9
+ 1177 0349 3D100000 		.4byte	.LASF121
+ 1178 034d 0401     		.2byte	0x104
+ 1179 034f 00       		.byte	0
+ 1180 0350 04       		.uleb128 0x4
+ 1181 0351 020D0000 		.4byte	.LASF122
+ 1182 0355 03       		.byte	0x3
+ 1183 0356 7104     		.2byte	0x471
+ 1184 0358 77020000 		.4byte	0x277
+ 1185 035c 07       		.uleb128 0x7
+ 1186 035d 01       		.byte	0x1
+ 1187 035e 2C000000 		.4byte	0x2c
+ 1188 0362 03       		.byte	0x3
+ 1189 0363 7504     		.2byte	0x475
+ 1190 0365 88030000 		.4byte	0x388
+ 1191 0369 08       		.uleb128 0x8
+ 1192 036a 95150000 		.4byte	.LASF123
+ 1193 036e 01       		.byte	0x1
+ 1194 036f 08       		.uleb128 0x8
+ 1195 0370 65100000 		.4byte	.LASF124
+ 1196 0374 02       		.byte	0x2
+ 1197 0375 08       		.uleb128 0x8
+ 1198 0376 BD140000 		.4byte	.LASF125
+ 1199 037a 03       		.byte	0x3
+ 1200 037b 08       		.uleb128 0x8
+ 1201 037c 880C0000 		.4byte	.LASF126
+ 1202 0380 04       		.byte	0x4
+ 1203 0381 08       		.uleb128 0x8
+ 1204 0382 92080000 		.4byte	.LASF127
+ 1205 0386 FF       		.byte	0xff
+ 1206 0387 00       		.byte	0
+ 1207 0388 04       		.uleb128 0x4
+ 1208 0389 1B020000 		.4byte	.LASF128
+ 1209 038d 03       		.byte	0x3
+ 1210 038e 9104     		.2byte	0x491
+ 1211 0390 5C030000 		.4byte	0x35c
+ 1212 0394 07       		.uleb128 0x7
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUMPGnq.s 			page 31
+
+
+ 1213 0395 01       		.byte	0x1
+ 1214 0396 2C000000 		.4byte	0x2c
+ 1215 039a 03       		.byte	0x3
+ 1216 039b 9504     		.2byte	0x495
+ 1217 039d D2030000 		.4byte	0x3d2
+ 1218 03a1 08       		.uleb128 0x8
+ 1219 03a2 55030000 		.4byte	.LASF129
+ 1220 03a6 01       		.byte	0x1
+ 1221 03a7 08       		.uleb128 0x8
+ 1222 03a8 6C120000 		.4byte	.LASF130
+ 1223 03ac 02       		.byte	0x2
+ 1224 03ad 08       		.uleb128 0x8
+ 1225 03ae 1F0E0000 		.4byte	.LASF131
+ 1226 03b2 03       		.byte	0x3
+ 1227 03b3 08       		.uleb128 0x8
+ 1228 03b4 36130000 		.4byte	.LASF132
+ 1229 03b8 04       		.byte	0x4
+ 1230 03b9 08       		.uleb128 0x8
+ 1231 03ba 1F140000 		.4byte	.LASF133
+ 1232 03be 05       		.byte	0x5
+ 1233 03bf 08       		.uleb128 0x8
+ 1234 03c0 4C080000 		.4byte	.LASF134
+ 1235 03c4 06       		.byte	0x6
+ 1236 03c5 08       		.uleb128 0x8
+ 1237 03c6 200B0000 		.4byte	.LASF135
+ 1238 03ca 07       		.byte	0x7
+ 1239 03cb 08       		.uleb128 0x8
+ 1240 03cc 940F0000 		.4byte	.LASF136
+ 1241 03d0 FF       		.byte	0xff
+ 1242 03d1 00       		.byte	0
+ 1243 03d2 0A       		.uleb128 0xa
+ 1244 03d3 07       		.byte	0x7
+ 1245 03d4 03       		.byte	0x3
+ 1246 03d5 3F05     		.2byte	0x53f
+ 1247 03d7 F6030000 		.4byte	0x3f6
+ 1248 03db 0B       		.uleb128 0xb
+ 1249 03dc C8090000 		.4byte	.LASF137
+ 1250 03e0 03       		.byte	0x3
+ 1251 03e1 4205     		.2byte	0x542
+ 1252 03e3 F6030000 		.4byte	0x3f6
+ 1253 03e7 00       		.byte	0
+ 1254 03e8 0B       		.uleb128 0xb
+ 1255 03e9 49020000 		.4byte	.LASF138
+ 1256 03ed 03       		.byte	0x3
+ 1257 03ee 4405     		.2byte	0x544
+ 1258 03f0 6B000000 		.4byte	0x6b
+ 1259 03f4 06       		.byte	0x6
+ 1260 03f5 00       		.byte	0
+ 1261 03f6 0C       		.uleb128 0xc
+ 1262 03f7 6B000000 		.4byte	0x6b
+ 1263 03fb 06040000 		.4byte	0x406
+ 1264 03ff 0D       		.uleb128 0xd
+ 1265 0400 B0000000 		.4byte	0xb0
+ 1266 0404 05       		.byte	0x5
+ 1267 0405 00       		.byte	0
+ 1268 0406 04       		.uleb128 0x4
+ 1269 0407 41030000 		.4byte	.LASF139
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUMPGnq.s 			page 32
+
+
+ 1270 040b 03       		.byte	0x3
+ 1271 040c 4505     		.2byte	0x545
+ 1272 040e D2030000 		.4byte	0x3d2
+ 1273 0412 0E       		.uleb128 0xe
+ 1274 0413 04       		.byte	0x4
+ 1275 0414 6B000000 		.4byte	0x6b
+ 1276 0418 07       		.uleb128 0x7
+ 1277 0419 01       		.byte	0x1
+ 1278 041a 2C000000 		.4byte	0x2c
+ 1279 041e 04       		.byte	0x4
+ 1280 041f 3D01     		.2byte	0x13d
+ 1281 0421 92040000 		.4byte	0x492
+ 1282 0425 08       		.uleb128 0x8
+ 1283 0426 86020000 		.4byte	.LASF140
+ 1284 042a 00       		.byte	0
+ 1285 042b 08       		.uleb128 0x8
+ 1286 042c 93140000 		.4byte	.LASF141
+ 1287 0430 01       		.byte	0x1
+ 1288 0431 08       		.uleb128 0x8
+ 1289 0432 9C090000 		.4byte	.LASF142
+ 1290 0436 02       		.byte	0x2
+ 1291 0437 08       		.uleb128 0x8
+ 1292 0438 BA120000 		.4byte	.LASF143
+ 1293 043c 03       		.byte	0x3
+ 1294 043d 08       		.uleb128 0x8
+ 1295 043e B8130000 		.4byte	.LASF144
+ 1296 0442 04       		.byte	0x4
+ 1297 0443 08       		.uleb128 0x8
+ 1298 0444 D7040000 		.4byte	.LASF145
+ 1299 0448 05       		.byte	0x5
+ 1300 0449 08       		.uleb128 0x8
+ 1301 044a A7010000 		.4byte	.LASF146
+ 1302 044e 06       		.byte	0x6
+ 1303 044f 08       		.uleb128 0x8
+ 1304 0450 E20F0000 		.4byte	.LASF147
+ 1305 0454 07       		.byte	0x7
+ 1306 0455 08       		.uleb128 0x8
+ 1307 0456 7F010000 		.4byte	.LASF148
+ 1308 045a 08       		.byte	0x8
+ 1309 045b 08       		.uleb128 0x8
+ 1310 045c DD060000 		.4byte	.LASF149
+ 1311 0460 09       		.byte	0x9
+ 1312 0461 08       		.uleb128 0x8
+ 1313 0462 9E0E0000 		.4byte	.LASF150
+ 1314 0466 0A       		.byte	0xa
+ 1315 0467 08       		.uleb128 0x8
+ 1316 0468 AE100000 		.4byte	.LASF151
+ 1317 046c 0B       		.byte	0xb
+ 1318 046d 08       		.uleb128 0x8
+ 1319 046e 1D0F0000 		.4byte	.LASF152
+ 1320 0472 0C       		.byte	0xc
+ 1321 0473 08       		.uleb128 0x8
+ 1322 0474 8E000000 		.4byte	.LASF153
+ 1323 0478 0D       		.byte	0xd
+ 1324 0479 08       		.uleb128 0x8
+ 1325 047a ED020000 		.4byte	.LASF154
+ 1326 047e 0E       		.byte	0xe
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUMPGnq.s 			page 33
+
+
+ 1327 047f 08       		.uleb128 0x8
+ 1328 0480 D6100000 		.4byte	.LASF155
+ 1329 0484 0F       		.byte	0xf
+ 1330 0485 08       		.uleb128 0x8
+ 1331 0486 07060000 		.4byte	.LASF156
+ 1332 048a 15       		.byte	0x15
+ 1333 048b 08       		.uleb128 0x8
+ 1334 048c AD030000 		.4byte	.LASF157
+ 1335 0490 18       		.byte	0x18
+ 1336 0491 00       		.byte	0
+ 1337 0492 04       		.uleb128 0x4
+ 1338 0493 1C050000 		.4byte	.LASF158
+ 1339 0497 04       		.byte	0x4
+ 1340 0498 7D01     		.2byte	0x17d
+ 1341 049a 18040000 		.4byte	0x418
+ 1342 049e 0A       		.uleb128 0xa
+ 1343 049f 05       		.byte	0x5
+ 1344 04a0 04       		.byte	0x4
+ 1345 04a1 C601     		.2byte	0x1c6
+ 1346 04a3 E9040000 		.4byte	0x4e9
+ 1347 04a7 0B       		.uleb128 0xb
+ 1348 04a8 CD060000 		.4byte	.LASF159
+ 1349 04ac 04       		.byte	0x4
+ 1350 04ad D001     		.2byte	0x1d0
+ 1351 04af 6B000000 		.4byte	0x6b
+ 1352 04b3 00       		.byte	0
+ 1353 04b4 0B       		.uleb128 0xb
+ 1354 04b5 3F000000 		.4byte	.LASF160
+ 1355 04b9 04       		.byte	0x4
+ 1356 04ba D601     		.2byte	0x1d6
+ 1357 04bc 6B000000 		.4byte	0x6b
+ 1358 04c0 01       		.byte	0x1
+ 1359 04c1 0B       		.uleb128 0xb
+ 1360 04c2 59050000 		.4byte	.LASF161
+ 1361 04c6 04       		.byte	0x4
+ 1362 04c7 DD01     		.2byte	0x1dd
+ 1363 04c9 6B000000 		.4byte	0x6b
+ 1364 04cd 02       		.byte	0x2
+ 1365 04ce 0B       		.uleb128 0xb
+ 1366 04cf BF050000 		.4byte	.LASF162
+ 1367 04d3 04       		.byte	0x4
+ 1368 04d4 E101     		.2byte	0x1e1
+ 1369 04d6 92040000 		.4byte	0x492
+ 1370 04da 03       		.byte	0x3
+ 1371 04db 0B       		.uleb128 0xb
+ 1372 04dc 8A120000 		.4byte	.LASF163
+ 1373 04e0 04       		.byte	0x4
+ 1374 04e1 EB01     		.2byte	0x1eb
+ 1375 04e3 6B000000 		.4byte	0x6b
+ 1376 04e7 04       		.byte	0x4
+ 1377 04e8 00       		.byte	0
+ 1378 04e9 04       		.uleb128 0x4
+ 1379 04ea 150D0000 		.4byte	.LASF164
+ 1380 04ee 04       		.byte	0x4
+ 1381 04ef ED01     		.2byte	0x1ed
+ 1382 04f1 9E040000 		.4byte	0x49e
+ 1383 04f5 04       		.uleb128 0x4
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUMPGnq.s 			page 34
+
+
+ 1384 04f6 42040000 		.4byte	.LASF165
+ 1385 04fa 05       		.byte	0x5
+ 1386 04fb 8901     		.2byte	0x189
+ 1387 04fd 77000000 		.4byte	0x77
+ 1388 0501 0A       		.uleb128 0xa
+ 1389 0502 02       		.byte	0x2
+ 1390 0503 05       		.byte	0x5
+ 1391 0504 9301     		.2byte	0x193
+ 1392 0506 25050000 		.4byte	0x525
+ 1393 050a 0B       		.uleb128 0xb
+ 1394 050b 33150000 		.4byte	.LASF166
+ 1395 050f 05       		.byte	0x5
+ 1396 0510 9A01     		.2byte	0x19a
+ 1397 0512 6B000000 		.4byte	0x6b
+ 1398 0516 00       		.byte	0
+ 1399 0517 0B       		.uleb128 0xb
+ 1400 0518 1A0B0000 		.4byte	.LASF167
+ 1401 051c 05       		.byte	0x5
+ 1402 051d A001     		.2byte	0x1a0
+ 1403 051f 6B000000 		.4byte	0x6b
+ 1404 0523 01       		.byte	0x1
+ 1405 0524 00       		.byte	0
+ 1406 0525 04       		.uleb128 0x4
+ 1407 0526 7A000000 		.4byte	.LASF168
+ 1408 052a 05       		.byte	0x5
+ 1409 052b A201     		.2byte	0x1a2
+ 1410 052d 01050000 		.4byte	0x501
+ 1411 0531 0A       		.uleb128 0xa
+ 1412 0532 08       		.byte	0x8
+ 1413 0533 05       		.byte	0x5
+ 1414 0534 BE01     		.2byte	0x1be
+ 1415 0536 62050000 		.4byte	0x562
+ 1416 053a 0F       		.uleb128 0xf
+ 1417 053b 76616C00 		.ascii	"val\000"
+ 1418 053f 05       		.byte	0x5
+ 1419 0540 C101     		.2byte	0x1c1
+ 1420 0542 12040000 		.4byte	0x412
+ 1421 0546 00       		.byte	0
+ 1422 0547 0F       		.uleb128 0xf
+ 1423 0548 6C656E00 		.ascii	"len\000"
+ 1424 054c 05       		.byte	0x5
+ 1425 054d C401     		.2byte	0x1c4
+ 1426 054f 77000000 		.4byte	0x77
+ 1427 0553 04       		.byte	0x4
+ 1428 0554 0B       		.uleb128 0xb
+ 1429 0555 9D040000 		.4byte	.LASF169
+ 1430 0559 05       		.byte	0x5
+ 1431 055a CB01     		.2byte	0x1cb
+ 1432 055c 77000000 		.4byte	0x77
+ 1433 0560 06       		.byte	0x6
+ 1434 0561 00       		.byte	0
+ 1435 0562 04       		.uleb128 0x4
+ 1436 0563 C5020000 		.4byte	.LASF170
+ 1437 0567 05       		.byte	0x5
+ 1438 0568 CD01     		.2byte	0x1cd
+ 1439 056a 31050000 		.4byte	0x531
+ 1440 056e 0A       		.uleb128 0xa
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUMPGnq.s 			page 35
+
+
+ 1441 056f 0C       		.byte	0xc
+ 1442 0570 05       		.byte	0x5
+ 1443 0571 D001     		.2byte	0x1d0
+ 1444 0573 92050000 		.4byte	0x592
+ 1445 0577 0B       		.uleb128 0xb
+ 1446 0578 BE070000 		.4byte	.LASF171
+ 1447 057c 05       		.byte	0x5
+ 1448 057d D301     		.2byte	0x1d3
+ 1449 057f 62050000 		.4byte	0x562
+ 1450 0583 00       		.byte	0
+ 1451 0584 0B       		.uleb128 0xb
+ 1452 0585 9C070000 		.4byte	.LASF172
+ 1453 0589 05       		.byte	0x5
+ 1454 058a D601     		.2byte	0x1d6
+ 1455 058c F5040000 		.4byte	0x4f5
+ 1456 0590 08       		.byte	0x8
+ 1457 0591 00       		.byte	0
+ 1458 0592 04       		.uleb128 0x4
+ 1459 0593 650D0000 		.4byte	.LASF173
+ 1460 0597 05       		.byte	0x5
+ 1461 0598 D801     		.2byte	0x1d8
+ 1462 059a 6E050000 		.4byte	0x56e
+ 1463 059e 10       		.uleb128 0x10
+ 1464 059f 10       		.byte	0x10
+ 1465 05a0 06       		.byte	0x6
+ 1466 05a1 8A       		.byte	0x8a
+ 1467 05a2 BF050000 		.4byte	0x5bf
+ 1468 05a6 11       		.uleb128 0x11
+ 1469 05a7 61120000 		.4byte	.LASF174
+ 1470 05ab 06       		.byte	0x6
+ 1471 05ac 8D       		.byte	0x8d
+ 1472 05ad 25050000 		.4byte	0x525
+ 1473 05b1 00       		.byte	0
+ 1474 05b2 11       		.uleb128 0x11
+ 1475 05b3 53120000 		.4byte	.LASF175
+ 1476 05b7 06       		.byte	0x6
+ 1477 05b8 90       		.byte	0x90
+ 1478 05b9 92050000 		.4byte	0x592
+ 1479 05bd 04       		.byte	0x4
+ 1480 05be 00       		.byte	0
+ 1481 05bf 12       		.uleb128 0x12
+ 1482 05c0 E5130000 		.4byte	.LASF176
+ 1483 05c4 06       		.byte	0x6
+ 1484 05c5 92       		.byte	0x92
+ 1485 05c6 9E050000 		.4byte	0x59e
+ 1486 05ca 13       		.uleb128 0x13
+ 1487 05cb 01       		.byte	0x1
+ 1488 05cc 2C000000 		.4byte	0x2c
+ 1489 05d0 07       		.byte	0x7
+ 1490 05d1 22       		.byte	0x22
+ 1491 05d2 13060000 		.4byte	0x613
+ 1492 05d6 08       		.uleb128 0x8
+ 1493 05d7 CC150000 		.4byte	.LASF177
+ 1494 05db 00       		.byte	0
+ 1495 05dc 08       		.uleb128 0x8
+ 1496 05dd 77100000 		.4byte	.LASF178
+ 1497 05e1 01       		.byte	0x1
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUMPGnq.s 			page 36
+
+
+ 1498 05e2 08       		.uleb128 0x8
+ 1499 05e3 070E0000 		.4byte	.LASF179
+ 1500 05e7 02       		.byte	0x2
+ 1501 05e8 08       		.uleb128 0x8
+ 1502 05e9 04070000 		.4byte	.LASF180
+ 1503 05ed 03       		.byte	0x3
+ 1504 05ee 08       		.uleb128 0x8
+ 1505 05ef 98060000 		.4byte	.LASF181
+ 1506 05f3 04       		.byte	0x4
+ 1507 05f4 08       		.uleb128 0x8
+ 1508 05f5 5E0F0000 		.4byte	.LASF182
+ 1509 05f9 05       		.byte	0x5
+ 1510 05fa 08       		.uleb128 0x8
+ 1511 05fb 600B0000 		.4byte	.LASF183
+ 1512 05ff 06       		.byte	0x6
+ 1513 0600 08       		.uleb128 0x8
+ 1514 0601 840D0000 		.4byte	.LASF184
+ 1515 0605 07       		.byte	0x7
+ 1516 0606 08       		.uleb128 0x8
+ 1517 0607 540A0000 		.4byte	.LASF185
+ 1518 060b 08       		.byte	0x8
+ 1519 060c 08       		.uleb128 0x8
+ 1520 060d 890E0000 		.4byte	.LASF186
+ 1521 0611 09       		.byte	0x9
+ 1522 0612 00       		.byte	0
+ 1523 0613 07       		.uleb128 0x7
+ 1524 0614 01       		.byte	0x1
+ 1525 0615 2C000000 		.4byte	0x2c
+ 1526 0619 08       		.byte	0x8
+ 1527 061a 5008     		.2byte	0x850
+ 1528 061c 3F060000 		.4byte	0x63f
+ 1529 0620 08       		.uleb128 0x8
+ 1530 0621 47000000 		.4byte	.LASF187
+ 1531 0625 00       		.byte	0
+ 1532 0626 08       		.uleb128 0x8
+ 1533 0627 040C0000 		.4byte	.LASF188
+ 1534 062b 01       		.byte	0x1
+ 1535 062c 08       		.uleb128 0x8
+ 1536 062d 7D140000 		.4byte	.LASF189
+ 1537 0631 02       		.byte	0x2
+ 1538 0632 08       		.uleb128 0x8
+ 1539 0633 FD030000 		.4byte	.LASF190
+ 1540 0637 03       		.byte	0x3
+ 1541 0638 08       		.uleb128 0x8
+ 1542 0639 7E050000 		.4byte	.LASF191
+ 1543 063d 04       		.byte	0x4
+ 1544 063e 00       		.byte	0
+ 1545 063f 04       		.uleb128 0x4
+ 1546 0640 4F130000 		.4byte	.LASF192
+ 1547 0644 08       		.byte	0x8
+ 1548 0645 5E08     		.2byte	0x85e
+ 1549 0647 13060000 		.4byte	0x613
+ 1550 064b 14       		.uleb128 0x14
+ 1551 064c 5B0C0000 		.4byte	.LASF198
+ 1552 0650 01       		.byte	0x1
+ 1553 0651 29       		.byte	0x29
+ 1554 0652 00000000 		.4byte	.LFB36
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUMPGnq.s 			page 37
+
+
+ 1555 0656 A4010000 		.4byte	.LFE36-.LFB36
+ 1556 065a 01       		.uleb128 0x1
+ 1557 065b 9C       		.byte	0x9c
+ 1558 065c CB060000 		.4byte	0x6cb
+ 1559 0660 15       		.uleb128 0x15
+ 1560 0661 2F090000 		.4byte	.LASF193
+ 1561 0665 01       		.byte	0x1
+ 1562 0666 29       		.byte	0x29
+ 1563 0667 83000000 		.4byte	0x83
+ 1564 066b 02       		.uleb128 0x2
+ 1565 066c 91       		.byte	0x91
+ 1566 066d 54       		.sleb128 -44
+ 1567 066e 15       		.uleb128 0x15
+ 1568 066f 08130000 		.4byte	.LASF194
+ 1569 0673 01       		.byte	0x1
+ 1570 0674 29       		.byte	0x29
+ 1571 0675 B7000000 		.4byte	0xb7
+ 1572 0679 02       		.uleb128 0x2
+ 1573 067a 91       		.byte	0x91
+ 1574 067b 50       		.sleb128 -48
+ 1575 067c 16       		.uleb128 0x16
+ 1576 067d F80C0000 		.4byte	.LASF195
+ 1577 0681 01       		.byte	0x1
+ 1578 0682 2B       		.byte	0x2b
+ 1579 0683 50030000 		.4byte	0x350
+ 1580 0687 02       		.uleb128 0x2
+ 1581 0688 91       		.byte	0x91
+ 1582 0689 6C       		.sleb128 -20
+ 1583 068a 16       		.uleb128 0x16
+ 1584 068b E8150000 		.4byte	.LASF196
+ 1585 068f 01       		.byte	0x1
+ 1586 0690 2C       		.byte	0x2c
+ 1587 0691 06040000 		.4byte	0x406
+ 1588 0695 02       		.uleb128 0x2
+ 1589 0696 91       		.byte	0x91
+ 1590 0697 60       		.sleb128 -32
+ 1591 0698 16       		.uleb128 0x16
+ 1592 0699 59110000 		.4byte	.LASF197
+ 1593 069d 01       		.byte	0x1
+ 1594 069e 2D       		.byte	0x2d
+ 1595 069f CB060000 		.4byte	0x6cb
+ 1596 06a3 02       		.uleb128 0x2
+ 1597 06a4 91       		.byte	0x91
+ 1598 06a5 68       		.sleb128 -24
+ 1599 06a6 17       		.uleb128 0x17
+ 1600 06a7 6900     		.ascii	"i\000"
+ 1601 06a9 01       		.byte	0x1
+ 1602 06aa 2E       		.byte	0x2e
+ 1603 06ab 6B000000 		.4byte	0x6b
+ 1604 06af 02       		.uleb128 0x2
+ 1605 06b0 91       		.byte	0x91
+ 1606 06b1 6F       		.sleb128 -17
+ 1607 06b2 18       		.uleb128 0x18
+ 1608 06b3 30010000 		.4byte	.LBB2
+ 1609 06b7 0A000000 		.4byte	.LBE2-.LBB2
+ 1610 06bb 17       		.uleb128 0x17
+ 1611 06bc 6D747500 		.ascii	"mtu\000"
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUMPGnq.s 			page 38
+
+
+ 1612 06c0 01       		.byte	0x1
+ 1613 06c1 96       		.byte	0x96
+ 1614 06c2 77000000 		.4byte	0x77
+ 1615 06c6 02       		.uleb128 0x2
+ 1616 06c7 91       		.byte	0x91
+ 1617 06c8 5E       		.sleb128 -34
+ 1618 06c9 00       		.byte	0
+ 1619 06ca 00       		.byte	0
+ 1620 06cb 0E       		.uleb128 0xe
+ 1621 06cc 04       		.byte	0x4
+ 1622 06cd E9040000 		.4byte	0x4e9
+ 1623 06d1 14       		.uleb128 0x14
+ 1624 06d2 5A150000 		.4byte	.LASF199
+ 1625 06d6 01       		.byte	0x1
+ 1626 06d7 D8       		.byte	0xd8
+ 1627 06d8 00000000 		.4byte	.LFB37
+ 1628 06dc 74000000 		.4byte	.LFE37-.LFB37
+ 1629 06e0 01       		.uleb128 0x1
+ 1630 06e1 9C       		.byte	0x9c
+ 1631 06e2 13070000 		.4byte	0x713
+ 1632 06e6 18       		.uleb128 0x18
+ 1633 06e7 12000000 		.4byte	.LBB3
+ 1634 06eb 4C000000 		.4byte	.LBE3-.LBB3
+ 1635 06ef 17       		.uleb128 0x17
+ 1636 06f0 6C656400 		.ascii	"led\000"
+ 1637 06f4 01       		.byte	0x1
+ 1638 06f5 DC       		.byte	0xdc
+ 1639 06f6 6B000000 		.4byte	0x6b
+ 1640 06fa 05       		.uleb128 0x5
+ 1641 06fb 03       		.byte	0x3
+ 1642 06fc 04000000 		.4byte	led.8241
+ 1643 0700 16       		.uleb128 0x16
+ 1644 0701 0D100000 		.4byte	.LASF200
+ 1645 0705 01       		.byte	0x1
+ 1646 0706 DD       		.byte	0xdd
+ 1647 0707 83000000 		.4byte	0x83
+ 1648 070b 05       		.uleb128 0x5
+ 1649 070c 03       		.byte	0x3
+ 1650 070d 00000000 		.4byte	ledTimer.8242
+ 1651 0711 00       		.byte	0
+ 1652 0712 00       		.byte	0
+ 1653 0713 19       		.uleb128 0x19
+ 1654 0714 370C0000 		.4byte	.LASF201
+ 1655 0718 01       		.byte	0x1
+ 1656 0719 FB       		.byte	0xfb
+ 1657 071a 00000000 		.4byte	.LFB38
+ 1658 071e 4C000000 		.4byte	.LFE38-.LFB38
+ 1659 0722 01       		.uleb128 0x1
+ 1660 0723 9C       		.byte	0x9c
+ 1661 0724 1A       		.uleb128 0x1a
+ 1662 0725 FB0B0000 		.4byte	.LASF202
+ 1663 0729 01       		.byte	0x1
+ 1664 072a 1801     		.2byte	0x118
+ 1665 072c 00000000 		.4byte	.LFB39
+ 1666 0730 1C000000 		.4byte	.LFE39-.LFB39
+ 1667 0734 01       		.uleb128 0x1
+ 1668 0735 9C       		.byte	0x9c
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUMPGnq.s 			page 39
+
+
+ 1669 0736 1B       		.uleb128 0x1b
+ 1670 0737 2A030000 		.4byte	.LASF214
+ 1671 073b 01       		.byte	0x1
+ 1672 073c 3401     		.2byte	0x134
+ 1673 073e 00000000 		.4byte	.LFB40
+ 1674 0742 74000000 		.4byte	.LFE40-.LFB40
+ 1675 0746 01       		.uleb128 0x1
+ 1676 0747 9C       		.byte	0x9c
+ 1677 0748 6B070000 		.4byte	0x76b
+ 1678 074c 1C       		.uleb128 0x1c
+ 1679 074d C60E0000 		.4byte	.LASF203
+ 1680 0751 01       		.byte	0x1
+ 1681 0752 3601     		.2byte	0x136
+ 1682 0754 88030000 		.4byte	0x388
+ 1683 0758 02       		.uleb128 0x2
+ 1684 0759 91       		.byte	0x91
+ 1685 075a 6F       		.sleb128 -17
+ 1686 075b 1C       		.uleb128 0x1c
+ 1687 075c 50160000 		.4byte	.LASF204
+ 1688 0760 01       		.byte	0x1
+ 1689 0761 3701     		.2byte	0x137
+ 1690 0763 6B000000 		.4byte	0x6b
+ 1691 0767 02       		.uleb128 0x2
+ 1692 0768 91       		.byte	0x91
+ 1693 0769 6E       		.sleb128 -18
+ 1694 076a 00       		.byte	0
+ 1695 076b 1D       		.uleb128 0x1d
+ 1696 076c 90150000 		.4byte	.LASF205
+ 1697 0770 01       		.byte	0x1
+ 1698 0771 7A01     		.2byte	0x17a
+ 1699 0773 5D000000 		.4byte	0x5d
+ 1700 0777 00000000 		.4byte	.LFB41
+ 1701 077b 90000000 		.4byte	.LFE41-.LFB41
+ 1702 077f 01       		.uleb128 0x1
+ 1703 0780 9C       		.byte	0x9c
+ 1704 0781 9F070000 		.4byte	0x79f
+ 1705 0785 18       		.uleb128 0x18
+ 1706 0786 68000000 		.4byte	.LBB4
+ 1707 078a 0C000000 		.4byte	.LBE4-.LBB4
+ 1708 078e 1C       		.uleb128 0x1c
+ 1709 078f F80C0000 		.4byte	.LASF195
+ 1710 0793 01       		.byte	0x1
+ 1711 0794 B301     		.2byte	0x1b3
+ 1712 0796 50030000 		.4byte	0x350
+ 1713 079a 02       		.uleb128 0x2
+ 1714 079b 91       		.byte	0x91
+ 1715 079c 6E       		.sleb128 -18
+ 1716 079d 00       		.byte	0
+ 1717 079e 00       		.byte	0
+ 1718 079f 1E       		.uleb128 0x1e
+ 1719 07a0 EF0D0000 		.4byte	.LASF206
+ 1720 07a4 09       		.byte	0x9
+ 1721 07a5 C302     		.2byte	0x2c3
+ 1722 07a7 6B000000 		.4byte	0x6b
+ 1723 07ab 1E       		.uleb128 0x1e
+ 1724 07ac 650A0000 		.4byte	.LASF207
+ 1725 07b0 08       		.byte	0x8
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUMPGnq.s 			page 40
+
+
+ 1726 07b1 A90A     		.2byte	0xaa9
+ 1727 07b3 3F060000 		.4byte	0x63f
+ 1728 07b7 1F       		.uleb128 0x1f
+ 1729 07b8 AE0F0000 		.4byte	.LASF208
+ 1730 07bc 0A       		.byte	0xa
+ 1731 07bd 37       		.byte	0x37
+ 1732 07be 77000000 		.4byte	0x77
+ 1733 07c2 1F       		.uleb128 0x1f
+ 1734 07c3 E70D0000 		.4byte	.LASF209
+ 1735 07c7 0A       		.byte	0xa
+ 1736 07c8 39       		.byte	0x39
+ 1737 07c9 6B000000 		.4byte	0x6b
+ 1738 07cd 20       		.uleb128 0x20
+ 1739 07ce D80E0000 		.4byte	.LASF210
+ 1740 07d2 01       		.byte	0x1
+ 1741 07d3 1E       		.byte	0x1e
+ 1742 07d4 A4000000 		.4byte	0xa4
+ 1743 07d8 05       		.uleb128 0x5
+ 1744 07d9 03       		.byte	0x3
+ 1745 07da 00000000 		.4byte	mainTimer
+ 1746 07de 00       		.byte	0
+ 1747              		.section	.debug_abbrev,"",%progbits
+ 1748              	.Ldebug_abbrev0:
+ 1749 0000 01       		.uleb128 0x1
+ 1750 0001 11       		.uleb128 0x11
+ 1751 0002 01       		.byte	0x1
+ 1752 0003 25       		.uleb128 0x25
+ 1753 0004 0E       		.uleb128 0xe
+ 1754 0005 13       		.uleb128 0x13
+ 1755 0006 0B       		.uleb128 0xb
+ 1756 0007 03       		.uleb128 0x3
+ 1757 0008 0E       		.uleb128 0xe
+ 1758 0009 1B       		.uleb128 0x1b
+ 1759 000a 0E       		.uleb128 0xe
+ 1760 000b 55       		.uleb128 0x55
+ 1761 000c 17       		.uleb128 0x17
+ 1762 000d 11       		.uleb128 0x11
+ 1763 000e 01       		.uleb128 0x1
+ 1764 000f 10       		.uleb128 0x10
+ 1765 0010 17       		.uleb128 0x17
+ 1766 0011 00       		.byte	0
+ 1767 0012 00       		.byte	0
+ 1768 0013 02       		.uleb128 0x2
+ 1769 0014 24       		.uleb128 0x24
+ 1770 0015 00       		.byte	0
+ 1771 0016 0B       		.uleb128 0xb
+ 1772 0017 0B       		.uleb128 0xb
+ 1773 0018 3E       		.uleb128 0x3e
+ 1774 0019 0B       		.uleb128 0xb
+ 1775 001a 03       		.uleb128 0x3
+ 1776 001b 0E       		.uleb128 0xe
+ 1777 001c 00       		.byte	0
+ 1778 001d 00       		.byte	0
+ 1779 001e 03       		.uleb128 0x3
+ 1780 001f 24       		.uleb128 0x24
+ 1781 0020 00       		.byte	0
+ 1782 0021 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUMPGnq.s 			page 41
+
+
+ 1783 0022 0B       		.uleb128 0xb
+ 1784 0023 3E       		.uleb128 0x3e
+ 1785 0024 0B       		.uleb128 0xb
+ 1786 0025 03       		.uleb128 0x3
+ 1787 0026 08       		.uleb128 0x8
+ 1788 0027 00       		.byte	0
+ 1789 0028 00       		.byte	0
+ 1790 0029 04       		.uleb128 0x4
+ 1791 002a 16       		.uleb128 0x16
+ 1792 002b 00       		.byte	0
+ 1793 002c 03       		.uleb128 0x3
+ 1794 002d 0E       		.uleb128 0xe
+ 1795 002e 3A       		.uleb128 0x3a
+ 1796 002f 0B       		.uleb128 0xb
+ 1797 0030 3B       		.uleb128 0x3b
+ 1798 0031 05       		.uleb128 0x5
+ 1799 0032 49       		.uleb128 0x49
+ 1800 0033 13       		.uleb128 0x13
+ 1801 0034 00       		.byte	0
+ 1802 0035 00       		.byte	0
+ 1803 0036 05       		.uleb128 0x5
+ 1804 0037 35       		.uleb128 0x35
+ 1805 0038 00       		.byte	0
+ 1806 0039 49       		.uleb128 0x49
+ 1807 003a 13       		.uleb128 0x13
+ 1808 003b 00       		.byte	0
+ 1809 003c 00       		.byte	0
+ 1810 003d 06       		.uleb128 0x6
+ 1811 003e 0F       		.uleb128 0xf
+ 1812 003f 00       		.byte	0
+ 1813 0040 0B       		.uleb128 0xb
+ 1814 0041 0B       		.uleb128 0xb
+ 1815 0042 00       		.byte	0
+ 1816 0043 00       		.byte	0
+ 1817 0044 07       		.uleb128 0x7
+ 1818 0045 04       		.uleb128 0x4
+ 1819 0046 01       		.byte	0x1
+ 1820 0047 0B       		.uleb128 0xb
+ 1821 0048 0B       		.uleb128 0xb
+ 1822 0049 49       		.uleb128 0x49
+ 1823 004a 13       		.uleb128 0x13
+ 1824 004b 3A       		.uleb128 0x3a
+ 1825 004c 0B       		.uleb128 0xb
+ 1826 004d 3B       		.uleb128 0x3b
+ 1827 004e 05       		.uleb128 0x5
+ 1828 004f 01       		.uleb128 0x1
+ 1829 0050 13       		.uleb128 0x13
+ 1830 0051 00       		.byte	0
+ 1831 0052 00       		.byte	0
+ 1832 0053 08       		.uleb128 0x8
+ 1833 0054 28       		.uleb128 0x28
+ 1834 0055 00       		.byte	0
+ 1835 0056 03       		.uleb128 0x3
+ 1836 0057 0E       		.uleb128 0xe
+ 1837 0058 1C       		.uleb128 0x1c
+ 1838 0059 0B       		.uleb128 0xb
+ 1839 005a 00       		.byte	0
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUMPGnq.s 			page 42
+
+
+ 1840 005b 00       		.byte	0
+ 1841 005c 09       		.uleb128 0x9
+ 1842 005d 28       		.uleb128 0x28
+ 1843 005e 00       		.byte	0
+ 1844 005f 03       		.uleb128 0x3
+ 1845 0060 0E       		.uleb128 0xe
+ 1846 0061 1C       		.uleb128 0x1c
+ 1847 0062 05       		.uleb128 0x5
+ 1848 0063 00       		.byte	0
+ 1849 0064 00       		.byte	0
+ 1850 0065 0A       		.uleb128 0xa
+ 1851 0066 13       		.uleb128 0x13
+ 1852 0067 01       		.byte	0x1
+ 1853 0068 0B       		.uleb128 0xb
+ 1854 0069 0B       		.uleb128 0xb
+ 1855 006a 3A       		.uleb128 0x3a
+ 1856 006b 0B       		.uleb128 0xb
+ 1857 006c 3B       		.uleb128 0x3b
+ 1858 006d 05       		.uleb128 0x5
+ 1859 006e 01       		.uleb128 0x1
+ 1860 006f 13       		.uleb128 0x13
+ 1861 0070 00       		.byte	0
+ 1862 0071 00       		.byte	0
+ 1863 0072 0B       		.uleb128 0xb
+ 1864 0073 0D       		.uleb128 0xd
+ 1865 0074 00       		.byte	0
+ 1866 0075 03       		.uleb128 0x3
+ 1867 0076 0E       		.uleb128 0xe
+ 1868 0077 3A       		.uleb128 0x3a
+ 1869 0078 0B       		.uleb128 0xb
+ 1870 0079 3B       		.uleb128 0x3b
+ 1871 007a 05       		.uleb128 0x5
+ 1872 007b 49       		.uleb128 0x49
+ 1873 007c 13       		.uleb128 0x13
+ 1874 007d 38       		.uleb128 0x38
+ 1875 007e 0B       		.uleb128 0xb
+ 1876 007f 00       		.byte	0
+ 1877 0080 00       		.byte	0
+ 1878 0081 0C       		.uleb128 0xc
+ 1879 0082 01       		.uleb128 0x1
+ 1880 0083 01       		.byte	0x1
+ 1881 0084 49       		.uleb128 0x49
+ 1882 0085 13       		.uleb128 0x13
+ 1883 0086 01       		.uleb128 0x1
+ 1884 0087 13       		.uleb128 0x13
+ 1885 0088 00       		.byte	0
+ 1886 0089 00       		.byte	0
+ 1887 008a 0D       		.uleb128 0xd
+ 1888 008b 21       		.uleb128 0x21
+ 1889 008c 00       		.byte	0
+ 1890 008d 49       		.uleb128 0x49
+ 1891 008e 13       		.uleb128 0x13
+ 1892 008f 2F       		.uleb128 0x2f
+ 1893 0090 0B       		.uleb128 0xb
+ 1894 0091 00       		.byte	0
+ 1895 0092 00       		.byte	0
+ 1896 0093 0E       		.uleb128 0xe
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUMPGnq.s 			page 43
+
+
+ 1897 0094 0F       		.uleb128 0xf
+ 1898 0095 00       		.byte	0
+ 1899 0096 0B       		.uleb128 0xb
+ 1900 0097 0B       		.uleb128 0xb
+ 1901 0098 49       		.uleb128 0x49
+ 1902 0099 13       		.uleb128 0x13
+ 1903 009a 00       		.byte	0
+ 1904 009b 00       		.byte	0
+ 1905 009c 0F       		.uleb128 0xf
+ 1906 009d 0D       		.uleb128 0xd
+ 1907 009e 00       		.byte	0
+ 1908 009f 03       		.uleb128 0x3
+ 1909 00a0 08       		.uleb128 0x8
+ 1910 00a1 3A       		.uleb128 0x3a
+ 1911 00a2 0B       		.uleb128 0xb
+ 1912 00a3 3B       		.uleb128 0x3b
+ 1913 00a4 05       		.uleb128 0x5
+ 1914 00a5 49       		.uleb128 0x49
+ 1915 00a6 13       		.uleb128 0x13
+ 1916 00a7 38       		.uleb128 0x38
+ 1917 00a8 0B       		.uleb128 0xb
+ 1918 00a9 00       		.byte	0
+ 1919 00aa 00       		.byte	0
+ 1920 00ab 10       		.uleb128 0x10
+ 1921 00ac 13       		.uleb128 0x13
+ 1922 00ad 01       		.byte	0x1
+ 1923 00ae 0B       		.uleb128 0xb
+ 1924 00af 0B       		.uleb128 0xb
+ 1925 00b0 3A       		.uleb128 0x3a
+ 1926 00b1 0B       		.uleb128 0xb
+ 1927 00b2 3B       		.uleb128 0x3b
+ 1928 00b3 0B       		.uleb128 0xb
+ 1929 00b4 01       		.uleb128 0x1
+ 1930 00b5 13       		.uleb128 0x13
+ 1931 00b6 00       		.byte	0
+ 1932 00b7 00       		.byte	0
+ 1933 00b8 11       		.uleb128 0x11
+ 1934 00b9 0D       		.uleb128 0xd
+ 1935 00ba 00       		.byte	0
+ 1936 00bb 03       		.uleb128 0x3
+ 1937 00bc 0E       		.uleb128 0xe
+ 1938 00bd 3A       		.uleb128 0x3a
+ 1939 00be 0B       		.uleb128 0xb
+ 1940 00bf 3B       		.uleb128 0x3b
+ 1941 00c0 0B       		.uleb128 0xb
+ 1942 00c1 49       		.uleb128 0x49
+ 1943 00c2 13       		.uleb128 0x13
+ 1944 00c3 38       		.uleb128 0x38
+ 1945 00c4 0B       		.uleb128 0xb
+ 1946 00c5 00       		.byte	0
+ 1947 00c6 00       		.byte	0
+ 1948 00c7 12       		.uleb128 0x12
+ 1949 00c8 16       		.uleb128 0x16
+ 1950 00c9 00       		.byte	0
+ 1951 00ca 03       		.uleb128 0x3
+ 1952 00cb 0E       		.uleb128 0xe
+ 1953 00cc 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUMPGnq.s 			page 44
+
+
+ 1954 00cd 0B       		.uleb128 0xb
+ 1955 00ce 3B       		.uleb128 0x3b
+ 1956 00cf 0B       		.uleb128 0xb
+ 1957 00d0 49       		.uleb128 0x49
+ 1958 00d1 13       		.uleb128 0x13
+ 1959 00d2 00       		.byte	0
+ 1960 00d3 00       		.byte	0
+ 1961 00d4 13       		.uleb128 0x13
+ 1962 00d5 04       		.uleb128 0x4
+ 1963 00d6 01       		.byte	0x1
+ 1964 00d7 0B       		.uleb128 0xb
+ 1965 00d8 0B       		.uleb128 0xb
+ 1966 00d9 49       		.uleb128 0x49
+ 1967 00da 13       		.uleb128 0x13
+ 1968 00db 3A       		.uleb128 0x3a
+ 1969 00dc 0B       		.uleb128 0xb
+ 1970 00dd 3B       		.uleb128 0x3b
+ 1971 00de 0B       		.uleb128 0xb
+ 1972 00df 01       		.uleb128 0x1
+ 1973 00e0 13       		.uleb128 0x13
+ 1974 00e1 00       		.byte	0
+ 1975 00e2 00       		.byte	0
+ 1976 00e3 14       		.uleb128 0x14
+ 1977 00e4 2E       		.uleb128 0x2e
+ 1978 00e5 01       		.byte	0x1
+ 1979 00e6 3F       		.uleb128 0x3f
+ 1980 00e7 19       		.uleb128 0x19
+ 1981 00e8 03       		.uleb128 0x3
+ 1982 00e9 0E       		.uleb128 0xe
+ 1983 00ea 3A       		.uleb128 0x3a
+ 1984 00eb 0B       		.uleb128 0xb
+ 1985 00ec 3B       		.uleb128 0x3b
+ 1986 00ed 0B       		.uleb128 0xb
+ 1987 00ee 27       		.uleb128 0x27
+ 1988 00ef 19       		.uleb128 0x19
+ 1989 00f0 11       		.uleb128 0x11
+ 1990 00f1 01       		.uleb128 0x1
+ 1991 00f2 12       		.uleb128 0x12
+ 1992 00f3 06       		.uleb128 0x6
+ 1993 00f4 40       		.uleb128 0x40
+ 1994 00f5 18       		.uleb128 0x18
+ 1995 00f6 9642     		.uleb128 0x2116
+ 1996 00f8 19       		.uleb128 0x19
+ 1997 00f9 01       		.uleb128 0x1
+ 1998 00fa 13       		.uleb128 0x13
+ 1999 00fb 00       		.byte	0
+ 2000 00fc 00       		.byte	0
+ 2001 00fd 15       		.uleb128 0x15
+ 2002 00fe 05       		.uleb128 0x5
+ 2003 00ff 00       		.byte	0
+ 2004 0100 03       		.uleb128 0x3
+ 2005 0101 0E       		.uleb128 0xe
+ 2006 0102 3A       		.uleb128 0x3a
+ 2007 0103 0B       		.uleb128 0xb
+ 2008 0104 3B       		.uleb128 0x3b
+ 2009 0105 0B       		.uleb128 0xb
+ 2010 0106 49       		.uleb128 0x49
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUMPGnq.s 			page 45
+
+
+ 2011 0107 13       		.uleb128 0x13
+ 2012 0108 02       		.uleb128 0x2
+ 2013 0109 18       		.uleb128 0x18
+ 2014 010a 00       		.byte	0
+ 2015 010b 00       		.byte	0
+ 2016 010c 16       		.uleb128 0x16
+ 2017 010d 34       		.uleb128 0x34
+ 2018 010e 00       		.byte	0
+ 2019 010f 03       		.uleb128 0x3
+ 2020 0110 0E       		.uleb128 0xe
+ 2021 0111 3A       		.uleb128 0x3a
+ 2022 0112 0B       		.uleb128 0xb
+ 2023 0113 3B       		.uleb128 0x3b
+ 2024 0114 0B       		.uleb128 0xb
+ 2025 0115 49       		.uleb128 0x49
+ 2026 0116 13       		.uleb128 0x13
+ 2027 0117 02       		.uleb128 0x2
+ 2028 0118 18       		.uleb128 0x18
+ 2029 0119 00       		.byte	0
+ 2030 011a 00       		.byte	0
+ 2031 011b 17       		.uleb128 0x17
+ 2032 011c 34       		.uleb128 0x34
+ 2033 011d 00       		.byte	0
+ 2034 011e 03       		.uleb128 0x3
+ 2035 011f 08       		.uleb128 0x8
+ 2036 0120 3A       		.uleb128 0x3a
+ 2037 0121 0B       		.uleb128 0xb
+ 2038 0122 3B       		.uleb128 0x3b
+ 2039 0123 0B       		.uleb128 0xb
+ 2040 0124 49       		.uleb128 0x49
+ 2041 0125 13       		.uleb128 0x13
+ 2042 0126 02       		.uleb128 0x2
+ 2043 0127 18       		.uleb128 0x18
+ 2044 0128 00       		.byte	0
+ 2045 0129 00       		.byte	0
+ 2046 012a 18       		.uleb128 0x18
+ 2047 012b 0B       		.uleb128 0xb
+ 2048 012c 01       		.byte	0x1
+ 2049 012d 11       		.uleb128 0x11
+ 2050 012e 01       		.uleb128 0x1
+ 2051 012f 12       		.uleb128 0x12
+ 2052 0130 06       		.uleb128 0x6
+ 2053 0131 00       		.byte	0
+ 2054 0132 00       		.byte	0
+ 2055 0133 19       		.uleb128 0x19
+ 2056 0134 2E       		.uleb128 0x2e
+ 2057 0135 00       		.byte	0
+ 2058 0136 3F       		.uleb128 0x3f
+ 2059 0137 19       		.uleb128 0x19
+ 2060 0138 03       		.uleb128 0x3
+ 2061 0139 0E       		.uleb128 0xe
+ 2062 013a 3A       		.uleb128 0x3a
+ 2063 013b 0B       		.uleb128 0xb
+ 2064 013c 3B       		.uleb128 0x3b
+ 2065 013d 0B       		.uleb128 0xb
+ 2066 013e 27       		.uleb128 0x27
+ 2067 013f 19       		.uleb128 0x19
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUMPGnq.s 			page 46
+
+
+ 2068 0140 11       		.uleb128 0x11
+ 2069 0141 01       		.uleb128 0x1
+ 2070 0142 12       		.uleb128 0x12
+ 2071 0143 06       		.uleb128 0x6
+ 2072 0144 40       		.uleb128 0x40
+ 2073 0145 18       		.uleb128 0x18
+ 2074 0146 9642     		.uleb128 0x2116
+ 2075 0148 19       		.uleb128 0x19
+ 2076 0149 00       		.byte	0
+ 2077 014a 00       		.byte	0
+ 2078 014b 1A       		.uleb128 0x1a
+ 2079 014c 2E       		.uleb128 0x2e
+ 2080 014d 00       		.byte	0
+ 2081 014e 3F       		.uleb128 0x3f
+ 2082 014f 19       		.uleb128 0x19
+ 2083 0150 03       		.uleb128 0x3
+ 2084 0151 0E       		.uleb128 0xe
+ 2085 0152 3A       		.uleb128 0x3a
+ 2086 0153 0B       		.uleb128 0xb
+ 2087 0154 3B       		.uleb128 0x3b
+ 2088 0155 05       		.uleb128 0x5
+ 2089 0156 27       		.uleb128 0x27
+ 2090 0157 19       		.uleb128 0x19
+ 2091 0158 11       		.uleb128 0x11
+ 2092 0159 01       		.uleb128 0x1
+ 2093 015a 12       		.uleb128 0x12
+ 2094 015b 06       		.uleb128 0x6
+ 2095 015c 40       		.uleb128 0x40
+ 2096 015d 18       		.uleb128 0x18
+ 2097 015e 9642     		.uleb128 0x2116
+ 2098 0160 19       		.uleb128 0x19
+ 2099 0161 00       		.byte	0
+ 2100 0162 00       		.byte	0
+ 2101 0163 1B       		.uleb128 0x1b
+ 2102 0164 2E       		.uleb128 0x2e
+ 2103 0165 01       		.byte	0x1
+ 2104 0166 03       		.uleb128 0x3
+ 2105 0167 0E       		.uleb128 0xe
+ 2106 0168 3A       		.uleb128 0x3a
+ 2107 0169 0B       		.uleb128 0xb
+ 2108 016a 3B       		.uleb128 0x3b
+ 2109 016b 05       		.uleb128 0x5
+ 2110 016c 27       		.uleb128 0x27
+ 2111 016d 19       		.uleb128 0x19
+ 2112 016e 11       		.uleb128 0x11
+ 2113 016f 01       		.uleb128 0x1
+ 2114 0170 12       		.uleb128 0x12
+ 2115 0171 06       		.uleb128 0x6
+ 2116 0172 40       		.uleb128 0x40
+ 2117 0173 18       		.uleb128 0x18
+ 2118 0174 9642     		.uleb128 0x2116
+ 2119 0176 19       		.uleb128 0x19
+ 2120 0177 01       		.uleb128 0x1
+ 2121 0178 13       		.uleb128 0x13
+ 2122 0179 00       		.byte	0
+ 2123 017a 00       		.byte	0
+ 2124 017b 1C       		.uleb128 0x1c
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUMPGnq.s 			page 47
+
+
+ 2125 017c 34       		.uleb128 0x34
+ 2126 017d 00       		.byte	0
+ 2127 017e 03       		.uleb128 0x3
+ 2128 017f 0E       		.uleb128 0xe
+ 2129 0180 3A       		.uleb128 0x3a
+ 2130 0181 0B       		.uleb128 0xb
+ 2131 0182 3B       		.uleb128 0x3b
+ 2132 0183 05       		.uleb128 0x5
+ 2133 0184 49       		.uleb128 0x49
+ 2134 0185 13       		.uleb128 0x13
+ 2135 0186 02       		.uleb128 0x2
+ 2136 0187 18       		.uleb128 0x18
+ 2137 0188 00       		.byte	0
+ 2138 0189 00       		.byte	0
+ 2139 018a 1D       		.uleb128 0x1d
+ 2140 018b 2E       		.uleb128 0x2e
+ 2141 018c 01       		.byte	0x1
+ 2142 018d 3F       		.uleb128 0x3f
+ 2143 018e 19       		.uleb128 0x19
+ 2144 018f 03       		.uleb128 0x3
+ 2145 0190 0E       		.uleb128 0xe
+ 2146 0191 3A       		.uleb128 0x3a
+ 2147 0192 0B       		.uleb128 0xb
+ 2148 0193 3B       		.uleb128 0x3b
+ 2149 0194 05       		.uleb128 0x5
+ 2150 0195 49       		.uleb128 0x49
+ 2151 0196 13       		.uleb128 0x13
+ 2152 0197 11       		.uleb128 0x11
+ 2153 0198 01       		.uleb128 0x1
+ 2154 0199 12       		.uleb128 0x12
+ 2155 019a 06       		.uleb128 0x6
+ 2156 019b 40       		.uleb128 0x40
+ 2157 019c 18       		.uleb128 0x18
+ 2158 019d 9642     		.uleb128 0x2116
+ 2159 019f 19       		.uleb128 0x19
+ 2160 01a0 01       		.uleb128 0x1
+ 2161 01a1 13       		.uleb128 0x13
+ 2162 01a2 00       		.byte	0
+ 2163 01a3 00       		.byte	0
+ 2164 01a4 1E       		.uleb128 0x1e
+ 2165 01a5 34       		.uleb128 0x34
+ 2166 01a6 00       		.byte	0
+ 2167 01a7 03       		.uleb128 0x3
+ 2168 01a8 0E       		.uleb128 0xe
+ 2169 01a9 3A       		.uleb128 0x3a
+ 2170 01aa 0B       		.uleb128 0xb
+ 2171 01ab 3B       		.uleb128 0x3b
+ 2172 01ac 05       		.uleb128 0x5
+ 2173 01ad 49       		.uleb128 0x49
+ 2174 01ae 13       		.uleb128 0x13
+ 2175 01af 3F       		.uleb128 0x3f
+ 2176 01b0 19       		.uleb128 0x19
+ 2177 01b1 3C       		.uleb128 0x3c
+ 2178 01b2 19       		.uleb128 0x19
+ 2179 01b3 00       		.byte	0
+ 2180 01b4 00       		.byte	0
+ 2181 01b5 1F       		.uleb128 0x1f
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUMPGnq.s 			page 48
+
+
+ 2182 01b6 34       		.uleb128 0x34
+ 2183 01b7 00       		.byte	0
+ 2184 01b8 03       		.uleb128 0x3
+ 2185 01b9 0E       		.uleb128 0xe
+ 2186 01ba 3A       		.uleb128 0x3a
+ 2187 01bb 0B       		.uleb128 0xb
+ 2188 01bc 3B       		.uleb128 0x3b
+ 2189 01bd 0B       		.uleb128 0xb
+ 2190 01be 49       		.uleb128 0x49
+ 2191 01bf 13       		.uleb128 0x13
+ 2192 01c0 3F       		.uleb128 0x3f
+ 2193 01c1 19       		.uleb128 0x19
+ 2194 01c2 3C       		.uleb128 0x3c
+ 2195 01c3 19       		.uleb128 0x19
+ 2196 01c4 00       		.byte	0
+ 2197 01c5 00       		.byte	0
+ 2198 01c6 20       		.uleb128 0x20
+ 2199 01c7 34       		.uleb128 0x34
+ 2200 01c8 00       		.byte	0
+ 2201 01c9 03       		.uleb128 0x3
+ 2202 01ca 0E       		.uleb128 0xe
+ 2203 01cb 3A       		.uleb128 0x3a
+ 2204 01cc 0B       		.uleb128 0xb
+ 2205 01cd 3B       		.uleb128 0x3b
+ 2206 01ce 0B       		.uleb128 0xb
+ 2207 01cf 49       		.uleb128 0x49
+ 2208 01d0 13       		.uleb128 0x13
+ 2209 01d1 3F       		.uleb128 0x3f
+ 2210 01d2 19       		.uleb128 0x19
+ 2211 01d3 02       		.uleb128 0x2
+ 2212 01d4 18       		.uleb128 0x18
+ 2213 01d5 00       		.byte	0
+ 2214 01d6 00       		.byte	0
+ 2215 01d7 00       		.byte	0
+ 2216              		.section	.debug_aranges,"",%progbits
+ 2217 0000 44000000 		.4byte	0x44
+ 2218 0004 0200     		.2byte	0x2
+ 2219 0006 00000000 		.4byte	.Ldebug_info0
+ 2220 000a 04       		.byte	0x4
+ 2221 000b 00       		.byte	0
+ 2222 000c 0000     		.2byte	0
+ 2223 000e 0000     		.2byte	0
+ 2224 0010 00000000 		.4byte	.LFB36
+ 2225 0014 A4010000 		.4byte	.LFE36-.LFB36
+ 2226 0018 00000000 		.4byte	.LFB37
+ 2227 001c 74000000 		.4byte	.LFE37-.LFB37
+ 2228 0020 00000000 		.4byte	.LFB38
+ 2229 0024 4C000000 		.4byte	.LFE38-.LFB38
+ 2230 0028 00000000 		.4byte	.LFB39
+ 2231 002c 1C000000 		.4byte	.LFE39-.LFB39
+ 2232 0030 00000000 		.4byte	.LFB40
+ 2233 0034 74000000 		.4byte	.LFE40-.LFB40
+ 2234 0038 00000000 		.4byte	.LFB41
+ 2235 003c 90000000 		.4byte	.LFE41-.LFB41
+ 2236 0040 00000000 		.4byte	0
+ 2237 0044 00000000 		.4byte	0
+ 2238              		.section	.debug_ranges,"",%progbits
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUMPGnq.s 			page 49
+
+
+ 2239              	.Ldebug_ranges0:
+ 2240 0000 00000000 		.4byte	.LFB36
+ 2241 0004 A4010000 		.4byte	.LFE36
+ 2242 0008 00000000 		.4byte	.LFB37
+ 2243 000c 74000000 		.4byte	.LFE37
+ 2244 0010 00000000 		.4byte	.LFB38
+ 2245 0014 4C000000 		.4byte	.LFE38
+ 2246 0018 00000000 		.4byte	.LFB39
+ 2247 001c 1C000000 		.4byte	.LFE39
+ 2248 0020 00000000 		.4byte	.LFB40
+ 2249 0024 74000000 		.4byte	.LFE40
+ 2250 0028 00000000 		.4byte	.LFB41
+ 2251 002c 90000000 		.4byte	.LFE41
+ 2252 0030 00000000 		.4byte	0
+ 2253 0034 00000000 		.4byte	0
+ 2254              		.section	.debug_line,"",%progbits
+ 2255              	.Ldebug_line0:
+ 2256 0000 24020000 		.section	.debug_str,"MS",%progbits,1
+ 2256      0200C400 
+ 2256      00000201 
+ 2256      FB0E0D00 
+ 2256      01010101 
+ 2257              	.LASF81:
+ 2258 0000 4359424C 		.ascii	"CYBLE_EVT_L2CAP_CBFC_RX_CREDIT_IND\000"
+ 2258      455F4556 
+ 2258      545F4C32 
+ 2258      4341505F 
+ 2258      43424643 
+ 2259              	.LASF22:
+ 2260 0023 4359424C 		.ascii	"CYBLE_EVT_STACK_BUSY_STATUS\000"
+ 2260      455F4556 
+ 2260      545F5354 
+ 2260      41434B5F 
+ 2260      42555359 
+ 2261              	.LASF160:
+ 2262 003f 626F6E64 		.ascii	"bonding\000"
+ 2262      696E6700 
+ 2263              	.LASF187:
+ 2264 0047 4359424C 		.ascii	"CYBLE_STATE_STOPPED\000"
+ 2264      455F5354 
+ 2264      4154455F 
+ 2264      53544F50 
+ 2264      50454400 
+ 2265              	.LASF80:
+ 2266 005b 4359424C 		.ascii	"CYBLE_EVT_L2CAP_CBFC_DATA_READ\000"
+ 2266      455F4556 
+ 2266      545F4C32 
+ 2266      4341505F 
+ 2266      43424643 
+ 2267              	.LASF168:
+ 2268 007a 4359424C 		.ascii	"CYBLE_CONN_HANDLE_T\000"
+ 2268      455F434F 
+ 2268      4E4E5F48 
+ 2268      414E444C 
+ 2268      455F5400 
+ 2269              	.LASF153:
+ 2270 008e 4359424C 		.ascii	"CYBLE_GAP_AUTH_ERROR_BR_EDR_PAIRING_IN_PROGRESS\000"
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUMPGnq.s 			page 50
+
+
+ 2270      455F4741 
+ 2270      505F4155 
+ 2270      54485F45 
+ 2270      52524F52 
+ 2271              	.LASF92:
+ 2272 00be 4359424C 		.ascii	"CYBLE_ERROR_MEMORY_ALLOCATION_FAILED\000"
+ 2272      455F4552 
+ 2272      524F525F 
+ 2272      4D454D4F 
+ 2272      52595F41 
+ 2273              	.LASF34:
+ 2274 00e3 4359424C 		.ascii	"CYBLE_EVT_GAP_CONNECTION_UPDATE_COMPLETE\000"
+ 2274      455F4556 
+ 2274      545F4741 
+ 2274      505F434F 
+ 2274      4E4E4543 
+ 2275              	.LASF79:
+ 2276 010c 4359424C 		.ascii	"CYBLE_EVT_L2CAP_CBFC_DISCONN_CNF\000"
+ 2276      455F4556 
+ 2276      545F4C32 
+ 2276      4341505F 
+ 2276      43424643 
+ 2277              	.LASF113:
+ 2278 012d 4359424C 		.ascii	"CYBLE_ERROR_UNSUPPORTED_FEATURE_OR_PARAMETER_VALUE\000"
+ 2278      455F4552 
+ 2278      524F525F 
+ 2278      554E5355 
+ 2278      50504F52 
+ 2279              	.LASF35:
+ 2280 0160 4359424C 		.ascii	"CYBLE_EVT_GAPC_SCAN_START_STOP\000"
+ 2280      455F4556 
+ 2280      545F4741 
+ 2280      50435F53 
+ 2280      43414E5F 
+ 2281              	.LASF148:
+ 2282 017f 4359424C 		.ascii	"CYBLE_GAP_AUTH_ERROR_UNSPECIFIED_REASON\000"
+ 2282      455F4741 
+ 2282      505F4155 
+ 2282      54485F45 
+ 2282      52524F52 
+ 2283              	.LASF146:
+ 2284 01a7 4359424C 		.ascii	"CYBLE_GAP_AUTH_ERROR_INSUFFICIENT_ENCRYPTION_KEY_SI"
+ 2284      455F4741 
+ 2284      505F4155 
+ 2284      54485F45 
+ 2284      52524F52 
+ 2285 01da 5A4500   		.ascii	"ZE\000"
+ 2286              	.LASF59:
+ 2287 01dd 4359424C 		.ascii	"CYBLE_EVT_GATTC_READ_MULTI_RSP\000"
+ 2287      455F4556 
+ 2287      545F4741 
+ 2287      5454435F 
+ 2287      52454144 
+ 2288              	.LASF64:
+ 2289 01fc 4359424C 		.ascii	"CYBLE_EVT_GATTS_EXEC_WRITE_REQ\000"
+ 2289      455F4556 
+ 2289      545F4741 
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUMPGnq.s 			page 51
+
+
+ 2289      5454535F 
+ 2289      45584543 
+ 2290              	.LASF128:
+ 2291 021b 4359424C 		.ascii	"CYBLE_LP_MODE_T\000"
+ 2291      455F4C50 
+ 2291      5F4D4F44 
+ 2291      455F5400 
+ 2292              	.LASF76:
+ 2293 022b 4359424C 		.ascii	"CYBLE_EVT_L2CAP_CBFC_CONN_IND\000"
+ 2293      455F4556 
+ 2293      545F4C32 
+ 2293      4341505F 
+ 2293      43424643 
+ 2294              	.LASF138:
+ 2295 0249 74797065 		.ascii	"type\000"
+ 2295      00
+ 2296              	.LASF19:
+ 2297 024e 4359424C 		.ascii	"CYBLE_EVT_TIMEOUT\000"
+ 2297      455F4556 
+ 2297      545F5449 
+ 2297      4D454F55 
+ 2297      5400
+ 2298              	.LASF4:
+ 2299 0260 6C6F6E67 		.ascii	"long int\000"
+ 2299      20696E74 
+ 2299      00
+ 2300              	.LASF112:
+ 2301 0269 4359424C 		.ascii	"CYBLE_ERROR_HARDWARE_FAILURE\000"
+ 2301      455F4552 
+ 2301      524F525F 
+ 2301      48415244 
+ 2301      57415245 
+ 2302              	.LASF140:
+ 2303 0286 4359424C 		.ascii	"CYBLE_GAP_AUTH_ERROR_NONE\000"
+ 2303      455F4741 
+ 2303      505F4155 
+ 2303      54485F45 
+ 2303      52524F52 
+ 2304              	.LASF102:
+ 2305 02a0 4359424C 		.ascii	"CYBLE_ERROR_L2CAP_PSM_WRONG_ENCODING\000"
+ 2305      455F4552 
+ 2305      524F525F 
+ 2305      4C324341 
+ 2305      505F5053 
+ 2306              	.LASF170:
+ 2307 02c5 4359424C 		.ascii	"CYBLE_GATT_VALUE_T\000"
+ 2307      455F4741 
+ 2307      54545F56 
+ 2307      414C5545 
+ 2307      5F5400
+ 2308              	.LASF21:
+ 2309 02d8 4359424C 		.ascii	"CYBLE_EVT_HCI_STATUS\000"
+ 2309      455F4556 
+ 2309      545F4843 
+ 2309      495F5354 
+ 2309      41545553 
+ 2310              	.LASF154:
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUMPGnq.s 			page 52
+
+
+ 2311 02ed 4359424C 		.ascii	"CYBLE_GAP_AUTH_ERROR_CROSS_TRANSPORT_KEY_GEN_DER_NO"
+ 2311      455F4741 
+ 2311      505F4155 
+ 2311      54485F45 
+ 2311      52524F52 
+ 2312 0320 545F414C 		.ascii	"T_ALLOWED\000"
+ 2312      4C4F5745 
+ 2312      4400
+ 2313              	.LASF214:
+ 2314 032a 4C6F7750 		.ascii	"LowPowerImplementation\000"
+ 2314      6F776572 
+ 2314      496D706C 
+ 2314      656D656E 
+ 2314      74617469 
+ 2315              	.LASF139:
+ 2316 0341 4359424C 		.ascii	"CYBLE_GAP_BD_ADDR_T\000"
+ 2316      455F4741 
+ 2316      505F4244 
+ 2316      5F414444 
+ 2316      525F5400 
+ 2317              	.LASF129:
+ 2318 0355 4359424C 		.ascii	"CYBLE_BLESS_STATE_ACTIVE\000"
+ 2318      455F424C 
+ 2318      4553535F 
+ 2318      53544154 
+ 2318      455F4143 
+ 2319              	.LASF32:
+ 2320 036e 4359424C 		.ascii	"CYBLE_EVT_GAP_DEVICE_DISCONNECTED\000"
+ 2320      455F4556 
+ 2320      545F4741 
+ 2320      505F4445 
+ 2320      56494345 
+ 2321              	.LASF33:
+ 2322 0390 4359424C 		.ascii	"CYBLE_EVT_GAP_ENCRYPT_CHANGE\000"
+ 2322      455F4556 
+ 2322      545F4741 
+ 2322      505F454E 
+ 2322      43525950 
+ 2323              	.LASF157:
+ 2324 03ad 4359424C 		.ascii	"CYBLE_GAP_AUTH_ERROR_LINK_DISCONNECTED\000"
+ 2324      455F4741 
+ 2324      505F4155 
+ 2324      54485F45 
+ 2324      52524F52 
+ 2325              	.LASF37:
+ 2326 03d4 4359424C 		.ascii	"CYBLE_EVT_GAP_NUMERIC_COMPARISON_REQUEST\000"
+ 2326      455F4556 
+ 2326      545F4741 
+ 2326      505F4E55 
+ 2326      4D455249 
+ 2327              	.LASF190:
+ 2328 03fd 4359424C 		.ascii	"CYBLE_STATE_ADVERTISING\000"
+ 2328      455F5354 
+ 2328      4154455F 
+ 2328      41445645 
+ 2328      52544953 
+ 2329              	.LASF6:
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUMPGnq.s 			page 53
+
+
+ 2330 0415 6C6F6E67 		.ascii	"long long int\000"
+ 2330      206C6F6E 
+ 2330      6720696E 
+ 2330      7400
+ 2331              	.LASF0:
+ 2332 0423 7369676E 		.ascii	"signed char\000"
+ 2332      65642063 
+ 2332      68617200 
+ 2333              	.LASF18:
+ 2334 042f 4359424C 		.ascii	"CYBLE_EVT_STACK_ON\000"
+ 2334      455F4556 
+ 2334      545F5354 
+ 2334      41434B5F 
+ 2334      4F4E00
+ 2335              	.LASF165:
+ 2336 0442 4359424C 		.ascii	"CYBLE_GATT_DB_ATTR_HANDLE_T\000"
+ 2336      455F4741 
+ 2336      54545F44 
+ 2336      425F4154 
+ 2336      54525F48 
+ 2337              	.LASF109:
+ 2338 045e 4359424C 		.ascii	"CYBLE_ERROR_DEVICE_ALREADY_EXISTS\000"
+ 2338      455F4552 
+ 2338      524F525F 
+ 2338      44455649 
+ 2338      43455F41 
+ 2339              	.LASF96:
+ 2340 0480 4359424C 		.ascii	"CYBLE_ERROR_NO_DEVICE_ENTITY\000"
+ 2340      455F4552 
+ 2340      524F525F 
+ 2340      4E4F5F44 
+ 2340      45564943 
+ 2341              	.LASF169:
+ 2342 049d 61637475 		.ascii	"actualLen\000"
+ 2342      616C4C65 
+ 2342      6E00
+ 2343              	.LASF25:
+ 2344 04a7 4359424C 		.ascii	"CYBLE_EVT_GAP_AUTH_REQ\000"
+ 2344      455F4556 
+ 2344      545F4741 
+ 2344      505F4155 
+ 2344      54485F52 
+ 2345              	.LASF57:
+ 2346 04be 4359424C 		.ascii	"CYBLE_EVT_GATTC_READ_RSP\000"
+ 2346      455F4556 
+ 2346      545F4741 
+ 2346      5454435F 
+ 2346      52454144 
+ 2347              	.LASF145:
+ 2348 04d7 4359424C 		.ascii	"CYBLE_GAP_AUTH_ERROR_PAIRING_NOT_SUPPORTED\000"
+ 2348      455F4741 
+ 2348      505F4155 
+ 2348      54485F45 
+ 2348      52524F52 
+ 2349              	.LASF120:
+ 2350 0502 4359424C 		.ascii	"CYBLE_ERROR_INVALID_STATE\000"
+ 2350      455F4552 
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUMPGnq.s 			page 54
+
+
+ 2350      524F525F 
+ 2350      494E5641 
+ 2350      4C49445F 
+ 2351              	.LASF158:
+ 2352 051c 4359424C 		.ascii	"CYBLE_GAP_AUTH_FAILED_REASON_T\000"
+ 2352      455F4741 
+ 2352      505F4155 
+ 2352      54485F46 
+ 2352      41494C45 
+ 2353              	.LASF62:
+ 2354 053b 4359424C 		.ascii	"CYBLE_EVT_GATTS_WRITE_CMD_REQ\000"
+ 2354      455F4556 
+ 2354      545F4741 
+ 2354      5454535F 
+ 2354      57524954 
+ 2355              	.LASF161:
+ 2356 0559 656B6579 		.ascii	"ekeySize\000"
+ 2356      53697A65 
+ 2356      00
+ 2357              	.LASF75:
+ 2358 0562 4359424C 		.ascii	"CYBLE_EVT_L2CAP_COMMAND_REJ\000"
+ 2358      455F4556 
+ 2358      545F4C32 
+ 2358      4341505F 
+ 2358      434F4D4D 
+ 2359              	.LASF191:
+ 2360 057e 4359424C 		.ascii	"CYBLE_STATE_DISCONNECTED\000"
+ 2360      455F5354 
+ 2360      4154455F 
+ 2360      44495343 
+ 2360      4F4E4E45 
+ 2361              	.LASF30:
+ 2362 0597 4359424C 		.ascii	"CYBLE_EVT_GAPP_ADVERTISEMENT_START_STOP\000"
+ 2362      455F4556 
+ 2362      545F4741 
+ 2362      50505F41 
+ 2362      44564552 
+ 2363              	.LASF162:
+ 2364 05bf 61757468 		.ascii	"authErr\000"
+ 2364      45727200 
+ 2365              	.LASF107:
+ 2366 05c7 4359424C 		.ascii	"CYBLE_ERROR_L2CAP_PSM_NOT_IN_RANGE\000"
+ 2366      455F4552 
+ 2366      524F525F 
+ 2366      4C324341 
+ 2366      505F5053 
+ 2367              	.LASF9:
+ 2368 05ea 75696E74 		.ascii	"uint8\000"
+ 2368      3800
+ 2369              	.LASF101:
+ 2370 05f0 4359424C 		.ascii	"CYBLE_ERROR_SEC_FAILED\000"
+ 2370      455F4552 
+ 2370      524F525F 
+ 2370      5345435F 
+ 2370      4641494C 
+ 2371              	.LASF156:
+ 2372 0607 4359424C 		.ascii	"CYBLE_GAP_AUTH_ERROR_AUTHENTICATION_TIMEOUT\000"
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUMPGnq.s 			page 55
+
+
+ 2372      455F4741 
+ 2372      505F4155 
+ 2372      54485F45 
+ 2372      52524F52 
+ 2373              	.LASF65:
+ 2374 0633 4359424C 		.ascii	"CYBLE_EVT_GATTC_EXEC_WRITE_RSP\000"
+ 2374      455F4556 
+ 2374      545F4741 
+ 2374      5454435F 
+ 2374      45584543 
+ 2375              	.LASF13:
+ 2376 0652 646F7562 		.ascii	"double\000"
+ 2376      6C6500
+ 2377              	.LASF78:
+ 2378 0659 4359424C 		.ascii	"CYBLE_EVT_L2CAP_CBFC_DISCONN_IND\000"
+ 2378      455F4556 
+ 2378      545F4C32 
+ 2378      4341505F 
+ 2378      43424643 
+ 2379              	.LASF90:
+ 2380 067a 4359424C 		.ascii	"CYBLE_ERROR_INVALID_PARAMETER\000"
+ 2380      455F4552 
+ 2380      524F525F 
+ 2380      494E5641 
+ 2380      4C49445F 
+ 2381              	.LASF181:
+ 2382 0698 4359424C 		.ascii	"CYBLE_DIS_FIRMWARE_REV\000"
+ 2382      455F4449 
+ 2382      535F4649 
+ 2382      524D5741 
+ 2382      52455F52 
+ 2383              	.LASF97:
+ 2384 06af 4359424C 		.ascii	"CYBLE_ERROR_REPEATED_ATTEMPTS\000"
+ 2384      455F4552 
+ 2384      524F525F 
+ 2384      52455045 
+ 2384      41544544 
+ 2385              	.LASF159:
+ 2386 06cd 73656375 		.ascii	"security\000"
+ 2386      72697479 
+ 2386      00
+ 2387              	.LASF11:
+ 2388 06d6 75696E74 		.ascii	"uint32\000"
+ 2388      333200
+ 2389              	.LASF149:
+ 2390 06dd 4359424C 		.ascii	"CYBLE_GAP_AUTH_ERROR_REPEATED_ATTEMPTS\000"
+ 2390      455F4741 
+ 2390      505F4155 
+ 2390      54485F45 
+ 2390      52524F52 
+ 2391              	.LASF180:
+ 2392 0704 4359424C 		.ascii	"CYBLE_DIS_HARDWARE_REV\000"
+ 2392      455F4449 
+ 2392      535F4841 
+ 2392      52445741 
+ 2392      52455F52 
+ 2393              	.LASF88:
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUMPGnq.s 			page 56
+
+
+ 2394 071b 4359424C 		.ascii	"CYBLE_EVT_MAX\000"
+ 2394      455F4556 
+ 2394      545F4D41 
+ 2394      5800
+ 2395              	.LASF89:
+ 2396 0729 4359424C 		.ascii	"CYBLE_ERROR_OK\000"
+ 2396      455F4552 
+ 2396      524F525F 
+ 2396      4F4B00
+ 2397              	.LASF48:
+ 2398 0738 4359424C 		.ascii	"CYBLE_EVT_GATTC_ERROR_RSP\000"
+ 2398      455F4556 
+ 2398      545F4741 
+ 2398      5454435F 
+ 2398      4552524F 
+ 2399              	.LASF73:
+ 2400 0752 4359424C 		.ascii	"CYBLE_EVT_L2CAP_CONN_PARAM_UPDATE_REQ\000"
+ 2400      455F4556 
+ 2400      545F4C32 
+ 2400      4341505F 
+ 2400      434F4E4E 
+ 2401              	.LASF83:
+ 2402 0778 4359424C 		.ascii	"CYBLE_EVT_L2CAP_CBFC_DATA_WRITE_IND\000"
+ 2402      455F4556 
+ 2402      545F4C32 
+ 2402      4341505F 
+ 2402      43424643 
+ 2403              	.LASF172:
+ 2404 079c 61747472 		.ascii	"attrHandle\000"
+ 2404      48616E64 
+ 2404      6C6500
+ 2405              	.LASF7:
+ 2406 07a7 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 2406      206C6F6E 
+ 2406      6720756E 
+ 2406      7369676E 
+ 2406      65642069 
+ 2407              	.LASF171:
+ 2408 07be 76616C75 		.ascii	"value\000"
+ 2408      6500
+ 2409              	.LASF70:
+ 2410 07c4 4359424C 		.ascii	"CYBLE_EVT_GATTC_STOP_CMD_COMPLETE\000"
+ 2410      455F4556 
+ 2410      545F4741 
+ 2410      5454435F 
+ 2410      53544F50 
+ 2411              	.LASF94:
+ 2412 07e6 4359424C 		.ascii	"CYBLE_ERROR_OOB_NOT_AVAILABLE\000"
+ 2412      455F4552 
+ 2412      524F525F 
+ 2412      4F4F425F 
+ 2412      4E4F545F 
+ 2413              	.LASF85:
+ 2414 0804 4359424C 		.ascii	"CYBLE_EVT_LE_PING_AUTH_TIMEOUT\000"
+ 2414      455F4556 
+ 2414      545F4C45 
+ 2414      5F50494E 
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUMPGnq.s 			page 57
+
+
+ 2414      475F4155 
+ 2415              	.LASF103:
+ 2416 0823 4359424C 		.ascii	"CYBLE_ERROR_L2CAP_PSM_ALREADY_REGISTERED\000"
+ 2416      455F4552 
+ 2416      524F525F 
+ 2416      4C324341 
+ 2416      505F5053 
+ 2417              	.LASF134:
+ 2418 084c 4359424C 		.ascii	"CYBLE_BLESS_STATE_DEEPSLEEP\000"
+ 2418      455F424C 
+ 2418      4553535F 
+ 2418      53544154 
+ 2418      455F4445 
+ 2419              	.LASF5:
+ 2420 0868 6C6F6E67 		.ascii	"long unsigned int\000"
+ 2420      20756E73 
+ 2420      69676E65 
+ 2420      6420696E 
+ 2420      7400
+ 2421              	.LASF44:
+ 2422 087a 4359424C 		.ascii	"CYBLE_EVT_GAP_CONN_ESTB\000"
+ 2422      455F4556 
+ 2422      545F4741 
+ 2422      505F434F 
+ 2422      4E4E5F45 
+ 2423              	.LASF127:
+ 2424 0892 4359424C 		.ascii	"CYBLE_BLESS_INVALID\000"
+ 2424      455F424C 
+ 2424      4553535F 
+ 2424      494E5641 
+ 2424      4C494400 
+ 2425              	.LASF52:
+ 2426 08a6 4359424C 		.ascii	"CYBLE_EVT_GATTC_XCHNG_MTU_RSP\000"
+ 2426      455F4556 
+ 2426      545F4741 
+ 2426      5454435F 
+ 2426      5843484E 
+ 2427              	.LASF69:
+ 2428 08c4 4359424C 		.ascii	"CYBLE_EVT_GATTS_DATA_SIGNED_CMD_REQ\000"
+ 2428      455F4556 
+ 2428      545F4741 
+ 2428      5454535F 
+ 2428      44415441 
+ 2429              	.LASF72:
+ 2430 08e8 4359424C 		.ascii	"CYBLE_EVT_GATTC_LONG_PROCEDURE_END\000"
+ 2430      455F4556 
+ 2430      545F4741 
+ 2430      5454435F 
+ 2430      4C4F4E47 
+ 2431              	.LASF106:
+ 2432 090b 4359424C 		.ascii	"CYBLE_ERROR_L2CAP_CHANNEL_NOT_FOUND\000"
+ 2432      455F4552 
+ 2432      524F525F 
+ 2432      4C324341 
+ 2432      505F4348 
+ 2433              	.LASF193:
+ 2434 092f 6576656E 		.ascii	"event\000"
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUMPGnq.s 			page 58
+
+
+ 2434      7400
+ 2435              	.LASF117:
+ 2436 0935 4359424C 		.ascii	"CYBLE_ERROR_NTF_DISABLED\000"
+ 2436      455F4552 
+ 2436      524F525F 
+ 2436      4E54465F 
+ 2436      44495341 
+ 2437              	.LASF17:
+ 2438 094e 4359424C 		.ascii	"CYBLE_EVT_HOST_INVALID\000"
+ 2438      455F4556 
+ 2438      545F484F 
+ 2438      53545F49 
+ 2438      4E56414C 
+ 2439              	.LASF55:
+ 2440 0965 4359424C 		.ascii	"CYBLE_EVT_GATTC_FIND_INFO_RSP\000"
+ 2440      455F4556 
+ 2440      545F4741 
+ 2440      5454435F 
+ 2440      46494E44 
+ 2441              	.LASF23:
+ 2442 0983 4359424C 		.ascii	"CYBLE_EVT_MEMORY_REQUEST\000"
+ 2442      455F4556 
+ 2442      545F4D45 
+ 2442      4D4F5259 
+ 2442      5F524551 
+ 2443              	.LASF142:
+ 2444 099c 4359424C 		.ascii	"CYBLE_GAP_AUTH_ERROR_OOB_DATA_NOT_AVAILABLE\000"
+ 2444      455F4741 
+ 2444      505F4155 
+ 2444      54485F45 
+ 2444      52524F52 
+ 2445              	.LASF137:
+ 2446 09c8 62644164 		.ascii	"bdAddr\000"
+ 2446      647200
+ 2447              	.LASF26:
+ 2448 09cf 4359424C 		.ascii	"CYBLE_EVT_GAP_PASSKEY_ENTRY_REQUEST\000"
+ 2448      455F4556 
+ 2448      545F4741 
+ 2448      505F5041 
+ 2448      53534B45 
+ 2449              	.LASF31:
+ 2450 09f3 4359424C 		.ascii	"CYBLE_EVT_GAP_DEVICE_CONNECTED\000"
+ 2450      455F4556 
+ 2450      545F4741 
+ 2450      505F4445 
+ 2450      56494345 
+ 2451              	.LASF212:
+ 2452 0a12 6D61696E 		.ascii	"main.c\000"
+ 2452      2E6300
+ 2453              	.LASF60:
+ 2454 0a19 4359424C 		.ascii	"CYBLE_EVT_GATTS_WRITE_REQ\000"
+ 2454      455F4556 
+ 2454      545F4741 
+ 2454      5454535F 
+ 2454      57524954 
+ 2455              	.LASF46:
+ 2456 0a33 4359424C 		.ascii	"CYBLE_EVT_GAP_AUTH_REQ_REPLY_ERR\000"
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUMPGnq.s 			page 59
+
+
+ 2456      455F4556 
+ 2456      545F4741 
+ 2456      505F4155 
+ 2456      54485F52 
+ 2457              	.LASF185:
+ 2458 0a54 4359424C 		.ascii	"CYBLE_DIS_PNP_ID\000"
+ 2458      455F4449 
+ 2458      535F504E 
+ 2458      505F4944 
+ 2458      00
+ 2459              	.LASF207:
+ 2460 0a65 6379426C 		.ascii	"cyBle_state\000"
+ 2460      655F7374 
+ 2460      61746500 
+ 2461              	.LASF211:
+ 2462 0a71 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 2462      43313120 
+ 2462      352E342E 
+ 2462      31203230 
+ 2462      31363036 
+ 2463 0aa4 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 2463      20726576 
+ 2463      6973696F 
+ 2463      6E203233 
+ 2463      37373135 
+ 2464 0ad7 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 2464      66756E63 
+ 2464      74696F6E 
+ 2464      2D736563 
+ 2464      74696F6E 
+ 2465              	.LASF49:
+ 2466 0aff 4359424C 		.ascii	"CYBLE_EVT_GATT_CONNECT_IND\000"
+ 2466      455F4556 
+ 2466      545F4741 
+ 2466      54545F43 
+ 2466      4F4E4E45 
+ 2467              	.LASF167:
+ 2468 0b1a 61747449 		.ascii	"attId\000"
+ 2468      6400
+ 2469              	.LASF135:
+ 2470 0b20 4359424C 		.ascii	"CYBLE_BLESS_STATE_HIBERNATE\000"
+ 2470      455F424C 
+ 2470      4553535F 
+ 2470      53544154 
+ 2470      455F4849 
+ 2471              	.LASF24:
+ 2472 0b3c 4359424C 		.ascii	"CYBLE_EVT_GAPC_SCAN_PROGRESS_RESULT\000"
+ 2472      455F4556 
+ 2472      545F4741 
+ 2472      50435F53 
+ 2472      43414E5F 
+ 2473              	.LASF183:
+ 2474 0b60 4359424C 		.ascii	"CYBLE_DIS_SYSTEM_ID\000"
+ 2474      455F4449 
+ 2474      535F5359 
+ 2474      5354454D 
+ 2474      5F494400 
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUMPGnq.s 			page 60
+
+
+ 2475              	.LASF47:
+ 2476 0b74 4359424C 		.ascii	"CYBLE_EVT_GAP_SMP_LOC_P256_KEYS_GEN_AND_SET_COMPLET"
+ 2476      455F4556 
+ 2476      545F4741 
+ 2476      505F534D 
+ 2476      505F4C4F 
+ 2477 0ba7 4500     		.ascii	"E\000"
+ 2478              	.LASF116:
+ 2479 0ba9 4359424C 		.ascii	"CYBLE_ERROR_MAX\000"
+ 2479      455F4552 
+ 2479      524F525F 
+ 2479      4D415800 
+ 2480              	.LASF114:
+ 2481 0bb9 4359424C 		.ascii	"CYBLE_ERROR_FLASH_WRITE\000"
+ 2481      455F4552 
+ 2481      524F525F 
+ 2481      464C4153 
+ 2481      485F5752 
+ 2482              	.LASF54:
+ 2483 0bd1 4359424C 		.ascii	"CYBLE_EVT_GATTC_READ_BY_TYPE_RSP\000"
+ 2483      455F4556 
+ 2483      545F4741 
+ 2483      5454435F 
+ 2483      52454144 
+ 2484              	.LASF16:
+ 2485 0bf2 73697A65 		.ascii	"sizetype\000"
+ 2485      74797065 
+ 2485      00
+ 2486              	.LASF202:
+ 2487 0bfb 5744545F 		.ascii	"WDT_Stop\000"
+ 2487      53746F70 
+ 2487      00
+ 2488              	.LASF188:
+ 2489 0c04 4359424C 		.ascii	"CYBLE_STATE_INITIALIZING\000"
+ 2489      455F5354 
+ 2489      4154455F 
+ 2489      494E4954 
+ 2489      49414C49 
+ 2490              	.LASF29:
+ 2491 0c1d 4359424C 		.ascii	"CYBLE_EVT_GAP_AUTH_FAILED\000"
+ 2491      455F4556 
+ 2491      545F4741 
+ 2491      505F4155 
+ 2491      54485F46 
+ 2492              	.LASF201:
+ 2493 0c37 5744545F 		.ascii	"WDT_Start\000"
+ 2493      53746172 
+ 2493      7400
+ 2494              	.LASF61:
+ 2495 0c41 4359424C 		.ascii	"CYBLE_EVT_GATTC_WRITE_RSP\000"
+ 2495      455F4556 
+ 2495      545F4741 
+ 2495      5454435F 
+ 2495      57524954 
+ 2496              	.LASF198:
+ 2497 0c5b 41707043 		.ascii	"AppCallBack\000"
+ 2497      616C6C42 
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUMPGnq.s 			page 61
+
+
+ 2497      61636B00 
+ 2498              	.LASF42:
+ 2499 0c67 4359424C 		.ascii	"CYBLE_EVT_GAPC_DIRECT_ADV_REPORT\000"
+ 2499      455F4556 
+ 2499      545F4741 
+ 2499      50435F44 
+ 2499      49524543 
+ 2500              	.LASF126:
+ 2501 0c88 4359424C 		.ascii	"CYBLE_BLESS_HIBERNATE\000"
+ 2501      455F424C 
+ 2501      4553535F 
+ 2501      48494245 
+ 2501      524E4154 
+ 2502              	.LASF40:
+ 2503 0c9e 4359424C 		.ascii	"CYBLE_EVT_GAP_DATA_LENGTH_CHANGE\000"
+ 2503      455F4556 
+ 2503      545F4741 
+ 2503      505F4441 
+ 2503      54415F4C 
+ 2504              	.LASF45:
+ 2505 0cbf 4359424C 		.ascii	"CYBLE_EVT_GAP_SCAN_REQ_RECVD\000"
+ 2505      455F4556 
+ 2505      545F4741 
+ 2505      505F5343 
+ 2505      414E5F52 
+ 2506              	.LASF28:
+ 2507 0cdc 4359424C 		.ascii	"CYBLE_EVT_GAP_AUTH_COMPLETE\000"
+ 2507      455F4556 
+ 2507      545F4741 
+ 2507      505F4155 
+ 2507      54485F43 
+ 2508              	.LASF195:
+ 2509 0cf8 61706952 		.ascii	"apiResult\000"
+ 2509      6573756C 
+ 2509      7400
+ 2510              	.LASF122:
+ 2511 0d02 4359424C 		.ascii	"CYBLE_API_RESULT_T\000"
+ 2511      455F4150 
+ 2511      495F5245 
+ 2511      53554C54 
+ 2511      5F5400
+ 2512              	.LASF164:
+ 2513 0d15 4359424C 		.ascii	"CYBLE_GAP_AUTH_INFO_T\000"
+ 2513      455F4741 
+ 2513      505F4155 
+ 2513      54485F49 
+ 2513      4E464F5F 
+ 2514              	.LASF66:
+ 2515 0d2b 4359424C 		.ascii	"CYBLE_EVT_GATTC_HANDLE_VALUE_NTF\000"
+ 2515      455F4556 
+ 2515      545F4741 
+ 2515      5454435F 
+ 2515      48414E44 
+ 2516              	.LASF118:
+ 2517 0d4c 4359424C 		.ascii	"CYBLE_ERROR_IND_DISABLED\000"
+ 2517      455F4552 
+ 2517      524F525F 
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUMPGnq.s 			page 62
+
+
+ 2517      494E445F 
+ 2517      44495341 
+ 2518              	.LASF173:
+ 2519 0d65 4359424C 		.ascii	"CYBLE_GATT_HANDLE_VALUE_PAIR_T\000"
+ 2519      455F4741 
+ 2519      54545F48 
+ 2519      414E444C 
+ 2519      455F5641 
+ 2520              	.LASF184:
+ 2521 0d84 4359424C 		.ascii	"CYBLE_DIS_REG_CERT_DATA\000"
+ 2521      455F4449 
+ 2521      535F5245 
+ 2521      475F4345 
+ 2521      52545F44 
+ 2522              	.LASF77:
+ 2523 0d9c 4359424C 		.ascii	"CYBLE_EVT_L2CAP_CBFC_CONN_CNF\000"
+ 2523      455F4556 
+ 2523      545F4C32 
+ 2523      4341505F 
+ 2523      43424643 
+ 2524              	.LASF53:
+ 2525 0dba 4359424C 		.ascii	"CYBLE_EVT_GATTC_READ_BY_GROUP_TYPE_RSP\000"
+ 2525      455F4556 
+ 2525      545F4741 
+ 2525      5454435F 
+ 2525      52454144 
+ 2526              	.LASF12:
+ 2527 0de1 666C6F61 		.ascii	"float\000"
+ 2527      7400
+ 2528              	.LASF209:
+ 2529 0de7 73757370 		.ascii	"suspend\000"
+ 2529      656E6400 
+ 2530              	.LASF206:
+ 2531 0def 6379426C 		.ascii	"cyBle_pendingFlashWrite\000"
+ 2531      655F7065 
+ 2531      6E64696E 
+ 2531      67466C61 
+ 2531      73685772 
+ 2532              	.LASF179:
+ 2533 0e07 4359424C 		.ascii	"CYBLE_DIS_SERIAL_NUMBER\000"
+ 2533      455F4449 
+ 2533      535F5345 
+ 2533      5249414C 
+ 2533      5F4E554D 
+ 2534              	.LASF131:
+ 2535 0e1f 4359424C 		.ascii	"CYBLE_BLESS_STATE_SLEEP\000"
+ 2535      455F424C 
+ 2535      4553535F 
+ 2535      53544154 
+ 2535      455F534C 
+ 2536              	.LASF99:
+ 2537 0e37 4359424C 		.ascii	"CYBLE_ERROR_TX_POWER_READ\000"
+ 2537      455F4552 
+ 2537      524F525F 
+ 2537      54585F50 
+ 2537      4F574552 
+ 2538              	.LASF119:
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUMPGnq.s 			page 63
+
+
+ 2539 0e51 4359424C 		.ascii	"CYBLE_ERROR_CHAR_IS_NOT_DISCOVERED\000"
+ 2539      455F4552 
+ 2539      524F525F 
+ 2539      43484152 
+ 2539      5F49535F 
+ 2540              	.LASF1:
+ 2541 0e74 756E7369 		.ascii	"unsigned char\000"
+ 2541      676E6564 
+ 2541      20636861 
+ 2541      7200
+ 2542              	.LASF10:
+ 2543 0e82 75696E74 		.ascii	"uint16\000"
+ 2543      313600
+ 2544              	.LASF186:
+ 2545 0e89 4359424C 		.ascii	"CYBLE_DIS_CHAR_COUNT\000"
+ 2545      455F4449 
+ 2545      535F4348 
+ 2545      41525F43 
+ 2545      4F554E54 
+ 2546              	.LASF150:
+ 2547 0e9e 4359424C 		.ascii	"CYBLE_GAP_AUTH_ERROR_INVALID_PARAMETERS\000"
+ 2547      455F4741 
+ 2547      505F4155 
+ 2547      54485F45 
+ 2547      52524F52 
+ 2548              	.LASF203:
+ 2549 0ec6 626C654D 		.ascii	"bleMode\000"
+ 2549      6F646500 
+ 2550              	.LASF2:
+ 2551 0ece 73686F72 		.ascii	"short int\000"
+ 2551      7420696E 
+ 2551      7400
+ 2552              	.LASF210:
+ 2553 0ed8 6D61696E 		.ascii	"mainTimer\000"
+ 2553      54696D65 
+ 2553      7200
+ 2554              	.LASF67:
+ 2555 0ee2 4359424C 		.ascii	"CYBLE_EVT_GATTC_HANDLE_VALUE_IND\000"
+ 2555      455F4556 
+ 2555      545F4741 
+ 2555      5454435F 
+ 2555      48414E44 
+ 2556              	.LASF95:
+ 2557 0f03 4359424C 		.ascii	"CYBLE_ERROR_NO_CONNECTION\000"
+ 2557      455F4552 
+ 2557      524F525F 
+ 2557      4E4F5F43 
+ 2557      4F4E4E45 
+ 2558              	.LASF152:
+ 2559 0f1d 4359424C 		.ascii	"CYBLE_GAP_AUTH_ERROR_NUMERIC_COMPARISON_FAILED\000"
+ 2559      455F4741 
+ 2559      505F4155 
+ 2559      54485F45 
+ 2559      52524F52 
+ 2560              	.LASF86:
+ 2561 0f4c 4359424C 		.ascii	"CYBLE_EVT_HCI_PKT\000"
+ 2561      455F4556 
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUMPGnq.s 			page 64
+
+
+ 2561      545F4843 
+ 2561      495F504B 
+ 2561      5400
+ 2562              	.LASF182:
+ 2563 0f5e 4359424C 		.ascii	"CYBLE_DIS_SOFTWARE_REV\000"
+ 2563      455F4449 
+ 2563      535F534F 
+ 2563      46545741 
+ 2563      52455F52 
+ 2564              	.LASF63:
+ 2565 0f75 4359424C 		.ascii	"CYBLE_EVT_GATTS_PREP_WRITE_REQ\000"
+ 2565      455F4556 
+ 2565      545F4741 
+ 2565      5454535F 
+ 2565      50524550 
+ 2566              	.LASF136:
+ 2567 0f94 4359424C 		.ascii	"CYBLE_BLESS_STATE_INVALID\000"
+ 2567      455F424C 
+ 2567      4553535F 
+ 2567      53544154 
+ 2567      455F494E 
+ 2568              	.LASF208:
+ 2569 0fae 6B657962 		.ascii	"keyboardSimulation\000"
+ 2569      6F617264 
+ 2569      53696D75 
+ 2569      6C617469 
+ 2569      6F6E00
+ 2570              	.LASF68:
+ 2571 0fc1 4359424C 		.ascii	"CYBLE_EVT_GATTS_HANDLE_VALUE_CNF\000"
+ 2571      455F4556 
+ 2571      545F4741 
+ 2571      5454535F 
+ 2571      48414E44 
+ 2572              	.LASF147:
+ 2573 0fe2 4359424C 		.ascii	"CYBLE_GAP_AUTH_ERROR_COMMAND_NOT_SUPPORTED\000"
+ 2573      455F4741 
+ 2573      505F4155 
+ 2573      54485F45 
+ 2573      52524F52 
+ 2574              	.LASF200:
+ 2575 100d 6C656454 		.ascii	"ledTimer\000"
+ 2575      696D6572 
+ 2575      00
+ 2576              	.LASF43:
+ 2577 1016 4359424C 		.ascii	"CYBLE_EVT_GAP_SMP_NEGOTIATED_AUTH_INFO\000"
+ 2577      455F4556 
+ 2577      545F4741 
+ 2577      505F534D 
+ 2577      505F4E45 
+ 2578              	.LASF121:
+ 2579 103d 4359424C 		.ascii	"CYBLE_ERROR_STACK_BUSY\000"
+ 2579      455F4552 
+ 2579      524F525F 
+ 2579      53544143 
+ 2579      4B5F4255 
+ 2580              	.LASF14:
+ 2581 1054 63686172 		.ascii	"char\000"
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUMPGnq.s 			page 65
+
+
+ 2581      00
+ 2582              	.LASF15:
+ 2583 1059 6C6F6E67 		.ascii	"long double\000"
+ 2583      20646F75 
+ 2583      626C6500 
+ 2584              	.LASF124:
+ 2585 1065 4359424C 		.ascii	"CYBLE_BLESS_SLEEP\000"
+ 2585      455F424C 
+ 2585      4553535F 
+ 2585      534C4545 
+ 2585      5000
+ 2586              	.LASF178:
+ 2587 1077 4359424C 		.ascii	"CYBLE_DIS_MODEL_NUMBER\000"
+ 2587      455F4449 
+ 2587      535F4D4F 
+ 2587      44454C5F 
+ 2587      4E554D42 
+ 2588              	.LASF100:
+ 2589 108e 4359424C 		.ascii	"CYBLE_ERROR_BT_ON_NOT_COMPLETED\000"
+ 2589      455F4552 
+ 2589      524F525F 
+ 2589      42545F4F 
+ 2589      4E5F4E4F 
+ 2590              	.LASF151:
+ 2591 10ae 4359424C 		.ascii	"CYBLE_GAP_AUTH_ERROR_DHKEY_CHECK_FAILED\000"
+ 2591      455F4741 
+ 2591      505F4155 
+ 2591      54485F45 
+ 2591      52524F52 
+ 2592              	.LASF155:
+ 2593 10d6 4359424C 		.ascii	"CYBLE_GAP_AUTH_ERROR_CODE_SPEC_MAX_VALUE\000"
+ 2593      455F4741 
+ 2593      505F4155 
+ 2593      54485F45 
+ 2593      52524F52 
+ 2594              	.LASF8:
+ 2595 10ff 756E7369 		.ascii	"unsigned int\000"
+ 2595      676E6564 
+ 2595      20696E74 
+ 2595      00
+ 2596              	.LASF71:
+ 2597 110c 4359424C 		.ascii	"CYBLE_EVT_GATTS_READ_CHAR_VAL_ACCESS_REQ\000"
+ 2597      455F4556 
+ 2597      545F4741 
+ 2597      5454535F 
+ 2597      52454144 
+ 2598              	.LASF38:
+ 2599 1135 4359424C 		.ascii	"CYBLE_EVT_GAP_KEYPRESS_NOTIFICATION\000"
+ 2599      455F4556 
+ 2599      545F4741 
+ 2599      505F4B45 
+ 2599      59505245 
+ 2600              	.LASF197:
+ 2601 1159 61757468 		.ascii	"authInfo\000"
+ 2601      496E666F 
+ 2601      00
+ 2602              	.LASF82:
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUMPGnq.s 			page 66
+
+
+ 2603 1162 4359424C 		.ascii	"CYBLE_EVT_L2CAP_CBFC_TX_CREDIT_IND\000"
+ 2603      455F4556 
+ 2603      545F4C32 
+ 2603      4341505F 
+ 2603      43424643 
+ 2604              	.LASF110:
+ 2605 1185 4359424C 		.ascii	"CYBLE_ERROR_FLASH_WRITE_NOT_PERMITED\000"
+ 2605      455F4552 
+ 2605      524F525F 
+ 2605      464C4153 
+ 2605      485F5752 
+ 2606              	.LASF105:
+ 2607 11aa 4359424C 		.ascii	"CYBLE_ERROR_L2CAP_CONNECTION_ENTITY_NOT_FOUND\000"
+ 2607      455F4552 
+ 2607      524F525F 
+ 2607      4C324341 
+ 2607      505F434F 
+ 2608              	.LASF27:
+ 2609 11d8 4359424C 		.ascii	"CYBLE_EVT_GAP_PASSKEY_DISPLAY_REQUEST\000"
+ 2609      455F4556 
+ 2609      545F4741 
+ 2609      505F5041 
+ 2609      53534B45 
+ 2610              	.LASF20:
+ 2611 11fe 4359424C 		.ascii	"CYBLE_EVT_HARDWARE_ERROR\000"
+ 2611      455F4556 
+ 2611      545F4841 
+ 2611      52445741 
+ 2611      52455F45 
+ 2612              	.LASF3:
+ 2613 1217 73686F72 		.ascii	"short unsigned int\000"
+ 2613      7420756E 
+ 2613      7369676E 
+ 2613      65642069 
+ 2613      6E7400
+ 2614              	.LASF39:
+ 2615 122a 4359424C 		.ascii	"CYBLE_EVT_GAP_OOB_GENERATED_NOTIFICATION\000"
+ 2615      455F4556 
+ 2615      545F4741 
+ 2615      505F4F4F 
+ 2615      425F4745 
+ 2616              	.LASF175:
+ 2617 1253 68616E64 		.ascii	"handleValPair\000"
+ 2617      6C655661 
+ 2617      6C506169 
+ 2617      7200
+ 2618              	.LASF174:
+ 2619 1261 636F6E6E 		.ascii	"connHandle\000"
+ 2619      48616E64 
+ 2619      6C6500
+ 2620              	.LASF130:
+ 2621 126c 4359424C 		.ascii	"CYBLE_BLESS_STATE_EVENT_CLOSE\000"
+ 2621      455F424C 
+ 2621      4553535F 
+ 2621      53544154 
+ 2621      455F4556 
+ 2622              	.LASF163:
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUMPGnq.s 			page 67
+
+
+ 2623 128a 70616972 		.ascii	"pairingProperties\000"
+ 2623      696E6750 
+ 2623      726F7065 
+ 2623      72746965 
+ 2623      7300
+ 2624              	.LASF91:
+ 2625 129c 4359424C 		.ascii	"CYBLE_ERROR_INVALID_OPERATION\000"
+ 2625      455F4552 
+ 2625      524F525F 
+ 2625      494E5641 
+ 2625      4C49445F 
+ 2626              	.LASF143:
+ 2627 12ba 4359424C 		.ascii	"CYBLE_GAP_AUTH_ERROR_AUTHENTICATION_REQ_NOT_MET\000"
+ 2627      455F4741 
+ 2627      505F4155 
+ 2627      54485F45 
+ 2627      52524F52 
+ 2628              	.LASF51:
+ 2629 12ea 4359424C 		.ascii	"CYBLE_EVT_GATTS_XCNHG_MTU_REQ\000"
+ 2629      455F4556 
+ 2629      545F4741 
+ 2629      5454535F 
+ 2629      58434E48 
+ 2630              	.LASF194:
+ 2631 1308 6576656E 		.ascii	"eventParam\000"
+ 2631      74506172 
+ 2631      616D00
+ 2632              	.LASF93:
+ 2633 1313 4359424C 		.ascii	"CYBLE_ERROR_INSUFFICIENT_RESOURCES\000"
+ 2633      455F4552 
+ 2633      524F525F 
+ 2633      494E5355 
+ 2633      46464943 
+ 2634              	.LASF132:
+ 2635 1336 4359424C 		.ascii	"CYBLE_BLESS_STATE_ECO_ON\000"
+ 2635      455F424C 
+ 2635      4553535F 
+ 2635      53544154 
+ 2635      455F4543 
+ 2636              	.LASF192:
+ 2637 134f 4359424C 		.ascii	"CYBLE_STATE_T\000"
+ 2637      455F5354 
+ 2637      4154455F 
+ 2637      5400
+ 2638              	.LASF213:
+ 2639 135d 443A5C44 		.ascii	"D:\\Documents\\PSoC Creator\\Workspace\\BLE_HID_Key"
+ 2639      6F63756D 
+ 2639      656E7473 
+ 2639      5C50536F 
+ 2639      43204372 
+ 2640 138c 626F6172 		.ascii	"board01.cydsn\000"
+ 2640      6430312E 
+ 2640      63796473 
+ 2640      6E00
+ 2641              	.LASF58:
+ 2642 139a 4359424C 		.ascii	"CYBLE_EVT_GATTC_READ_BLOB_RSP\000"
+ 2642      455F4556 
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUMPGnq.s 			page 68
+
+
+ 2642      545F4741 
+ 2642      5454435F 
+ 2642      52454144 
+ 2643              	.LASF144:
+ 2644 13b8 4359424C 		.ascii	"CYBLE_GAP_AUTH_ERROR_CONFIRM_VALUE_NOT_MATCH\000"
+ 2644      455F4741 
+ 2644      505F4155 
+ 2644      54485F45 
+ 2644      52524F52 
+ 2645              	.LASF176:
+ 2646 13e5 4359424C 		.ascii	"CYBLE_GATTS_WRITE_REQ_PARAM_T\000"
+ 2646      455F4741 
+ 2646      5454535F 
+ 2646      57524954 
+ 2646      455F5245 
+ 2647              	.LASF115:
+ 2648 1403 4359424C 		.ascii	"CYBLE_ERROR_CONTROLLER_BUSY\000"
+ 2648      455F4552 
+ 2648      524F525F 
+ 2648      434F4E54 
+ 2648      524F4C4C 
+ 2649              	.LASF133:
+ 2650 141f 4359424C 		.ascii	"CYBLE_BLESS_STATE_ECO_STABLE\000"
+ 2650      455F424C 
+ 2650      4553535F 
+ 2650      53544154 
+ 2650      455F4543 
+ 2651              	.LASF111:
+ 2652 143c 4359424C 		.ascii	"CYBLE_ERROR_MIC_AUTH_FAILED\000"
+ 2652      455F4552 
+ 2652      524F525F 
+ 2652      4D49435F 
+ 2652      41555448 
+ 2653              	.LASF104:
+ 2654 1458 4359424C 		.ascii	"CYBLE_ERROR_L2CAP_PSM_NOT_REGISTERED\000"
+ 2654      455F4552 
+ 2654      524F525F 
+ 2654      4C324341 
+ 2654      505F5053 
+ 2655              	.LASF189:
+ 2656 147d 4359424C 		.ascii	"CYBLE_STATE_CONNECTED\000"
+ 2656      455F5354 
+ 2656      4154455F 
+ 2656      434F4E4E 
+ 2656      45435445 
+ 2657              	.LASF141:
+ 2658 1493 4359424C 		.ascii	"CYBLE_GAP_AUTH_ERROR_PASSKEY_ENTRY_FAILED\000"
+ 2658      455F4741 
+ 2658      505F4155 
+ 2658      54485F45 
+ 2658      52524F52 
+ 2659              	.LASF125:
+ 2660 14bd 4359424C 		.ascii	"CYBLE_BLESS_DEEPSLEEP\000"
+ 2660      455F424C 
+ 2660      4553535F 
+ 2660      44454550 
+ 2660      534C4545 
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUMPGnq.s 			page 69
+
+
+ 2661              	.LASF56:
+ 2662 14d3 4359424C 		.ascii	"CYBLE_EVT_GATTC_FIND_BY_TYPE_VALUE_RSP\000"
+ 2662      455F4556 
+ 2662      545F4741 
+ 2662      5454435F 
+ 2662      46494E44 
+ 2663              	.LASF98:
+ 2664 14fa 4359424C 		.ascii	"CYBLE_ERROR_GAP_ROLE\000"
+ 2664      455F4552 
+ 2664      524F525F 
+ 2664      4741505F 
+ 2664      524F4C45 
+ 2665              	.LASF36:
+ 2666 150f 4359424C 		.ascii	"CYBLE_EVT_GAP_KEYINFO_EXCHNGE_CMPLT\000"
+ 2666      455F4556 
+ 2666      545F4741 
+ 2666      505F4B45 
+ 2666      59494E46 
+ 2667              	.LASF166:
+ 2668 1533 62644861 		.ascii	"bdHandle\000"
+ 2668      6E646C65 
+ 2668      00
+ 2669              	.LASF84:
+ 2670 153c 4359424C 		.ascii	"CYBLE_EVT_PENDING_FLASH_WRITE\000"
+ 2670      455F4556 
+ 2670      545F5045 
+ 2670      4E44494E 
+ 2670      475F464C 
+ 2671              	.LASF199:
+ 2672 155a 54696D65 		.ascii	"Timer_Interrupt\000"
+ 2672      725F496E 
+ 2672      74657272 
+ 2672      75707400 
+ 2673              	.LASF74:
+ 2674 156a 4359424C 		.ascii	"CYBLE_EVT_L2CAP_CONN_PARAM_UPDATE_RSP\000"
+ 2674      455F4556 
+ 2674      545F4C32 
+ 2674      4341505F 
+ 2674      434F4E4E 
+ 2675              	.LASF205:
+ 2676 1590 6D61696E 		.ascii	"main\000"
+ 2676      00
+ 2677              	.LASF123:
+ 2678 1595 4359424C 		.ascii	"CYBLE_BLESS_ACTIVE\000"
+ 2678      455F424C 
+ 2678      4553535F 
+ 2678      41435449 
+ 2678      564500
+ 2679              	.LASF41:
+ 2680 15a8 4359424C 		.ascii	"CYBLE_EVT_GAP_ENHANCE_CONN_COMPLETE\000"
+ 2680      455F4556 
+ 2680      545F4741 
+ 2680      505F454E 
+ 2680      48414E43 
+ 2681              	.LASF177:
+ 2682 15cc 4359424C 		.ascii	"CYBLE_DIS_MANUFACTURER_NAME\000"
+ 2682      455F4449 
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUMPGnq.s 			page 70
+
+
+ 2682      535F4D41 
+ 2682      4E554641 
+ 2682      43545552 
+ 2683              	.LASF196:
+ 2684 15e8 6C6F6361 		.ascii	"localAddr\000"
+ 2684      6C416464 
+ 2684      7200
+ 2685              	.LASF50:
+ 2686 15f2 4359424C 		.ascii	"CYBLE_EVT_GATT_DISCONNECT_IND\000"
+ 2686      455F4556 
+ 2686      545F4741 
+ 2686      54545F44 
+ 2686      4953434F 
+ 2687              	.LASF108:
+ 2688 1610 4359424C 		.ascii	"CYBLE_ERROR_GATT_DB_INVALID_ATTR_HANDLE\000"
+ 2688      455F4552 
+ 2688      524F525F 
+ 2688      47415454 
+ 2688      5F44425F 
+ 2689              	.LASF87:
+ 2690 1638 4359424C 		.ascii	"CYBLE_EVT_FLASH_CORRUPT\000"
+ 2690      455F4556 
+ 2690      545F464C 
+ 2690      4153485F 
+ 2690      434F5252 
+ 2691              	.LASF204:
+ 2692 1650 696E7465 		.ascii	"interruptStatus\000"
+ 2692      72727570 
+ 2692      74537461 
+ 2692      74757300 
+ 2693              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

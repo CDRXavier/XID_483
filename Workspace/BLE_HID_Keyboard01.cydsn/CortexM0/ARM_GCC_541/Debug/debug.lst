@@ -1,0 +1,923 @@
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmDwNiH.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m0
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"debug.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.ShowValue,"ax",%progbits
+  20              		.align	2
+  21              		.global	ShowValue
+  22              		.code	16
+  23              		.thumb_func
+  24              		.type	ShowValue, %function
+  25              	ShowValue:
+  26              	.LFB36:
+  27              		.file 1 "debug.c"
+   1:debug.c       **** /*******************************************************************************
+   2:debug.c       **** * File Name: debug.c
+   3:debug.c       **** *
+   4:debug.c       **** * Version: 1.0
+   5:debug.c       **** *
+   6:debug.c       **** * Description:
+   7:debug.c       **** *  This file contains functions for printf functionality.
+   8:debug.c       **** *
+   9:debug.c       **** * Hardware Dependency:
+  10:debug.c       **** *  CY8CKIT-042 BLE
+  11:debug.c       **** * 
+  12:debug.c       **** ********************************************************************************
+  13:debug.c       **** * Copyright 2016, Cypress Semiconductor Corporation.  All rights reserved.
+  14:debug.c       **** * You may use this file only in accordance with the license, terms, conditions,
+  15:debug.c       **** * disclaimers, and limitations in the end user license agreement accompanying
+  16:debug.c       **** * the software package with which this file was provided.
+  17:debug.c       **** *******************************************************************************/
+  18:debug.c       **** 
+  19:debug.c       **** #include "common.h"
+  20:debug.c       **** 
+  21:debug.c       **** #if (DEBUG_UART_ENABLED == ENABLED)
+  22:debug.c       **** 
+  23:debug.c       **** #if defined(__ARMCC_VERSION)
+  24:debug.c       ****     
+  25:debug.c       **** /* For MDK/RVDS compiler revise fputc function for printf functionality */
+  26:debug.c       **** struct __FILE 
+  27:debug.c       **** {
+  28:debug.c       ****     int handle;  
+  29:debug.c       **** };
+  30:debug.c       **** 
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmDwNiH.s 			page 2
+
+
+  31:debug.c       **** enum 
+  32:debug.c       **** {
+  33:debug.c       ****     STDIN_HANDLE,
+  34:debug.c       ****     STDOUT_HANDLE,
+  35:debug.c       ****     STDERR_HANDLE
+  36:debug.c       **** };
+  37:debug.c       **** 
+  38:debug.c       **** FILE __stdin = {STDIN_HANDLE};
+  39:debug.c       **** FILE __stdout = {STDOUT_HANDLE};
+  40:debug.c       **** FILE __stderr = {STDERR_HANDLE};
+  41:debug.c       **** 
+  42:debug.c       **** int fputc(int ch, FILE *file) 
+  43:debug.c       **** {
+  44:debug.c       ****     int ret = EOF;
+  45:debug.c       **** 
+  46:debug.c       ****     switch( file->handle )
+  47:debug.c       ****     {
+  48:debug.c       ****         case STDOUT_HANDLE:
+  49:debug.c       ****             UART_DEB_UartPutChar(ch);
+  50:debug.c       ****             ret = ch ;
+  51:debug.c       ****             break ;
+  52:debug.c       **** 
+  53:debug.c       ****         case STDERR_HANDLE:
+  54:debug.c       ****             ret = ch ;
+  55:debug.c       ****             break ;
+  56:debug.c       **** 
+  57:debug.c       ****         default:
+  58:debug.c       ****             file = file;
+  59:debug.c       ****             break ;
+  60:debug.c       ****     }
+  61:debug.c       ****     return ret ;
+  62:debug.c       **** }
+  63:debug.c       **** 
+  64:debug.c       **** #elif defined (__ICCARM__)      /* IAR */
+  65:debug.c       **** 
+  66:debug.c       **** /* For IAR compiler revise __write() function for printf functionality */
+  67:debug.c       **** size_t __write(int handle, const unsigned char * buffer, size_t size)
+  68:debug.c       **** {
+  69:debug.c       ****     size_t nChars = 0;
+  70:debug.c       **** 
+  71:debug.c       ****     if (buffer == 0)
+  72:debug.c       ****     {
+  73:debug.c       ****         /*
+  74:debug.c       ****          * This means that we should flush internal buffers.  Since we
+  75:debug.c       ****          * don't we just return.  (Remember, "handle" == -1 means that all
+  76:debug.c       ****          * handles should be flushed.)
+  77:debug.c       ****          */
+  78:debug.c       ****         return (0);
+  79:debug.c       ****     }
+  80:debug.c       **** 
+  81:debug.c       ****     for (/* Empty */; size != 0; --size)
+  82:debug.c       ****     {
+  83:debug.c       ****         UART_DEB_UartPutChar(*buffer++);
+  84:debug.c       ****         ++nChars;
+  85:debug.c       ****     }
+  86:debug.c       **** 
+  87:debug.c       ****     return (nChars);
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmDwNiH.s 			page 3
+
+
+  88:debug.c       **** }
+  89:debug.c       **** 
+  90:debug.c       **** #else  /* (__GNUC__)  GCC */
+  91:debug.c       **** 
+  92:debug.c       **** /* For GCC compiler revise _write() function for printf functionality */
+  93:debug.c       **** int _write(int file, char *ptr, int len)
+  94:debug.c       **** {
+  95:debug.c       ****     int i;
+  96:debug.c       ****     file = file;
+  97:debug.c       ****     for (i = 0; i < len; i++)
+  98:debug.c       ****     {
+  99:debug.c       ****         UART_DEB_UartPutChar(*ptr++);
+ 100:debug.c       ****     }
+ 101:debug.c       ****     return len;
+ 102:debug.c       **** }
+ 103:debug.c       **** 
+ 104:debug.c       **** 
+ 105:debug.c       **** #endif  /* (__ARMCC_VERSION) */   
+ 106:debug.c       **** 
+ 107:debug.c       **** #endif /* DEBUG_UART_ENABLED == ENABLED */
+ 108:debug.c       **** 
+ 109:debug.c       **** void ShowValue(CYBLE_GATT_VALUE_T *value)
+ 110:debug.c       **** {
+  28              		.loc 1 110 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 16
+  31              		@ frame_needed = 1, uses_anonymous_args = 0
+  32 0000 80B5     		push	{r7, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 7, -8
+  35              		.cfi_offset 14, -4
+  36 0002 84B0     		sub	sp, sp, #16
+  37              		.cfi_def_cfa_offset 24
+  38 0004 00AF     		add	r7, sp, #0
+  39              		.cfi_def_cfa_register 7
+  40 0006 7860     		str	r0, [r7, #4]
+ 111:debug.c       ****     int16 i;
+ 112:debug.c       ****     
+ 113:debug.c       ****     for(i = 0; i < value->len; i++)
+  41              		.loc 1 113 0
+  42 0008 0E23     		movs	r3, #14
+  43 000a FB18     		adds	r3, r7, r3
+  44 000c 0022     		movs	r2, #0
+  45 000e 1A80     		strh	r2, [r3]
+  46 0010 09E0     		b	.L2
+  47              	.L3:
+  48              		.loc 1 113 0 is_stmt 0 discriminator 3
+  49 0012 0E23     		movs	r3, #14
+  50 0014 FB18     		adds	r3, r7, r3
+  51 0016 0022     		movs	r2, #0
+  52 0018 9B5E     		ldrsh	r3, [r3, r2]
+  53 001a 9BB2     		uxth	r3, r3
+  54 001c 0133     		adds	r3, r3, #1
+  55 001e 9AB2     		uxth	r2, r3
+  56 0020 0E23     		movs	r3, #14
+  57 0022 FB18     		adds	r3, r7, r3
+  58 0024 1A80     		strh	r2, [r3]
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmDwNiH.s 			page 4
+
+
+  59              	.L2:
+  60              		.loc 1 113 0 discriminator 1
+  61 0026 0E23     		movs	r3, #14
+  62 0028 FB18     		adds	r3, r7, r3
+  63 002a 0022     		movs	r2, #0
+  64 002c 9B5E     		ldrsh	r3, [r3, r2]
+  65 002e 7A68     		ldr	r2, [r7, #4]
+  66 0030 9288     		ldrh	r2, [r2, #4]
+  67 0032 9342     		cmp	r3, r2
+  68 0034 EDDB     		blt	.L3
+ 114:debug.c       ****     {
+ 115:debug.c       ****         DBG_PRINTF("%2.2x ", value->val[i]);
+ 116:debug.c       ****     }
+ 117:debug.c       ****     DBG_PRINTF("\r\n");
+ 118:debug.c       **** }
+  69              		.loc 1 118 0 is_stmt 1
+  70 0036 C046     		nop
+  71 0038 BD46     		mov	sp, r7
+  72 003a 04B0     		add	sp, sp, #16
+  73              		@ sp needed
+  74 003c 80BD     		pop	{r7, pc}
+  75              		.cfi_endproc
+  76              	.LFE36:
+  77              		.size	ShowValue, .-ShowValue
+  78 003e C046     		.section	.text.Set32ByPtr,"ax",%progbits
+  79              		.align	2
+  80              		.global	Set32ByPtr
+  81              		.code	16
+  82              		.thumb_func
+  83              		.type	Set32ByPtr, %function
+  84              	Set32ByPtr:
+  85              	.LFB37:
+ 119:debug.c       **** 
+ 120:debug.c       **** 
+ 121:debug.c       **** void Set32ByPtr(uint8 ptr[], uint32 value)
+ 122:debug.c       **** {
+  86              		.loc 1 122 0
+  87              		.cfi_startproc
+  88              		@ args = 0, pretend = 0, frame = 8
+  89              		@ frame_needed = 1, uses_anonymous_args = 0
+  90 0000 80B5     		push	{r7, lr}
+  91              		.cfi_def_cfa_offset 8
+  92              		.cfi_offset 7, -8
+  93              		.cfi_offset 14, -4
+  94 0002 82B0     		sub	sp, sp, #8
+  95              		.cfi_def_cfa_offset 16
+  96 0004 00AF     		add	r7, sp, #0
+  97              		.cfi_def_cfa_register 7
+  98 0006 7860     		str	r0, [r7, #4]
+  99 0008 3960     		str	r1, [r7]
+ 123:debug.c       ****     ptr[0u] = (uint8) value;
+ 100              		.loc 1 123 0
+ 101 000a 3B68     		ldr	r3, [r7]
+ 102 000c DAB2     		uxtb	r2, r3
+ 103 000e 7B68     		ldr	r3, [r7, #4]
+ 104 0010 1A70     		strb	r2, [r3]
+ 124:debug.c       ****     ptr[1u] = (uint8) (value >> 8u);    
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmDwNiH.s 			page 5
+
+
+ 105              		.loc 1 124 0
+ 106 0012 7B68     		ldr	r3, [r7, #4]
+ 107 0014 0133     		adds	r3, r3, #1
+ 108 0016 3A68     		ldr	r2, [r7]
+ 109 0018 120A     		lsrs	r2, r2, #8
+ 110 001a D2B2     		uxtb	r2, r2
+ 111 001c 1A70     		strb	r2, [r3]
+ 125:debug.c       ****     ptr[2u] = (uint8) (value >> 16u);    
+ 112              		.loc 1 125 0
+ 113 001e 7B68     		ldr	r3, [r7, #4]
+ 114 0020 0233     		adds	r3, r3, #2
+ 115 0022 3A68     		ldr	r2, [r7]
+ 116 0024 120C     		lsrs	r2, r2, #16
+ 117 0026 D2B2     		uxtb	r2, r2
+ 118 0028 1A70     		strb	r2, [r3]
+ 126:debug.c       ****     ptr[3u] = (uint8) (value >> 24u);
+ 119              		.loc 1 126 0
+ 120 002a 7B68     		ldr	r3, [r7, #4]
+ 121 002c 0333     		adds	r3, r3, #3
+ 122 002e 3A68     		ldr	r2, [r7]
+ 123 0030 120E     		lsrs	r2, r2, #24
+ 124 0032 D2B2     		uxtb	r2, r2
+ 125 0034 1A70     		strb	r2, [r3]
+ 127:debug.c       **** }
+ 126              		.loc 1 127 0
+ 127 0036 C046     		nop
+ 128 0038 BD46     		mov	sp, r7
+ 129 003a 02B0     		add	sp, sp, #8
+ 130              		@ sp needed
+ 131 003c 80BD     		pop	{r7, pc}
+ 132              		.cfi_endproc
+ 133              	.LFE37:
+ 134              		.size	Set32ByPtr, .-Set32ByPtr
+ 135 003e C046     		.section	.text.ShowError,"ax",%progbits
+ 136              		.align	2
+ 137              		.global	ShowError
+ 138              		.code	16
+ 139              		.thumb_func
+ 140              		.type	ShowError, %function
+ 141              	ShowError:
+ 142              	.LFB38:
+ 128:debug.c       **** 
+ 129:debug.c       **** 
+ 130:debug.c       **** /*******************************************************************************
+ 131:debug.c       **** * Function Name: ShowError()
+ 132:debug.c       **** ********************************************************************************
+ 133:debug.c       **** *
+ 134:debug.c       **** * Summary:
+ 135:debug.c       **** *   Shows error condition: Turn On all leds - white colour will indicate error.
+ 136:debug.c       **** *
+ 137:debug.c       **** *******************************************************************************/
+ 138:debug.c       **** void ShowError(void)
+ 139:debug.c       **** {
+ 143              		.loc 1 139 0
+ 144              		.cfi_startproc
+ 145              		@ args = 0, pretend = 0, frame = 0
+ 146              		@ frame_needed = 1, uses_anonymous_args = 0
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmDwNiH.s 			page 6
+
+
+ 147 0000 80B5     		push	{r7, lr}
+ 148              		.cfi_def_cfa_offset 8
+ 149              		.cfi_offset 7, -8
+ 150              		.cfi_offset 14, -4
+ 151 0002 00AF     		add	r7, sp, #0
+ 152              		.cfi_def_cfa_register 7
+ 140:debug.c       ****     Disconnect_LED_Write(LED_ON);
+ 153              		.loc 1 140 0
+ 154 0004 0020     		movs	r0, #0
+ 155 0006 FFF7FEFF 		bl	Disconnect_LED_Write
+ 141:debug.c       ****     Advertising_LED_Write(LED_ON);
+ 156              		.loc 1 141 0
+ 157 000a 0020     		movs	r0, #0
+ 158 000c FFF7FEFF 		bl	Advertising_LED_Write
+ 142:debug.c       ****     CapsLock_LED_Write(LED_ON);
+ 159              		.loc 1 142 0
+ 160 0010 0020     		movs	r0, #0
+ 161 0012 FFF7FEFF 		bl	CapsLock_LED_Write
+ 143:debug.c       ****     /* Halt CPU in Debug mode */
+ 144:debug.c       ****     CYASSERT(0u != 0u);
+ 162              		.loc 1 144 0
+ 163 0016 0020     		movs	r0, #0
+ 164 0018 FFF7FEFF 		bl	CyHalt
+ 145:debug.c       **** }
+ 165              		.loc 1 145 0
+ 166 001c C046     		nop
+ 167 001e BD46     		mov	sp, r7
+ 168              		@ sp needed
+ 169 0020 80BD     		pop	{r7, pc}
+ 170              		.cfi_endproc
+ 171              	.LFE38:
+ 172              		.size	ShowError, .-ShowError
+ 173 0022 C046     		.text
+ 174              	.Letext0:
+ 175              		.file 2 "Generated_Source\\PSoC4/cytypes.h"
+ 176              		.file 3 "Generated_Source\\PSoC4/BLE_StackGatt.h"
+ 177              		.section	.debug_info,"",%progbits
+ 178              	.Ldebug_info0:
+ 179 0000 77010000 		.4byte	0x177
+ 180 0004 0400     		.2byte	0x4
+ 181 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 182 000a 04       		.byte	0x4
+ 183 000b 01       		.uleb128 0x1
+ 184 000c AE000000 		.4byte	.LASF23
+ 185 0010 0C       		.byte	0xc
+ 186 0011 3C010000 		.4byte	.LASF24
+ 187 0015 00000000 		.4byte	.LASF25
+ 188 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 189 001d 00000000 		.4byte	0
+ 190 0021 00000000 		.4byte	.Ldebug_line0
+ 191 0025 02       		.uleb128 0x2
+ 192 0026 01       		.byte	0x1
+ 193 0027 06       		.byte	0x6
+ 194 0028 C4010000 		.4byte	.LASF0
+ 195 002c 02       		.uleb128 0x2
+ 196 002d 01       		.byte	0x1
+ 197 002e 08       		.byte	0x8
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmDwNiH.s 			page 7
+
+
+ 198 002f 88000000 		.4byte	.LASF1
+ 199 0033 02       		.uleb128 0x2
+ 200 0034 02       		.byte	0x2
+ 201 0035 05       		.byte	0x5
+ 202 0036 95010000 		.4byte	.LASF2
+ 203 003a 02       		.uleb128 0x2
+ 204 003b 02       		.byte	0x2
+ 205 003c 07       		.byte	0x7
+ 206 003d 43000000 		.4byte	.LASF3
+ 207 0041 02       		.uleb128 0x2
+ 208 0042 04       		.byte	0x4
+ 209 0043 05       		.byte	0x5
+ 210 0044 A5010000 		.4byte	.LASF4
+ 211 0048 02       		.uleb128 0x2
+ 212 0049 04       		.byte	0x4
+ 213 004a 07       		.byte	0x7
+ 214 004b 9C000000 		.4byte	.LASF5
+ 215 004f 02       		.uleb128 0x2
+ 216 0050 08       		.byte	0x8
+ 217 0051 05       		.byte	0x5
+ 218 0052 87010000 		.4byte	.LASF6
+ 219 0056 02       		.uleb128 0x2
+ 220 0057 08       		.byte	0x8
+ 221 0058 07       		.byte	0x7
+ 222 0059 71000000 		.4byte	.LASF7
+ 223 005d 03       		.uleb128 0x3
+ 224 005e 04       		.byte	0x4
+ 225 005f 05       		.byte	0x5
+ 226 0060 696E7400 		.ascii	"int\000"
+ 227 0064 02       		.uleb128 0x2
+ 228 0065 04       		.byte	0x4
+ 229 0066 07       		.byte	0x7
+ 230 0067 6C010000 		.4byte	.LASF8
+ 231 006b 04       		.uleb128 0x4
+ 232 006c 9F010000 		.4byte	.LASF9
+ 233 0070 02       		.byte	0x2
+ 234 0071 D201     		.2byte	0x1d2
+ 235 0073 2C000000 		.4byte	0x2c
+ 236 0077 04       		.uleb128 0x4
+ 237 0078 4B010000 		.4byte	.LASF10
+ 238 007c 02       		.byte	0x2
+ 239 007d D301     		.2byte	0x1d3
+ 240 007f 3A000000 		.4byte	0x3a
+ 241 0083 04       		.uleb128 0x4
+ 242 0084 52010000 		.4byte	.LASF11
+ 243 0088 02       		.byte	0x2
+ 244 0089 D401     		.2byte	0x1d4
+ 245 008b 48000000 		.4byte	0x48
+ 246 008f 04       		.uleb128 0x4
+ 247 0090 96000000 		.4byte	.LASF12
+ 248 0094 02       		.byte	0x2
+ 249 0095 D601     		.2byte	0x1d6
+ 250 0097 33000000 		.4byte	0x33
+ 251 009b 02       		.uleb128 0x2
+ 252 009c 04       		.byte	0x4
+ 253 009d 04       		.byte	0x4
+ 254 009e 6B000000 		.4byte	.LASF13
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmDwNiH.s 			page 8
+
+
+ 255 00a2 02       		.uleb128 0x2
+ 256 00a3 08       		.byte	0x8
+ 257 00a4 04       		.byte	0x4
+ 258 00a5 44010000 		.4byte	.LASF14
+ 259 00a9 02       		.uleb128 0x2
+ 260 00aa 01       		.byte	0x1
+ 261 00ab 08       		.byte	0x8
+ 262 00ac 79010000 		.4byte	.LASF15
+ 263 00b0 02       		.uleb128 0x2
+ 264 00b1 08       		.byte	0x8
+ 265 00b2 04       		.byte	0x4
+ 266 00b3 B8010000 		.4byte	.LASF16
+ 267 00b7 02       		.uleb128 0x2
+ 268 00b8 04       		.byte	0x4
+ 269 00b9 07       		.byte	0x7
+ 270 00ba 7E010000 		.4byte	.LASF17
+ 271 00be 05       		.uleb128 0x5
+ 272 00bf 04       		.byte	0x4
+ 273 00c0 6B000000 		.4byte	0x6b
+ 274 00c4 06       		.uleb128 0x6
+ 275 00c5 08       		.byte	0x8
+ 276 00c6 03       		.byte	0x3
+ 277 00c7 BE01     		.2byte	0x1be
+ 278 00c9 F5000000 		.4byte	0xf5
+ 279 00cd 07       		.uleb128 0x7
+ 280 00ce 76616C00 		.ascii	"val\000"
+ 281 00d2 03       		.byte	0x3
+ 282 00d3 C101     		.2byte	0x1c1
+ 283 00d5 BE000000 		.4byte	0xbe
+ 284 00d9 00       		.byte	0
+ 285 00da 07       		.uleb128 0x7
+ 286 00db 6C656E00 		.ascii	"len\000"
+ 287 00df 03       		.byte	0x3
+ 288 00e0 C401     		.2byte	0x1c4
+ 289 00e2 77000000 		.4byte	0x77
+ 290 00e6 04       		.byte	0x4
+ 291 00e7 08       		.uleb128 0x8
+ 292 00e8 D0010000 		.4byte	.LASF18
+ 293 00ec 03       		.byte	0x3
+ 294 00ed CB01     		.2byte	0x1cb
+ 295 00ef 77000000 		.4byte	0x77
+ 296 00f3 06       		.byte	0x6
+ 297 00f4 00       		.byte	0
+ 298 00f5 04       		.uleb128 0x4
+ 299 00f6 59010000 		.4byte	.LASF19
+ 300 00fa 03       		.byte	0x3
+ 301 00fb CD01     		.2byte	0x1cd
+ 302 00fd C4000000 		.4byte	0xc4
+ 303 0101 05       		.uleb128 0x5
+ 304 0102 04       		.byte	0x4
+ 305 0103 F5000000 		.4byte	0xf5
+ 306 0107 09       		.uleb128 0x9
+ 307 0108 61000000 		.4byte	.LASF20
+ 308 010c 01       		.byte	0x1
+ 309 010d 6D       		.byte	0x6d
+ 310 010e 00000000 		.4byte	.LFB36
+ 311 0112 3E000000 		.4byte	.LFE36-.LFB36
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmDwNiH.s 			page 9
+
+
+ 312 0116 01       		.uleb128 0x1
+ 313 0117 9C       		.byte	0x9c
+ 314 0118 37010000 		.4byte	0x137
+ 315 011c 0A       		.uleb128 0xa
+ 316 011d 3D000000 		.4byte	.LASF22
+ 317 0121 01       		.byte	0x1
+ 318 0122 6D       		.byte	0x6d
+ 319 0123 01010000 		.4byte	0x101
+ 320 0127 02       		.uleb128 0x2
+ 321 0128 91       		.byte	0x91
+ 322 0129 6C       		.sleb128 -20
+ 323 012a 0B       		.uleb128 0xb
+ 324 012b 6900     		.ascii	"i\000"
+ 325 012d 01       		.byte	0x1
+ 326 012e 6F       		.byte	0x6f
+ 327 012f 8F000000 		.4byte	0x8f
+ 328 0133 02       		.uleb128 0x2
+ 329 0134 91       		.byte	0x91
+ 330 0135 76       		.sleb128 -10
+ 331 0136 00       		.byte	0
+ 332 0137 09       		.uleb128 0x9
+ 333 0138 56000000 		.4byte	.LASF21
+ 334 013c 01       		.byte	0x1
+ 335 013d 79       		.byte	0x79
+ 336 013e 00000000 		.4byte	.LFB37
+ 337 0142 3E000000 		.4byte	.LFE37-.LFB37
+ 338 0146 01       		.uleb128 0x1
+ 339 0147 9C       		.byte	0x9c
+ 340 0148 69010000 		.4byte	0x169
+ 341 014c 0C       		.uleb128 0xc
+ 342 014d 70747200 		.ascii	"ptr\000"
+ 343 0151 01       		.byte	0x1
+ 344 0152 79       		.byte	0x79
+ 345 0153 BE000000 		.4byte	0xbe
+ 346 0157 02       		.uleb128 0x2
+ 347 0158 91       		.byte	0x91
+ 348 0159 74       		.sleb128 -12
+ 349 015a 0A       		.uleb128 0xa
+ 350 015b 3D000000 		.4byte	.LASF22
+ 351 015f 01       		.byte	0x1
+ 352 0160 79       		.byte	0x79
+ 353 0161 83000000 		.4byte	0x83
+ 354 0165 02       		.uleb128 0x2
+ 355 0166 91       		.byte	0x91
+ 356 0167 70       		.sleb128 -16
+ 357 0168 00       		.byte	0
+ 358 0169 0D       		.uleb128 0xd
+ 359 016a AE010000 		.4byte	.LASF26
+ 360 016e 01       		.byte	0x1
+ 361 016f 8A       		.byte	0x8a
+ 362 0170 00000000 		.4byte	.LFB38
+ 363 0174 22000000 		.4byte	.LFE38-.LFB38
+ 364 0178 01       		.uleb128 0x1
+ 365 0179 9C       		.byte	0x9c
+ 366 017a 00       		.byte	0
+ 367              		.section	.debug_abbrev,"",%progbits
+ 368              	.Ldebug_abbrev0:
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmDwNiH.s 			page 10
+
+
+ 369 0000 01       		.uleb128 0x1
+ 370 0001 11       		.uleb128 0x11
+ 371 0002 01       		.byte	0x1
+ 372 0003 25       		.uleb128 0x25
+ 373 0004 0E       		.uleb128 0xe
+ 374 0005 13       		.uleb128 0x13
+ 375 0006 0B       		.uleb128 0xb
+ 376 0007 03       		.uleb128 0x3
+ 377 0008 0E       		.uleb128 0xe
+ 378 0009 1B       		.uleb128 0x1b
+ 379 000a 0E       		.uleb128 0xe
+ 380 000b 55       		.uleb128 0x55
+ 381 000c 17       		.uleb128 0x17
+ 382 000d 11       		.uleb128 0x11
+ 383 000e 01       		.uleb128 0x1
+ 384 000f 10       		.uleb128 0x10
+ 385 0010 17       		.uleb128 0x17
+ 386 0011 00       		.byte	0
+ 387 0012 00       		.byte	0
+ 388 0013 02       		.uleb128 0x2
+ 389 0014 24       		.uleb128 0x24
+ 390 0015 00       		.byte	0
+ 391 0016 0B       		.uleb128 0xb
+ 392 0017 0B       		.uleb128 0xb
+ 393 0018 3E       		.uleb128 0x3e
+ 394 0019 0B       		.uleb128 0xb
+ 395 001a 03       		.uleb128 0x3
+ 396 001b 0E       		.uleb128 0xe
+ 397 001c 00       		.byte	0
+ 398 001d 00       		.byte	0
+ 399 001e 03       		.uleb128 0x3
+ 400 001f 24       		.uleb128 0x24
+ 401 0020 00       		.byte	0
+ 402 0021 0B       		.uleb128 0xb
+ 403 0022 0B       		.uleb128 0xb
+ 404 0023 3E       		.uleb128 0x3e
+ 405 0024 0B       		.uleb128 0xb
+ 406 0025 03       		.uleb128 0x3
+ 407 0026 08       		.uleb128 0x8
+ 408 0027 00       		.byte	0
+ 409 0028 00       		.byte	0
+ 410 0029 04       		.uleb128 0x4
+ 411 002a 16       		.uleb128 0x16
+ 412 002b 00       		.byte	0
+ 413 002c 03       		.uleb128 0x3
+ 414 002d 0E       		.uleb128 0xe
+ 415 002e 3A       		.uleb128 0x3a
+ 416 002f 0B       		.uleb128 0xb
+ 417 0030 3B       		.uleb128 0x3b
+ 418 0031 05       		.uleb128 0x5
+ 419 0032 49       		.uleb128 0x49
+ 420 0033 13       		.uleb128 0x13
+ 421 0034 00       		.byte	0
+ 422 0035 00       		.byte	0
+ 423 0036 05       		.uleb128 0x5
+ 424 0037 0F       		.uleb128 0xf
+ 425 0038 00       		.byte	0
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmDwNiH.s 			page 11
+
+
+ 426 0039 0B       		.uleb128 0xb
+ 427 003a 0B       		.uleb128 0xb
+ 428 003b 49       		.uleb128 0x49
+ 429 003c 13       		.uleb128 0x13
+ 430 003d 00       		.byte	0
+ 431 003e 00       		.byte	0
+ 432 003f 06       		.uleb128 0x6
+ 433 0040 13       		.uleb128 0x13
+ 434 0041 01       		.byte	0x1
+ 435 0042 0B       		.uleb128 0xb
+ 436 0043 0B       		.uleb128 0xb
+ 437 0044 3A       		.uleb128 0x3a
+ 438 0045 0B       		.uleb128 0xb
+ 439 0046 3B       		.uleb128 0x3b
+ 440 0047 05       		.uleb128 0x5
+ 441 0048 01       		.uleb128 0x1
+ 442 0049 13       		.uleb128 0x13
+ 443 004a 00       		.byte	0
+ 444 004b 00       		.byte	0
+ 445 004c 07       		.uleb128 0x7
+ 446 004d 0D       		.uleb128 0xd
+ 447 004e 00       		.byte	0
+ 448 004f 03       		.uleb128 0x3
+ 449 0050 08       		.uleb128 0x8
+ 450 0051 3A       		.uleb128 0x3a
+ 451 0052 0B       		.uleb128 0xb
+ 452 0053 3B       		.uleb128 0x3b
+ 453 0054 05       		.uleb128 0x5
+ 454 0055 49       		.uleb128 0x49
+ 455 0056 13       		.uleb128 0x13
+ 456 0057 38       		.uleb128 0x38
+ 457 0058 0B       		.uleb128 0xb
+ 458 0059 00       		.byte	0
+ 459 005a 00       		.byte	0
+ 460 005b 08       		.uleb128 0x8
+ 461 005c 0D       		.uleb128 0xd
+ 462 005d 00       		.byte	0
+ 463 005e 03       		.uleb128 0x3
+ 464 005f 0E       		.uleb128 0xe
+ 465 0060 3A       		.uleb128 0x3a
+ 466 0061 0B       		.uleb128 0xb
+ 467 0062 3B       		.uleb128 0x3b
+ 468 0063 05       		.uleb128 0x5
+ 469 0064 49       		.uleb128 0x49
+ 470 0065 13       		.uleb128 0x13
+ 471 0066 38       		.uleb128 0x38
+ 472 0067 0B       		.uleb128 0xb
+ 473 0068 00       		.byte	0
+ 474 0069 00       		.byte	0
+ 475 006a 09       		.uleb128 0x9
+ 476 006b 2E       		.uleb128 0x2e
+ 477 006c 01       		.byte	0x1
+ 478 006d 3F       		.uleb128 0x3f
+ 479 006e 19       		.uleb128 0x19
+ 480 006f 03       		.uleb128 0x3
+ 481 0070 0E       		.uleb128 0xe
+ 482 0071 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmDwNiH.s 			page 12
+
+
+ 483 0072 0B       		.uleb128 0xb
+ 484 0073 3B       		.uleb128 0x3b
+ 485 0074 0B       		.uleb128 0xb
+ 486 0075 27       		.uleb128 0x27
+ 487 0076 19       		.uleb128 0x19
+ 488 0077 11       		.uleb128 0x11
+ 489 0078 01       		.uleb128 0x1
+ 490 0079 12       		.uleb128 0x12
+ 491 007a 06       		.uleb128 0x6
+ 492 007b 40       		.uleb128 0x40
+ 493 007c 18       		.uleb128 0x18
+ 494 007d 9742     		.uleb128 0x2117
+ 495 007f 19       		.uleb128 0x19
+ 496 0080 01       		.uleb128 0x1
+ 497 0081 13       		.uleb128 0x13
+ 498 0082 00       		.byte	0
+ 499 0083 00       		.byte	0
+ 500 0084 0A       		.uleb128 0xa
+ 501 0085 05       		.uleb128 0x5
+ 502 0086 00       		.byte	0
+ 503 0087 03       		.uleb128 0x3
+ 504 0088 0E       		.uleb128 0xe
+ 505 0089 3A       		.uleb128 0x3a
+ 506 008a 0B       		.uleb128 0xb
+ 507 008b 3B       		.uleb128 0x3b
+ 508 008c 0B       		.uleb128 0xb
+ 509 008d 49       		.uleb128 0x49
+ 510 008e 13       		.uleb128 0x13
+ 511 008f 02       		.uleb128 0x2
+ 512 0090 18       		.uleb128 0x18
+ 513 0091 00       		.byte	0
+ 514 0092 00       		.byte	0
+ 515 0093 0B       		.uleb128 0xb
+ 516 0094 34       		.uleb128 0x34
+ 517 0095 00       		.byte	0
+ 518 0096 03       		.uleb128 0x3
+ 519 0097 08       		.uleb128 0x8
+ 520 0098 3A       		.uleb128 0x3a
+ 521 0099 0B       		.uleb128 0xb
+ 522 009a 3B       		.uleb128 0x3b
+ 523 009b 0B       		.uleb128 0xb
+ 524 009c 49       		.uleb128 0x49
+ 525 009d 13       		.uleb128 0x13
+ 526 009e 02       		.uleb128 0x2
+ 527 009f 18       		.uleb128 0x18
+ 528 00a0 00       		.byte	0
+ 529 00a1 00       		.byte	0
+ 530 00a2 0C       		.uleb128 0xc
+ 531 00a3 05       		.uleb128 0x5
+ 532 00a4 00       		.byte	0
+ 533 00a5 03       		.uleb128 0x3
+ 534 00a6 08       		.uleb128 0x8
+ 535 00a7 3A       		.uleb128 0x3a
+ 536 00a8 0B       		.uleb128 0xb
+ 537 00a9 3B       		.uleb128 0x3b
+ 538 00aa 0B       		.uleb128 0xb
+ 539 00ab 49       		.uleb128 0x49
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmDwNiH.s 			page 13
+
+
+ 540 00ac 13       		.uleb128 0x13
+ 541 00ad 02       		.uleb128 0x2
+ 542 00ae 18       		.uleb128 0x18
+ 543 00af 00       		.byte	0
+ 544 00b0 00       		.byte	0
+ 545 00b1 0D       		.uleb128 0xd
+ 546 00b2 2E       		.uleb128 0x2e
+ 547 00b3 00       		.byte	0
+ 548 00b4 3F       		.uleb128 0x3f
+ 549 00b5 19       		.uleb128 0x19
+ 550 00b6 03       		.uleb128 0x3
+ 551 00b7 0E       		.uleb128 0xe
+ 552 00b8 3A       		.uleb128 0x3a
+ 553 00b9 0B       		.uleb128 0xb
+ 554 00ba 3B       		.uleb128 0x3b
+ 555 00bb 0B       		.uleb128 0xb
+ 556 00bc 27       		.uleb128 0x27
+ 557 00bd 19       		.uleb128 0x19
+ 558 00be 11       		.uleb128 0x11
+ 559 00bf 01       		.uleb128 0x1
+ 560 00c0 12       		.uleb128 0x12
+ 561 00c1 06       		.uleb128 0x6
+ 562 00c2 40       		.uleb128 0x40
+ 563 00c3 18       		.uleb128 0x18
+ 564 00c4 9642     		.uleb128 0x2116
+ 565 00c6 19       		.uleb128 0x19
+ 566 00c7 00       		.byte	0
+ 567 00c8 00       		.byte	0
+ 568 00c9 00       		.byte	0
+ 569              		.section	.debug_aranges,"",%progbits
+ 570 0000 2C000000 		.4byte	0x2c
+ 571 0004 0200     		.2byte	0x2
+ 572 0006 00000000 		.4byte	.Ldebug_info0
+ 573 000a 04       		.byte	0x4
+ 574 000b 00       		.byte	0
+ 575 000c 0000     		.2byte	0
+ 576 000e 0000     		.2byte	0
+ 577 0010 00000000 		.4byte	.LFB36
+ 578 0014 3E000000 		.4byte	.LFE36-.LFB36
+ 579 0018 00000000 		.4byte	.LFB37
+ 580 001c 3E000000 		.4byte	.LFE37-.LFB37
+ 581 0020 00000000 		.4byte	.LFB38
+ 582 0024 22000000 		.4byte	.LFE38-.LFB38
+ 583 0028 00000000 		.4byte	0
+ 584 002c 00000000 		.4byte	0
+ 585              		.section	.debug_ranges,"",%progbits
+ 586              	.Ldebug_ranges0:
+ 587 0000 00000000 		.4byte	.LFB36
+ 588 0004 3E000000 		.4byte	.LFE36
+ 589 0008 00000000 		.4byte	.LFB37
+ 590 000c 3E000000 		.4byte	.LFE37
+ 591 0010 00000000 		.4byte	.LFB38
+ 592 0014 22000000 		.4byte	.LFE38
+ 593 0018 00000000 		.4byte	0
+ 594 001c 00000000 		.4byte	0
+ 595              		.section	.debug_line,"",%progbits
+ 596              	.Ldebug_line0:
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmDwNiH.s 			page 14
+
+
+ 597 0000 A3000000 		.section	.debug_str,"MS",%progbits,1
+ 597      02005500 
+ 597      00000201 
+ 597      FB0E0D00 
+ 597      01010101 
+ 598              	.LASF25:
+ 599 0000 443A5C44 		.ascii	"D:\\Documents\\PSoC Creator\\Workspace\\BLE_HID_Key"
+ 599      6F63756D 
+ 599      656E7473 
+ 599      5C50536F 
+ 599      43204372 
+ 600 002f 626F6172 		.ascii	"board01.cydsn\000"
+ 600      6430312E 
+ 600      63796473 
+ 600      6E00
+ 601              	.LASF22:
+ 602 003d 76616C75 		.ascii	"value\000"
+ 602      6500
+ 603              	.LASF3:
+ 604 0043 73686F72 		.ascii	"short unsigned int\000"
+ 604      7420756E 
+ 604      7369676E 
+ 604      65642069 
+ 604      6E7400
+ 605              	.LASF21:
+ 606 0056 53657433 		.ascii	"Set32ByPtr\000"
+ 606      32427950 
+ 606      747200
+ 607              	.LASF20:
+ 608 0061 53686F77 		.ascii	"ShowValue\000"
+ 608      56616C75 
+ 608      6500
+ 609              	.LASF13:
+ 610 006b 666C6F61 		.ascii	"float\000"
+ 610      7400
+ 611              	.LASF7:
+ 612 0071 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 612      206C6F6E 
+ 612      6720756E 
+ 612      7369676E 
+ 612      65642069 
+ 613              	.LASF1:
+ 614 0088 756E7369 		.ascii	"unsigned char\000"
+ 614      676E6564 
+ 614      20636861 
+ 614      7200
+ 615              	.LASF12:
+ 616 0096 696E7431 		.ascii	"int16\000"
+ 616      3600
+ 617              	.LASF5:
+ 618 009c 6C6F6E67 		.ascii	"long unsigned int\000"
+ 618      20756E73 
+ 618      69676E65 
+ 618      6420696E 
+ 618      7400
+ 619              	.LASF23:
+ 620 00ae 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmDwNiH.s 			page 15
+
+
+ 620      43313120 
+ 620      352E342E 
+ 620      31203230 
+ 620      31363036 
+ 621 00e1 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 621      20726576 
+ 621      6973696F 
+ 621      6E203233 
+ 621      37373135 
+ 622 0114 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 622      66756E63 
+ 622      74696F6E 
+ 622      2D736563 
+ 622      74696F6E 
+ 623              	.LASF24:
+ 624 013c 64656275 		.ascii	"debug.c\000"
+ 624      672E6300 
+ 625              	.LASF14:
+ 626 0144 646F7562 		.ascii	"double\000"
+ 626      6C6500
+ 627              	.LASF10:
+ 628 014b 75696E74 		.ascii	"uint16\000"
+ 628      313600
+ 629              	.LASF11:
+ 630 0152 75696E74 		.ascii	"uint32\000"
+ 630      333200
+ 631              	.LASF19:
+ 632 0159 4359424C 		.ascii	"CYBLE_GATT_VALUE_T\000"
+ 632      455F4741 
+ 632      54545F56 
+ 632      414C5545 
+ 632      5F5400
+ 633              	.LASF8:
+ 634 016c 756E7369 		.ascii	"unsigned int\000"
+ 634      676E6564 
+ 634      20696E74 
+ 634      00
+ 635              	.LASF15:
+ 636 0179 63686172 		.ascii	"char\000"
+ 636      00
+ 637              	.LASF17:
+ 638 017e 73697A65 		.ascii	"sizetype\000"
+ 638      74797065 
+ 638      00
+ 639              	.LASF6:
+ 640 0187 6C6F6E67 		.ascii	"long long int\000"
+ 640      206C6F6E 
+ 640      6720696E 
+ 640      7400
+ 641              	.LASF2:
+ 642 0195 73686F72 		.ascii	"short int\000"
+ 642      7420696E 
+ 642      7400
+ 643              	.LASF9:
+ 644 019f 75696E74 		.ascii	"uint8\000"
+ 644      3800
+ 645              	.LASF4:
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmDwNiH.s 			page 16
+
+
+ 646 01a5 6C6F6E67 		.ascii	"long int\000"
+ 646      20696E74 
+ 646      00
+ 647              	.LASF26:
+ 648 01ae 53686F77 		.ascii	"ShowError\000"
+ 648      4572726F 
+ 648      7200
+ 649              	.LASF16:
+ 650 01b8 6C6F6E67 		.ascii	"long double\000"
+ 650      20646F75 
+ 650      626C6500 
+ 651              	.LASF0:
+ 652 01c4 7369676E 		.ascii	"signed char\000"
+ 652      65642063 
+ 652      68617200 
+ 653              	.LASF18:
+ 654 01d0 61637475 		.ascii	"actualLen\000"
+ 654      616C4C65 
+ 654      6E00
+ 655              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

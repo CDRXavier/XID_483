@@ -1,0 +1,5750 @@
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m0
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"bas.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.BasCallBack,"ax",%progbits
+  20              		.align	1
+  21              		.global	BasCallBack
+  22              		.code	16
+  23              		.thumb_func
+  24              		.type	BasCallBack, %function
+  25              	BasCallBack:
+  26              	.LFB36:
+  27              		.file 1 "bas.c"
+   1:bas.c         **** /*******************************************************************************
+   2:bas.c         **** * File Name: bas.c
+   3:bas.c         **** *
+   4:bas.c         **** * Version: 1.0
+   5:bas.c         **** *
+   6:bas.c         **** * Description:
+   7:bas.c         **** *  This file contains BAS callback handler function.
+   8:bas.c         **** *
+   9:bas.c         **** * Hardware Dependency:
+  10:bas.c         **** *  CY8CKIT-042 BLE
+  11:bas.c         **** * 
+  12:bas.c         **** ********************************************************************************
+  13:bas.c         **** * Copyright 2016, Cypress Semiconductor Corporation.  All rights reserved.
+  14:bas.c         **** * You may use this file only in accordance with the license, terms, conditions,
+  15:bas.c         **** * disclaimers, and limitations in the end user license agreement accompanying
+  16:bas.c         **** * the software package with which this file was provided.
+  17:bas.c         **** *******************************************************************************/
+  18:bas.c         **** 
+  19:bas.c         **** #include "common.h"
+  20:bas.c         **** #include "bas.h"
+  21:bas.c         **** 
+  22:bas.c         **** #if (BAS_SIMULATE_ENABLE != 0)
+  23:bas.c         **** uint16 batterySimulationNotify = 0u;
+  24:bas.c         **** #endif /* (BAS_SIMULATE_ENABLE != 0) */
+  25:bas.c         **** 
+  26:bas.c         **** #if (BAS_MEASURE_ENABLE != 0)
+  27:bas.c         **** uint16 batteryMeasureNotify = 0u;
+  28:bas.c         **** #endif /* (BAS_MEASURE_ENABLE != 0) */
+  29:bas.c         **** 
+  30:bas.c         **** 
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 2
+
+
+  31:bas.c         **** /*******************************************************************************
+  32:bas.c         **** * Function Name: BasCallBack()
+  33:bas.c         **** ********************************************************************************
+  34:bas.c         **** *
+  35:bas.c         **** * Summary:
+  36:bas.c         **** *   This is an event callback function to receive service specific events from 
+  37:bas.c         **** *   Battery Service.
+  38:bas.c         **** *
+  39:bas.c         **** * Parameters:
+  40:bas.c         **** *  event - the event code
+  41:bas.c         **** *  *eventParam - the event parameters
+  42:bas.c         **** *
+  43:bas.c         **** * Return:
+  44:bas.c         **** *  None.
+  45:bas.c         **** *
+  46:bas.c         **** *******************************************************************************/
+  47:bas.c         **** void BasCallBack(uint32 event, void *eventParam)
+  48:bas.c         **** {
+  28              		.loc 1 48 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		@ link register save eliminated.
+  33              	.LVL0:
+  49:bas.c         ****     uint8 locServiceIndex;
+  50:bas.c         ****     
+  51:bas.c         ****     locServiceIndex = ((CYBLE_BAS_CHAR_VALUE_T *)eventParam)->serviceIndex;
+  52:bas.c         ****     DBG_PRINTF("BAS event: %lx, ", event);
+  53:bas.c         ****     
+  54:bas.c         ****     switch(event)
+  34              		.loc 1 54 0
+  35 0000 9822     		movs	r2, #152
+  51:bas.c         ****     DBG_PRINTF("BAS event: %lx, ", event);
+  36              		.loc 1 51 0
+  37 0002 8B78     		ldrb	r3, [r1, #2]
+  38              	.LVL1:
+  39              		.loc 1 54 0
+  40 0004 5200     		lsls	r2, r2, #1
+  41 0006 9042     		cmp	r0, r2
+  42 0008 04D0     		beq	.L3
+  43 000a 3222     		movs	r2, #50
+  44 000c FF32     		adds	r2, r2, #255
+  45 000e 9042     		cmp	r0, r2
+  46 0010 06D0     		beq	.L4
+  47 0012 09E0     		b	.L1
+  48              	.L3:
+  55:bas.c         ****     {
+  56:bas.c         ****         case CYBLE_EVT_BASS_NOTIFICATION_ENABLED:
+  57:bas.c         ****             DBG_PRINTF("CYBLE_EVT_BASS_NOTIFICATION_ENABLED: %x \r\n", locServiceIndex);
+  58:bas.c         ****         #if (BAS_SIMULATE_ENABLE != 0)
+  59:bas.c         ****             if(BAS_SERVICE_SIMULATE == locServiceIndex)
+  49              		.loc 1 59 0
+  50 0014 002B     		cmp	r3, #0
+  51 0016 07D1     		bne	.L1
+  60:bas.c         ****             {
+  61:bas.c         ****                 batterySimulationNotify = ENABLED;
+  52              		.loc 1 61 0
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 3
+
+
+  53 0018 0122     		movs	r2, #1
+  54 001a 044B     		ldr	r3, .L6
+  55              	.LVL2:
+  56 001c 1A80     		strh	r2, [r3]
+  57              	.LVL3:
+  58 001e 03E0     		b	.L1
+  59              	.LVL4:
+  60              	.L4:
+  62:bas.c         ****             }
+  63:bas.c         ****         #endif /*  (BAS_SIMULATE_ENABLE != 0) */        
+  64:bas.c         ****         #if (BAS_MEASURE_ENABLE != 0)
+  65:bas.c         ****             if(BAS_SERVICE_MEASURE == locServiceIndex)
+  66:bas.c         ****             {
+  67:bas.c         ****                 batteryMeasureNotify = ENABLED;
+  68:bas.c         ****             }
+  69:bas.c         ****         #endif /*  (BAS_MEASURE_ENABLE != 0) */     
+  70:bas.c         ****             break;
+  71:bas.c         ****         case CYBLE_EVT_BASS_NOTIFICATION_DISABLED:
+  72:bas.c         ****             DBG_PRINTF("CYBLE_EVT_BASS_NOTIFICATION_DISABLED: %x \r\n", locServiceIndex);
+  73:bas.c         ****         #if (BAS_SIMULATE_ENABLE != 0)
+  74:bas.c         ****             if(BAS_SERVICE_SIMULATE == locServiceIndex)
+  61              		.loc 1 74 0
+  62 0020 002B     		cmp	r3, #0
+  63 0022 01D1     		bne	.L1
+  75:bas.c         ****             {
+  76:bas.c         ****                 batterySimulationNotify = DISABLED;
+  64              		.loc 1 76 0
+  65 0024 014A     		ldr	r2, .L6
+  66 0026 1380     		strh	r3, [r2]
+  67              	.LVL5:
+  68              	.L1:
+  77:bas.c         ****             }
+  78:bas.c         ****         #endif /*  (BAS_SIMULATE_ENABLE != 0) */        
+  79:bas.c         ****         #if (BAS_MEASURE_ENABLE != 0)
+  80:bas.c         ****             if(BAS_SERVICE_MEASURE == locServiceIndex)
+  81:bas.c         ****             {
+  82:bas.c         ****                 batteryMeasureNotify = DISABLED;
+  83:bas.c         ****             }
+  84:bas.c         ****         #endif /*  (BAS_MEASURE_ENABLE != 0) */     
+  85:bas.c         ****             break;
+  86:bas.c         ****         case CYBLE_EVT_BASC_NOTIFICATION:
+  87:bas.c         ****             break;
+  88:bas.c         ****         case CYBLE_EVT_BASC_READ_CHAR_RESPONSE:
+  89:bas.c         ****             break;
+  90:bas.c         ****         case CYBLE_EVT_BASC_READ_DESCR_RESPONSE:
+  91:bas.c         ****             break;
+  92:bas.c         ****         case CYBLE_EVT_BASC_WRITE_DESCR_RESPONSE:
+  93:bas.c         ****             break;
+  94:bas.c         **** 		default:
+  95:bas.c         ****             DBG_PRINTF("Not supported event\r\n");
+  96:bas.c         **** 			break;
+  97:bas.c         ****     }
+  98:bas.c         **** }
+  69              		.loc 1 98 0
+  70              		@ sp needed
+  71 0028 7047     		bx	lr
+  72              	.L7:
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 4
+
+
+  73 002a C046     		.align	2
+  74              	.L6:
+  75 002c 00000000 		.word	.LANCHOR0
+  76              		.cfi_endproc
+  77              	.LFE36:
+  78              		.size	BasCallBack, .-BasCallBack
+  79              		.section	.text.BasInit,"ax",%progbits
+  80              		.align	1
+  81              		.global	BasInit
+  82              		.code	16
+  83              		.thumb_func
+  84              		.type	BasInit, %function
+  85              	BasInit:
+  86              	.LFB37:
+  99:bas.c         **** 
+ 100:bas.c         **** 
+ 101:bas.c         **** /*******************************************************************************
+ 102:bas.c         **** * Function Name: BasInit()
+ 103:bas.c         **** ********************************************************************************
+ 104:bas.c         **** *
+ 105:bas.c         **** * Summary:
+ 106:bas.c         **** *   Initializes the battery service.
+ 107:bas.c         **** *
+ 108:bas.c         **** *******************************************************************************/
+ 109:bas.c         **** void BasInit(void)
+ 110:bas.c         **** {
+  87              		.loc 1 110 0
+  88              		.cfi_startproc
+  89              		@ args = 0, pretend = 0, frame = 8
+  90              		@ frame_needed = 0, uses_anonymous_args = 0
+  91 0000 1FB5     		push	{r0, r1, r2, r3, r4, lr}
+  92              		.cfi_def_cfa_offset 24
+  93              		.cfi_offset 0, -24
+  94              		.cfi_offset 1, -20
+  95              		.cfi_offset 2, -16
+  96              		.cfi_offset 3, -12
+  97              		.cfi_offset 4, -8
+  98              		.cfi_offset 14, -4
+ 111:bas.c         ****     CYBLE_API_RESULT_T apiResult;
+ 112:bas.c         ****     uint16 cccdValue;
+ 113:bas.c         ****     
+ 114:bas.c         ****     /* Register service specific callback function */
+ 115:bas.c         ****     CyBle_BasRegisterAttrCallback(BasCallBack);
+  99              		.loc 1 115 0
+ 100 0002 0B48     		ldr	r0, .L13
+ 116:bas.c         **** 
+ 117:bas.c         ****     /* Read CCCD configurations from flash */
+ 118:bas.c         **** #if (BAS_SIMULATE_ENABLE != 0)
+ 119:bas.c         ****     apiResult = CyBle_BassGetCharacteristicDescriptor(BAS_SERVICE_SIMULATE, CYBLE_BAS_BATTERY_LEVEL
+ 101              		.loc 1 119 0
+ 102 0004 0E24     		movs	r4, #14
+ 115:bas.c         **** 
+ 103              		.loc 1 115 0
+ 104 0006 FFF7FEFF 		bl	CyBle_BasRegisterAttrCallback
+ 105              	.LVL6:
+ 106              		.loc 1 119 0
+ 107 000a 0022     		movs	r2, #0
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 5
+
+
+ 108 000c 6C44     		add	r4, r4, sp
+ 109 000e 0094     		str	r4, [sp]
+ 110 0010 0223     		movs	r3, #2
+ 111 0012 1100     		movs	r1, r2
+ 112 0014 1000     		movs	r0, r2
+ 113 0016 FFF7FEFF 		bl	CyBle_BassGetCharacteristicDescriptor
+ 114              	.LVL7:
+ 120:bas.c         ****         CYBLE_BAS_BATTERY_LEVEL_CCCD, CYBLE_CCCD_LEN, (uint8 *)&cccdValue);
+ 121:bas.c         ****     if((apiResult == CYBLE_ERROR_OK) && (cccdValue != 0u))
+ 115              		.loc 1 121 0
+ 116 001a 0028     		cmp	r0, #0
+ 117 001c 07D1     		bne	.L8
+ 118              		.loc 1 121 0 is_stmt 0 discriminator 1
+ 119 001e 2388     		ldrh	r3, [r4]
+ 120 0020 002B     		cmp	r3, #0
+ 121 0022 04D0     		beq	.L8
+ 122:bas.c         ****     {
+ 123:bas.c         ****         batterySimulationNotify |= ENABLED;
+ 122              		.loc 1 123 0 is_stmt 1
+ 123 0024 0121     		movs	r1, #1
+ 124 0026 034A     		ldr	r2, .L13+4
+ 125 0028 1388     		ldrh	r3, [r2]
+ 126 002a 0B43     		orrs	r3, r1
+ 127 002c 1380     		strh	r3, [r2]
+ 128              	.L8:
+ 124:bas.c         ****     }
+ 125:bas.c         **** #endif /* (BAS_SIMULATE_ENABLE != 0) */
+ 126:bas.c         **** #if (BAS_MEASURE_ENABLE != 0)
+ 127:bas.c         ****     apiResult = CyBle_BassGetCharacteristicDescriptor(BAS_SERVICE_MEASURE, CYBLE_BAS_BATTERY_LEVEL,
+ 128:bas.c         ****         CYBLE_BAS_BATTERY_LEVEL_CCCD, CYBLE_CCCD_LEN, (uint8 *)&cccdValue);
+ 129:bas.c         ****     if((apiResult == CYBLE_ERROR_OK) && (cccdValue != 0u))
+ 130:bas.c         ****     {
+ 131:bas.c         ****         batteryMeasureNotify |= ENABLED;
+ 132:bas.c         ****     }
+ 133:bas.c         **** #endif /* (BAS_MEASURE_ENABLE != 0) */
+ 134:bas.c         **** }
+ 129              		.loc 1 134 0
+ 130              		@ sp needed
+ 131 002e 1FBD     		pop	{r0, r1, r2, r3, r4, pc}
+ 132              	.L14:
+ 133              		.align	2
+ 134              	.L13:
+ 135 0030 00000000 		.word	BasCallBack
+ 136 0034 00000000 		.word	.LANCHOR0
+ 137              		.cfi_endproc
+ 138              	.LFE37:
+ 139              		.size	BasInit, .-BasInit
+ 140              		.section	.text.SimulateBattery,"ax",%progbits
+ 141              		.align	1
+ 142              		.global	SimulateBattery
+ 143              		.code	16
+ 144              		.thumb_func
+ 145              		.type	SimulateBattery, %function
+ 146              	SimulateBattery:
+ 147              	.LFB38:
+ 135:bas.c         **** 
+ 136:bas.c         **** 
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 6
+
+
+ 137:bas.c         **** #if (BAS_MEASURE_ENABLE != 0)
+ 138:bas.c         ****     
+ 139:bas.c         **** 
+ 140:bas.c         **** /*******************************************************************************
+ 141:bas.c         **** * Function Name: MeasureBattery()
+ 142:bas.c         **** ********************************************************************************
+ 143:bas.c         **** *
+ 144:bas.c         **** * Summary:
+ 145:bas.c         **** *   This function measures the battery voltage and sends it to the client.
+ 146:bas.c         **** *
+ 147:bas.c         **** *******************************************************************************/
+ 148:bas.c         **** void MeasureBattery(void)
+ 149:bas.c         **** {
+ 150:bas.c         **** 	int16 adcResult;
+ 151:bas.c         ****     int32 mvolts;
+ 152:bas.c         **** 	uint32 sarControlReg;
+ 153:bas.c         ****     uint8 batteryLevel;
+ 154:bas.c         ****     CYBLE_API_RESULT_T apiResult;
+ 155:bas.c         ****     
+ 156:bas.c         ****     static uint32 batteryTimer = BATTERY_TIMEOUT;
+ 157:bas.c         ****     
+ 158:bas.c         ****     if(--batteryTimer == 0u) 
+ 159:bas.c         ****     {
+ 160:bas.c         ****         batteryTimer = BATTERY_TIMEOUT;
+ 161:bas.c         ****         
+ 162:bas.c         ****     	/* Set the reference to VBG and enable reference bypass */
+ 163:bas.c         ****     	sarControlReg = ADC_SAR_CTRL_REG & ~ADC_VREF_MASK;
+ 164:bas.c         ****     	ADC_SAR_CTRL_REG = sarControlReg | ADC_VREF_INTERNAL1024BYPASSED;
+ 165:bas.c         ****     	
+ 166:bas.c         ****     	/* 25 ms delay for reference capacitor to charge */
+ 167:bas.c         ****     	CyDelay(25);             
+ 168:bas.c         ****     	
+ 169:bas.c         ****     	/* Set the reference to VDD and disable reference bypass */
+ 170:bas.c         ****     	sarControlReg = ADC_SAR_CTRL_REG & ~ADC_VREF_MASK;
+ 171:bas.c         ****     	ADC_SAR_CTRL_REG = sarControlReg | ADC_VREF_VDDA;
+ 172:bas.c         **** 
+ 173:bas.c         ****     	/* Perform a measurement. Store this value in Vref. */
+ 174:bas.c         ****     	CyDelay(1);
+ 175:bas.c         ****     	ADC_StartConvert();
+ 176:bas.c         ****     	ADC_IsEndConversion(ADC_WAIT_FOR_RESULT);
+ 177:bas.c         **** 
+ 178:bas.c         ****         adcResult = ADC_GetResult16(ADC_BATTERY_CHANNEL);
+ 179:bas.c         ****     	/* Calculate input voltage by using ratio of ADC counts from reference
+ 180:bas.c         ****     	*  and ADC Full Scale counts. 
+ 181:bas.c         ****         */
+ 182:bas.c         ****     	mvolts = (1024 * 2048) / adcResult;
+ 183:bas.c         ****         
+ 184:bas.c         ****         /* Convert battery level voltage to percentage using linear approximation
+ 185:bas.c         ****         *  divided to two sections according to typical performance of 
+ 186:bas.c         ****         *  CR2033 battery specification:
+ 187:bas.c         ****         *  3V - 100%
+ 188:bas.c         ****         *  2.8V - 29%
+ 189:bas.c         ****         *  2.0V - 0%
+ 190:bas.c         ****         */
+ 191:bas.c         ****         if(mvolts < MEASURE_BATTERY_MIN)
+ 192:bas.c         ****         {
+ 193:bas.c         ****             batteryLevel = 0;
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 7
+
+
+ 194:bas.c         ****         }
+ 195:bas.c         ****         else if(mvolts < MEASURE_BATTERY_MID)
+ 196:bas.c         ****         {
+ 197:bas.c         ****             batteryLevel = (mvolts - MEASURE_BATTERY_MIN) * MEASURE_BATTERY_MID_PERCENT / 
+ 198:bas.c         ****                            (MEASURE_BATTERY_MID - MEASURE_BATTERY_MIN); 
+ 199:bas.c         ****         }
+ 200:bas.c         ****         else if(mvolts < MEASURE_BATTERY_MAX)
+ 201:bas.c         ****         {
+ 202:bas.c         ****             batteryLevel = MEASURE_BATTERY_MID_PERCENT +
+ 203:bas.c         ****                            (mvolts - MEASURE_BATTERY_MID) * (100 - MEASURE_BATTERY_MID_PERCENT) / 
+ 204:bas.c         ****                            (MEASURE_BATTERY_MAX - MEASURE_BATTERY_MID); 
+ 205:bas.c         ****         }
+ 206:bas.c         ****         else
+ 207:bas.c         ****         {
+ 208:bas.c         ****             batteryLevel = CYBLE_BAS_MAX_BATTERY_LEVEL_VALUE;
+ 209:bas.c         ****         }
+ 210:bas.c         ****     #if (BAS_MEASURE_LP_LED != 0u)
+ 211:bas.c         ****         if(batteryLevel < LOW_BATTERY_LIMIT)
+ 212:bas.c         ****         {
+ 213:bas.c         ****             LowPower_LED_Write(LED_ON);
+ 214:bas.c         ****         }
+ 215:bas.c         ****         else
+ 216:bas.c         ****         {
+ 217:bas.c         ****             LowPower_LED_Write(LED_OFF);
+ 218:bas.c         ****         }
+ 219:bas.c         ****     #endif /* (BAS_MEASURE_LP_LED != 0u) */
+ 220:bas.c         ****     
+ 221:bas.c         ****         if(batteryMeasureNotify == ENABLED)
+ 222:bas.c         ****         {
+ 223:bas.c         ****             /* Update Battery Level characteristic value and send Notification */
+ 224:bas.c         ****             apiResult = CyBle_BassSendNotification(cyBle_connHandle, BAS_SERVICE_MEASURE, CYBLE_BAS
+ 225:bas.c         ****                 sizeof(batteryLevel), &batteryLevel);
+ 226:bas.c         ****         }
+ 227:bas.c         ****         else
+ 228:bas.c         ****         {
+ 229:bas.c         ****             /* Update Battery Level characteristic value */
+ 230:bas.c         ****             apiResult = CyBle_BassSetCharacteristicValue(BAS_SERVICE_MEASURE, 
+ 231:bas.c         ****                 CYBLE_BAS_BATTERY_LEVEL, sizeof(batteryLevel), &batteryLevel);
+ 232:bas.c         ****         }
+ 233:bas.c         ****             
+ 234:bas.c         ****         if(apiResult != CYBLE_ERROR_OK)
+ 235:bas.c         ****         {
+ 236:bas.c         ****             DBG_PRINTF("API Error: %x \r\n", apiResult);
+ 237:bas.c         ****             batteryMeasureNotify = DISABLED;
+ 238:bas.c         ****         }
+ 239:bas.c         ****         else
+ 240:bas.c         ****         {
+ 241:bas.c         ****             DBG_PRINTF("MeasureBatteryLevelUpdate: %d \r\n",batteryLevel);
+ 242:bas.c         ****         }
+ 243:bas.c         ****     }
+ 244:bas.c         **** }
+ 245:bas.c         **** 
+ 246:bas.c         **** #endif /*  (BAS_MEASURE_ENABLE != 0) */
+ 247:bas.c         **** 
+ 248:bas.c         **** #if (BAS_SIMULATE_ENABLE != 0)
+ 249:bas.c         **** 
+ 250:bas.c         **** 
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 8
+
+
+ 251:bas.c         **** /*******************************************************************************
+ 252:bas.c         **** * Function Name: SimulateBattery()
+ 253:bas.c         **** ********************************************************************************
+ 254:bas.c         **** *
+ 255:bas.c         **** * Summary:
+ 256:bas.c         **** *   The custom function to simulate Battery Voltage.
+ 257:bas.c         **** *
+ 258:bas.c         **** *******************************************************************************/
+ 259:bas.c         **** void SimulateBattery(void)
+ 260:bas.c         **** {
+ 148              		.loc 1 260 0
+ 149              		.cfi_startproc
+ 150              		@ args = 0, pretend = 0, frame = 0
+ 151              		@ frame_needed = 0, uses_anonymous_args = 0
+ 152 0000 13B5     		push	{r0, r1, r4, lr}
+ 153              		.cfi_def_cfa_offset 16
+ 154              		.cfi_offset 0, -16
+ 155              		.cfi_offset 1, -12
+ 156              		.cfi_offset 4, -8
+ 157              		.cfi_offset 14, -4
+ 261:bas.c         ****     static uint32 batteryTimer = BATTERY_TIMEOUT;
+ 262:bas.c         ****     static uint8 batteryLevel = SIM_BATTERY_MIN;
+ 263:bas.c         ****     CYBLE_API_RESULT_T apiResult;
+ 264:bas.c         ****     
+ 265:bas.c         ****     if((CyBle_GattGetBusyStatus() == CYBLE_STACK_STATE_FREE) && (--batteryTimer == 0u))
+ 158              		.loc 1 265 0
+ 159 0002 184B     		ldr	r3, .L28
+ 160 0004 1B78     		ldrb	r3, [r3]
+ 161 0006 002B     		cmp	r3, #0
+ 162 0008 2AD1     		bne	.L15
+ 163              		.loc 1 265 0 is_stmt 0 discriminator 1
+ 164 000a 1749     		ldr	r1, .L28+4
+ 165 000c 0B68     		ldr	r3, [r1]
+ 166 000e 0A00     		movs	r2, r1
+ 167 0010 013B     		subs	r3, r3, #1
+ 168 0012 002B     		cmp	r3, #0
+ 169 0014 01D0     		beq	.L18
+ 170              		.loc 1 265 0
+ 171 0016 0B60     		str	r3, [r1]
+ 172 0018 22E0     		b	.L15
+ 173              	.L18:
+ 266:bas.c         ****     {
+ 267:bas.c         ****         batteryTimer = BATTERY_TIMEOUT;
+ 174              		.loc 1 267 0 is_stmt 1
+ 175 001a 3223     		movs	r3, #50
+ 176 001c 0B60     		str	r3, [r1]
+ 268:bas.c         ****         
+ 269:bas.c         ****         /* Battery Level simulation */
+ 270:bas.c         ****         batteryLevel += SIM_BATTERY_INCREMENT;
+ 177              		.loc 1 270 0
+ 178 001e 0B79     		ldrb	r3, [r1, #4]
+ 179 0020 0533     		adds	r3, r3, #5
+ 180 0022 DBB2     		uxtb	r3, r3
+ 271:bas.c         ****         if(batteryLevel > SIM_BATTERY_MAX)
+ 181              		.loc 1 271 0
+ 182 0024 502B     		cmp	r3, #80
+ 183 0026 00D9     		bls	.L27
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 9
+
+
+ 272:bas.c         ****         {
+ 273:bas.c         ****             batteryLevel = SIM_BATTERY_MIN;
+ 184              		.loc 1 273 0
+ 185 0028 1423     		movs	r3, #20
+ 186              	.L27:
+ 274:bas.c         ****         }
+ 275:bas.c         ****         if(batterySimulationNotify == ENABLED)
+ 187              		.loc 1 275 0
+ 188 002a 104C     		ldr	r4, .L28+8
+ 273:bas.c         ****         }
+ 189              		.loc 1 273 0
+ 190 002c 1371     		strb	r3, [r2, #4]
+ 191              		.loc 1 275 0
+ 192 002e 2388     		ldrh	r3, [r4]
+ 193 0030 012B     		cmp	r3, #1
+ 194 0032 0BD1     		bne	.L22
+ 276:bas.c         ****         {
+ 277:bas.c         ****             /* Update Battery Level characteristic value and send Notification */
+ 278:bas.c         ****              apiResult = CyBle_BassSendNotification(cyBle_connHandle, BAS_SERVICE_SIMULATE, CYBLE_B
+ 195              		.loc 1 278 0
+ 196 0034 0E49     		ldr	r1, .L28+12
+ 197 0036 0432     		adds	r2, r2, #4
+ 198 0038 0092     		str	r2, [sp]
+ 199 003a 4878     		ldrb	r0, [r1, #1]
+ 200 003c 0A78     		ldrb	r2, [r1]
+ 201 003e 0002     		lsls	r0, r0, #8
+ 202 0040 1043     		orrs	r0, r2
+ 203 0042 0022     		movs	r2, #0
+ 204 0044 1100     		movs	r1, r2
+ 205 0046 FFF7FEFF 		bl	CyBle_BassSendNotification
+ 206              	.LVL8:
+ 207 004a 05E0     		b	.L23
+ 208              	.LVL9:
+ 209              	.L22:
+ 279:bas.c         ****                 sizeof(batteryLevel), &batteryLevel);
+ 280:bas.c         ****         }
+ 281:bas.c         ****         else
+ 282:bas.c         ****         {
+ 283:bas.c         ****             /* Update Battery Level characteristic value */
+ 284:bas.c         ****              apiResult = CyBle_BassSetCharacteristicValue(BAS_SERVICE_SIMULATE, 
+ 210              		.loc 1 284 0
+ 211 004c 0021     		movs	r1, #0
+ 212 004e 131D     		adds	r3, r2, #4
+ 213 0050 0800     		movs	r0, r1
+ 214 0052 0122     		movs	r2, #1
+ 215 0054 FFF7FEFF 		bl	CyBle_BassSetCharacteristicValue
+ 216              	.LVL10:
+ 217              	.L23:
+ 285:bas.c         ****                 CYBLE_BAS_BATTERY_LEVEL, sizeof(batteryLevel), &batteryLevel);
+ 286:bas.c         ****         }
+ 287:bas.c         ****         if(apiResult != CYBLE_ERROR_OK)
+ 218              		.loc 1 287 0
+ 219 0058 0028     		cmp	r0, #0
+ 220 005a 01D0     		beq	.L15
+ 288:bas.c         ****         {
+ 289:bas.c         ****             DBG_PRINTF("API Error: %x \r\n", apiResult);
+ 290:bas.c         ****             batterySimulationNotify = DISABLED;
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 10
+
+
+ 221              		.loc 1 290 0
+ 222 005c 0023     		movs	r3, #0
+ 223 005e 2380     		strh	r3, [r4]
+ 224              	.LVL11:
+ 225              	.L15:
+ 291:bas.c         ****         }
+ 292:bas.c         ****         else
+ 293:bas.c         ****         {
+ 294:bas.c         ****             DBG_PRINTF("SimulBatteryLevelUpdate: %d \r\n",batteryLevel);
+ 295:bas.c         ****         }
+ 296:bas.c         ****     }
+ 297:bas.c         **** }
+ 226              		.loc 1 297 0
+ 227              		@ sp needed
+ 228 0060 13BD     		pop	{r0, r1, r4, pc}
+ 229              	.L29:
+ 230 0062 C046     		.align	2
+ 231              	.L28:
+ 232 0064 00000000 		.word	cyBle_busyStatus
+ 233 0068 00000000 		.word	.LANCHOR1
+ 234 006c 00000000 		.word	.LANCHOR0
+ 235 0070 00000000 		.word	cyBle_connHandle
+ 236              		.cfi_endproc
+ 237              	.LFE38:
+ 238              		.size	SimulateBattery, .-SimulateBattery
+ 239              		.global	batterySimulationNotify
+ 240              		.data
+ 241              		.align	2
+ 242              		.set	.LANCHOR1,. + 0
+ 243              		.type	batteryTimer.8490, %object
+ 244              		.size	batteryTimer.8490, 4
+ 245              	batteryTimer.8490:
+ 246 0000 32000000 		.word	50
+ 247              		.type	batteryLevel.8491, %object
+ 248              		.size	batteryLevel.8491, 1
+ 249              	batteryLevel.8491:
+ 250 0004 14       		.byte	20
+ 251              		.bss
+ 252              		.align	1
+ 253              		.set	.LANCHOR0,. + 0
+ 254              		.type	batterySimulationNotify, %object
+ 255              		.size	batterySimulationNotify, 2
+ 256              	batterySimulationNotify:
+ 257 0000 0000     		.space	2
+ 258              		.text
+ 259              	.Letext0:
+ 260              		.file 2 "Generated_Source\\PSoC4/cytypes.h"
+ 261              		.file 3 "Generated_Source\\PSoC4/BLE_Stack.h"
+ 262              		.file 4 "Generated_Source\\PSoC4/BLE_StackGatt.h"
+ 263              		.file 5 "Generated_Source\\PSoC4/BLE_bas.h"
+ 264              		.file 6 "Generated_Source\\PSoC4/BLE_dis.h"
+ 265              		.file 7 "Generated_Source\\PSoC4/BLE_eventHandler.h"
+ 266              		.section	.debug_info,"",%progbits
+ 267              	.Ldebug_info0:
+ 268 0000 4E0E0000 		.4byte	0xe4e
+ 269 0004 0400     		.2byte	0x4
+ 270 0006 00000000 		.4byte	.Ldebug_abbrev0
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 11
+
+
+ 271 000a 04       		.byte	0x4
+ 272 000b 01       		.uleb128 0x1
+ 273 000c 2F140000 		.4byte	.LASF459
+ 274 0010 0C       		.byte	0xc
+ 275 0011 091C0000 		.4byte	.LASF460
+ 276 0015 CC210000 		.4byte	.LASF461
+ 277 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 278 001d 00000000 		.4byte	0
+ 279 0021 00000000 		.4byte	.Ldebug_line0
+ 280 0025 02       		.uleb128 0x2
+ 281 0026 01       		.byte	0x1
+ 282 0027 06       		.byte	0x6
+ 283 0028 E0340000 		.4byte	.LASF0
+ 284 002c 02       		.uleb128 0x2
+ 285 002d 01       		.byte	0x1
+ 286 002e 08       		.byte	0x8
+ 287 002f 541B0000 		.4byte	.LASF1
+ 288 0033 02       		.uleb128 0x2
+ 289 0034 02       		.byte	0x2
+ 290 0035 05       		.byte	0x5
+ 291 0036 2A080000 		.4byte	.LASF2
+ 292 003a 02       		.uleb128 0x2
+ 293 003b 02       		.byte	0x2
+ 294 003c 07       		.byte	0x7
+ 295 003d 12350000 		.4byte	.LASF3
+ 296 0041 02       		.uleb128 0x2
+ 297 0042 04       		.byte	0x4
+ 298 0043 05       		.byte	0x5
+ 299 0044 9E270000 		.4byte	.LASF4
+ 300 0048 02       		.uleb128 0x2
+ 301 0049 04       		.byte	0x4
+ 302 004a 07       		.byte	0x7
+ 303 004b BA210000 		.4byte	.LASF5
+ 304 004f 02       		.uleb128 0x2
+ 305 0050 08       		.byte	0x8
+ 306 0051 05       		.byte	0x5
+ 307 0052 0F1C0000 		.4byte	.LASF6
+ 308 0056 02       		.uleb128 0x2
+ 309 0057 08       		.byte	0x8
+ 310 0058 07       		.byte	0x7
+ 311 0059 070E0000 		.4byte	.LASF7
+ 312 005d 03       		.uleb128 0x3
+ 313 005e 04       		.byte	0x4
+ 314 005f 05       		.byte	0x5
+ 315 0060 696E7400 		.ascii	"int\000"
+ 316 0064 02       		.uleb128 0x2
+ 317 0065 04       		.byte	0x4
+ 318 0066 07       		.byte	0x7
+ 319 0067 60190000 		.4byte	.LASF8
+ 320 006b 04       		.uleb128 0x4
+ 321 006c 21360000 		.4byte	.LASF9
+ 322 0070 02       		.byte	0x2
+ 323 0071 D201     		.2byte	0x1d2
+ 324 0073 2C000000 		.4byte	0x2c
+ 325 0077 04       		.uleb128 0x4
+ 326 0078 1D1B0000 		.4byte	.LASF10
+ 327 007c 02       		.byte	0x2
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 12
+
+
+ 328 007d D301     		.2byte	0x1d3
+ 329 007f 3A000000 		.4byte	0x3a
+ 330 0083 04       		.uleb128 0x4
+ 331 0084 12210000 		.4byte	.LASF11
+ 332 0088 02       		.byte	0x2
+ 333 0089 D401     		.2byte	0x1d4
+ 334 008b 48000000 		.4byte	0x48
+ 335 008f 02       		.uleb128 0x2
+ 336 0090 04       		.byte	0x4
+ 337 0091 04       		.byte	0x4
+ 338 0092 7C0C0000 		.4byte	.LASF12
+ 339 0096 02       		.uleb128 0x2
+ 340 0097 08       		.byte	0x8
+ 341 0098 04       		.byte	0x4
+ 342 0099 3D130000 		.4byte	.LASF13
+ 343 009d 02       		.uleb128 0x2
+ 344 009e 01       		.byte	0x1
+ 345 009f 08       		.byte	0x8
+ 346 00a0 9A170000 		.4byte	.LASF14
+ 347 00a4 05       		.uleb128 0x5
+ 348 00a5 6B000000 		.4byte	0x6b
+ 349 00a9 02       		.uleb128 0x2
+ 350 00aa 08       		.byte	0x8
+ 351 00ab 04       		.byte	0x4
+ 352 00ac 4C240000 		.4byte	.LASF15
+ 353 00b0 02       		.uleb128 0x2
+ 354 00b1 04       		.byte	0x4
+ 355 00b2 07       		.byte	0x7
+ 356 00b3 6D2D0000 		.4byte	.LASF16
+ 357 00b7 06       		.uleb128 0x6
+ 358 00b8 04       		.byte	0x4
+ 359 00b9 07       		.uleb128 0x7
+ 360 00ba 01       		.byte	0x1
+ 361 00bb 2C000000 		.4byte	0x2c
+ 362 00bf 03       		.byte	0x3
+ 363 00c0 4D01     		.2byte	0x14d
+ 364 00c2 77020000 		.4byte	0x277
+ 365 00c6 08       		.uleb128 0x8
+ 366 00c7 F3280000 		.4byte	.LASF17
+ 367 00cb 00       		.byte	0
+ 368 00cc 08       		.uleb128 0x8
+ 369 00cd 14190000 		.4byte	.LASF18
+ 370 00d1 01       		.byte	0x1
+ 371 00d2 08       		.uleb128 0x8
+ 372 00d3 38310000 		.4byte	.LASF19
+ 373 00d7 02       		.byte	0x2
+ 374 00d8 08       		.uleb128 0x8
+ 375 00d9 69050000 		.4byte	.LASF20
+ 376 00dd 03       		.byte	0x3
+ 377 00de 08       		.uleb128 0x8
+ 378 00df 48170000 		.4byte	.LASF21
+ 379 00e3 04       		.byte	0x4
+ 380 00e4 08       		.uleb128 0x8
+ 381 00e5 D10C0000 		.4byte	.LASF22
+ 382 00e9 05       		.byte	0x5
+ 383 00ea 08       		.uleb128 0x8
+ 384 00eb 21300000 		.4byte	.LASF23
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 13
+
+
+ 385 00ef 06       		.byte	0x6
+ 386 00f0 08       		.uleb128 0x8
+ 387 00f1 28290000 		.4byte	.LASF24
+ 388 00f5 20       		.byte	0x20
+ 389 00f6 08       		.uleb128 0x8
+ 390 00f7 00020000 		.4byte	.LASF25
+ 391 00fb 21       		.byte	0x21
+ 392 00fc 08       		.uleb128 0x8
+ 393 00fd 90080000 		.4byte	.LASF26
+ 394 0101 22       		.byte	0x22
+ 395 0102 08       		.uleb128 0x8
+ 396 0103 D5360000 		.4byte	.LASF27
+ 397 0107 23       		.byte	0x23
+ 398 0108 08       		.uleb128 0x8
+ 399 0109 C0120000 		.4byte	.LASF28
+ 400 010d 24       		.byte	0x24
+ 401 010e 08       		.uleb128 0x8
+ 402 010f A8050000 		.4byte	.LASF29
+ 403 0113 25       		.byte	0x25
+ 404 0114 08       		.uleb128 0x8
+ 405 0115 C7200000 		.4byte	.LASF30
+ 406 0119 26       		.byte	0x26
+ 407 011a 08       		.uleb128 0x8
+ 408 011b B8320000 		.4byte	.LASF31
+ 409 011f 27       		.byte	0x27
+ 410 0120 08       		.uleb128 0x8
+ 411 0121 872B0000 		.4byte	.LASF32
+ 412 0125 28       		.byte	0x28
+ 413 0126 08       		.uleb128 0x8
+ 414 0127 38260000 		.4byte	.LASF33
+ 415 012b 29       		.byte	0x29
+ 416 012c 08       		.uleb128 0x8
+ 417 012d E9090000 		.4byte	.LASF34
+ 418 0131 2A       		.byte	0x2a
+ 419 0132 08       		.uleb128 0x8
+ 420 0133 B0370000 		.4byte	.LASF35
+ 421 0137 2B       		.byte	0x2b
+ 422 0138 08       		.uleb128 0x8
+ 423 0139 6F2C0000 		.4byte	.LASF36
+ 424 013d 2C       		.byte	0x2c
+ 425 013e 08       		.uleb128 0x8
+ 426 013f F51C0000 		.4byte	.LASF37
+ 427 0143 2D       		.byte	0x2d
+ 428 0144 08       		.uleb128 0x8
+ 429 0145 7A300000 		.4byte	.LASF38
+ 430 0149 2E       		.byte	0x2e
+ 431 014a 08       		.uleb128 0x8
+ 432 014b 442A0000 		.4byte	.LASF39
+ 433 014f 2F       		.byte	0x2f
+ 434 0150 08       		.uleb128 0x8
+ 435 0151 D8270000 		.4byte	.LASF40
+ 436 0155 30       		.byte	0x30
+ 437 0156 08       		.uleb128 0x8
+ 438 0157 F91A0000 		.4byte	.LASF41
+ 439 015b 31       		.byte	0x31
+ 440 015c 08       		.uleb128 0x8
+ 441 015d DB290000 		.4byte	.LASF42
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 14
+
+
+ 442 0161 32       		.byte	0x32
+ 443 0162 08       		.uleb128 0x8
+ 444 0163 ED030000 		.4byte	.LASF43
+ 445 0167 33       		.byte	0x33
+ 446 0168 08       		.uleb128 0x8
+ 447 0169 AC330000 		.4byte	.LASF44
+ 448 016d 34       		.byte	0x34
+ 449 016e 08       		.uleb128 0x8
+ 450 016f 29040000 		.4byte	.LASF45
+ 451 0173 35       		.byte	0x35
+ 452 0174 08       		.uleb128 0x8
+ 453 0175 E7330000 		.4byte	.LASF46
+ 454 0179 36       		.byte	0x36
+ 455 017a 08       		.uleb128 0x8
+ 456 017b 29320000 		.4byte	.LASF47
+ 457 017f 37       		.byte	0x37
+ 458 0180 08       		.uleb128 0x8
+ 459 0181 9C1C0000 		.4byte	.LASF48
+ 460 0185 40       		.byte	0x40
+ 461 0186 08       		.uleb128 0x8
+ 462 0187 1E280000 		.4byte	.LASF49
+ 463 018b 41       		.byte	0x41
+ 464 018c 08       		.uleb128 0x8
+ 465 018d 8C030000 		.4byte	.LASF50
+ 466 0191 42       		.byte	0x42
+ 467 0192 08       		.uleb128 0x8
+ 468 0193 CD040000 		.4byte	.LASF51
+ 469 0197 43       		.byte	0x43
+ 470 0198 08       		.uleb128 0x8
+ 471 0199 8C130000 		.4byte	.LASF52
+ 472 019d 44       		.byte	0x44
+ 473 019e 08       		.uleb128 0x8
+ 474 019f 6D2A0000 		.4byte	.LASF53
+ 475 01a3 45       		.byte	0x45
+ 476 01a4 08       		.uleb128 0x8
+ 477 01a5 9F170000 		.4byte	.LASF54
+ 478 01a9 46       		.byte	0x46
+ 479 01aa 08       		.uleb128 0x8
+ 480 01ab 26100000 		.4byte	.LASF55
+ 481 01af 47       		.byte	0x47
+ 482 01b0 08       		.uleb128 0x8
+ 483 01b1 F4100000 		.4byte	.LASF56
+ 484 01b5 48       		.byte	0x48
+ 485 01b6 08       		.uleb128 0x8
+ 486 01b7 1F310000 		.4byte	.LASF57
+ 487 01bb 49       		.byte	0x49
+ 488 01bc 08       		.uleb128 0x8
+ 489 01bd 46150000 		.4byte	.LASF58
+ 490 01c1 4A       		.byte	0x4a
+ 491 01c2 08       		.uleb128 0x8
+ 492 01c3 47280000 		.4byte	.LASF59
+ 493 01c7 4B       		.byte	0x4b
+ 494 01c8 08       		.uleb128 0x8
+ 495 01c9 5C0E0000 		.4byte	.LASF60
+ 496 01cd 4C       		.byte	0x4c
+ 497 01ce 08       		.uleb128 0x8
+ 498 01cf 3F0C0000 		.4byte	.LASF61
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 15
+
+
+ 499 01d3 4D       		.byte	0x4d
+ 500 01d4 08       		.uleb128 0x8
+ 501 01d5 31060000 		.4byte	.LASF62
+ 502 01d9 4E       		.byte	0x4e
+ 503 01da 08       		.uleb128 0x8
+ 504 01db E2320000 		.4byte	.LASF63
+ 505 01df 4F       		.byte	0x4f
+ 506 01e0 08       		.uleb128 0x8
+ 507 01e1 6C110000 		.4byte	.LASF64
+ 508 01e5 50       		.byte	0x50
+ 509 01e6 08       		.uleb128 0x8
+ 510 01e7 CA110000 		.4byte	.LASF65
+ 511 01eb 51       		.byte	0x51
+ 512 01ec 08       		.uleb128 0x8
+ 513 01ed 6D000000 		.4byte	.LASF66
+ 514 01f1 52       		.byte	0x52
+ 515 01f2 08       		.uleb128 0x8
+ 516 01f3 91240000 		.4byte	.LASF67
+ 517 01f7 53       		.byte	0x53
+ 518 01f8 08       		.uleb128 0x8
+ 519 01f9 F3080000 		.4byte	.LASF68
+ 520 01fd 54       		.byte	0x54
+ 521 01fe 08       		.uleb128 0x8
+ 522 01ff EB040000 		.4byte	.LASF69
+ 523 0203 55       		.byte	0x55
+ 524 0204 08       		.uleb128 0x8
+ 525 0205 4B000000 		.4byte	.LASF70
+ 526 0209 56       		.byte	0x56
+ 527 020a 08       		.uleb128 0x8
+ 528 020b 75120000 		.4byte	.LASF71
+ 529 020f 57       		.byte	0x57
+ 530 0210 08       		.uleb128 0x8
+ 531 0211 F8220000 		.4byte	.LASF72
+ 532 0215 58       		.byte	0x58
+ 533 0216 08       		.uleb128 0x8
+ 534 0217 82050000 		.4byte	.LASF73
+ 535 021b 70       		.byte	0x70
+ 536 021c 08       		.uleb128 0x8
+ 537 021d E4060000 		.4byte	.LASF74
+ 538 0221 71       		.byte	0x71
+ 539 0222 08       		.uleb128 0x8
+ 540 0223 0F0D0000 		.4byte	.LASF75
+ 541 0227 72       		.byte	0x72
+ 542 0228 08       		.uleb128 0x8
+ 543 0229 0B2C0000 		.4byte	.LASF76
+ 544 022d 73       		.byte	0x73
+ 545 022e 08       		.uleb128 0x8
+ 546 022f 3B160000 		.4byte	.LASF77
+ 547 0233 74       		.byte	0x74
+ 548 0234 08       		.uleb128 0x8
+ 549 0235 C8280000 		.4byte	.LASF78
+ 550 0239 75       		.byte	0x75
+ 551 023a 08       		.uleb128 0x8
+ 552 023b 82320000 		.4byte	.LASF79
+ 553 023f 76       		.byte	0x76
+ 554 0240 08       		.uleb128 0x8
+ 555 0241 19210000 		.4byte	.LASF80
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 16
+
+
+ 556 0245 77       		.byte	0x77
+ 557 0246 08       		.uleb128 0x8
+ 558 0247 B4080000 		.4byte	.LASF81
+ 559 024b 78       		.byte	0x78
+ 560 024c 08       		.uleb128 0x8
+ 561 024d 77350000 		.4byte	.LASF82
+ 562 0251 79       		.byte	0x79
+ 563 0252 08       		.uleb128 0x8
+ 564 0253 3E2F0000 		.4byte	.LASF83
+ 565 0257 7A       		.byte	0x7a
+ 566 0258 08       		.uleb128 0x8
+ 567 0259 450B0000 		.4byte	.LASF84
+ 568 025d FA       		.byte	0xfa
+ 569 025e 08       		.uleb128 0x8
+ 570 025f C2050000 		.4byte	.LASF85
+ 571 0263 FB       		.byte	0xfb
+ 572 0264 08       		.uleb128 0x8
+ 573 0265 66220000 		.4byte	.LASF86
+ 574 0269 FC       		.byte	0xfc
+ 575 026a 08       		.uleb128 0x8
+ 576 026b CD130000 		.4byte	.LASF87
+ 577 026f FD       		.byte	0xfd
+ 578 0270 08       		.uleb128 0x8
+ 579 0271 39280000 		.4byte	.LASF88
+ 580 0275 FF       		.byte	0xff
+ 581 0276 00       		.byte	0
+ 582 0277 07       		.uleb128 0x7
+ 583 0278 02       		.byte	0x2
+ 584 0279 3A000000 		.4byte	0x3a
+ 585 027d 03       		.byte	0x3
+ 586 027e 0204     		.2byte	0x402
+ 587 0280 50030000 		.4byte	0x350
+ 588 0284 08       		.uleb128 0x8
+ 589 0285 27360000 		.4byte	.LASF89
+ 590 0289 00       		.byte	0
+ 591 028a 08       		.uleb128 0x8
+ 592 028b 0A290000 		.4byte	.LASF90
+ 593 028f 01       		.byte	0x1
+ 594 0290 08       		.uleb128 0x8
+ 595 0291 29050000 		.4byte	.LASF91
+ 596 0295 02       		.byte	0x2
+ 597 0296 08       		.uleb128 0x8
+ 598 0297 F0160000 		.4byte	.LASF92
+ 599 029b 03       		.byte	0x3
+ 600 029c 08       		.uleb128 0x8
+ 601 029d 78180000 		.4byte	.LASF93
+ 602 02a1 04       		.byte	0x4
+ 603 02a2 08       		.uleb128 0x8
+ 604 02a3 64150000 		.4byte	.LASF94
+ 605 02a7 05       		.byte	0x5
+ 606 02a8 08       		.uleb128 0x8
+ 607 02a9 C22E0000 		.4byte	.LASF95
+ 608 02ad 06       		.byte	0x6
+ 609 02ae 08       		.uleb128 0x8
+ 610 02af C7060000 		.4byte	.LASF96
+ 611 02b3 07       		.byte	0x7
+ 612 02b4 08       		.uleb128 0x8
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 17
+
+
+ 613 02b5 A2250000 		.4byte	.LASF97
+ 614 02b9 08       		.byte	0x8
+ 615 02ba 08       		.uleb128 0x8
+ 616 02bb 13030000 		.4byte	.LASF98
+ 617 02bf 09       		.byte	0x9
+ 618 02c0 08       		.uleb128 0x8
+ 619 02c1 FB240000 		.4byte	.LASF99
+ 620 02c5 0A       		.byte	0xa
+ 621 02c6 08       		.uleb128 0x8
+ 622 02c7 2B0D0000 		.4byte	.LASF100
+ 623 02cb 0B       		.byte	0xb
+ 624 02cc 08       		.uleb128 0x8
+ 625 02cd 83170000 		.4byte	.LASF101
+ 626 02d1 0C       		.byte	0xc
+ 627 02d2 08       		.uleb128 0x8
+ 628 02d3 60200000 		.4byte	.LASF102
+ 629 02d7 0D       		.byte	0xd
+ 630 02d8 08       		.uleb128 0x8
+ 631 02d9 F92D0000 		.4byte	.LASF103
+ 632 02dd 0E       		.byte	0xe
+ 633 02de 08       		.uleb128 0x8
+ 634 02df 8B220000 		.4byte	.LASF104
+ 635 02e3 0F       		.byte	0xf
+ 636 02e4 08       		.uleb128 0x8
+ 637 02e5 5C1F0000 		.4byte	.LASF105
+ 638 02e9 10       		.byte	0x10
+ 639 02ea 08       		.uleb128 0x8
+ 640 02eb F70B0000 		.4byte	.LASF106
+ 641 02ef 11       		.byte	0x11
+ 642 02f0 08       		.uleb128 0x8
+ 643 02f1 FE350000 		.4byte	.LASF107
+ 644 02f5 12       		.byte	0x12
+ 645 02f6 08       		.uleb128 0x8
+ 646 02f7 391D0000 		.4byte	.LASF108
+ 647 02fb 13       		.byte	0x13
+ 648 02fc 08       		.uleb128 0x8
+ 649 02fd 44220000 		.4byte	.LASF109
+ 650 0301 27       		.byte	0x27
+ 651 0302 08       		.uleb128 0x8
+ 652 0303 E7170000 		.4byte	.LASF110
+ 653 0307 28       		.byte	0x28
+ 654 0308 08       		.uleb128 0x8
+ 655 0309 BE180000 		.4byte	.LASF111
+ 656 030d 29       		.byte	0x29
+ 657 030e 08       		.uleb128 0x8
+ 658 030f 6F030000 		.4byte	.LASF112
+ 659 0313 2A       		.byte	0x2a
+ 660 0314 08       		.uleb128 0x8
+ 661 0315 15170000 		.4byte	.LASF113
+ 662 0319 2B       		.byte	0x2b
+ 663 031a 08       		.uleb128 0x8
+ 664 031b C0250000 		.4byte	.LASF114
+ 665 031f 2C       		.byte	0x2c
+ 666 0320 08       		.uleb128 0x8
+ 667 0321 BE350000 		.4byte	.LASF115
+ 668 0325 FE       		.byte	0xfe
+ 669 0326 08       		.uleb128 0x8
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 18
+
+
+ 670 0327 CB1D0000 		.4byte	.LASF116
+ 671 032b FF       		.byte	0xff
+ 672 032c 09       		.uleb128 0x9
+ 673 032d 241B0000 		.4byte	.LASF117
+ 674 0331 0001     		.2byte	0x100
+ 675 0333 09       		.uleb128 0x9
+ 676 0334 01130000 		.4byte	.LASF118
+ 677 0338 0101     		.2byte	0x101
+ 678 033a 09       		.uleb128 0x9
+ 679 033b B8260000 		.4byte	.LASF119
+ 680 033f 0201     		.2byte	0x102
+ 681 0341 09       		.uleb128 0x9
+ 682 0342 A1070000 		.4byte	.LASF120
+ 683 0346 0301     		.2byte	0x103
+ 684 0348 09       		.uleb128 0x9
+ 685 0349 3D1B0000 		.4byte	.LASF121
+ 686 034d 0401     		.2byte	0x104
+ 687 034f 00       		.byte	0
+ 688 0350 04       		.uleb128 0x4
+ 689 0351 78220000 		.4byte	.LASF122
+ 690 0355 03       		.byte	0x3
+ 691 0356 7104     		.2byte	0x471
+ 692 0358 77020000 		.4byte	0x277
+ 693 035c 0A       		.uleb128 0xa
+ 694 035d 04       		.byte	0x4
+ 695 035e 6B000000 		.4byte	0x6b
+ 696 0362 0B       		.uleb128 0xb
+ 697 0363 02       		.byte	0x2
+ 698 0364 04       		.byte	0x4
+ 699 0365 9301     		.2byte	0x193
+ 700 0367 86030000 		.4byte	0x386
+ 701 036b 0C       		.uleb128 0xc
+ 702 036c 6E340000 		.4byte	.LASF123
+ 703 0370 04       		.byte	0x4
+ 704 0371 9A01     		.2byte	0x19a
+ 705 0373 6B000000 		.4byte	0x6b
+ 706 0377 00       		.byte	0
+ 707 0378 0C       		.uleb128 0xc
+ 708 0379 59370000 		.4byte	.LASF124
+ 709 037d 04       		.byte	0x4
+ 710 037e A001     		.2byte	0x1a0
+ 711 0380 6B000000 		.4byte	0x6b
+ 712 0384 01       		.byte	0x1
+ 713 0385 00       		.byte	0
+ 714 0386 04       		.uleb128 0x4
+ 715 0387 0D120000 		.4byte	.LASF125
+ 716 038b 04       		.byte	0x4
+ 717 038c A201     		.2byte	0x1a2
+ 718 038e 62030000 		.4byte	0x362
+ 719 0392 0B       		.uleb128 0xb
+ 720 0393 08       		.byte	0x8
+ 721 0394 04       		.byte	0x4
+ 722 0395 BE01     		.2byte	0x1be
+ 723 0397 C3030000 		.4byte	0x3c3
+ 724 039b 0D       		.uleb128 0xd
+ 725 039c 76616C00 		.ascii	"val\000"
+ 726 03a0 04       		.byte	0x4
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 19
+
+
+ 727 03a1 C101     		.2byte	0x1c1
+ 728 03a3 5C030000 		.4byte	0x35c
+ 729 03a7 00       		.byte	0
+ 730 03a8 0D       		.uleb128 0xd
+ 731 03a9 6C656E00 		.ascii	"len\000"
+ 732 03ad 04       		.byte	0x4
+ 733 03ae C401     		.2byte	0x1c4
+ 734 03b0 77000000 		.4byte	0x77
+ 735 03b4 04       		.byte	0x4
+ 736 03b5 0C       		.uleb128 0xc
+ 737 03b6 AE2A0000 		.4byte	.LASF126
+ 738 03ba 04       		.byte	0x4
+ 739 03bb CB01     		.2byte	0x1cb
+ 740 03bd 77000000 		.4byte	0x77
+ 741 03c1 06       		.byte	0x6
+ 742 03c2 00       		.byte	0
+ 743 03c3 04       		.uleb128 0x4
+ 744 03c4 01190000 		.4byte	.LASF127
+ 745 03c8 04       		.byte	0x4
+ 746 03c9 CD01     		.2byte	0x1cd
+ 747 03cb 92030000 		.4byte	0x392
+ 748 03cf 0A       		.uleb128 0xa
+ 749 03d0 04       		.byte	0x4
+ 750 03d1 C3030000 		.4byte	0x3c3
+ 751 03d5 0E       		.uleb128 0xe
+ 752 03d6 01       		.byte	0x1
+ 753 03d7 2C000000 		.4byte	0x2c
+ 754 03db 05       		.byte	0x5
+ 755 03dc 21       		.byte	0x21
+ 756 03dd E8030000 		.4byte	0x3e8
+ 757 03e1 08       		.uleb128 0x8
+ 758 03e2 3E2B0000 		.4byte	.LASF128
+ 759 03e6 00       		.byte	0
+ 760 03e7 00       		.byte	0
+ 761 03e8 0E       		.uleb128 0xe
+ 762 03e9 01       		.byte	0x1
+ 763 03ea 2C000000 		.4byte	0x2c
+ 764 03ee 05       		.byte	0x5
+ 765 03ef 3A       		.byte	0x3a
+ 766 03f0 01040000 		.4byte	0x401
+ 767 03f4 08       		.uleb128 0x8
+ 768 03f5 0A0B0000 		.4byte	.LASF129
+ 769 03f9 00       		.byte	0
+ 770 03fa 08       		.uleb128 0x8
+ 771 03fb 14040000 		.4byte	.LASF130
+ 772 03ff 01       		.byte	0x1
+ 773 0400 00       		.byte	0
+ 774 0401 0F       		.uleb128 0xf
+ 775 0402 38210000 		.4byte	.LASF131
+ 776 0406 05       		.byte	0x5
+ 777 0407 3D       		.byte	0x3d
+ 778 0408 E8030000 		.4byte	0x3e8
+ 779 040c 0E       		.uleb128 0xe
+ 780 040d 01       		.byte	0x1
+ 781 040e 2C000000 		.4byte	0x2c
+ 782 0412 05       		.byte	0x5
+ 783 0413 41       		.byte	0x41
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 20
+
+
+ 784 0414 2B040000 		.4byte	0x42b
+ 785 0418 08       		.uleb128 0x8
+ 786 0419 87060000 		.4byte	.LASF132
+ 787 041d 00       		.byte	0
+ 788 041e 08       		.uleb128 0x8
+ 789 041f 6D190000 		.4byte	.LASF133
+ 790 0423 01       		.byte	0x1
+ 791 0424 08       		.uleb128 0x8
+ 792 0425 A7270000 		.4byte	.LASF134
+ 793 0429 02       		.byte	0x2
+ 794 042a 00       		.byte	0
+ 795 042b 10       		.uleb128 0x10
+ 796 042c 08       		.byte	0x8
+ 797 042d 05       		.byte	0x5
+ 798 042e 6A       		.byte	0x6a
+ 799 042f 64040000 		.4byte	0x464
+ 800 0433 11       		.uleb128 0x11
+ 801 0434 81370000 		.4byte	.LASF135
+ 802 0438 05       		.byte	0x5
+ 803 0439 6C       		.byte	0x6c
+ 804 043a 86030000 		.4byte	0x386
+ 805 043e 00       		.byte	0
+ 806 043f 11       		.uleb128 0x11
+ 807 0440 AF2D0000 		.4byte	.LASF136
+ 808 0444 05       		.byte	0x5
+ 809 0445 6D       		.byte	0x6d
+ 810 0446 6B000000 		.4byte	0x6b
+ 811 044a 02       		.byte	0x2
+ 812 044b 11       		.uleb128 0x11
+ 813 044c E9280000 		.4byte	.LASF137
+ 814 0450 05       		.byte	0x5
+ 815 0451 6E       		.byte	0x6e
+ 816 0452 01040000 		.4byte	0x401
+ 817 0456 03       		.byte	0x3
+ 818 0457 11       		.uleb128 0x11
+ 819 0458 1B110000 		.4byte	.LASF138
+ 820 045c 05       		.byte	0x5
+ 821 045d 6F       		.byte	0x6f
+ 822 045e CF030000 		.4byte	0x3cf
+ 823 0462 04       		.byte	0x4
+ 824 0463 00       		.byte	0
+ 825 0464 0F       		.uleb128 0xf
+ 826 0465 9E300000 		.4byte	.LASF139
+ 827 0469 05       		.byte	0x5
+ 828 046a 70       		.byte	0x70
+ 829 046b 2B040000 		.4byte	0x42b
+ 830 046f 0E       		.uleb128 0xe
+ 831 0470 01       		.byte	0x1
+ 832 0471 2C000000 		.4byte	0x2c
+ 833 0475 06       		.byte	0x6
+ 834 0476 22       		.byte	0x22
+ 835 0477 B8040000 		.4byte	0x4b8
+ 836 047b 08       		.uleb128 0x8
+ 837 047c 56080000 		.4byte	.LASF140
+ 838 0480 00       		.byte	0
+ 839 0481 08       		.uleb128 0x8
+ 840 0482 1A270000 		.4byte	.LASF141
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 21
+
+
+ 841 0486 01       		.byte	0x1
+ 842 0487 08       		.uleb128 0x8
+ 843 0488 ED310000 		.4byte	.LASF142
+ 844 048c 02       		.byte	0x2
+ 845 048d 08       		.uleb128 0x8
+ 846 048e 21120000 		.4byte	.LASF143
+ 847 0492 03       		.byte	0x3
+ 848 0493 08       		.uleb128 0x8
+ 849 0494 72240000 		.4byte	.LASF144
+ 850 0498 04       		.byte	0x4
+ 851 0499 08       		.uleb128 0x8
+ 852 049a 27190000 		.4byte	.LASF145
+ 853 049e 05       		.byte	0x5
+ 854 049f 08       		.uleb128 0x8
+ 855 04a0 7C160000 		.4byte	.LASF146
+ 856 04a4 06       		.byte	0x6
+ 857 04a5 08       		.uleb128 0x8
+ 858 04a6 E11A0000 		.4byte	.LASF147
+ 859 04aa 07       		.byte	0x7
+ 860 04ab 08       		.uleb128 0x8
+ 861 04ac 4A310000 		.4byte	.LASF148
+ 862 04b0 08       		.byte	0x8
+ 863 04b1 08       		.uleb128 0x8
+ 864 04b2 A3320000 		.4byte	.LASF149
+ 865 04b6 09       		.byte	0x9
+ 866 04b7 00       		.byte	0
+ 867 04b8 0E       		.uleb128 0xe
+ 868 04b9 02       		.byte	0x2
+ 869 04ba 3A000000 		.4byte	0x3a
+ 870 04be 07       		.byte	0x7
+ 871 04bf B1       		.byte	0xb1
+ 872 04c0 C10C0000 		.4byte	0xcc1
+ 873 04c4 09       		.uleb128 0x9
+ 874 04c5 630A0000 		.4byte	.LASF150
+ 875 04c9 0001     		.2byte	0x100
+ 876 04cb 09       		.uleb128 0x9
+ 877 04cc C7090000 		.4byte	.LASF151
+ 878 04d0 0101     		.2byte	0x101
+ 879 04d2 09       		.uleb128 0x9
+ 880 04d3 8A1F0000 		.4byte	.LASF152
+ 881 04d7 0201     		.2byte	0x102
+ 882 04d9 09       		.uleb128 0x9
+ 883 04da 5D170000 		.4byte	.LASF153
+ 884 04de 0301     		.2byte	0x103
+ 885 04e0 09       		.uleb128 0x9
+ 886 04e1 39250000 		.4byte	.LASF154
+ 887 04e5 0401     		.2byte	0x104
+ 888 04e7 09       		.uleb128 0x9
+ 889 04e8 AC1F0000 		.4byte	.LASF155
+ 890 04ec 0501     		.2byte	0x105
+ 891 04ee 09       		.uleb128 0x9
+ 892 04ef 38120000 		.4byte	.LASF156
+ 893 04f3 0601     		.2byte	0x106
+ 894 04f5 09       		.uleb128 0x9
+ 895 04f6 021E0000 		.4byte	.LASF157
+ 896 04fa 0701     		.2byte	0x107
+ 897 04fc 09       		.uleb128 0x9
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 22
+
+
+ 898 04fd AF020000 		.4byte	.LASF158
+ 899 0501 0801     		.2byte	0x108
+ 900 0503 09       		.uleb128 0x9
+ 901 0504 EC340000 		.4byte	.LASF159
+ 902 0508 0901     		.2byte	0x109
+ 903 050a 09       		.uleb128 0x9
+ 904 050b D01F0000 		.4byte	.LASF160
+ 905 050f 0A01     		.2byte	0x10a
+ 906 0511 09       		.uleb128 0x9
+ 907 0512 F2020000 		.4byte	.LASF161
+ 908 0516 0B01     		.2byte	0x10b
+ 909 0518 09       		.uleb128 0x9
+ 910 0519 CC190000 		.4byte	.LASF162
+ 911 051d 0C01     		.2byte	0x10c
+ 912 051f 09       		.uleb128 0x9
+ 913 0520 D50F0000 		.4byte	.LASF163
+ 914 0524 0D01     		.2byte	0x10d
+ 915 0526 09       		.uleb128 0x9
+ 916 0527 8E000000 		.4byte	.LASF164
+ 917 052b 0E01     		.2byte	0x10e
+ 918 052d 09       		.uleb128 0x9
+ 919 052e 00000000 		.4byte	.LASF165
+ 920 0532 0F01     		.2byte	0x10f
+ 921 0534 09       		.uleb128 0x9
+ 922 0535 05240000 		.4byte	.LASF166
+ 923 0539 1001     		.2byte	0x110
+ 924 053b 09       		.uleb128 0x9
+ 925 053c 74020000 		.4byte	.LASF167
+ 926 0540 1101     		.2byte	0x111
+ 927 0542 09       		.uleb128 0x9
+ 928 0543 21110000 		.4byte	.LASF168
+ 929 0547 1201     		.2byte	0x112
+ 930 0549 09       		.uleb128 0x9
+ 931 054a 33370000 		.4byte	.LASF169
+ 932 054e 1301     		.2byte	0x113
+ 933 0550 09       		.uleb128 0x9
+ 934 0551 59160000 		.4byte	.LASF170
+ 935 0555 1401     		.2byte	0x114
+ 936 0557 09       		.uleb128 0x9
+ 937 0558 AD0C0000 		.4byte	.LASF171
+ 938 055c 1501     		.2byte	0x115
+ 939 055e 09       		.uleb128 0x9
+ 940 055f 16160000 		.4byte	.LASF172
+ 941 0563 1601     		.2byte	0x116
+ 942 0565 09       		.uleb128 0x9
+ 943 0566 D8000000 		.4byte	.LASF173
+ 944 056a 1701     		.2byte	0x117
+ 945 056c 09       		.uleb128 0x9
+ 946 056d D7080000 		.4byte	.LASF174
+ 947 0571 1801     		.2byte	0x118
+ 948 0573 09       		.uleb128 0x9
+ 949 0574 F9150000 		.4byte	.LASF175
+ 950 0578 1901     		.2byte	0x119
+ 951 057a 09       		.uleb128 0x9
+ 952 057b 1E0E0000 		.4byte	.LASF176
+ 953 057f 1A01     		.2byte	0x11a
+ 954 0581 09       		.uleb128 0x9
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 23
+
+
+ 955 0582 82150000 		.4byte	.LASF177
+ 956 0586 1B01     		.2byte	0x11b
+ 957 0588 09       		.uleb128 0x9
+ 958 0589 05320000 		.4byte	.LASF178
+ 959 058d 1C01     		.2byte	0x11c
+ 960 058f 09       		.uleb128 0x9
+ 961 0590 CF370000 		.4byte	.LASF179
+ 962 0594 1D01     		.2byte	0x11d
+ 963 0596 09       		.uleb128 0x9
+ 964 0597 7C070000 		.4byte	.LASF180
+ 965 059b 1E01     		.2byte	0x11e
+ 966 059d 09       		.uleb128 0x9
+ 967 059e 46040000 		.4byte	.LASF181
+ 968 05a2 1F01     		.2byte	0x11f
+ 969 05a4 09       		.uleb128 0x9
+ 970 05a5 111F0000 		.4byte	.LASF182
+ 971 05a9 2001     		.2byte	0x120
+ 972 05ab 09       		.uleb128 0x9
+ 973 05ac 46110000 		.4byte	.LASF183
+ 974 05b0 2101     		.2byte	0x121
+ 975 05b2 09       		.uleb128 0x9
+ 976 05b3 6C060000 		.4byte	.LASF184
+ 977 05b7 2201     		.2byte	0x122
+ 978 05b9 09       		.uleb128 0x9
+ 979 05ba 762D0000 		.4byte	.LASF185
+ 980 05be 2301     		.2byte	0x123
+ 981 05c0 09       		.uleb128 0x9
+ 982 05c1 9F1B0000 		.4byte	.LASF186
+ 983 05c5 2401     		.2byte	0x124
+ 984 05c7 09       		.uleb128 0x9
+ 985 05c8 E51B0000 		.4byte	.LASF187
+ 986 05cc 2501     		.2byte	0x125
+ 987 05ce 09       		.uleb128 0x9
+ 988 05cf 5A1A0000 		.4byte	.LASF188
+ 989 05d3 2601     		.2byte	0x126
+ 990 05d5 09       		.uleb128 0x9
+ 991 05d6 2D240000 		.4byte	.LASF189
+ 992 05da 2701     		.2byte	0x127
+ 993 05dc 09       		.uleb128 0x9
+ 994 05dd AE100000 		.4byte	.LASF190
+ 995 05e1 2801     		.2byte	0x128
+ 996 05e3 09       		.uleb128 0x9
+ 997 05e4 53180000 		.4byte	.LASF191
+ 998 05e8 2901     		.2byte	0x129
+ 999 05ea 09       		.uleb128 0x9
+ 1000 05eb 932C0000 		.4byte	.LASF192
+ 1001 05ef 2A01     		.2byte	0x12a
+ 1002 05f1 09       		.uleb128 0x9
+ 1003 05f2 002F0000 		.4byte	.LASF193
+ 1004 05f6 2B01     		.2byte	0x12b
+ 1005 05f8 09       		.uleb128 0x9
+ 1006 05f9 D2100000 		.4byte	.LASF194
+ 1007 05fd 2C01     		.2byte	0x12c
+ 1008 05ff 09       		.uleb128 0x9
+ 1009 0600 99360000 		.4byte	.LASF195
+ 1010 0604 2D01     		.2byte	0x12d
+ 1011 0606 09       		.uleb128 0x9
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 24
+
+
+ 1012 0607 C4330000 		.4byte	.LASF196
+ 1013 060b 2E01     		.2byte	0x12e
+ 1014 060d 09       		.uleb128 0x9
+ 1015 060e 1B0C0000 		.4byte	.LASF197
+ 1016 0612 2F01     		.2byte	0x12f
+ 1017 0614 09       		.uleb128 0x9
+ 1018 0615 1C330000 		.4byte	.LASF198
+ 1019 0619 3001     		.2byte	0x130
+ 1020 061b 09       		.uleb128 0x9
+ 1021 061c FC0E0000 		.4byte	.LASF199
+ 1022 0620 3101     		.2byte	0x131
+ 1023 0622 09       		.uleb128 0x9
+ 1024 0623 F3370000 		.4byte	.LASF200
+ 1025 0627 3201     		.2byte	0x132
+ 1026 0629 09       		.uleb128 0x9
+ 1027 062a 65040000 		.4byte	.LASF201
+ 1028 062e 3301     		.2byte	0x133
+ 1029 0630 09       		.uleb128 0x9
+ 1030 0631 8B290000 		.4byte	.LASF202
+ 1031 0635 3401     		.2byte	0x134
+ 1032 0637 09       		.uleb128 0x9
+ 1033 0638 15250000 		.4byte	.LASF203
+ 1034 063c 3501     		.2byte	0x135
+ 1035 063e 09       		.uleb128 0x9
+ 1036 063f B30F0000 		.4byte	.LASF204
+ 1037 0643 3601     		.2byte	0x136
+ 1038 0645 09       		.uleb128 0x9
+ 1039 0646 87040000 		.4byte	.LASF205
+ 1040 064a 3701     		.2byte	0x137
+ 1041 064c 09       		.uleb128 0x9
+ 1042 064d 5B310000 		.4byte	.LASF206
+ 1043 0651 3801     		.2byte	0x138
+ 1044 0653 09       		.uleb128 0x9
+ 1045 0654 4B0D0000 		.4byte	.LASF207
+ 1046 0658 3901     		.2byte	0x139
+ 1047 065a 09       		.uleb128 0x9
+ 1048 065b B82A0000 		.4byte	.LASF208
+ 1049 065f 3A01     		.2byte	0x13a
+ 1050 0661 09       		.uleb128 0x9
+ 1051 0662 A11A0000 		.4byte	.LASF209
+ 1052 0666 3B01     		.2byte	0x13b
+ 1053 0668 09       		.uleb128 0x9
+ 1054 0669 4F210000 		.4byte	.LASF210
+ 1055 066d 3C01     		.2byte	0x13c
+ 1056 066f 09       		.uleb128 0x9
+ 1057 0670 C52B0000 		.4byte	.LASF211
+ 1058 0674 3D01     		.2byte	0x13d
+ 1059 0676 09       		.uleb128 0x9
+ 1060 0677 18010000 		.4byte	.LASF212
+ 1061 067b 3E01     		.2byte	0x13e
+ 1062 067d 09       		.uleb128 0x9
+ 1063 067e 7F310000 		.4byte	.LASF213
+ 1064 0682 3F01     		.2byte	0x13f
+ 1065 0684 09       		.uleb128 0x9
+ 1066 0685 D02C0000 		.4byte	.LASF214
+ 1067 0689 4001     		.2byte	0x140
+ 1068 068b 09       		.uleb128 0x9
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 25
+
+
+ 1069 068c 8E0F0000 		.4byte	.LASF215
+ 1070 0690 4101     		.2byte	0x141
+ 1071 0692 09       		.uleb128 0x9
+ 1072 0693 62070000 		.4byte	.LASF216
+ 1073 0697 4201     		.2byte	0x142
+ 1074 0699 09       		.uleb128 0x9
+ 1075 069a 4D1E0000 		.4byte	.LASF217
+ 1076 069e 4301     		.2byte	0x143
+ 1077 06a0 09       		.uleb128 0x9
+ 1078 06a1 ED0C0000 		.4byte	.LASF218
+ 1079 06a5 4401     		.2byte	0x144
+ 1080 06a7 09       		.uleb128 0x9
+ 1081 06a8 AA130000 		.4byte	.LASF219
+ 1082 06ac 4501     		.2byte	0x145
+ 1083 06ae 09       		.uleb128 0x9
+ 1084 06af 96210000 		.4byte	.LASF220
+ 1085 06b3 4601     		.2byte	0x146
+ 1086 06b5 09       		.uleb128 0x9
+ 1087 06b6 FC250000 		.4byte	.LASF221
+ 1088 06ba 4701     		.2byte	0x147
+ 1089 06bc 09       		.uleb128 0x9
+ 1090 06bd A6280000 		.4byte	.LASF222
+ 1091 06c1 4801     		.2byte	0x148
+ 1092 06c3 09       		.uleb128 0x9
+ 1093 06c4 691E0000 		.4byte	.LASF223
+ 1094 06c8 4901     		.2byte	0x149
+ 1095 06ca 09       		.uleb128 0x9
+ 1096 06cb 8C1E0000 		.4byte	.LASF224
+ 1097 06cf 4A01     		.2byte	0x14a
+ 1098 06d1 09       		.uleb128 0x9
+ 1099 06d2 90160000 		.4byte	.LASF225
+ 1100 06d6 4B01     		.2byte	0x14b
+ 1101 06d8 09       		.uleb128 0x9
+ 1102 06d9 E30D0000 		.4byte	.LASF226
+ 1103 06dd 4C01     		.2byte	0x14c
+ 1104 06df 09       		.uleb128 0x9
+ 1105 06e0 B2240000 		.4byte	.LASF227
+ 1106 06e4 4D01     		.2byte	0x14d
+ 1107 06e6 09       		.uleb128 0x9
+ 1108 06e7 B40E0000 		.4byte	.LASF228
+ 1109 06eb 4E01     		.2byte	0x14e
+ 1110 06ed 09       		.uleb128 0x9
+ 1111 06ee BB070000 		.4byte	.LASF229
+ 1112 06f2 4F01     		.2byte	0x14f
+ 1113 06f4 09       		.uleb128 0x9
+ 1114 06f5 1E1D0000 		.4byte	.LASF230
+ 1115 06f9 5001     		.2byte	0x150
+ 1116 06fb 09       		.uleb128 0x9
+ 1117 06fc 3A300000 		.4byte	.LASF231
+ 1118 0700 5101     		.2byte	0x151
+ 1119 0702 09       		.uleb128 0x9
+ 1120 0703 4F060000 		.4byte	.LASF232
+ 1121 0707 5201     		.2byte	0x152
+ 1122 0709 09       		.uleb128 0x9
+ 1123 070a 621B0000 		.4byte	.LASF233
+ 1124 070e 5301     		.2byte	0x153
+ 1125 0710 09       		.uleb128 0x9
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 26
+
+
+ 1126 0711 F42C0000 		.4byte	.LASF234
+ 1127 0715 5401     		.2byte	0x154
+ 1128 0717 09       		.uleb128 0x9
+ 1129 0718 7A270000 		.4byte	.LASF235
+ 1130 071c 5501     		.2byte	0x155
+ 1131 071e 09       		.uleb128 0x9
+ 1132 071f 21150000 		.4byte	.LASF236
+ 1133 0723 5601     		.2byte	0x156
+ 1134 0725 09       		.uleb128 0x9
+ 1135 0726 75360000 		.4byte	.LASF237
+ 1136 072a 5701     		.2byte	0x157
+ 1137 072c 09       		.uleb128 0x9
+ 1138 072d A3310000 		.4byte	.LASF238
+ 1139 0731 5801     		.2byte	0x158
+ 1140 0733 09       		.uleb128 0x9
+ 1141 0734 EF1E0000 		.4byte	.LASF239
+ 1142 0738 5901     		.2byte	0x159
+ 1143 073a 09       		.uleb128 0x9
+ 1144 073b 95010000 		.4byte	.LASF240
+ 1145 073f 5A01     		.2byte	0x15a
+ 1146 0741 09       		.uleb128 0x9
+ 1147 0742 50020000 		.4byte	.LASF241
+ 1148 0746 5B01     		.2byte	0x15b
+ 1149 0748 09       		.uleb128 0x9
+ 1150 0749 D8150000 		.4byte	.LASF242
+ 1151 074d 5C01     		.2byte	0x15c
+ 1152 074f 09       		.uleb128 0x9
+ 1153 0750 7D090000 		.4byte	.LASF243
+ 1154 0754 5D01     		.2byte	0x15d
+ 1155 0756 09       		.uleb128 0x9
+ 1156 0757 E12F0000 		.4byte	.LASF244
+ 1157 075b 5E01     		.2byte	0x15e
+ 1158 075d 09       		.uleb128 0x9
+ 1159 075e 66280000 		.4byte	.LASF245
+ 1160 0762 5F01     		.2byte	0x15f
+ 1161 0764 09       		.uleb128 0x9
+ 1162 0765 36360000 		.4byte	.LASF246
+ 1163 0769 6001     		.2byte	0x160
+ 1164 076b 09       		.uleb128 0x9
+ 1165 076c B6000000 		.4byte	.LASF247
+ 1166 0770 6101     		.2byte	0x161
+ 1167 0772 09       		.uleb128 0x9
+ 1168 0773 55260000 		.4byte	.LASF248
+ 1169 0777 6201     		.2byte	0x162
+ 1170 0779 09       		.uleb128 0x9
+ 1171 077a ED190000 		.4byte	.LASF249
+ 1172 077e 6301     		.2byte	0x163
+ 1173 0780 09       		.uleb128 0x9
+ 1174 0781 4B2C0000 		.4byte	.LASF250
+ 1175 0785 6401     		.2byte	0x164
+ 1176 0787 09       		.uleb128 0x9
+ 1177 0788 D9300000 		.4byte	.LASF251
+ 1178 078c 6501     		.2byte	0x165
+ 1179 078e 09       		.uleb128 0x9
+ 1180 078f E1070000 		.4byte	.LASF252
+ 1181 0793 6601     		.2byte	0x166
+ 1182 0795 09       		.uleb128 0x9
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 27
+
+
+ 1183 0796 E5130000 		.4byte	.LASF253
+ 1184 079a 6701     		.2byte	0x167
+ 1185 079c 09       		.uleb128 0x9
+ 1186 079d AD2C0000 		.4byte	.LASF254
+ 1187 07a1 6801     		.2byte	0x168
+ 1188 07a3 09       		.uleb128 0x9
+ 1189 07a4 82280000 		.4byte	.LASF255
+ 1190 07a8 6901     		.2byte	0x169
+ 1191 07aa 09       		.uleb128 0x9
+ 1192 07ab 9F090000 		.4byte	.LASF256
+ 1193 07af 6A01     		.2byte	0x16a
+ 1194 07b1 09       		.uleb128 0x9
+ 1195 07b2 480A0000 		.4byte	.LASF257
+ 1196 07b6 6B01     		.2byte	0x16b
+ 1197 07b8 09       		.uleb128 0x9
+ 1198 07b9 78260000 		.4byte	.LASF258
+ 1199 07bd 6C01     		.2byte	0x16c
+ 1200 07bf 09       		.uleb128 0x9
+ 1201 07c0 8B110000 		.4byte	.LASF259
+ 1202 07c4 6D01     		.2byte	0x16d
+ 1203 07c6 09       		.uleb128 0x9
+ 1204 07c7 820D0000 		.4byte	.LASF260
+ 1205 07cb 6E01     		.2byte	0x16e
+ 1206 07cd 09       		.uleb128 0x9
+ 1207 07ce 44130000 		.4byte	.LASF261
+ 1208 07d2 6F01     		.2byte	0x16f
+ 1209 07d4 09       		.uleb128 0x9
+ 1210 07d5 A50D0000 		.4byte	.LASF262
+ 1211 07d9 7001     		.2byte	0x170
+ 1212 07db 09       		.uleb128 0x9
+ 1213 07dc 52350000 		.4byte	.LASF263
+ 1214 07e0 7101     		.2byte	0x171
+ 1215 07e2 09       		.uleb128 0x9
+ 1216 07e3 36090000 		.4byte	.LASF264
+ 1217 07e7 7201     		.2byte	0x172
+ 1218 07e9 09       		.uleb128 0x9
+ 1219 07ea 630B0000 		.4byte	.LASF265
+ 1220 07ee 7301     		.2byte	0x173
+ 1221 07f0 09       		.uleb128 0x9
+ 1222 07f1 00270000 		.4byte	.LASF266
+ 1223 07f5 7401     		.2byte	0x174
+ 1224 07f7 09       		.uleb128 0x9
+ 1225 07f8 A92B0000 		.4byte	.LASF267
+ 1226 07fc 7501     		.2byte	0x175
+ 1227 07fe 09       		.uleb128 0x9
+ 1228 07ff 3B010000 		.4byte	.LASF268
+ 1229 0803 7601     		.2byte	0x176
+ 1230 0805 09       		.uleb128 0x9
+ 1231 0806 A4060000 		.4byte	.LASF269
+ 1232 080a 7701     		.2byte	0x177
+ 1233 080c 09       		.uleb128 0x9
+ 1234 080d D7240000 		.4byte	.LASF270
+ 1235 0811 7801     		.2byte	0x178
+ 1236 0813 09       		.uleb128 0x9
+ 1237 0814 220B0000 		.4byte	.LASF271
+ 1238 0818 7901     		.2byte	0x179
+ 1239 081a 09       		.uleb128 0x9
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 28
+
+
+ 1240 081b 7F1A0000 		.4byte	.LASF272
+ 1241 081f 7A01     		.2byte	0x17a
+ 1242 0821 09       		.uleb128 0x9
+ 1243 0822 8C370000 		.4byte	.LASF273
+ 1244 0826 7B01     		.2byte	0x17b
+ 1245 0828 09       		.uleb128 0x9
+ 1246 0829 F3000000 		.4byte	.LASF274
+ 1247 082d 7C01     		.2byte	0x17c
+ 1248 082f 09       		.uleb128 0x9
+ 1249 0830 FD300000 		.4byte	.LASF275
+ 1250 0834 7D01     		.2byte	0x17d
+ 1251 0836 09       		.uleb128 0x9
+ 1252 0837 E2230000 		.4byte	.LASF276
+ 1253 083b 7E01     		.2byte	0x17e
+ 1254 083d 09       		.uleb128 0x9
+ 1255 083e DB1D0000 		.4byte	.LASF277
+ 1256 0842 7F01     		.2byte	0x17f
+ 1257 0844 09       		.uleb128 0x9
+ 1258 0845 821C0000 		.4byte	.LASF278
+ 1259 0849 8001     		.2byte	0x180
+ 1260 084b 09       		.uleb128 0x9
+ 1261 084c B61C0000 		.4byte	.LASF279
+ 1262 0850 8101     		.2byte	0x181
+ 1263 0852 09       		.uleb128 0x9
+ 1264 0853 FB360000 		.4byte	.LASF280
+ 1265 0857 8201     		.2byte	0x182
+ 1266 0859 09       		.uleb128 0x9
+ 1267 085a 7F2F0000 		.4byte	.LASF281
+ 1268 085e 8301     		.2byte	0x183
+ 1269 0860 09       		.uleb128 0x9
+ 1270 0861 53120000 		.4byte	.LASF282
+ 1271 0865 8401     		.2byte	0x184
+ 1272 0867 09       		.uleb128 0x9
+ 1273 0868 390E0000 		.4byte	.LASF283
+ 1274 086c 8501     		.2byte	0x185
+ 1275 086e 09       		.uleb128 0x9
+ 1276 086f 4C030000 		.4byte	.LASF284
+ 1277 0873 8601     		.2byte	0x186
+ 1278 0875 09       		.uleb128 0x9
+ 1279 0876 DC2E0000 		.4byte	.LASF285
+ 1280 087a 8701     		.2byte	0x187
+ 1281 087c 09       		.uleb128 0x9
+ 1282 087d 860A0000 		.4byte	.LASF286
+ 1283 0881 8801     		.2byte	0x188
+ 1284 0883 09       		.uleb128 0x9
+ 1285 0884 760E0000 		.4byte	.LASF287
+ 1286 0888 8901     		.2byte	0x189
+ 1287 088a 09       		.uleb128 0x9
+ 1288 088b BE230000 		.4byte	.LASF288
+ 1289 088f 8A01     		.2byte	0x18a
+ 1290 0891 09       		.uleb128 0x9
+ 1291 0892 492D0000 		.4byte	.LASF289
+ 1292 0896 8B01     		.2byte	0x18b
+ 1293 0898 09       		.uleb128 0x9
+ 1294 0899 DB010000 		.4byte	.LASF290
+ 1295 089d 8C01     		.2byte	0x18c
+ 1296 089f 09       		.uleb128 0x9
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 29
+
+
+ 1297 08a0 CD170000 		.4byte	.LASF291
+ 1298 08a4 8D01     		.2byte	0x18d
+ 1299 08a6 09       		.uleb128 0x9
+ 1300 08a7 681C0000 		.4byte	.LASF292
+ 1301 08ab 8E01     		.2byte	0x18e
+ 1302 08ad 09       		.uleb128 0x9
+ 1303 08ae F1050000 		.4byte	.LASF293
+ 1304 08b2 8F01     		.2byte	0x18f
+ 1305 08b4 09       		.uleb128 0x9
+ 1306 08b5 80250000 		.4byte	.LASF294
+ 1307 08b9 9001     		.2byte	0x190
+ 1308 08bb 09       		.uleb128 0x9
+ 1309 08bc 89330000 		.4byte	.LASF295
+ 1310 08c0 9101     		.2byte	0x191
+ 1311 08c2 09       		.uleb128 0x9
+ 1312 08c3 BC2D0000 		.4byte	.LASF296
+ 1313 08c7 9201     		.2byte	0x192
+ 1314 08c9 09       		.uleb128 0x9
+ 1315 08ca 68130000 		.4byte	.LASF297
+ 1316 08ce 9301     		.2byte	0x193
+ 1317 08d0 09       		.uleb128 0x9
+ 1318 08d1 281E0000 		.4byte	.LASF298
+ 1319 08d5 9401     		.2byte	0x194
+ 1320 08d7 09       		.uleb128 0x9
+ 1321 08d8 BB2F0000 		.4byte	.LASF299
+ 1322 08dc 9501     		.2byte	0x195
+ 1323 08de 09       		.uleb128 0x9
+ 1324 08df AA030000 		.4byte	.LASF300
+ 1325 08e3 9601     		.2byte	0x196
+ 1326 08e5 09       		.uleb128 0x9
+ 1327 08e6 3E190000 		.4byte	.LASF301
+ 1328 08ea 9701     		.2byte	0x197
+ 1329 08ec 09       		.uleb128 0x9
+ 1330 08ed C31B0000 		.4byte	.LASF302
+ 1331 08f1 9801     		.2byte	0x198
+ 1332 08f3 09       		.uleb128 0x9
+ 1333 08f4 650D0000 		.4byte	.LASF303
+ 1334 08f8 9901     		.2byte	0x199
+ 1335 08fa 09       		.uleb128 0x9
+ 1336 08fb 9B340000 		.4byte	.LASF304
+ 1337 08ff 9A01     		.2byte	0x19a
+ 1338 0901 09       		.uleb128 0x9
+ 1339 0902 35350000 		.4byte	.LASF305
+ 1340 0906 9B01     		.2byte	0x19b
+ 1341 0908 09       		.uleb128 0x9
+ 1342 0909 25070000 		.4byte	.LASF306
+ 1343 090d 9C01     		.2byte	0x19c
+ 1344 090f 09       		.uleb128 0x9
+ 1345 0910 28030000 		.4byte	.LASF307
+ 1346 0914 9D01     		.2byte	0x19d
+ 1347 0916 09       		.uleb128 0x9
+ 1348 0917 E9110000 		.4byte	.LASF308
+ 1349 091b 9E01     		.2byte	0x19e
+ 1350 091d 09       		.uleb128 0x9
+ 1351 091e 8A190000 		.4byte	.LASF309
+ 1352 0922 9F01     		.2byte	0x19f
+ 1353 0924 09       		.uleb128 0x9
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 30
+
+
+ 1354 0925 5B230000 		.4byte	.LASF310
+ 1355 0929 A001     		.2byte	0x1a0
+ 1356 092b 09       		.uleb128 0x9
+ 1357 092c DC120000 		.4byte	.LASF311
+ 1358 0930 A101     		.2byte	0x1a1
+ 1359 0932 09       		.uleb128 0x9
+ 1360 0933 7F230000 		.4byte	.LASF312
+ 1361 0937 A201     		.2byte	0x1a2
+ 1362 0939 09       		.uleb128 0x9
+ 1363 093a 17370000 		.4byte	.LASF313
+ 1364 093e A301     		.2byte	0x1a3
+ 1365 0940 09       		.uleb128 0x9
+ 1366 0941 9E120000 		.4byte	.LASF314
+ 1367 0945 A401     		.2byte	0x1a4
+ 1368 0947 09       		.uleb128 0x9
+ 1369 0948 68290000 		.4byte	.LASF315
+ 1370 094c A501     		.2byte	0x1a5
+ 1371 094e 09       		.uleb128 0x9
+ 1372 094f 841D0000 		.4byte	.LASF316
+ 1373 0953 A601     		.2byte	0x1a6
+ 1374 0955 09       		.uleb128 0x9
+ 1375 0956 08340000 		.4byte	.LASF317
+ 1376 095a A701     		.2byte	0x1a7
+ 1377 095c 09       		.uleb128 0x9
+ 1378 095d 431C0000 		.4byte	.LASF318
+ 1379 0961 A801     		.2byte	0x1a8
+ 1380 0963 09       		.uleb128 0x9
+ 1381 0964 CB1E0000 		.4byte	.LASF319
+ 1382 0968 A901     		.2byte	0x1a9
+ 1383 096a 09       		.uleb128 0x9
+ 1384 096b 50360000 		.4byte	.LASF320
+ 1385 096f AA01     		.2byte	0x1aa
+ 1386 0971 09       		.uleb128 0x9
+ 1387 0972 932D0000 		.4byte	.LASF321
+ 1388 0976 AB01     		.2byte	0x1ab
+ 1389 0978 09       		.uleb128 0x9
+ 1390 0979 1C2F0000 		.4byte	.LASF322
+ 1391 097d AC01     		.2byte	0x1ac
+ 1392 097f 09       		.uleb128 0x9
+ 1393 0980 95260000 		.4byte	.LASF323
+ 1394 0984 AD01     		.2byte	0x1ad
+ 1395 0986 09       		.uleb128 0x9
+ 1396 0987 EF200000 		.4byte	.LASF324
+ 1397 098b AE01     		.2byte	0x1ae
+ 1398 098d 09       		.uleb128 0x9
+ 1399 098e 0B140000 		.4byte	.LASF325
+ 1400 0992 AF01     		.2byte	0x1af
+ 1401 0994 09       		.uleb128 0x9
+ 1402 0995 5E320000 		.4byte	.LASF326
+ 1403 0999 B001     		.2byte	0x1b0
+ 1404 099b 09       		.uleb128 0x9
+ 1405 099c 120A0000 		.4byte	.LASF327
+ 1406 09a0 B101     		.2byte	0x1b1
+ 1407 09a2 09       		.uleb128 0x9
+ 1408 09a3 5F370000 		.4byte	.LASF328
+ 1409 09a7 B201     		.2byte	0x1b2
+ 1410 09a9 09       		.uleb128 0x9
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 31
+
+
+ 1411 09aa 452E0000 		.4byte	.LASF329
+ 1412 09ae B301     		.2byte	0x1b3
+ 1413 09b0 09       		.uleb128 0x9
+ 1414 09b1 85200000 		.4byte	.LASF330
+ 1415 09b5 B401     		.2byte	0x1b4
+ 1416 09b7 09       		.uleb128 0x9
+ 1417 09b8 B3160000 		.4byte	.LASF331
+ 1418 09bc B501     		.2byte	0x1b5
+ 1419 09be 09       		.uleb128 0x9
+ 1420 09bf 79010000 		.4byte	.LASF332
+ 1421 09c3 B601     		.2byte	0x1b6
+ 1422 09c5 09       		.uleb128 0x9
+ 1423 09c6 58240000 		.4byte	.LASF333
+ 1424 09ca B701     		.2byte	0x1b7
+ 1425 09cc 09       		.uleb128 0x9
+ 1426 09cd 44100000 		.4byte	.LASF334
+ 1427 09d1 B801     		.2byte	0x1b8
+ 1428 09d3 09       		.uleb128 0x9
+ 1429 09d4 9B180000 		.4byte	.LASF335
+ 1430 09d8 B901     		.2byte	0x1b9
+ 1431 09da 09       		.uleb128 0x9
+ 1432 09db 1A130000 		.4byte	.LASF336
+ 1433 09df BA01     		.2byte	0x1ba
+ 1434 09e1 09       		.uleb128 0x9
+ 1435 09e2 66100000 		.4byte	.LASF337
+ 1436 09e6 BB01     		.2byte	0x1bb
+ 1437 09e8 09       		.uleb128 0x9
+ 1438 09e9 72080000 		.4byte	.LASF338
+ 1439 09ed BC01     		.2byte	0x1bc
+ 1440 09ef 09       		.uleb128 0x9
+ 1441 09f0 C90D0000 		.4byte	.LASF339
+ 1442 09f4 BD01     		.2byte	0x1bd
+ 1443 09f6 09       		.uleb128 0x9
+ 1444 09f7 31180000 		.4byte	.LASF340
+ 1445 09fb BE01     		.2byte	0x1be
+ 1446 09fd 09       		.uleb128 0x9
+ 1447 09fe CD220000 		.4byte	.LASF341
+ 1448 0a02 BF01     		.2byte	0x1bf
+ 1449 0a04 09       		.uleb128 0x9
+ 1450 0a05 FE140000 		.4byte	.LASF342
+ 1451 0a09 C001     		.2byte	0x1c0
+ 1452 0a0b 09       		.uleb128 0x9
+ 1453 0a0c 450F0000 		.4byte	.LASF343
+ 1454 0a10 C101     		.2byte	0x1c1
+ 1455 0a12 09       		.uleb128 0x9
+ 1456 0a13 B5300000 		.4byte	.LASF344
+ 1457 0a17 C201     		.2byte	0x1c2
+ 1458 0a19 09       		.uleb128 0x9
+ 1459 0a1a A9200000 		.4byte	.LASF345
+ 1460 0a1e C301     		.2byte	0x1c3
+ 1461 0a20 09       		.uleb128 0x9
+ 1462 0a21 622F0000 		.4byte	.LASF346
+ 1463 0a25 C401     		.2byte	0x1c4
+ 1464 0a27 09       		.uleb128 0x9
+ 1465 0a28 17020000 		.4byte	.LASF347
+ 1466 0a2c C501     		.2byte	0x1c5
+ 1467 0a2e 09       		.uleb128 0x9
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 32
+
+
+ 1468 0a2f 47050000 		.4byte	.LASF348
+ 1469 0a33 C601     		.2byte	0x1c6
+ 1470 0a35 09       		.uleb128 0x9
+ 1471 0a36 A81D0000 		.4byte	.LASF349
+ 1472 0a3a C701     		.2byte	0x1c7
+ 1473 0a3c 09       		.uleb128 0x9
+ 1474 0a3d F71F0000 		.4byte	.LASF350
+ 1475 0a41 C801     		.2byte	0x1c8
+ 1476 0a43 09       		.uleb128 0x9
+ 1477 0a44 DB140000 		.4byte	.LASF351
+ 1478 0a48 C901     		.2byte	0x1c9
+ 1479 0a4a 09       		.uleb128 0x9
+ 1480 0a4b 880B0000 		.4byte	.LASF352
+ 1481 0a4f CA01     		.2byte	0x1ca
+ 1482 0a51 09       		.uleb128 0x9
+ 1483 0a52 06080000 		.4byte	.LASF353
+ 1484 0a56 CB01     		.2byte	0x1cb
+ 1485 0a58 09       		.uleb128 0x9
+ 1486 0a59 880C0000 		.4byte	.LASF354
+ 1487 0a5d CC01     		.2byte	0x1cc
+ 1488 0a5f 09       		.uleb128 0x9
+ 1489 0a60 0F050000 		.4byte	.LASF355
+ 1490 0a64 CD01     		.2byte	0x1cd
+ 1491 0a66 09       		.uleb128 0x9
+ 1492 0a67 851B0000 		.4byte	.LASF356
+ 1493 0a6b CE01     		.2byte	0x1ce
+ 1494 0a6d 09       		.uleb128 0x9
+ 1495 0a6e AF1E0000 		.4byte	.LASF357
+ 1496 0a72 CF01     		.2byte	0x1cf
+ 1497 0a74 09       		.uleb128 0x9
+ 1498 0a75 992F0000 		.4byte	.LASF358
+ 1499 0a79 D001     		.2byte	0x1d0
+ 1500 0a7b 09       		.uleb128 0x9
+ 1501 0a7c 33380000 		.4byte	.LASF359
+ 1502 0a80 D101     		.2byte	0x1d1
+ 1503 0a82 09       		.uleb128 0x9
+ 1504 0a83 222E0000 		.4byte	.LASF360
+ 1505 0a87 D201     		.2byte	0x1d2
+ 1506 0a89 09       		.uleb128 0x9
+ 1507 0a8a 9A350000 		.4byte	.LASF361
+ 1508 0a8e D301     		.2byte	0x1d3
+ 1509 0a90 09       		.uleb128 0x9
+ 1510 0a91 BD340000 		.4byte	.LASF362
+ 1511 0a95 D401     		.2byte	0x1d4
+ 1512 0a97 09       		.uleb128 0x9
+ 1513 0a98 55300000 		.4byte	.LASF363
+ 1514 0a9c D501     		.2byte	0x1d5
+ 1515 0a9e 09       		.uleb128 0x9
+ 1516 0a9f 680F0000 		.4byte	.LASF364
+ 1517 0aa3 D601     		.2byte	0x1d6
+ 1518 0aa5 09       		.uleb128 0x9
+ 1519 0aa6 990E0000 		.4byte	.LASF365
+ 1520 0aaa D701     		.2byte	0x1d7
+ 1521 0aac 09       		.uleb128 0x9
+ 1522 0aad C41A0000 		.4byte	.LASF366
+ 1523 0ab1 D801     		.2byte	0x1d8
+ 1524 0ab3 09       		.uleb128 0x9
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 33
+
+
+ 1525 0ab4 28000000 		.4byte	.LASF367
+ 1526 0ab8 D901     		.2byte	0x1d9
+ 1527 0aba 09       		.uleb128 0x9
+ 1528 0abb FC290000 		.4byte	.LASF368
+ 1529 0abf DA01     		.2byte	0x1da
+ 1530 0ac1 09       		.uleb128 0x9
+ 1531 0ac2 36230000 		.4byte	.LASF369
+ 1532 0ac6 DB01     		.2byte	0x1db
+ 1533 0ac8 09       		.uleb128 0x9
+ 1534 0ac9 CA0A0000 		.4byte	.LASF370
+ 1535 0acd DC01     		.2byte	0x1dc
+ 1536 0acf 09       		.uleb128 0x9
+ 1537 0ad0 622B0000 		.4byte	.LASF371
+ 1538 0ad4 DD01     		.2byte	0x1dd
+ 1539 0ad6 09       		.uleb128 0x9
+ 1540 0ad7 FB2F0000 		.4byte	.LASF372
+ 1541 0adb DE01     		.2byte	0x1de
+ 1542 0add 09       		.uleb128 0x9
+ 1543 0ade 1B2B0000 		.4byte	.LASF373
+ 1544 0ae2 DF01     		.2byte	0x1df
+ 1545 0ae4 09       		.uleb128 0x9
+ 1546 0ae5 D8250000 		.4byte	.LASF374
+ 1547 0ae9 E001     		.2byte	0x1e0
+ 1548 0aeb 09       		.uleb128 0x9
+ 1549 0aec DA180000 		.4byte	.LASF375
+ 1550 0af0 E101     		.2byte	0x1e1
+ 1551 0af2 09       		.uleb128 0x9
+ 1552 0af3 AF190000 		.4byte	.LASF376
+ 1553 0af7 E201     		.2byte	0x1e2
+ 1554 0af9 09       		.uleb128 0x9
+ 1555 0afa 1B230000 		.4byte	.LASF377
+ 1556 0afe E301     		.2byte	0x1e3
+ 1557 0b00 09       		.uleb128 0x9
+ 1558 0b01 590C0000 		.4byte	.LASF378
+ 1559 0b05 E401     		.2byte	0x1e4
+ 1560 0b07 09       		.uleb128 0x9
+ 1561 0b08 8A100000 		.4byte	.LASF379
+ 1562 0b0c E501     		.2byte	0x1e5
+ 1563 0b0e 09       		.uleb128 0x9
+ 1564 0b0f 0D060000 		.4byte	.LASF380
+ 1565 0b13 E601     		.2byte	0x1e6
+ 1566 0b15 09       		.uleb128 0x9
+ 1567 0b16 DB260000 		.4byte	.LASF381
+ 1568 0b1a E701     		.2byte	0x1e7
+ 1569 0b1c 09       		.uleb128 0x9
+ 1570 0b1d 40330000 		.4byte	.LASF382
+ 1571 0b21 E801     		.2byte	0x1e8
+ 1572 0b23 09       		.uleb128 0x9
+ 1573 0b24 361F0000 		.4byte	.LASF383
+ 1574 0b28 E901     		.2byte	0x1e9
+ 1575 0b2a 09       		.uleb128 0x9
+ 1576 0b2b 73210000 		.4byte	.LASF384
+ 1577 0b2f EA01     		.2byte	0x1ea
+ 1578 0b31 09       		.uleb128 0x9
+ 1579 0b32 E72B0000 		.4byte	.LASF385
+ 1580 0b36 EB01     		.2byte	0x1eb
+ 1581 0b38 09       		.uleb128 0x9
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 34
+
+
+ 1582 0b39 31270000 		.4byte	.LASF386
+ 1583 0b3d EC01     		.2byte	0x1ec
+ 1584 0b3f 09       		.uleb128 0x9
+ 1585 0b40 A72E0000 		.4byte	.LASF387
+ 1586 0b44 ED01     		.2byte	0x1ed
+ 1587 0b46 09       		.uleb128 0x9
+ 1588 0b47 FE2A0000 		.4byte	.LASF388
+ 1589 0b4b EE01     		.2byte	0x1ee
+ 1590 0b4d 09       		.uleb128 0x9
+ 1591 0b4e 35020000 		.4byte	.LASF389
+ 1592 0b52 EF01     		.2byte	0x1ef
+ 1593 0b54 09       		.uleb128 0x9
+ 1594 0b55 CA030000 		.4byte	.LASF390
+ 1595 0b59 F001     		.2byte	0x1f0
+ 1596 0b5b 09       		.uleb128 0x9
+ 1597 0b5c D11C0000 		.4byte	.LASF391
+ 1598 0b60 F101     		.2byte	0x1f1
+ 1599 0b62 09       		.uleb128 0x9
+ 1600 0b63 A6110000 		.4byte	.LASF392
+ 1601 0b67 F201     		.2byte	0x1f2
+ 1602 0b69 09       		.uleb128 0x9
+ 1603 0b6a E50A0000 		.4byte	.LASF393
+ 1604 0b6e F301     		.2byte	0x1f3
+ 1605 0b70 09       		.uleb128 0x9
+ 1606 0b71 4F340000 		.4byte	.LASF394
+ 1607 0b75 F401     		.2byte	0x1f4
+ 1608 0b77 09       		.uleb128 0x9
+ 1609 0b78 CD160000 		.4byte	.LASF395
+ 1610 0b7c F501     		.2byte	0x1f5
+ 1611 0b7e 09       		.uleb128 0x9
+ 1612 0b7f 182D0000 		.4byte	.LASF396
+ 1613 0b83 F601     		.2byte	0x1f6
+ 1614 0b85 09       		.uleb128 0x9
+ 1615 0b86 341A0000 		.4byte	.LASF397
+ 1616 0b8a F701     		.2byte	0x1f7
+ 1617 0b8c 09       		.uleb128 0x9
+ 1618 0b8d CF0B0000 		.4byte	.LASF398
+ 1619 0b91 F801     		.2byte	0x1f8
+ 1620 0b93 09       		.uleb128 0x9
+ 1621 0b94 B0220000 		.4byte	.LASF399
+ 1622 0b98 F901     		.2byte	0x1f9
+ 1623 0b9a 09       		.uleb128 0x9
+ 1624 0b9b DA350000 		.4byte	.LASF400
+ 1625 0b9f FA01     		.2byte	0x1fa
+ 1626 0ba1 09       		.uleb128 0x9
+ 1627 0ba2 1F220000 		.4byte	.LASF401
+ 1628 0ba6 FB01     		.2byte	0x1fb
+ 1629 0ba8 09       		.uleb128 0x9
+ 1630 0ba9 DA2A0000 		.4byte	.LASF402
+ 1631 0bad FC01     		.2byte	0x1fc
+ 1632 0baf 09       		.uleb128 0x9
+ 1633 0bb0 C8310000 		.4byte	.LASF403
+ 1634 0bb4 FD01     		.2byte	0x1fd
+ 1635 0bb6 09       		.uleb128 0x9
+ 1636 0bb7 5D010000 		.4byte	.LASF404
+ 1637 0bbb FE01     		.2byte	0x1fe
+ 1638 0bbd 09       		.uleb128 0x9
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 35
+
+
+ 1639 0bbe 14090000 		.4byte	.LASF405
+ 1640 0bc2 FF01     		.2byte	0x1ff
+ 1641 0bc4 09       		.uleb128 0x9
+ 1642 0bc5 AC0B0000 		.4byte	.LASF406
+ 1643 0bc9 0002     		.2byte	0x200
+ 1644 0bcb 09       		.uleb128 0x9
+ 1645 0bcc 19200000 		.4byte	.LASF407
+ 1646 0bd0 0102     		.2byte	0x201
+ 1647 0bd2 09       		.uleb128 0x9
+ 1648 0bd3 16260000 		.4byte	.LASF408
+ 1649 0bd7 0202     		.2byte	0x202
+ 1650 0bd9 09       		.uleb128 0x9
+ 1651 0bda 611D0000 		.4byte	.LASF409
+ 1652 0bde 0302     		.2byte	0x203
+ 1653 0be0 09       		.uleb128 0x9
+ 1654 0be1 202A0000 		.4byte	.LASF410
+ 1655 0be5 0402     		.2byte	0x204
+ 1656 0be7 09       		.uleb128 0x9
+ 1657 0be8 5C250000 		.4byte	.LASF411
+ 1658 0bec 0502     		.2byte	0x205
+ 1659 0bee 09       		.uleb128 0x9
+ 1660 0bef 822E0000 		.4byte	.LASF412
+ 1661 0bf3 0602     		.2byte	0x206
+ 1662 0bf5 09       		.uleb128 0x9
+ 1663 0bf6 BC360000 		.4byte	.LASF413
+ 1664 0bfa 0702     		.2byte	0x207
+ 1665 0bfc 09       		.uleb128 0x9
+ 1666 0bfd 682E0000 		.4byte	.LASF414
+ 1667 0c01 0802     		.2byte	0x208
+ 1668 0c03 09       		.uleb128 0x9
+ 1669 0c04 48070000 		.4byte	.LASF415
+ 1670 0c08 0902     		.2byte	0x209
+ 1671 0c0a 09       		.uleb128 0x9
+ 1672 0c0b 4C290000 		.4byte	.LASF416
+ 1673 0c0f 0A02     		.2byte	0x20a
+ 1674 0c11 09       		.uleb128 0x9
+ 1675 0c12 34080000 		.4byte	.LASF417
+ 1676 0c16 0B02     		.2byte	0x20b
+ 1677 0c18 09       		.uleb128 0x9
+ 1678 0c19 5A090000 		.4byte	.LASF418
+ 1679 0c1d 0C02     		.2byte	0x20c
+ 1680 0c1f 09       		.uleb128 0x9
+ 1681 0c20 AA040000 		.4byte	.LASF419
+ 1682 0c24 0D02     		.2byte	0x20d
+ 1683 0c26 09       		.uleb128 0x9
+ 1684 0c27 101A0000 		.4byte	.LASF420
+ 1685 0c2b 0E02     		.2byte	0x20e
+ 1686 0c2d 09       		.uleb128 0x9
+ 1687 0c2e 08100000 		.4byte	.LASF421
+ 1688 0c32 0F02     		.2byte	0x20f
+ 1689 0c34 09       		.uleb128 0x9
+ 1690 0c35 99230000 		.4byte	.LASF422
+ 1691 0c39 1002     		.2byte	0x210
+ 1692 0c3b 09       		.uleb128 0x9
+ 1693 0c3c 1D1C0000 		.4byte	.LASF423
+ 1694 0c40 1102     		.2byte	0x211
+ 1695 0c42 09       		.uleb128 0x9
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 36
+
+
+ 1696 0c43 3D200000 		.4byte	.LASF424
+ 1697 0c47 1202     		.2byte	0x212
+ 1698 0c49 09       		.uleb128 0x9
+ 1699 0c4a 65330000 		.4byte	.LASF425
+ 1700 0c4e 1302     		.2byte	0x213
+ 1701 0c50 09       		.uleb128 0x9
+ 1702 0c51 F9270000 		.4byte	.LASF426
+ 1703 0c55 1402     		.2byte	0x214
+ 1704 0c57 09       		.uleb128 0x9
+ 1705 0c58 BD270000 		.4byte	.LASF427
+ 1706 0c5c 1502     		.2byte	0x215
+ 1707 0c5e 09       		.uleb128 0x9
+ 1708 0c5f D5020000 		.4byte	.LASF428
+ 1709 0c63 1602     		.2byte	0x216
+ 1710 0c65 09       		.uleb128 0x9
+ 1711 0c66 0A070000 		.4byte	.LASF429
+ 1712 0c6a 1702     		.2byte	0x217
+ 1713 0c6c 09       		.uleb128 0x9
+ 1714 0c6d 2B340000 		.4byte	.LASF430
+ 1715 0c71 1802     		.2byte	0x218
+ 1716 0c73 09       		.uleb128 0x9
+ 1717 0c74 B8010000 		.4byte	.LASF431
+ 1718 0c78 1902     		.2byte	0x219
+ 1719 0c7a 09       		.uleb128 0x9
+ 1720 0c7b 77340000 		.4byte	.LASF432
+ 1721 0c7f 1A02     		.2byte	0x21a
+ 1722 0c81 09       		.uleb128 0x9
+ 1723 0c82 0C180000 		.4byte	.LASF433
+ 1724 0c86 1B02     		.2byte	0x21b
+ 1725 0c88 09       		.uleb128 0x9
+ 1726 0c89 292C0000 		.4byte	.LASF434
+ 1727 0c8d 1C02     		.2byte	0x21c
+ 1728 0c8f 09       		.uleb128 0x9
+ 1729 0c90 AE290000 		.4byte	.LASF435
+ 1730 0c94 1D02     		.2byte	0x21d
+ 1731 0c96 09       		.uleb128 0x9
+ 1732 0c97 210F0000 		.4byte	.LASF436
+ 1733 0c9b 1E02     		.2byte	0x21e
+ 1734 0c9d 09       		.uleb128 0x9
+ 1735 0c9e 942A0000 		.4byte	.LASF437
+ 1736 0ca2 1F02     		.2byte	0x21f
+ 1737 0ca4 09       		.uleb128 0x9
+ 1738 0ca5 A80A0000 		.4byte	.LASF438
+ 1739 0ca9 2002     		.2byte	0x220
+ 1740 0cab 09       		.uleb128 0x9
+ 1741 0cac D90E0000 		.4byte	.LASF439
+ 1742 0cb0 2102     		.2byte	0x221
+ 1743 0cb2 09       		.uleb128 0x9
+ 1744 0cb3 0F380000 		.4byte	.LASF440
+ 1745 0cb7 2202     		.2byte	0x222
+ 1746 0cb9 09       		.uleb128 0x9
+ 1747 0cba DF2D0000 		.4byte	.LASF441
+ 1748 0cbe 00E0     		.2byte	0xe000
+ 1749 0cc0 00       		.byte	0
+ 1750 0cc1 12       		.uleb128 0x12
+ 1751 0cc2 3D2D0000 		.4byte	.LASF444
+ 1752 0cc6 01       		.byte	0x1
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 37
+
+
+ 1753 0cc7 2F       		.byte	0x2f
+ 1754 0cc8 00000000 		.4byte	.LFB36
+ 1755 0ccc 30000000 		.4byte	.LFE36-.LFB36
+ 1756 0cd0 01       		.uleb128 0x1
+ 1757 0cd1 9C       		.byte	0x9c
+ 1758 0cd2 000D0000 		.4byte	0xd00
+ 1759 0cd6 13       		.uleb128 0x13
+ 1760 0cd7 820C0000 		.4byte	.LASF442
+ 1761 0cdb 01       		.byte	0x1
+ 1762 0cdc 2F       		.byte	0x2f
+ 1763 0cdd 83000000 		.4byte	0x83
+ 1764 0ce1 01       		.uleb128 0x1
+ 1765 0ce2 50       		.byte	0x50
+ 1766 0ce3 13       		.uleb128 0x13
+ 1767 0ce4 D7320000 		.4byte	.LASF443
+ 1768 0ce8 01       		.byte	0x1
+ 1769 0ce9 2F       		.byte	0x2f
+ 1770 0cea B7000000 		.4byte	0xb7
+ 1771 0cee 01       		.uleb128 0x1
+ 1772 0cef 51       		.byte	0x51
+ 1773 0cf0 14       		.uleb128 0x14
+ 1774 0cf1 E1050000 		.4byte	.LASF446
+ 1775 0cf5 01       		.byte	0x1
+ 1776 0cf6 31       		.byte	0x31
+ 1777 0cf7 6B000000 		.4byte	0x6b
+ 1778 0cfb 00000000 		.4byte	.LLST0
+ 1779 0cff 00       		.byte	0
+ 1780 0d00 12       		.uleb128 0x12
+ 1781 0d01 89240000 		.4byte	.LASF445
+ 1782 0d05 01       		.byte	0x1
+ 1783 0d06 6D       		.byte	0x6d
+ 1784 0d07 00000000 		.4byte	.LFB37
+ 1785 0d0b 38000000 		.4byte	.LFE37-.LFB37
+ 1786 0d0f 01       		.uleb128 0x1
+ 1787 0d10 9C       		.byte	0x9c
+ 1788 0d11 6D0D0000 		.4byte	0xd6d
+ 1789 0d15 15       		.uleb128 0x15
+ 1790 0d16 DB1B0000 		.4byte	.LASF447
+ 1791 0d1a 01       		.byte	0x1
+ 1792 0d1b 6F       		.byte	0x6f
+ 1793 0d1c 50030000 		.4byte	0x350
+ 1794 0d20 01       		.uleb128 0x1
+ 1795 0d21 50       		.byte	0x50
+ 1796 0d22 15       		.uleb128 0x15
+ 1797 0d23 D1290000 		.4byte	.LASF448
+ 1798 0d27 01       		.byte	0x1
+ 1799 0d28 70       		.byte	0x70
+ 1800 0d29 77000000 		.4byte	0x77
+ 1801 0d2d 02       		.uleb128 0x2
+ 1802 0d2e 91       		.byte	0x91
+ 1803 0d2f 76       		.sleb128 -10
+ 1804 0d30 16       		.uleb128 0x16
+ 1805 0d31 0A000000 		.4byte	.LVL6
+ 1806 0d35 250E0000 		.4byte	0xe25
+ 1807 0d39 470D0000 		.4byte	0xd47
+ 1808 0d3d 17       		.uleb128 0x17
+ 1809 0d3e 01       		.uleb128 0x1
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 38
+
+
+ 1810 0d3f 50       		.byte	0x50
+ 1811 0d40 05       		.uleb128 0x5
+ 1812 0d41 03       		.byte	0x3
+ 1813 0d42 00000000 		.4byte	BasCallBack
+ 1814 0d46 00       		.byte	0
+ 1815 0d47 18       		.uleb128 0x18
+ 1816 0d48 1A000000 		.4byte	.LVL7
+ 1817 0d4c 300E0000 		.4byte	0xe30
+ 1818 0d50 17       		.uleb128 0x17
+ 1819 0d51 01       		.uleb128 0x1
+ 1820 0d52 50       		.byte	0x50
+ 1821 0d53 01       		.uleb128 0x1
+ 1822 0d54 30       		.byte	0x30
+ 1823 0d55 17       		.uleb128 0x17
+ 1824 0d56 01       		.uleb128 0x1
+ 1825 0d57 51       		.byte	0x51
+ 1826 0d58 01       		.uleb128 0x1
+ 1827 0d59 30       		.byte	0x30
+ 1828 0d5a 17       		.uleb128 0x17
+ 1829 0d5b 01       		.uleb128 0x1
+ 1830 0d5c 52       		.byte	0x52
+ 1831 0d5d 01       		.uleb128 0x1
+ 1832 0d5e 30       		.byte	0x30
+ 1833 0d5f 17       		.uleb128 0x17
+ 1834 0d60 01       		.uleb128 0x1
+ 1835 0d61 53       		.byte	0x53
+ 1836 0d62 01       		.uleb128 0x1
+ 1837 0d63 32       		.byte	0x32
+ 1838 0d64 17       		.uleb128 0x17
+ 1839 0d65 02       		.uleb128 0x2
+ 1840 0d66 7D       		.byte	0x7d
+ 1841 0d67 00       		.sleb128 0
+ 1842 0d68 02       		.uleb128 0x2
+ 1843 0d69 74       		.byte	0x74
+ 1844 0d6a 00       		.sleb128 0
+ 1845 0d6b 00       		.byte	0
+ 1846 0d6c 00       		.byte	0
+ 1847 0d6d 19       		.uleb128 0x19
+ 1848 0d6e 25350000 		.4byte	.LASF449
+ 1849 0d72 01       		.byte	0x1
+ 1850 0d73 0301     		.2byte	0x103
+ 1851 0d75 00000000 		.4byte	.LFB38
+ 1852 0d79 74000000 		.4byte	.LFE38-.LFB38
+ 1853 0d7d 01       		.uleb128 0x1
+ 1854 0d7e 9C       		.byte	0x9c
+ 1855 0d7f FC0D0000 		.4byte	0xdfc
+ 1856 0d83 1A       		.uleb128 0x1a
+ 1857 0d84 A5150000 		.4byte	.LASF450
+ 1858 0d88 01       		.byte	0x1
+ 1859 0d89 0501     		.2byte	0x105
+ 1860 0d8b 83000000 		.4byte	0x83
+ 1861 0d8f 05       		.uleb128 0x5
+ 1862 0d90 03       		.byte	0x3
+ 1863 0d91 00000000 		.4byte	batteryTimer.8490
+ 1864 0d95 1A       		.uleb128 0x1a
+ 1865 0d96 C0170000 		.4byte	.LASF451
+ 1866 0d9a 01       		.byte	0x1
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 39
+
+
+ 1867 0d9b 0601     		.2byte	0x106
+ 1868 0d9d 6B000000 		.4byte	0x6b
+ 1869 0da1 05       		.uleb128 0x5
+ 1870 0da2 03       		.byte	0x3
+ 1871 0da3 04000000 		.4byte	batteryLevel.8491
+ 1872 0da7 1B       		.uleb128 0x1b
+ 1873 0da8 DB1B0000 		.4byte	.LASF447
+ 1874 0dac 01       		.byte	0x1
+ 1875 0dad 0701     		.2byte	0x107
+ 1876 0daf 50030000 		.4byte	0x350
+ 1877 0db3 2A000000 		.4byte	.LLST1
+ 1878 0db7 16       		.uleb128 0x16
+ 1879 0db8 4A000000 		.4byte	.LVL8
+ 1880 0dbc 3B0E0000 		.4byte	0xe3b
+ 1881 0dc0 D90D0000 		.4byte	0xdd9
+ 1882 0dc4 17       		.uleb128 0x17
+ 1883 0dc5 01       		.uleb128 0x1
+ 1884 0dc6 51       		.byte	0x51
+ 1885 0dc7 01       		.uleb128 0x1
+ 1886 0dc8 30       		.byte	0x30
+ 1887 0dc9 17       		.uleb128 0x17
+ 1888 0dca 01       		.uleb128 0x1
+ 1889 0dcb 52       		.byte	0x52
+ 1890 0dcc 01       		.uleb128 0x1
+ 1891 0dcd 30       		.byte	0x30
+ 1892 0dce 17       		.uleb128 0x17
+ 1893 0dcf 02       		.uleb128 0x2
+ 1894 0dd0 7D       		.byte	0x7d
+ 1895 0dd1 00       		.sleb128 0
+ 1896 0dd2 05       		.uleb128 0x5
+ 1897 0dd3 03       		.byte	0x3
+ 1898 0dd4 04000000 		.4byte	.LANCHOR1+4
+ 1899 0dd8 00       		.byte	0
+ 1900 0dd9 18       		.uleb128 0x18
+ 1901 0dda 58000000 		.4byte	.LVL10
+ 1902 0dde 460E0000 		.4byte	0xe46
+ 1903 0de2 17       		.uleb128 0x17
+ 1904 0de3 01       		.uleb128 0x1
+ 1905 0de4 50       		.byte	0x50
+ 1906 0de5 01       		.uleb128 0x1
+ 1907 0de6 30       		.byte	0x30
+ 1908 0de7 17       		.uleb128 0x17
+ 1909 0de8 01       		.uleb128 0x1
+ 1910 0de9 51       		.byte	0x51
+ 1911 0dea 01       		.uleb128 0x1
+ 1912 0deb 30       		.byte	0x30
+ 1913 0dec 17       		.uleb128 0x17
+ 1914 0ded 01       		.uleb128 0x1
+ 1915 0dee 52       		.byte	0x52
+ 1916 0def 01       		.uleb128 0x1
+ 1917 0df0 31       		.byte	0x31
+ 1918 0df1 17       		.uleb128 0x17
+ 1919 0df2 01       		.uleb128 0x1
+ 1920 0df3 53       		.byte	0x53
+ 1921 0df4 05       		.uleb128 0x5
+ 1922 0df5 03       		.byte	0x3
+ 1923 0df6 04000000 		.4byte	.LANCHOR1+4
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 40
+
+
+ 1924 0dfa 00       		.byte	0
+ 1925 0dfb 00       		.byte	0
+ 1926 0dfc 1C       		.uleb128 0x1c
+ 1927 0dfd F70F0000 		.4byte	.LASF452
+ 1928 0e01 07       		.byte	0x7
+ 1929 0e02 AA0A     		.2byte	0xaaa
+ 1930 0e04 86030000 		.4byte	0x386
+ 1931 0e08 1C       		.uleb128 0x1c
+ 1932 0e09 370A0000 		.4byte	.LASF453
+ 1933 0e0d 07       		.byte	0x7
+ 1934 0e0e AB0A     		.2byte	0xaab
+ 1935 0e10 A4000000 		.4byte	0xa4
+ 1936 0e14 1D       		.uleb128 0x1d
+ 1937 0e15 97020000 		.4byte	.LASF454
+ 1938 0e19 01       		.byte	0x1
+ 1939 0e1a 17       		.byte	0x17
+ 1940 0e1b 77000000 		.4byte	0x77
+ 1941 0e1f 05       		.uleb128 0x5
+ 1942 0e20 03       		.byte	0x3
+ 1943 0e21 00000000 		.4byte	batterySimulationNotify
+ 1944 0e25 1E       		.uleb128 0x1e
+ 1945 0e26 BD140000 		.4byte	.LASF455
+ 1946 0e2a BD140000 		.4byte	.LASF455
+ 1947 0e2e 05       		.byte	0x5
+ 1948 0e2f 8F       		.byte	0x8f
+ 1949 0e30 1E       		.uleb128 0x1e
+ 1950 0e31 B2150000 		.4byte	.LASF456
+ 1951 0e35 B2150000 		.4byte	.LASF456
+ 1952 0e39 05       		.byte	0x5
+ 1953 0e3a 9C       		.byte	0x9c
+ 1954 0e3b 1E       		.uleb128 0x1e
+ 1955 0e3c 01330000 		.4byte	.LASF457
+ 1956 0e40 01330000 		.4byte	.LASF457
+ 1957 0e44 05       		.byte	0x5
+ 1958 0e45 9E       		.byte	0x9e
+ 1959 0e46 1E       		.uleb128 0x1e
+ 1960 0e47 59270000 		.4byte	.LASF458
+ 1961 0e4b 59270000 		.4byte	.LASF458
+ 1962 0e4f 05       		.byte	0x5
+ 1963 0e50 98       		.byte	0x98
+ 1964 0e51 00       		.byte	0
+ 1965              		.section	.debug_abbrev,"",%progbits
+ 1966              	.Ldebug_abbrev0:
+ 1967 0000 01       		.uleb128 0x1
+ 1968 0001 11       		.uleb128 0x11
+ 1969 0002 01       		.byte	0x1
+ 1970 0003 25       		.uleb128 0x25
+ 1971 0004 0E       		.uleb128 0xe
+ 1972 0005 13       		.uleb128 0x13
+ 1973 0006 0B       		.uleb128 0xb
+ 1974 0007 03       		.uleb128 0x3
+ 1975 0008 0E       		.uleb128 0xe
+ 1976 0009 1B       		.uleb128 0x1b
+ 1977 000a 0E       		.uleb128 0xe
+ 1978 000b 55       		.uleb128 0x55
+ 1979 000c 17       		.uleb128 0x17
+ 1980 000d 11       		.uleb128 0x11
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 41
+
+
+ 1981 000e 01       		.uleb128 0x1
+ 1982 000f 10       		.uleb128 0x10
+ 1983 0010 17       		.uleb128 0x17
+ 1984 0011 00       		.byte	0
+ 1985 0012 00       		.byte	0
+ 1986 0013 02       		.uleb128 0x2
+ 1987 0014 24       		.uleb128 0x24
+ 1988 0015 00       		.byte	0
+ 1989 0016 0B       		.uleb128 0xb
+ 1990 0017 0B       		.uleb128 0xb
+ 1991 0018 3E       		.uleb128 0x3e
+ 1992 0019 0B       		.uleb128 0xb
+ 1993 001a 03       		.uleb128 0x3
+ 1994 001b 0E       		.uleb128 0xe
+ 1995 001c 00       		.byte	0
+ 1996 001d 00       		.byte	0
+ 1997 001e 03       		.uleb128 0x3
+ 1998 001f 24       		.uleb128 0x24
+ 1999 0020 00       		.byte	0
+ 2000 0021 0B       		.uleb128 0xb
+ 2001 0022 0B       		.uleb128 0xb
+ 2002 0023 3E       		.uleb128 0x3e
+ 2003 0024 0B       		.uleb128 0xb
+ 2004 0025 03       		.uleb128 0x3
+ 2005 0026 08       		.uleb128 0x8
+ 2006 0027 00       		.byte	0
+ 2007 0028 00       		.byte	0
+ 2008 0029 04       		.uleb128 0x4
+ 2009 002a 16       		.uleb128 0x16
+ 2010 002b 00       		.byte	0
+ 2011 002c 03       		.uleb128 0x3
+ 2012 002d 0E       		.uleb128 0xe
+ 2013 002e 3A       		.uleb128 0x3a
+ 2014 002f 0B       		.uleb128 0xb
+ 2015 0030 3B       		.uleb128 0x3b
+ 2016 0031 05       		.uleb128 0x5
+ 2017 0032 49       		.uleb128 0x49
+ 2018 0033 13       		.uleb128 0x13
+ 2019 0034 00       		.byte	0
+ 2020 0035 00       		.byte	0
+ 2021 0036 05       		.uleb128 0x5
+ 2022 0037 35       		.uleb128 0x35
+ 2023 0038 00       		.byte	0
+ 2024 0039 49       		.uleb128 0x49
+ 2025 003a 13       		.uleb128 0x13
+ 2026 003b 00       		.byte	0
+ 2027 003c 00       		.byte	0
+ 2028 003d 06       		.uleb128 0x6
+ 2029 003e 0F       		.uleb128 0xf
+ 2030 003f 00       		.byte	0
+ 2031 0040 0B       		.uleb128 0xb
+ 2032 0041 0B       		.uleb128 0xb
+ 2033 0042 00       		.byte	0
+ 2034 0043 00       		.byte	0
+ 2035 0044 07       		.uleb128 0x7
+ 2036 0045 04       		.uleb128 0x4
+ 2037 0046 01       		.byte	0x1
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 42
+
+
+ 2038 0047 0B       		.uleb128 0xb
+ 2039 0048 0B       		.uleb128 0xb
+ 2040 0049 49       		.uleb128 0x49
+ 2041 004a 13       		.uleb128 0x13
+ 2042 004b 3A       		.uleb128 0x3a
+ 2043 004c 0B       		.uleb128 0xb
+ 2044 004d 3B       		.uleb128 0x3b
+ 2045 004e 05       		.uleb128 0x5
+ 2046 004f 01       		.uleb128 0x1
+ 2047 0050 13       		.uleb128 0x13
+ 2048 0051 00       		.byte	0
+ 2049 0052 00       		.byte	0
+ 2050 0053 08       		.uleb128 0x8
+ 2051 0054 28       		.uleb128 0x28
+ 2052 0055 00       		.byte	0
+ 2053 0056 03       		.uleb128 0x3
+ 2054 0057 0E       		.uleb128 0xe
+ 2055 0058 1C       		.uleb128 0x1c
+ 2056 0059 0B       		.uleb128 0xb
+ 2057 005a 00       		.byte	0
+ 2058 005b 00       		.byte	0
+ 2059 005c 09       		.uleb128 0x9
+ 2060 005d 28       		.uleb128 0x28
+ 2061 005e 00       		.byte	0
+ 2062 005f 03       		.uleb128 0x3
+ 2063 0060 0E       		.uleb128 0xe
+ 2064 0061 1C       		.uleb128 0x1c
+ 2065 0062 05       		.uleb128 0x5
+ 2066 0063 00       		.byte	0
+ 2067 0064 00       		.byte	0
+ 2068 0065 0A       		.uleb128 0xa
+ 2069 0066 0F       		.uleb128 0xf
+ 2070 0067 00       		.byte	0
+ 2071 0068 0B       		.uleb128 0xb
+ 2072 0069 0B       		.uleb128 0xb
+ 2073 006a 49       		.uleb128 0x49
+ 2074 006b 13       		.uleb128 0x13
+ 2075 006c 00       		.byte	0
+ 2076 006d 00       		.byte	0
+ 2077 006e 0B       		.uleb128 0xb
+ 2078 006f 13       		.uleb128 0x13
+ 2079 0070 01       		.byte	0x1
+ 2080 0071 0B       		.uleb128 0xb
+ 2081 0072 0B       		.uleb128 0xb
+ 2082 0073 3A       		.uleb128 0x3a
+ 2083 0074 0B       		.uleb128 0xb
+ 2084 0075 3B       		.uleb128 0x3b
+ 2085 0076 05       		.uleb128 0x5
+ 2086 0077 01       		.uleb128 0x1
+ 2087 0078 13       		.uleb128 0x13
+ 2088 0079 00       		.byte	0
+ 2089 007a 00       		.byte	0
+ 2090 007b 0C       		.uleb128 0xc
+ 2091 007c 0D       		.uleb128 0xd
+ 2092 007d 00       		.byte	0
+ 2093 007e 03       		.uleb128 0x3
+ 2094 007f 0E       		.uleb128 0xe
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 43
+
+
+ 2095 0080 3A       		.uleb128 0x3a
+ 2096 0081 0B       		.uleb128 0xb
+ 2097 0082 3B       		.uleb128 0x3b
+ 2098 0083 05       		.uleb128 0x5
+ 2099 0084 49       		.uleb128 0x49
+ 2100 0085 13       		.uleb128 0x13
+ 2101 0086 38       		.uleb128 0x38
+ 2102 0087 0B       		.uleb128 0xb
+ 2103 0088 00       		.byte	0
+ 2104 0089 00       		.byte	0
+ 2105 008a 0D       		.uleb128 0xd
+ 2106 008b 0D       		.uleb128 0xd
+ 2107 008c 00       		.byte	0
+ 2108 008d 03       		.uleb128 0x3
+ 2109 008e 08       		.uleb128 0x8
+ 2110 008f 3A       		.uleb128 0x3a
+ 2111 0090 0B       		.uleb128 0xb
+ 2112 0091 3B       		.uleb128 0x3b
+ 2113 0092 05       		.uleb128 0x5
+ 2114 0093 49       		.uleb128 0x49
+ 2115 0094 13       		.uleb128 0x13
+ 2116 0095 38       		.uleb128 0x38
+ 2117 0096 0B       		.uleb128 0xb
+ 2118 0097 00       		.byte	0
+ 2119 0098 00       		.byte	0
+ 2120 0099 0E       		.uleb128 0xe
+ 2121 009a 04       		.uleb128 0x4
+ 2122 009b 01       		.byte	0x1
+ 2123 009c 0B       		.uleb128 0xb
+ 2124 009d 0B       		.uleb128 0xb
+ 2125 009e 49       		.uleb128 0x49
+ 2126 009f 13       		.uleb128 0x13
+ 2127 00a0 3A       		.uleb128 0x3a
+ 2128 00a1 0B       		.uleb128 0xb
+ 2129 00a2 3B       		.uleb128 0x3b
+ 2130 00a3 0B       		.uleb128 0xb
+ 2131 00a4 01       		.uleb128 0x1
+ 2132 00a5 13       		.uleb128 0x13
+ 2133 00a6 00       		.byte	0
+ 2134 00a7 00       		.byte	0
+ 2135 00a8 0F       		.uleb128 0xf
+ 2136 00a9 16       		.uleb128 0x16
+ 2137 00aa 00       		.byte	0
+ 2138 00ab 03       		.uleb128 0x3
+ 2139 00ac 0E       		.uleb128 0xe
+ 2140 00ad 3A       		.uleb128 0x3a
+ 2141 00ae 0B       		.uleb128 0xb
+ 2142 00af 3B       		.uleb128 0x3b
+ 2143 00b0 0B       		.uleb128 0xb
+ 2144 00b1 49       		.uleb128 0x49
+ 2145 00b2 13       		.uleb128 0x13
+ 2146 00b3 00       		.byte	0
+ 2147 00b4 00       		.byte	0
+ 2148 00b5 10       		.uleb128 0x10
+ 2149 00b6 13       		.uleb128 0x13
+ 2150 00b7 01       		.byte	0x1
+ 2151 00b8 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 44
+
+
+ 2152 00b9 0B       		.uleb128 0xb
+ 2153 00ba 3A       		.uleb128 0x3a
+ 2154 00bb 0B       		.uleb128 0xb
+ 2155 00bc 3B       		.uleb128 0x3b
+ 2156 00bd 0B       		.uleb128 0xb
+ 2157 00be 01       		.uleb128 0x1
+ 2158 00bf 13       		.uleb128 0x13
+ 2159 00c0 00       		.byte	0
+ 2160 00c1 00       		.byte	0
+ 2161 00c2 11       		.uleb128 0x11
+ 2162 00c3 0D       		.uleb128 0xd
+ 2163 00c4 00       		.byte	0
+ 2164 00c5 03       		.uleb128 0x3
+ 2165 00c6 0E       		.uleb128 0xe
+ 2166 00c7 3A       		.uleb128 0x3a
+ 2167 00c8 0B       		.uleb128 0xb
+ 2168 00c9 3B       		.uleb128 0x3b
+ 2169 00ca 0B       		.uleb128 0xb
+ 2170 00cb 49       		.uleb128 0x49
+ 2171 00cc 13       		.uleb128 0x13
+ 2172 00cd 38       		.uleb128 0x38
+ 2173 00ce 0B       		.uleb128 0xb
+ 2174 00cf 00       		.byte	0
+ 2175 00d0 00       		.byte	0
+ 2176 00d1 12       		.uleb128 0x12
+ 2177 00d2 2E       		.uleb128 0x2e
+ 2178 00d3 01       		.byte	0x1
+ 2179 00d4 3F       		.uleb128 0x3f
+ 2180 00d5 19       		.uleb128 0x19
+ 2181 00d6 03       		.uleb128 0x3
+ 2182 00d7 0E       		.uleb128 0xe
+ 2183 00d8 3A       		.uleb128 0x3a
+ 2184 00d9 0B       		.uleb128 0xb
+ 2185 00da 3B       		.uleb128 0x3b
+ 2186 00db 0B       		.uleb128 0xb
+ 2187 00dc 27       		.uleb128 0x27
+ 2188 00dd 19       		.uleb128 0x19
+ 2189 00de 11       		.uleb128 0x11
+ 2190 00df 01       		.uleb128 0x1
+ 2191 00e0 12       		.uleb128 0x12
+ 2192 00e1 06       		.uleb128 0x6
+ 2193 00e2 40       		.uleb128 0x40
+ 2194 00e3 18       		.uleb128 0x18
+ 2195 00e4 9742     		.uleb128 0x2117
+ 2196 00e6 19       		.uleb128 0x19
+ 2197 00e7 01       		.uleb128 0x1
+ 2198 00e8 13       		.uleb128 0x13
+ 2199 00e9 00       		.byte	0
+ 2200 00ea 00       		.byte	0
+ 2201 00eb 13       		.uleb128 0x13
+ 2202 00ec 05       		.uleb128 0x5
+ 2203 00ed 00       		.byte	0
+ 2204 00ee 03       		.uleb128 0x3
+ 2205 00ef 0E       		.uleb128 0xe
+ 2206 00f0 3A       		.uleb128 0x3a
+ 2207 00f1 0B       		.uleb128 0xb
+ 2208 00f2 3B       		.uleb128 0x3b
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 45
+
+
+ 2209 00f3 0B       		.uleb128 0xb
+ 2210 00f4 49       		.uleb128 0x49
+ 2211 00f5 13       		.uleb128 0x13
+ 2212 00f6 02       		.uleb128 0x2
+ 2213 00f7 18       		.uleb128 0x18
+ 2214 00f8 00       		.byte	0
+ 2215 00f9 00       		.byte	0
+ 2216 00fa 14       		.uleb128 0x14
+ 2217 00fb 34       		.uleb128 0x34
+ 2218 00fc 00       		.byte	0
+ 2219 00fd 03       		.uleb128 0x3
+ 2220 00fe 0E       		.uleb128 0xe
+ 2221 00ff 3A       		.uleb128 0x3a
+ 2222 0100 0B       		.uleb128 0xb
+ 2223 0101 3B       		.uleb128 0x3b
+ 2224 0102 0B       		.uleb128 0xb
+ 2225 0103 49       		.uleb128 0x49
+ 2226 0104 13       		.uleb128 0x13
+ 2227 0105 02       		.uleb128 0x2
+ 2228 0106 17       		.uleb128 0x17
+ 2229 0107 00       		.byte	0
+ 2230 0108 00       		.byte	0
+ 2231 0109 15       		.uleb128 0x15
+ 2232 010a 34       		.uleb128 0x34
+ 2233 010b 00       		.byte	0
+ 2234 010c 03       		.uleb128 0x3
+ 2235 010d 0E       		.uleb128 0xe
+ 2236 010e 3A       		.uleb128 0x3a
+ 2237 010f 0B       		.uleb128 0xb
+ 2238 0110 3B       		.uleb128 0x3b
+ 2239 0111 0B       		.uleb128 0xb
+ 2240 0112 49       		.uleb128 0x49
+ 2241 0113 13       		.uleb128 0x13
+ 2242 0114 02       		.uleb128 0x2
+ 2243 0115 18       		.uleb128 0x18
+ 2244 0116 00       		.byte	0
+ 2245 0117 00       		.byte	0
+ 2246 0118 16       		.uleb128 0x16
+ 2247 0119 898201   		.uleb128 0x4109
+ 2248 011c 01       		.byte	0x1
+ 2249 011d 11       		.uleb128 0x11
+ 2250 011e 01       		.uleb128 0x1
+ 2251 011f 31       		.uleb128 0x31
+ 2252 0120 13       		.uleb128 0x13
+ 2253 0121 01       		.uleb128 0x1
+ 2254 0122 13       		.uleb128 0x13
+ 2255 0123 00       		.byte	0
+ 2256 0124 00       		.byte	0
+ 2257 0125 17       		.uleb128 0x17
+ 2258 0126 8A8201   		.uleb128 0x410a
+ 2259 0129 00       		.byte	0
+ 2260 012a 02       		.uleb128 0x2
+ 2261 012b 18       		.uleb128 0x18
+ 2262 012c 9142     		.uleb128 0x2111
+ 2263 012e 18       		.uleb128 0x18
+ 2264 012f 00       		.byte	0
+ 2265 0130 00       		.byte	0
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 46
+
+
+ 2266 0131 18       		.uleb128 0x18
+ 2267 0132 898201   		.uleb128 0x4109
+ 2268 0135 01       		.byte	0x1
+ 2269 0136 11       		.uleb128 0x11
+ 2270 0137 01       		.uleb128 0x1
+ 2271 0138 31       		.uleb128 0x31
+ 2272 0139 13       		.uleb128 0x13
+ 2273 013a 00       		.byte	0
+ 2274 013b 00       		.byte	0
+ 2275 013c 19       		.uleb128 0x19
+ 2276 013d 2E       		.uleb128 0x2e
+ 2277 013e 01       		.byte	0x1
+ 2278 013f 3F       		.uleb128 0x3f
+ 2279 0140 19       		.uleb128 0x19
+ 2280 0141 03       		.uleb128 0x3
+ 2281 0142 0E       		.uleb128 0xe
+ 2282 0143 3A       		.uleb128 0x3a
+ 2283 0144 0B       		.uleb128 0xb
+ 2284 0145 3B       		.uleb128 0x3b
+ 2285 0146 05       		.uleb128 0x5
+ 2286 0147 27       		.uleb128 0x27
+ 2287 0148 19       		.uleb128 0x19
+ 2288 0149 11       		.uleb128 0x11
+ 2289 014a 01       		.uleb128 0x1
+ 2290 014b 12       		.uleb128 0x12
+ 2291 014c 06       		.uleb128 0x6
+ 2292 014d 40       		.uleb128 0x40
+ 2293 014e 18       		.uleb128 0x18
+ 2294 014f 9742     		.uleb128 0x2117
+ 2295 0151 19       		.uleb128 0x19
+ 2296 0152 01       		.uleb128 0x1
+ 2297 0153 13       		.uleb128 0x13
+ 2298 0154 00       		.byte	0
+ 2299 0155 00       		.byte	0
+ 2300 0156 1A       		.uleb128 0x1a
+ 2301 0157 34       		.uleb128 0x34
+ 2302 0158 00       		.byte	0
+ 2303 0159 03       		.uleb128 0x3
+ 2304 015a 0E       		.uleb128 0xe
+ 2305 015b 3A       		.uleb128 0x3a
+ 2306 015c 0B       		.uleb128 0xb
+ 2307 015d 3B       		.uleb128 0x3b
+ 2308 015e 05       		.uleb128 0x5
+ 2309 015f 49       		.uleb128 0x49
+ 2310 0160 13       		.uleb128 0x13
+ 2311 0161 02       		.uleb128 0x2
+ 2312 0162 18       		.uleb128 0x18
+ 2313 0163 00       		.byte	0
+ 2314 0164 00       		.byte	0
+ 2315 0165 1B       		.uleb128 0x1b
+ 2316 0166 34       		.uleb128 0x34
+ 2317 0167 00       		.byte	0
+ 2318 0168 03       		.uleb128 0x3
+ 2319 0169 0E       		.uleb128 0xe
+ 2320 016a 3A       		.uleb128 0x3a
+ 2321 016b 0B       		.uleb128 0xb
+ 2322 016c 3B       		.uleb128 0x3b
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 47
+
+
+ 2323 016d 05       		.uleb128 0x5
+ 2324 016e 49       		.uleb128 0x49
+ 2325 016f 13       		.uleb128 0x13
+ 2326 0170 02       		.uleb128 0x2
+ 2327 0171 17       		.uleb128 0x17
+ 2328 0172 00       		.byte	0
+ 2329 0173 00       		.byte	0
+ 2330 0174 1C       		.uleb128 0x1c
+ 2331 0175 34       		.uleb128 0x34
+ 2332 0176 00       		.byte	0
+ 2333 0177 03       		.uleb128 0x3
+ 2334 0178 0E       		.uleb128 0xe
+ 2335 0179 3A       		.uleb128 0x3a
+ 2336 017a 0B       		.uleb128 0xb
+ 2337 017b 3B       		.uleb128 0x3b
+ 2338 017c 05       		.uleb128 0x5
+ 2339 017d 49       		.uleb128 0x49
+ 2340 017e 13       		.uleb128 0x13
+ 2341 017f 3F       		.uleb128 0x3f
+ 2342 0180 19       		.uleb128 0x19
+ 2343 0181 3C       		.uleb128 0x3c
+ 2344 0182 19       		.uleb128 0x19
+ 2345 0183 00       		.byte	0
+ 2346 0184 00       		.byte	0
+ 2347 0185 1D       		.uleb128 0x1d
+ 2348 0186 34       		.uleb128 0x34
+ 2349 0187 00       		.byte	0
+ 2350 0188 03       		.uleb128 0x3
+ 2351 0189 0E       		.uleb128 0xe
+ 2352 018a 3A       		.uleb128 0x3a
+ 2353 018b 0B       		.uleb128 0xb
+ 2354 018c 3B       		.uleb128 0x3b
+ 2355 018d 0B       		.uleb128 0xb
+ 2356 018e 49       		.uleb128 0x49
+ 2357 018f 13       		.uleb128 0x13
+ 2358 0190 3F       		.uleb128 0x3f
+ 2359 0191 19       		.uleb128 0x19
+ 2360 0192 02       		.uleb128 0x2
+ 2361 0193 18       		.uleb128 0x18
+ 2362 0194 00       		.byte	0
+ 2363 0195 00       		.byte	0
+ 2364 0196 1E       		.uleb128 0x1e
+ 2365 0197 2E       		.uleb128 0x2e
+ 2366 0198 00       		.byte	0
+ 2367 0199 3F       		.uleb128 0x3f
+ 2368 019a 19       		.uleb128 0x19
+ 2369 019b 3C       		.uleb128 0x3c
+ 2370 019c 19       		.uleb128 0x19
+ 2371 019d 6E       		.uleb128 0x6e
+ 2372 019e 0E       		.uleb128 0xe
+ 2373 019f 03       		.uleb128 0x3
+ 2374 01a0 0E       		.uleb128 0xe
+ 2375 01a1 3A       		.uleb128 0x3a
+ 2376 01a2 0B       		.uleb128 0xb
+ 2377 01a3 3B       		.uleb128 0x3b
+ 2378 01a4 0B       		.uleb128 0xb
+ 2379 01a5 00       		.byte	0
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 48
+
+
+ 2380 01a6 00       		.byte	0
+ 2381 01a7 00       		.byte	0
+ 2382              		.section	.debug_loc,"",%progbits
+ 2383              	.Ldebug_loc0:
+ 2384              	.LLST0:
+ 2385 0000 04000000 		.4byte	.LVL1
+ 2386 0004 1C000000 		.4byte	.LVL2
+ 2387 0008 0100     		.2byte	0x1
+ 2388 000a 53       		.byte	0x53
+ 2389 000b 1C000000 		.4byte	.LVL2
+ 2390 000f 1E000000 		.4byte	.LVL3
+ 2391 0013 0200     		.2byte	0x2
+ 2392 0015 71       		.byte	0x71
+ 2393 0016 02       		.sleb128 2
+ 2394 0017 20000000 		.4byte	.LVL4
+ 2395 001b 28000000 		.4byte	.LVL5
+ 2396 001f 0100     		.2byte	0x1
+ 2397 0021 53       		.byte	0x53
+ 2398 0022 00000000 		.4byte	0
+ 2399 0026 00000000 		.4byte	0
+ 2400              	.LLST1:
+ 2401 002a 4A000000 		.4byte	.LVL8
+ 2402 002e 4C000000 		.4byte	.LVL9
+ 2403 0032 0100     		.2byte	0x1
+ 2404 0034 50       		.byte	0x50
+ 2405 0035 58000000 		.4byte	.LVL10
+ 2406 0039 60000000 		.4byte	.LVL11
+ 2407 003d 0100     		.2byte	0x1
+ 2408 003f 50       		.byte	0x50
+ 2409 0040 00000000 		.4byte	0
+ 2410 0044 00000000 		.4byte	0
+ 2411              		.section	.debug_aranges,"",%progbits
+ 2412 0000 2C000000 		.4byte	0x2c
+ 2413 0004 0200     		.2byte	0x2
+ 2414 0006 00000000 		.4byte	.Ldebug_info0
+ 2415 000a 04       		.byte	0x4
+ 2416 000b 00       		.byte	0
+ 2417 000c 0000     		.2byte	0
+ 2418 000e 0000     		.2byte	0
+ 2419 0010 00000000 		.4byte	.LFB36
+ 2420 0014 30000000 		.4byte	.LFE36-.LFB36
+ 2421 0018 00000000 		.4byte	.LFB37
+ 2422 001c 38000000 		.4byte	.LFE37-.LFB37
+ 2423 0020 00000000 		.4byte	.LFB38
+ 2424 0024 74000000 		.4byte	.LFE38-.LFB38
+ 2425 0028 00000000 		.4byte	0
+ 2426 002c 00000000 		.4byte	0
+ 2427              		.section	.debug_ranges,"",%progbits
+ 2428              	.Ldebug_ranges0:
+ 2429 0000 00000000 		.4byte	.LFB36
+ 2430 0004 30000000 		.4byte	.LFE36
+ 2431 0008 00000000 		.4byte	.LFB37
+ 2432 000c 38000000 		.4byte	.LFE37
+ 2433 0010 00000000 		.4byte	.LFB38
+ 2434 0014 74000000 		.4byte	.LFE38
+ 2435 0018 00000000 		.4byte	0
+ 2436 001c 00000000 		.4byte	0
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 49
+
+
+ 2437              		.section	.debug_line,"",%progbits
+ 2438              	.Ldebug_line0:
+ 2439 0000 F8000000 		.section	.debug_str,"MS",%progbits,1
+ 2439      02009200 
+ 2439      00000201 
+ 2439      FB0E0D00 
+ 2439      01010101 
+ 2440              	.LASF165:
+ 2441 0000 4359424C 		.ascii	"CYBLE_EVT_GATTC_INCL_DISCOVERY_COMPLETE\000"
+ 2441      455F4556 
+ 2441      545F4741 
+ 2441      5454435F 
+ 2441      494E434C 
+ 2442              	.LASF367:
+ 2443 0028 4359424C 		.ascii	"CYBLE_EVT_PASSC_READ_CHAR_RESPONSE\000"
+ 2443      455F4556 
+ 2443      545F5041 
+ 2443      5353435F 
+ 2443      52454144 
+ 2444              	.LASF70:
+ 2445 004b 4359424C 		.ascii	"CYBLE_EVT_GATTC_STOP_CMD_COMPLETE\000"
+ 2445      455F4556 
+ 2445      545F4741 
+ 2445      5454435F 
+ 2445      53544F50 
+ 2446              	.LASF66:
+ 2447 006d 4359424C 		.ascii	"CYBLE_EVT_GATTC_HANDLE_VALUE_NTF\000"
+ 2447      455F4556 
+ 2447      545F4741 
+ 2447      5454435F 
+ 2447      48414E44 
+ 2448              	.LASF164:
+ 2449 008e 4359424C 		.ascii	"CYBLE_EVT_GATTC_SRVC_DISCOVERY_COMPLETE\000"
+ 2449      455F4556 
+ 2449      545F4741 
+ 2449      5454435F 
+ 2449      53525643 
+ 2450              	.LASF247:
+ 2451 00b6 4359424C 		.ascii	"CYBLE_EVT_CPSC_READ_CHAR_RESPONSE\000"
+ 2451      455F4556 
+ 2451      545F4350 
+ 2451      53435F52 
+ 2451      4541445F 
+ 2452              	.LASF173:
+ 2453 00d8 4359424C 		.ascii	"CYBLE_EVT_AIOSS_CHAR_WRITE\000"
+ 2453      455F4556 
+ 2453      545F4149 
+ 2453      4F53535F 
+ 2453      43484152 
+ 2454              	.LASF274:
+ 2455 00f3 4359424C 		.ascii	"CYBLE_EVT_ESSS_NOTIFICATION_DISABLED\000"
+ 2455      455F4556 
+ 2455      545F4553 
+ 2455      53535F4E 
+ 2455      4F544946 
+ 2456              	.LASF212:
+ 2457 0118 4359424C 		.ascii	"CYBLE_EVT_BLSS_INDICATION_DISABLED\000"
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 50
+
+
+ 2457      455F4556 
+ 2457      545F424C 
+ 2457      53535F49 
+ 2457      4E444943 
+ 2458              	.LASF268:
+ 2459 013b 4359424C 		.ascii	"CYBLE_EVT_CTSC_READ_CHAR_RESPONSE\000"
+ 2459      455F4556 
+ 2459      545F4354 
+ 2459      53435F52 
+ 2459      4541445F 
+ 2460              	.LASF404:
+ 2461 015d 4359424C 		.ascii	"CYBLE_EVT_TPSC_NOTIFICATION\000"
+ 2461      455F4556 
+ 2461      545F5450 
+ 2461      53435F4E 
+ 2461      4F544946 
+ 2462              	.LASF332:
+ 2463 0179 4359424C 		.ascii	"CYBLE_EVT_HTSC_NOTIFICATION\000"
+ 2463      455F4556 
+ 2463      545F4854 
+ 2463      53435F4E 
+ 2463      4F544946 
+ 2464              	.LASF240:
+ 2465 0195 4359424C 		.ascii	"CYBLE_EVT_CPSS_INDICATION_DISABLED\000"
+ 2465      455F4556 
+ 2465      545F4350 
+ 2465      53535F49 
+ 2465      4E444943 
+ 2466              	.LASF431:
+ 2467 01b8 4359424C 		.ascii	"CYBLE_EVT_WPTSC_READ_CHAR_RESPONSE\000"
+ 2467      455F4556 
+ 2467      545F5750 
+ 2467      5453435F 
+ 2467      52454144 
+ 2468              	.LASF290:
+ 2469 01db 4359424C 		.ascii	"CYBLE_EVT_GLSS_NOTIFICATION_DISABLED\000"
+ 2469      455F4556 
+ 2469      545F474C 
+ 2469      53535F4E 
+ 2469      4F544946 
+ 2470              	.LASF25:
+ 2471 0200 4359424C 		.ascii	"CYBLE_EVT_GAP_AUTH_REQ\000"
+ 2471      455F4556 
+ 2471      545F4741 
+ 2471      505F4155 
+ 2471      54485F52 
+ 2472              	.LASF347:
+ 2473 0217 4359424C 		.ascii	"CYBLE_EVT_LLSS_WRITE_CHAR_REQ\000"
+ 2473      455F4556 
+ 2473      545F4C4C 
+ 2473      53535F57 
+ 2473      52495445 
+ 2474              	.LASF389:
+ 2475 0235 4359424C 		.ascii	"CYBLE_EVT_RSCSC_INDICATION\000"
+ 2475      455F4556 
+ 2475      545F5253 
+ 2475      4353435F 
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 51
+
+
+ 2475      494E4449 
+ 2476              	.LASF241:
+ 2477 0250 4359424C 		.ascii	"CYBLE_EVT_CPSS_INDICATION_CONFIRMED\000"
+ 2477      455F4556 
+ 2477      545F4350 
+ 2477      53535F49 
+ 2477      4E444943 
+ 2478              	.LASF167:
+ 2479 0274 4359424C 		.ascii	"CYBLE_EVT_GATTC_DISCOVERY_COMPLETE\000"
+ 2479      455F4556 
+ 2479      545F4741 
+ 2479      5454435F 
+ 2479      44495343 
+ 2480              	.LASF454:
+ 2481 0297 62617474 		.ascii	"batterySimulationNotify\000"
+ 2481      65727953 
+ 2481      696D756C 
+ 2481      6174696F 
+ 2481      6E4E6F74 
+ 2482              	.LASF158:
+ 2483 02af 4359424C 		.ascii	"CYBLE_EVT_GATTC_INCL_DISCOVERY_FAILED\000"
+ 2483      455F4556 
+ 2483      545F4741 
+ 2483      5454435F 
+ 2483      494E434C 
+ 2484              	.LASF428:
+ 2485 02d5 4359424C 		.ascii	"CYBLE_EVT_WPTSC_NOTIFICATION\000"
+ 2485      455F4556 
+ 2485      545F5750 
+ 2485      5453435F 
+ 2485      4E4F5449 
+ 2486              	.LASF161:
+ 2487 02f2 4359424C 		.ascii	"CYBLE_EVT_GATTC_SRVC_DUPLICATION\000"
+ 2487      455F4556 
+ 2487      545F4741 
+ 2487      5454435F 
+ 2487      53525643 
+ 2488              	.LASF98:
+ 2489 0313 4359424C 		.ascii	"CYBLE_ERROR_GAP_ROLE\000"
+ 2489      455F4552 
+ 2489      524F525F 
+ 2489      4741505F 
+ 2489      524F4C45 
+ 2490              	.LASF307:
+ 2491 0328 4359424C 		.ascii	"CYBLE_EVT_HIDSC_WRITE_CHAR_RESPONSE\000"
+ 2491      455F4556 
+ 2491      545F4849 
+ 2491      4453435F 
+ 2491      57524954 
+ 2492              	.LASF284:
+ 2493 034c 4359424C 		.ascii	"CYBLE_EVT_ESSC_READ_DESCR_RESPONSE\000"
+ 2493      455F4556 
+ 2493      545F4553 
+ 2493      53435F52 
+ 2493      4541445F 
+ 2494              	.LASF112:
+ 2495 036f 4359424C 		.ascii	"CYBLE_ERROR_HARDWARE_FAILURE\000"
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 52
+
+
+ 2495      455F4552 
+ 2495      524F525F 
+ 2495      48415244 
+ 2495      57415245 
+ 2496              	.LASF50:
+ 2497 038c 4359424C 		.ascii	"CYBLE_EVT_GATT_DISCONNECT_IND\000"
+ 2497      455F4556 
+ 2497      545F4741 
+ 2497      54545F44 
+ 2497      4953434F 
+ 2498              	.LASF300:
+ 2499 03aa 4359424C 		.ascii	"CYBLE_EVT_HIDSS_BOOT_MODE_ENTER\000"
+ 2499      455F4556 
+ 2499      545F4849 
+ 2499      4453535F 
+ 2499      424F4F54 
+ 2500              	.LASF390:
+ 2501 03ca 4359424C 		.ascii	"CYBLE_EVT_RSCSC_READ_CHAR_RESPONSE\000"
+ 2501      455F4556 
+ 2501      545F5253 
+ 2501      4353435F 
+ 2501      52454144 
+ 2502              	.LASF43:
+ 2503 03ed 4359424C 		.ascii	"CYBLE_EVT_GAP_SMP_NEGOTIATED_AUTH_INFO\000"
+ 2503      455F4556 
+ 2503      545F4741 
+ 2503      505F534D 
+ 2503      505F4E45 
+ 2504              	.LASF130:
+ 2505 0414 4359424C 		.ascii	"CYBLE_BAS_CHAR_COUNT\000"
+ 2505      455F4241 
+ 2505      535F4348 
+ 2505      41525F43 
+ 2505      4F554E54 
+ 2506              	.LASF45:
+ 2507 0429 4359424C 		.ascii	"CYBLE_EVT_GAP_SCAN_REQ_RECVD\000"
+ 2507      455F4556 
+ 2507      545F4741 
+ 2507      505F5343 
+ 2507      414E5F52 
+ 2508              	.LASF181:
+ 2509 0446 4359424C 		.ascii	"CYBLE_EVT_AIOSC_ERROR_RESPONSE\000"
+ 2509      455F4556 
+ 2509      545F4149 
+ 2509      4F53435F 
+ 2509      4552524F 
+ 2510              	.LASF201:
+ 2511 0465 4359424C 		.ascii	"CYBLE_EVT_BASC_READ_CHAR_RESPONSE\000"
+ 2511      455F4556 
+ 2511      545F4241 
+ 2511      53435F52 
+ 2511      4541445F 
+ 2512              	.LASF205:
+ 2513 0487 4359424C 		.ascii	"CYBLE_EVT_BCSS_INDICATION_DISABLED\000"
+ 2513      455F4556 
+ 2513      545F4243 
+ 2513      53535F49 
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 53
+
+
+ 2513      4E444943 
+ 2514              	.LASF419:
+ 2515 04aa 4359424C 		.ascii	"CYBLE_EVT_UDSC_READ_DESCR_RESPONSE\000"
+ 2515      455F4556 
+ 2515      545F5544 
+ 2515      53435F52 
+ 2515      4541445F 
+ 2516              	.LASF51:
+ 2517 04cd 4359424C 		.ascii	"CYBLE_EVT_GATTS_XCNHG_MTU_REQ\000"
+ 2517      455F4556 
+ 2517      545F4741 
+ 2517      5454535F 
+ 2517      58434E48 
+ 2518              	.LASF69:
+ 2519 04eb 4359424C 		.ascii	"CYBLE_EVT_GATTS_DATA_SIGNED_CMD_REQ\000"
+ 2519      455F4556 
+ 2519      545F4741 
+ 2519      5454535F 
+ 2519      44415441 
+ 2520              	.LASF355:
+ 2521 050f 4359424C 		.ascii	"CYBLE_EVT_LNSS_WRITE_CHAR\000"
+ 2521      455F4556 
+ 2521      545F4C4E 
+ 2521      53535F57 
+ 2521      52495445 
+ 2522              	.LASF91:
+ 2523 0529 4359424C 		.ascii	"CYBLE_ERROR_INVALID_OPERATION\000"
+ 2523      455F4552 
+ 2523      524F525F 
+ 2523      494E5641 
+ 2523      4C49445F 
+ 2524              	.LASF348:
+ 2525 0547 4359424C 		.ascii	"CYBLE_EVT_LLSC_READ_CHAR_RESPONSE\000"
+ 2525      455F4556 
+ 2525      545F4C4C 
+ 2525      53435F52 
+ 2525      4541445F 
+ 2526              	.LASF20:
+ 2527 0569 4359424C 		.ascii	"CYBLE_EVT_HARDWARE_ERROR\000"
+ 2527      455F4556 
+ 2527      545F4841 
+ 2527      52445741 
+ 2527      52455F45 
+ 2528              	.LASF73:
+ 2529 0582 4359424C 		.ascii	"CYBLE_EVT_L2CAP_CONN_PARAM_UPDATE_REQ\000"
+ 2529      455F4556 
+ 2529      545F4C32 
+ 2529      4341505F 
+ 2529      434F4E4E 
+ 2530              	.LASF29:
+ 2531 05a8 4359424C 		.ascii	"CYBLE_EVT_GAP_AUTH_FAILED\000"
+ 2531      455F4556 
+ 2531      545F4741 
+ 2531      505F4155 
+ 2531      54485F46 
+ 2532              	.LASF85:
+ 2533 05c2 4359424C 		.ascii	"CYBLE_EVT_LE_PING_AUTH_TIMEOUT\000"
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 54
+
+
+ 2533      455F4556 
+ 2533      545F4C45 
+ 2533      5F50494E 
+ 2533      475F4155 
+ 2534              	.LASF446:
+ 2535 05e1 6C6F6353 		.ascii	"locServiceIndex\000"
+ 2535      65727669 
+ 2535      6365496E 
+ 2535      64657800 
+ 2536              	.LASF293:
+ 2537 05f1 4359424C 		.ascii	"CYBLE_EVT_GLSC_NOTIFICATION\000"
+ 2537      455F4556 
+ 2537      545F474C 
+ 2537      53435F4E 
+ 2537      4F544946 
+ 2538              	.LASF380:
+ 2539 060d 4359424C 		.ascii	"CYBLE_EVT_PLXSC_READ_DESCR_RESPONSE\000"
+ 2539      455F4556 
+ 2539      545F504C 
+ 2539      5853435F 
+ 2539      52454144 
+ 2540              	.LASF62:
+ 2541 0631 4359424C 		.ascii	"CYBLE_EVT_GATTS_WRITE_CMD_REQ\000"
+ 2541      455F4556 
+ 2541      545F4741 
+ 2541      5454535F 
+ 2541      57524954 
+ 2542              	.LASF232:
+ 2543 064f 4359424C 		.ascii	"CYBLE_EVT_CGMSC_NOTIFICATION\000"
+ 2543      455F4556 
+ 2543      545F4347 
+ 2543      4D53435F 
+ 2543      4E4F5449 
+ 2544              	.LASF184:
+ 2545 066c 4359424C 		.ascii	"CYBLE_EVT_ANCSS_WRITE_CHAR\000"
+ 2545      455F4556 
+ 2545      545F414E 
+ 2545      4353535F 
+ 2545      57524954 
+ 2546              	.LASF132:
+ 2547 0687 4359424C 		.ascii	"CYBLE_BAS_BATTERY_LEVEL_CCCD\000"
+ 2547      455F4241 
+ 2547      535F4241 
+ 2547      54544552 
+ 2547      595F4C45 
+ 2548              	.LASF269:
+ 2549 06a4 4359424C 		.ascii	"CYBLE_EVT_CTSC_READ_DESCR_RESPONSE\000"
+ 2549      455F4556 
+ 2549      545F4354 
+ 2549      53435F52 
+ 2549      4541445F 
+ 2550              	.LASF96:
+ 2551 06c7 4359424C 		.ascii	"CYBLE_ERROR_NO_DEVICE_ENTITY\000"
+ 2551      455F4552 
+ 2551      524F525F 
+ 2551      4E4F5F44 
+ 2551      45564943 
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 55
+
+
+ 2552              	.LASF74:
+ 2553 06e4 4359424C 		.ascii	"CYBLE_EVT_L2CAP_CONN_PARAM_UPDATE_RSP\000"
+ 2553      455F4556 
+ 2553      545F4C32 
+ 2553      4341505F 
+ 2553      434F4E4E 
+ 2554              	.LASF429:
+ 2555 070a 4359424C 		.ascii	"CYBLE_EVT_WPTSC_INDICATION\000"
+ 2555      455F4556 
+ 2555      545F5750 
+ 2555      5453435F 
+ 2555      494E4449 
+ 2556              	.LASF306:
+ 2557 0725 4359424C 		.ascii	"CYBLE_EVT_HIDSC_READ_CHAR_RESPONSE\000"
+ 2557      455F4556 
+ 2557      545F4849 
+ 2557      4453435F 
+ 2557      52454144 
+ 2558              	.LASF415:
+ 2559 0748 4359424C 		.ascii	"CYBLE_EVT_UDSC_INDICATION\000"
+ 2559      455F4556 
+ 2559      545F5544 
+ 2559      53435F49 
+ 2559      4E444943 
+ 2560              	.LASF216:
+ 2561 0762 4359424C 		.ascii	"CYBLE_EVT_BLSC_INDICATION\000"
+ 2561      455F4556 
+ 2561      545F424C 
+ 2561      53435F49 
+ 2561      4E444943 
+ 2562              	.LASF180:
+ 2563 077c 4359424C 		.ascii	"CYBLE_EVT_AIOSC_WRITE_DESCR_RESPONSE\000"
+ 2563      455F4556 
+ 2563      545F4149 
+ 2563      4F53435F 
+ 2563      57524954 
+ 2564              	.LASF120:
+ 2565 07a1 4359424C 		.ascii	"CYBLE_ERROR_INVALID_STATE\000"
+ 2565      455F4552 
+ 2565      524F525F 
+ 2565      494E5641 
+ 2565      4C49445F 
+ 2566              	.LASF229:
+ 2567 07bb 4359424C 		.ascii	"CYBLE_EVT_CGMSS_NOTIFICATION_DISABLED\000"
+ 2567      455F4556 
+ 2567      545F4347 
+ 2567      4D53535F 
+ 2567      4E4F5449 
+ 2568              	.LASF252:
+ 2569 07e1 4359424C 		.ascii	"CYBLE_EVT_CSCSS_NOTIFICATION_ENABLED\000"
+ 2569      455F4556 
+ 2569      545F4353 
+ 2569      4353535F 
+ 2569      4E4F5449 
+ 2570              	.LASF353:
+ 2571 0806 4359424C 		.ascii	"CYBLE_EVT_LNSS_NOTIFICATION_ENABLED\000"
+ 2571      455F4556 
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 56
+
+
+ 2571      545F4C4E 
+ 2571      53535F4E 
+ 2571      4F544946 
+ 2572              	.LASF2:
+ 2573 082a 73686F72 		.ascii	"short int\000"
+ 2573      7420696E 
+ 2573      7400
+ 2574              	.LASF417:
+ 2575 0834 4359424C 		.ascii	"CYBLE_EVT_UDSC_READ_CHAR_RESPONSE\000"
+ 2575      455F4556 
+ 2575      545F5544 
+ 2575      53435F52 
+ 2575      4541445F 
+ 2576              	.LASF140:
+ 2577 0856 4359424C 		.ascii	"CYBLE_DIS_MANUFACTURER_NAME\000"
+ 2577      455F4449 
+ 2577      535F4D41 
+ 2577      4E554641 
+ 2577      43545552 
+ 2578              	.LASF338:
+ 2579 0872 4359424C 		.ascii	"CYBLE_EVT_IASS_WRITE_CHAR_CMD\000"
+ 2579      455F4556 
+ 2579      545F4941 
+ 2579      53535F57 
+ 2579      52495445 
+ 2580              	.LASF26:
+ 2581 0890 4359424C 		.ascii	"CYBLE_EVT_GAP_PASSKEY_ENTRY_REQUEST\000"
+ 2581      455F4556 
+ 2581      545F4741 
+ 2581      505F5041 
+ 2581      53534B45 
+ 2582              	.LASF81:
+ 2583 08b4 4359424C 		.ascii	"CYBLE_EVT_L2CAP_CBFC_RX_CREDIT_IND\000"
+ 2583      455F4556 
+ 2583      545F4C32 
+ 2583      4341505F 
+ 2583      43424643 
+ 2584              	.LASF174:
+ 2585 08d7 4359424C 		.ascii	"CYBLE_EVT_AIOSS_DESCR_WRITE\000"
+ 2585      455F4556 
+ 2585      545F4149 
+ 2585      4F53535F 
+ 2585      44455343 
+ 2586              	.LASF68:
+ 2587 08f3 4359424C 		.ascii	"CYBLE_EVT_GATTS_HANDLE_VALUE_CNF\000"
+ 2587      455F4556 
+ 2587      545F4741 
+ 2587      5454535F 
+ 2587      48414E44 
+ 2588              	.LASF405:
+ 2589 0914 4359424C 		.ascii	"CYBLE_EVT_TPSC_READ_CHAR_RESPONSE\000"
+ 2589      455F4556 
+ 2589      545F5450 
+ 2589      53435F52 
+ 2589      4541445F 
+ 2590              	.LASF264:
+ 2591 0936 4359424C 		.ascii	"CYBLE_EVT_CTSS_NOTIFICATION_ENABLED\000"
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 57
+
+
+ 2591      455F4556 
+ 2591      545F4354 
+ 2591      53535F4E 
+ 2591      4F544946 
+ 2592              	.LASF418:
+ 2593 095a 4359424C 		.ascii	"CYBLE_EVT_UDSC_WRITE_CHAR_RESPONSE\000"
+ 2593      455F4556 
+ 2593      545F5544 
+ 2593      53435F57 
+ 2593      52495445 
+ 2594              	.LASF243:
+ 2595 097d 4359424C 		.ascii	"CYBLE_EVT_CPSS_BROADCAST_DISABLED\000"
+ 2595      455F4556 
+ 2595      545F4350 
+ 2595      53535F42 
+ 2595      524F4144 
+ 2596              	.LASF256:
+ 2597 099f 4359424C 		.ascii	"CYBLE_EVT_CSCSS_INDICATION_CONFIRMATION\000"
+ 2597      455F4556 
+ 2597      545F4353 
+ 2597      4353535F 
+ 2597      494E4449 
+ 2598              	.LASF151:
+ 2599 09c7 4359424C 		.ascii	"CYBLE_PASSKEY_ENTRY_REQUEST_REPLY\000"
+ 2599      455F5041 
+ 2599      53534B45 
+ 2599      595F454E 
+ 2599      5452595F 
+ 2600              	.LASF34:
+ 2601 09e9 4359424C 		.ascii	"CYBLE_EVT_GAP_CONNECTION_UPDATE_COMPLETE\000"
+ 2601      455F4556 
+ 2601      545F4741 
+ 2601      505F434F 
+ 2601      4E4E4543 
+ 2602              	.LASF327:
+ 2603 0a12 4359424C 		.ascii	"CYBLE_EVT_HTSS_NOTIFICATION_DISABLED\000"
+ 2603      455F4556 
+ 2603      545F4854 
+ 2603      53535F4E 
+ 2603      4F544946 
+ 2604              	.LASF453:
+ 2605 0a37 6379426C 		.ascii	"cyBle_busyStatus\000"
+ 2605      655F6275 
+ 2605      73795374 
+ 2605      61747573 
+ 2605      00
+ 2606              	.LASF257:
+ 2607 0a48 4359424C 		.ascii	"CYBLE_EVT_CSCSS_CHAR_WRITE\000"
+ 2607      455F4556 
+ 2607      545F4353 
+ 2607      4353535F 
+ 2607      43484152 
+ 2608              	.LASF150:
+ 2609 0a63 4359424C 		.ascii	"CYBLE_AUTHENTICATION_REQUEST_REPLY\000"
+ 2609      455F4155 
+ 2609      5448454E 
+ 2609      54494341 
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 58
+
+
+ 2609      54494F4E 
+ 2610              	.LASF286:
+ 2611 0a86 4359424C 		.ascii	"CYBLE_EVT_GLSS_INDICATION_ENABLED\000"
+ 2611      455F4556 
+ 2611      545F474C 
+ 2611      53535F49 
+ 2611      4E444943 
+ 2612              	.LASF438:
+ 2613 0aa8 4359424C 		.ascii	"CYBLE_EVT_WSSC_READ_CHAR_RESPONSE\000"
+ 2613      455F4556 
+ 2613      545F5753 
+ 2613      53435F52 
+ 2613      4541445F 
+ 2614              	.LASF370:
+ 2615 0aca 4359424C 		.ascii	"CYBLE_EVT_PLXSS_WRITE_CHAR\000"
+ 2615      455F4556 
+ 2615      545F504C 
+ 2615      5853535F 
+ 2615      57524954 
+ 2616              	.LASF393:
+ 2617 0ae5 4359424C 		.ascii	"CYBLE_EVT_RSCSC_WRITE_DESCR_RESPONSE\000"
+ 2617      455F4556 
+ 2617      545F5253 
+ 2617      4353435F 
+ 2617      57524954 
+ 2618              	.LASF129:
+ 2619 0b0a 4359424C 		.ascii	"CYBLE_BAS_BATTERY_LEVEL\000"
+ 2619      455F4241 
+ 2619      535F4241 
+ 2619      54544552 
+ 2619      595F4C45 
+ 2620              	.LASF271:
+ 2621 0b22 4359424C 		.ascii	"CYBLE_EVT_CTSC_WRITE_CHAR_RESPONSE\000"
+ 2621      455F4556 
+ 2621      545F4354 
+ 2621      53435F57 
+ 2621      52495445 
+ 2622              	.LASF84:
+ 2623 0b45 4359424C 		.ascii	"CYBLE_EVT_PENDING_FLASH_WRITE\000"
+ 2623      455F4556 
+ 2623      545F5045 
+ 2623      4E44494E 
+ 2623      475F464C 
+ 2624              	.LASF265:
+ 2625 0b63 4359424C 		.ascii	"CYBLE_EVT_CTSS_NOTIFICATION_DISABLED\000"
+ 2625      455F4556 
+ 2625      545F4354 
+ 2625      53535F4E 
+ 2625      4F544946 
+ 2626              	.LASF352:
+ 2627 0b88 4359424C 		.ascii	"CYBLE_EVT_LNSS_INDICATION_CONFIRMED\000"
+ 2627      455F4556 
+ 2627      545F4C4E 
+ 2627      53535F49 
+ 2627      4E444943 
+ 2628              	.LASF406:
+ 2629 0bac 4359424C 		.ascii	"CYBLE_EVT_TPSC_READ_DESCR_RESPONSE\000"
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 59
+
+
+ 2629      455F4556 
+ 2629      545F5450 
+ 2629      53435F52 
+ 2629      4541445F 
+ 2630              	.LASF398:
+ 2631 0bcf 4359424C 		.ascii	"CYBLE_EVT_SCPSS_SCAN_INT_WIN_CHAR_WRITE\000"
+ 2631      455F4556 
+ 2631      545F5343 
+ 2631      5053535F 
+ 2631      5343414E 
+ 2632              	.LASF106:
+ 2633 0bf7 4359424C 		.ascii	"CYBLE_ERROR_L2CAP_CHANNEL_NOT_FOUND\000"
+ 2633      455F4552 
+ 2633      524F525F 
+ 2633      4C324341 
+ 2633      505F4348 
+ 2634              	.LASF197:
+ 2635 0c1b 4359424C 		.ascii	"CYBLE_EVT_ANSC_WRITE_DESCR_RESPONSE\000"
+ 2635      455F4556 
+ 2635      545F414E 
+ 2635      53435F57 
+ 2635      52495445 
+ 2636              	.LASF61:
+ 2637 0c3f 4359424C 		.ascii	"CYBLE_EVT_GATTC_WRITE_RSP\000"
+ 2637      455F4556 
+ 2637      545F4741 
+ 2637      5454435F 
+ 2637      57524954 
+ 2638              	.LASF378:
+ 2639 0c59 4359424C 		.ascii	"CYBLE_EVT_PLXSC_READ_CHAR_RESPONSE\000"
+ 2639      455F4556 
+ 2639      545F504C 
+ 2639      5853435F 
+ 2639      52454144 
+ 2640              	.LASF12:
+ 2641 0c7c 666C6F61 		.ascii	"float\000"
+ 2641      7400
+ 2642              	.LASF442:
+ 2643 0c82 6576656E 		.ascii	"event\000"
+ 2643      7400
+ 2644              	.LASF354:
+ 2645 0c88 4359424C 		.ascii	"CYBLE_EVT_LNSS_NOTIFICATION_DISABLED\000"
+ 2645      455F4556 
+ 2645      545F4C4E 
+ 2645      53535F4E 
+ 2645      4F544946 
+ 2646              	.LASF171:
+ 2647 0cad 4359424C 		.ascii	"CYBLE_EVT_AIOSS_INDICATION_DISABLED\000"
+ 2647      455F4556 
+ 2647      545F4149 
+ 2647      4F53535F 
+ 2647      494E4449 
+ 2648              	.LASF22:
+ 2649 0cd1 4359424C 		.ascii	"CYBLE_EVT_STACK_BUSY_STATUS\000"
+ 2649      455F4556 
+ 2649      545F5354 
+ 2649      41434B5F 
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 60
+
+
+ 2649      42555359 
+ 2650              	.LASF218:
+ 2651 0ced 4359424C 		.ascii	"CYBLE_EVT_BLSC_READ_CHAR_RESPONSE\000"
+ 2651      455F4556 
+ 2651      545F424C 
+ 2651      53435F52 
+ 2651      4541445F 
+ 2652              	.LASF75:
+ 2653 0d0f 4359424C 		.ascii	"CYBLE_EVT_L2CAP_COMMAND_REJ\000"
+ 2653      455F4556 
+ 2653      545F4C32 
+ 2653      4341505F 
+ 2653      434F4D4D 
+ 2654              	.LASF100:
+ 2655 0d2b 4359424C 		.ascii	"CYBLE_ERROR_BT_ON_NOT_COMPLETED\000"
+ 2655      455F4552 
+ 2655      524F525F 
+ 2655      42545F4F 
+ 2655      4E5F4E4F 
+ 2656              	.LASF207:
+ 2657 0d4b 4359424C 		.ascii	"CYBLE_EVT_BCSC_INDICATION\000"
+ 2657      455F4556 
+ 2657      545F4243 
+ 2657      53435F49 
+ 2657      4E444943 
+ 2658              	.LASF303:
+ 2659 0d65 4359424C 		.ascii	"CYBLE_EVT_HIDSS_EXIT_SUSPEND\000"
+ 2659      455F4556 
+ 2659      545F4849 
+ 2659      4453535F 
+ 2659      45584954 
+ 2660              	.LASF260:
+ 2661 0d82 4359424C 		.ascii	"CYBLE_EVT_CSCSC_READ_CHAR_RESPONSE\000"
+ 2661      455F4556 
+ 2661      545F4353 
+ 2661      4353435F 
+ 2661      52454144 
+ 2662              	.LASF262:
+ 2663 0da5 4359424C 		.ascii	"CYBLE_EVT_CSCSC_READ_DESCR_RESPONSE\000"
+ 2663      455F4556 
+ 2663      545F4353 
+ 2663      4353435F 
+ 2663      52454144 
+ 2664              	.LASF339:
+ 2665 0dc9 4359424C 		.ascii	"CYBLE_EVT_IPSS_WRITE_CHAR\000"
+ 2665      455F4556 
+ 2665      545F4950 
+ 2665      53535F57 
+ 2665      52495445 
+ 2666              	.LASF226:
+ 2667 0de3 4359424C 		.ascii	"CYBLE_EVT_CGMSS_INDICATION_DISABLED\000"
+ 2667      455F4556 
+ 2667      545F4347 
+ 2667      4D53535F 
+ 2667      494E4449 
+ 2668              	.LASF7:
+ 2669 0e07 6C6F6E67 		.ascii	"long long unsigned int\000"
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 61
+
+
+ 2669      206C6F6E 
+ 2669      6720756E 
+ 2669      7369676E 
+ 2669      65642069 
+ 2670              	.LASF176:
+ 2671 0e1e 4359424C 		.ascii	"CYBLE_EVT_AIOSC_INDICATION\000"
+ 2671      455F4556 
+ 2671      545F4149 
+ 2671      4F53435F 
+ 2671      494E4449 
+ 2672              	.LASF283:
+ 2673 0e39 4359424C 		.ascii	"CYBLE_EVT_ESSC_WRITE_CHAR_RESPONSE\000"
+ 2673      455F4556 
+ 2673      545F4553 
+ 2673      53435F57 
+ 2673      52495445 
+ 2674              	.LASF60:
+ 2675 0e5c 4359424C 		.ascii	"CYBLE_EVT_GATTS_WRITE_REQ\000"
+ 2675      455F4556 
+ 2675      545F4741 
+ 2675      5454535F 
+ 2675      57524954 
+ 2676              	.LASF287:
+ 2677 0e76 4359424C 		.ascii	"CYBLE_EVT_GLSS_INDICATION_DISABLED\000"
+ 2677      455F4556 
+ 2677      545F474C 
+ 2677      53535F49 
+ 2677      4E444943 
+ 2678              	.LASF365:
+ 2679 0e99 4359424C 		.ascii	"CYBLE_EVT_PASSS_WRITE_CHAR\000"
+ 2679      455F4556 
+ 2679      545F5041 
+ 2679      5353535F 
+ 2679      57524954 
+ 2680              	.LASF228:
+ 2681 0eb4 4359424C 		.ascii	"CYBLE_EVT_CGMSS_NOTIFICATION_ENABLED\000"
+ 2681      455F4556 
+ 2681      545F4347 
+ 2681      4D53535F 
+ 2681      4E4F5449 
+ 2682              	.LASF439:
+ 2683 0ed9 4359424C 		.ascii	"CYBLE_EVT_WSSC_READ_DESCR_RESPONSE\000"
+ 2683      455F4556 
+ 2683      545F5753 
+ 2683      53435F52 
+ 2683      4541445F 
+ 2684              	.LASF199:
+ 2685 0efc 4359424C 		.ascii	"CYBLE_EVT_BASS_NOTIFICATION_DISABLED\000"
+ 2685      455F4556 
+ 2685      545F4241 
+ 2685      53535F4E 
+ 2685      4F544946 
+ 2686              	.LASF436:
+ 2687 0f21 4359424C 		.ascii	"CYBLE_EVT_WSSS_INDICATION_CONFIRMED\000"
+ 2687      455F4556 
+ 2687      545F5753 
+ 2687      53535F49 
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 62
+
+
+ 2687      4E444943 
+ 2688              	.LASF343:
+ 2689 0f45 4359424C 		.ascii	"CYBLE_EVT_IPSC_READ_DESCR_RESPONSE\000"
+ 2689      455F4556 
+ 2689      545F4950 
+ 2689      53435F52 
+ 2689      4541445F 
+ 2690              	.LASF364:
+ 2691 0f68 4359424C 		.ascii	"CYBLE_EVT_PASSS_NOTIFICATION_DISABLED\000"
+ 2691      455F4556 
+ 2691      545F5041 
+ 2691      5353535F 
+ 2691      4E4F5449 
+ 2692              	.LASF215:
+ 2693 0f8e 4359424C 		.ascii	"CYBLE_EVT_BLSS_NOTIFICATION_DISABLED\000"
+ 2693      455F4556 
+ 2693      545F424C 
+ 2693      53535F4E 
+ 2693      4F544946 
+ 2694              	.LASF204:
+ 2695 0fb3 4359424C 		.ascii	"CYBLE_EVT_BCSS_INDICATION_ENABLED\000"
+ 2695      455F4556 
+ 2695      545F4243 
+ 2695      53535F49 
+ 2695      4E444943 
+ 2696              	.LASF163:
+ 2697 0fd5 4359424C 		.ascii	"CYBLE_EVT_GATTC_DESCR_DUPLICATION\000"
+ 2697      455F4556 
+ 2697      545F4741 
+ 2697      5454435F 
+ 2697      44455343 
+ 2698              	.LASF452:
+ 2699 0ff7 6379426C 		.ascii	"cyBle_connHandle\000"
+ 2699      655F636F 
+ 2699      6E6E4861 
+ 2699      6E646C65 
+ 2699      00
+ 2700              	.LASF421:
+ 2701 1008 4359424C 		.ascii	"CYBLE_EVT_UDSC_ERROR_RESPONSE\000"
+ 2701      455F4556 
+ 2701      545F5544 
+ 2701      53435F45 
+ 2701      52524F52 
+ 2702              	.LASF55:
+ 2703 1026 4359424C 		.ascii	"CYBLE_EVT_GATTC_FIND_INFO_RSP\000"
+ 2703      455F4556 
+ 2703      545F4741 
+ 2703      5454435F 
+ 2703      46494E44 
+ 2704              	.LASF334:
+ 2705 1044 4359424C 		.ascii	"CYBLE_EVT_HTSC_READ_CHAR_RESPONSE\000"
+ 2705      455F4556 
+ 2705      545F4854 
+ 2705      53435F52 
+ 2705      4541445F 
+ 2706              	.LASF337:
+ 2707 1066 4359424C 		.ascii	"CYBLE_EVT_HTSC_WRITE_DESCR_RESPONSE\000"
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 63
+
+
+ 2707      455F4556 
+ 2707      545F4854 
+ 2707      53435F57 
+ 2707      52495445 
+ 2708              	.LASF379:
+ 2709 108a 4359424C 		.ascii	"CYBLE_EVT_PLXSC_WRITE_CHAR_RESPONSE\000"
+ 2709      455F4556 
+ 2709      545F504C 
+ 2709      5853435F 
+ 2709      57524954 
+ 2710              	.LASF190:
+ 2711 10ae 4359424C 		.ascii	"CYBLE_EVT_ANSS_NOTIFICATION_ENABLED\000"
+ 2711      455F4556 
+ 2711      545F414E 
+ 2711      53535F4E 
+ 2711      4F544946 
+ 2712              	.LASF194:
+ 2713 10d2 4359424C 		.ascii	"CYBLE_EVT_ANSC_READ_CHAR_RESPONSE\000"
+ 2713      455F4556 
+ 2713      545F414E 
+ 2713      53435F52 
+ 2713      4541445F 
+ 2714              	.LASF56:
+ 2715 10f4 4359424C 		.ascii	"CYBLE_EVT_GATTC_FIND_BY_TYPE_VALUE_RSP\000"
+ 2715      455F4556 
+ 2715      545F4741 
+ 2715      5454435F 
+ 2715      46494E44 
+ 2716              	.LASF138:
+ 2717 111b 76616C75 		.ascii	"value\000"
+ 2717      6500
+ 2718              	.LASF168:
+ 2719 1121 4359424C 		.ascii	"CYBLE_EVT_AIOSS_NOTIFICATION_ENABLED\000"
+ 2719      455F4556 
+ 2719      545F4149 
+ 2719      4F53535F 
+ 2719      4E4F5449 
+ 2720              	.LASF183:
+ 2721 1146 4359424C 		.ascii	"CYBLE_EVT_ANCSS_NOTIFICATION_DISABLED\000"
+ 2721      455F4556 
+ 2721      545F414E 
+ 2721      4353535F 
+ 2721      4E4F5449 
+ 2722              	.LASF64:
+ 2723 116c 4359424C 		.ascii	"CYBLE_EVT_GATTS_EXEC_WRITE_REQ\000"
+ 2723      455F4556 
+ 2723      545F4741 
+ 2723      5454535F 
+ 2723      45584543 
+ 2724              	.LASF259:
+ 2725 118b 4359424C 		.ascii	"CYBLE_EVT_CSCSC_INDICATION\000"
+ 2725      455F4556 
+ 2725      545F4353 
+ 2725      4353435F 
+ 2725      494E4449 
+ 2726              	.LASF392:
+ 2727 11a6 4359424C 		.ascii	"CYBLE_EVT_RSCSC_READ_DESCR_RESPONSE\000"
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 64
+
+
+ 2727      455F4556 
+ 2727      545F5253 
+ 2727      4353435F 
+ 2727      52454144 
+ 2728              	.LASF65:
+ 2729 11ca 4359424C 		.ascii	"CYBLE_EVT_GATTC_EXEC_WRITE_RSP\000"
+ 2729      455F4556 
+ 2729      545F4741 
+ 2729      5454435F 
+ 2729      45584543 
+ 2730              	.LASF308:
+ 2731 11e9 4359424C 		.ascii	"CYBLE_EVT_HIDSC_READ_DESCR_RESPONSE\000"
+ 2731      455F4556 
+ 2731      545F4849 
+ 2731      4453435F 
+ 2731      52454144 
+ 2732              	.LASF125:
+ 2733 120d 4359424C 		.ascii	"CYBLE_CONN_HANDLE_T\000"
+ 2733      455F434F 
+ 2733      4E4E5F48 
+ 2733      414E444C 
+ 2733      455F5400 
+ 2734              	.LASF143:
+ 2735 1221 4359424C 		.ascii	"CYBLE_DIS_HARDWARE_REV\000"
+ 2735      455F4449 
+ 2735      535F4841 
+ 2735      52445741 
+ 2735      52455F52 
+ 2736              	.LASF156:
+ 2737 1238 4359424C 		.ascii	"CYBLE_EVT_GATTC_INDICATION\000"
+ 2737      455F4556 
+ 2737      545F4741 
+ 2737      5454435F 
+ 2737      494E4449 
+ 2738              	.LASF282:
+ 2739 1253 4359424C 		.ascii	"CYBLE_EVT_ESSC_READ_CHAR_RESPONSE\000"
+ 2739      455F4556 
+ 2739      545F4553 
+ 2739      53435F52 
+ 2739      4541445F 
+ 2740              	.LASF71:
+ 2741 1275 4359424C 		.ascii	"CYBLE_EVT_GATTS_READ_CHAR_VAL_ACCESS_REQ\000"
+ 2741      455F4556 
+ 2741      545F4741 
+ 2741      5454535F 
+ 2741      52454144 
+ 2742              	.LASF314:
+ 2743 129e 4359424C 		.ascii	"CYBLE_EVT_HPSC_READ_CHAR_RESPONSE\000"
+ 2743      455F4556 
+ 2743      545F4850 
+ 2743      53435F52 
+ 2743      4541445F 
+ 2744              	.LASF28:
+ 2745 12c0 4359424C 		.ascii	"CYBLE_EVT_GAP_AUTH_COMPLETE\000"
+ 2745      455F4556 
+ 2745      545F4741 
+ 2745      505F4155 
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 65
+
+
+ 2745      54485F43 
+ 2746              	.LASF311:
+ 2747 12dc 4359424C 		.ascii	"CYBLE_EVT_HPSS_NOTIFICATION_DISABLED\000"
+ 2747      455F4556 
+ 2747      545F4850 
+ 2747      53535F4E 
+ 2747      4F544946 
+ 2748              	.LASF118:
+ 2749 1301 4359424C 		.ascii	"CYBLE_ERROR_IND_DISABLED\000"
+ 2749      455F4552 
+ 2749      524F525F 
+ 2749      494E445F 
+ 2749      44495341 
+ 2750              	.LASF336:
+ 2751 131a 4359424C 		.ascii	"CYBLE_EVT_HTSC_READ_DESCR_RESPONSE\000"
+ 2751      455F4556 
+ 2751      545F4854 
+ 2751      53435F52 
+ 2751      4541445F 
+ 2752              	.LASF13:
+ 2753 133d 646F7562 		.ascii	"double\000"
+ 2753      6C6500
+ 2754              	.LASF261:
+ 2755 1344 4359424C 		.ascii	"CYBLE_EVT_CSCSC_WRITE_CHAR_RESPONSE\000"
+ 2755      455F4556 
+ 2755      545F4353 
+ 2755      4353435F 
+ 2755      57524954 
+ 2756              	.LASF297:
+ 2757 1368 4359424C 		.ascii	"CYBLE_EVT_GLSC_WRITE_DESCR_RESPONSE\000"
+ 2757      455F4556 
+ 2757      545F474C 
+ 2757      53435F57 
+ 2757      52495445 
+ 2758              	.LASF52:
+ 2759 138c 4359424C 		.ascii	"CYBLE_EVT_GATTC_XCHNG_MTU_RSP\000"
+ 2759      455F4556 
+ 2759      545F4741 
+ 2759      5454435F 
+ 2759      5843484E 
+ 2760              	.LASF219:
+ 2761 13aa 4359424C 		.ascii	"CYBLE_EVT_BLSC_READ_DESCR_RESPONSE\000"
+ 2761      455F4556 
+ 2761      545F424C 
+ 2761      53435F52 
+ 2761      4541445F 
+ 2762              	.LASF87:
+ 2763 13cd 4359424C 		.ascii	"CYBLE_EVT_FLASH_CORRUPT\000"
+ 2763      455F4556 
+ 2763      545F464C 
+ 2763      4153485F 
+ 2763      434F5252 
+ 2764              	.LASF253:
+ 2765 13e5 4359424C 		.ascii	"CYBLE_EVT_CSCSS_NOTIFICATION_DISABLED\000"
+ 2765      455F4556 
+ 2765      545F4353 
+ 2765      4353535F 
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 66
+
+
+ 2765      4E4F5449 
+ 2766              	.LASF325:
+ 2767 140b 4359424C 		.ascii	"CYBLE_EVT_HRSC_WRITE_DESCR_RESPONSE\000"
+ 2767      455F4556 
+ 2767      545F4852 
+ 2767      53435F57 
+ 2767      52495445 
+ 2768              	.LASF459:
+ 2769 142f 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 2769      43313120 
+ 2769      352E342E 
+ 2769      31203230 
+ 2769      31363036 
+ 2770 1462 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 2770      20726576 
+ 2770      6973696F 
+ 2770      6E203233 
+ 2770      37373135 
+ 2771 1495 73202D66 		.ascii	"s -ffunction-sections -ffat-lto-objects\000"
+ 2771      66756E63 
+ 2771      74696F6E 
+ 2771      2D736563 
+ 2771      74696F6E 
+ 2772              	.LASF455:
+ 2773 14bd 4379426C 		.ascii	"CyBle_BasRegisterAttrCallback\000"
+ 2773      655F4261 
+ 2773      73526567 
+ 2773      69737465 
+ 2773      72417474 
+ 2774              	.LASF351:
+ 2775 14db 4359424C 		.ascii	"CYBLE_EVT_LNSS_INDICATION_DISABLED\000"
+ 2775      455F4556 
+ 2775      545F4C4E 
+ 2775      53535F49 
+ 2775      4E444943 
+ 2776              	.LASF342:
+ 2777 14fe 4359424C 		.ascii	"CYBLE_EVT_IPSC_WRITE_CHAR_RESPONSE\000"
+ 2777      455F4556 
+ 2777      545F4950 
+ 2777      53435F57 
+ 2777      52495445 
+ 2778              	.LASF236:
+ 2779 1521 4359424C 		.ascii	"CYBLE_EVT_CGMSC_WRITE_DESCR_RESPONSE\000"
+ 2779      455F4556 
+ 2779      545F4347 
+ 2779      4D53435F 
+ 2779      57524954 
+ 2780              	.LASF58:
+ 2781 1546 4359424C 		.ascii	"CYBLE_EVT_GATTC_READ_BLOB_RSP\000"
+ 2781      455F4556 
+ 2781      545F4741 
+ 2781      5454435F 
+ 2781      52454144 
+ 2782              	.LASF94:
+ 2783 1564 4359424C 		.ascii	"CYBLE_ERROR_OOB_NOT_AVAILABLE\000"
+ 2783      455F4552 
+ 2783      524F525F 
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 67
+
+
+ 2783      4F4F425F 
+ 2783      4E4F545F 
+ 2784              	.LASF177:
+ 2785 1582 4359424C 		.ascii	"CYBLE_EVT_AIOSC_READ_CHAR_RESPONSE\000"
+ 2785      455F4556 
+ 2785      545F4149 
+ 2785      4F53435F 
+ 2785      52454144 
+ 2786              	.LASF450:
+ 2787 15a5 62617474 		.ascii	"batteryTimer\000"
+ 2787      65727954 
+ 2787      696D6572 
+ 2787      00
+ 2788              	.LASF456:
+ 2789 15b2 4379426C 		.ascii	"CyBle_BassGetCharacteristicDescriptor\000"
+ 2789      655F4261 
+ 2789      73734765 
+ 2789      74436861 
+ 2789      72616374 
+ 2790              	.LASF242:
+ 2791 15d8 4359424C 		.ascii	"CYBLE_EVT_CPSS_BROADCAST_ENABLED\000"
+ 2791      455F4556 
+ 2791      545F4350 
+ 2791      53535F42 
+ 2791      524F4144 
+ 2792              	.LASF175:
+ 2793 15f9 4359424C 		.ascii	"CYBLE_EVT_AIOSC_NOTIFICATION\000"
+ 2793      455F4556 
+ 2793      545F4149 
+ 2793      4F53435F 
+ 2793      4E4F5449 
+ 2794              	.LASF172:
+ 2795 1616 4359424C 		.ascii	"CYBLE_EVT_AIOSS_INDICATION_CONFIRMED\000"
+ 2795      455F4556 
+ 2795      545F4149 
+ 2795      4F53535F 
+ 2795      494E4449 
+ 2796              	.LASF77:
+ 2797 163b 4359424C 		.ascii	"CYBLE_EVT_L2CAP_CBFC_CONN_CNF\000"
+ 2797      455F4556 
+ 2797      545F4C32 
+ 2797      4341505F 
+ 2797      43424643 
+ 2798              	.LASF170:
+ 2799 1659 4359424C 		.ascii	"CYBLE_EVT_AIOSS_INDICATION_ENABLED\000"
+ 2799      455F4556 
+ 2799      545F4149 
+ 2799      4F53535F 
+ 2799      494E4449 
+ 2800              	.LASF146:
+ 2801 167c 4359424C 		.ascii	"CYBLE_DIS_SYSTEM_ID\000"
+ 2801      455F4449 
+ 2801      535F5359 
+ 2801      5354454D 
+ 2801      5F494400 
+ 2802              	.LASF225:
+ 2803 1690 4359424C 		.ascii	"CYBLE_EVT_CGMSS_INDICATION_ENABLED\000"
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 68
+
+
+ 2803      455F4556 
+ 2803      545F4347 
+ 2803      4D53535F 
+ 2803      494E4449 
+ 2804              	.LASF331:
+ 2805 16b3 4359424C 		.ascii	"CYBLE_EVT_HTSS_CHAR_WRITE\000"
+ 2805      455F4556 
+ 2805      545F4854 
+ 2805      53535F43 
+ 2805      4841525F 
+ 2806              	.LASF395:
+ 2807 16cd 4359424C 		.ascii	"CYBLE_EVT_RTUSC_READ_CHAR_RESPONSE\000"
+ 2807      455F4556 
+ 2807      545F5254 
+ 2807      5553435F 
+ 2807      52454144 
+ 2808              	.LASF92:
+ 2809 16f0 4359424C 		.ascii	"CYBLE_ERROR_MEMORY_ALLOCATION_FAILED\000"
+ 2809      455F4552 
+ 2809      524F525F 
+ 2809      4D454D4F 
+ 2809      52595F41 
+ 2810              	.LASF113:
+ 2811 1715 4359424C 		.ascii	"CYBLE_ERROR_UNSUPPORTED_FEATURE_OR_PARAMETER_VALUE\000"
+ 2811      455F4552 
+ 2811      524F525F 
+ 2811      554E5355 
+ 2811      50504F52 
+ 2812              	.LASF21:
+ 2813 1748 4359424C 		.ascii	"CYBLE_EVT_HCI_STATUS\000"
+ 2813      455F4556 
+ 2813      545F4843 
+ 2813      495F5354 
+ 2813      41545553 
+ 2814              	.LASF153:
+ 2815 175d 4359424C 		.ascii	"CYBLE_KEY_EXCHANGE_INFO_REQUEST_REPLY\000"
+ 2815      455F4B45 
+ 2815      595F4558 
+ 2815      4348414E 
+ 2815      47455F49 
+ 2816              	.LASF101:
+ 2817 1783 4359424C 		.ascii	"CYBLE_ERROR_SEC_FAILED\000"
+ 2817      455F4552 
+ 2817      524F525F 
+ 2817      5345435F 
+ 2817      4641494C 
+ 2818              	.LASF14:
+ 2819 179a 63686172 		.ascii	"char\000"
+ 2819      00
+ 2820              	.LASF54:
+ 2821 179f 4359424C 		.ascii	"CYBLE_EVT_GATTC_READ_BY_TYPE_RSP\000"
+ 2821      455F4556 
+ 2821      545F4741 
+ 2821      5454435F 
+ 2821      52454144 
+ 2822              	.LASF451:
+ 2823 17c0 62617474 		.ascii	"batteryLevel\000"
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 69
+
+
+ 2823      6572794C 
+ 2823      6576656C 
+ 2823      00
+ 2824              	.LASF291:
+ 2825 17cd 4359424C 		.ascii	"CYBLE_EVT_GLSS_WRITE_CHAR\000"
+ 2825      455F4556 
+ 2825      545F474C 
+ 2825      53535F57 
+ 2825      52495445 
+ 2826              	.LASF110:
+ 2827 17e7 4359424C 		.ascii	"CYBLE_ERROR_FLASH_WRITE_NOT_PERMITED\000"
+ 2827      455F4552 
+ 2827      524F525F 
+ 2827      464C4153 
+ 2827      485F5752 
+ 2828              	.LASF433:
+ 2829 180c 4359424C 		.ascii	"CYBLE_EVT_WPTSC_WRITE_DESCR_RESPONSE\000"
+ 2829      455F4556 
+ 2829      545F5750 
+ 2829      5453435F 
+ 2829      57524954 
+ 2830              	.LASF340:
+ 2831 1831 4359424C 		.ascii	"CYBLE_EVT_IPSC_READ_CHAR_RESPONSE\000"
+ 2831      455F4556 
+ 2831      545F4950 
+ 2831      53435F52 
+ 2831      4541445F 
+ 2832              	.LASF191:
+ 2833 1853 4359424C 		.ascii	"CYBLE_EVT_ANSS_NOTIFICATION_DISABLED\000"
+ 2833      455F4556 
+ 2833      545F414E 
+ 2833      53535F4E 
+ 2833      4F544946 
+ 2834              	.LASF93:
+ 2835 1878 4359424C 		.ascii	"CYBLE_ERROR_INSUFFICIENT_RESOURCES\000"
+ 2835      455F4552 
+ 2835      524F525F 
+ 2835      494E5355 
+ 2835      46464943 
+ 2836              	.LASF335:
+ 2837 189b 4359424C 		.ascii	"CYBLE_EVT_HTSC_WRITE_CHAR_RESPONSE\000"
+ 2837      455F4556 
+ 2837      545F4854 
+ 2837      53435F57 
+ 2837      52495445 
+ 2838              	.LASF111:
+ 2839 18be 4359424C 		.ascii	"CYBLE_ERROR_MIC_AUTH_FAILED\000"
+ 2839      455F4552 
+ 2839      524F525F 
+ 2839      4D49435F 
+ 2839      41555448 
+ 2840              	.LASF375:
+ 2841 18da 4359424C 		.ascii	"CYBLE_EVT_PLXS_INDICATION_CONFIRMATION\000"
+ 2841      455F4556 
+ 2841      545F504C 
+ 2841      58535F49 
+ 2841      4E444943 
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 70
+
+
+ 2842              	.LASF127:
+ 2843 1901 4359424C 		.ascii	"CYBLE_GATT_VALUE_T\000"
+ 2843      455F4741 
+ 2843      54545F56 
+ 2843      414C5545 
+ 2843      5F5400
+ 2844              	.LASF18:
+ 2845 1914 4359424C 		.ascii	"CYBLE_EVT_STACK_ON\000"
+ 2845      455F4556 
+ 2845      545F5354 
+ 2845      41434B5F 
+ 2845      4F4E00
+ 2846              	.LASF145:
+ 2847 1927 4359424C 		.ascii	"CYBLE_DIS_SOFTWARE_REV\000"
+ 2847      455F4449 
+ 2847      535F534F 
+ 2847      46545741 
+ 2847      52455F52 
+ 2848              	.LASF301:
+ 2849 193e 4359424C 		.ascii	"CYBLE_EVT_HIDSS_REPORT_MODE_ENTER\000"
+ 2849      455F4556 
+ 2849      545F4849 
+ 2849      4453535F 
+ 2849      5245504F 
+ 2850              	.LASF8:
+ 2851 1960 756E7369 		.ascii	"unsigned int\000"
+ 2851      676E6564 
+ 2851      20696E74 
+ 2851      00
+ 2852              	.LASF133:
+ 2853 196d 4359424C 		.ascii	"CYBLE_BAS_BATTERY_LEVEL_CPFD\000"
+ 2853      455F4241 
+ 2853      535F4241 
+ 2853      54544552 
+ 2853      595F4C45 
+ 2854              	.LASF309:
+ 2855 198a 4359424C 		.ascii	"CYBLE_EVT_HIDSC_WRITE_DESCR_RESPONSE\000"
+ 2855      455F4556 
+ 2855      545F4849 
+ 2855      4453435F 
+ 2855      57524954 
+ 2856              	.LASF376:
+ 2857 19af 4359424C 		.ascii	"CYBLE_EVT_PLXSC_NOTIFICATION\000"
+ 2857      455F4556 
+ 2857      545F504C 
+ 2857      5853435F 
+ 2857      4E4F5449 
+ 2858              	.LASF162:
+ 2859 19cc 4359424C 		.ascii	"CYBLE_EVT_GATTC_CHAR_DUPLICATION\000"
+ 2859      455F4556 
+ 2859      545F4741 
+ 2859      5454435F 
+ 2859      43484152 
+ 2860              	.LASF249:
+ 2861 19ed 4359424C 		.ascii	"CYBLE_EVT_CPSC_READ_DESCR_RESPONSE\000"
+ 2861      455F4556 
+ 2861      545F4350 
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 71
+
+
+ 2861      53435F52 
+ 2861      4541445F 
+ 2862              	.LASF420:
+ 2863 1a10 4359424C 		.ascii	"CYBLE_EVT_UDSC_WRITE_DESCR_RESPONSE\000"
+ 2863      455F4556 
+ 2863      545F5544 
+ 2863      53435F57 
+ 2863      52495445 
+ 2864              	.LASF397:
+ 2865 1a34 4359424C 		.ascii	"CYBLE_EVT_SCPSS_NOTIFICATION_DISABLED\000"
+ 2865      455F4556 
+ 2865      545F5343 
+ 2865      5053535F 
+ 2865      4E4F5449 
+ 2866              	.LASF188:
+ 2867 1a5a 4359424C 		.ascii	"CYBLE_EVT_ANCSC_WRITE_DESCR_RESPONSE\000"
+ 2867      455F4556 
+ 2867      545F414E 
+ 2867      4353435F 
+ 2867      57524954 
+ 2868              	.LASF272:
+ 2869 1a7f 4359424C 		.ascii	"CYBLE_EVT_DISC_READ_CHAR_RESPONSE\000"
+ 2869      455F4556 
+ 2869      545F4449 
+ 2869      53435F52 
+ 2869      4541445F 
+ 2870              	.LASF209:
+ 2871 1aa1 4359424C 		.ascii	"CYBLE_EVT_BCSC_READ_DESCR_RESPONSE\000"
+ 2871      455F4556 
+ 2871      545F4243 
+ 2871      53435F52 
+ 2871      4541445F 
+ 2872              	.LASF366:
+ 2873 1ac4 4359424C 		.ascii	"CYBLE_EVT_PASSC_NOTIFICATION\000"
+ 2873      455F4556 
+ 2873      545F5041 
+ 2873      5353435F 
+ 2873      4E4F5449 
+ 2874              	.LASF147:
+ 2875 1ae1 4359424C 		.ascii	"CYBLE_DIS_REG_CERT_DATA\000"
+ 2875      455F4449 
+ 2875      535F5245 
+ 2875      475F4345 
+ 2875      52545F44 
+ 2876              	.LASF41:
+ 2877 1af9 4359424C 		.ascii	"CYBLE_EVT_GAP_ENHANCE_CONN_COMPLETE\000"
+ 2877      455F4556 
+ 2877      545F4741 
+ 2877      505F454E 
+ 2877      48414E43 
+ 2878              	.LASF10:
+ 2879 1b1d 75696E74 		.ascii	"uint16\000"
+ 2879      313600
+ 2880              	.LASF117:
+ 2881 1b24 4359424C 		.ascii	"CYBLE_ERROR_NTF_DISABLED\000"
+ 2881      455F4552 
+ 2881      524F525F 
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 72
+
+
+ 2881      4E54465F 
+ 2881      44495341 
+ 2882              	.LASF121:
+ 2883 1b3d 4359424C 		.ascii	"CYBLE_ERROR_STACK_BUSY\000"
+ 2883      455F4552 
+ 2883      524F525F 
+ 2883      53544143 
+ 2883      4B5F4255 
+ 2884              	.LASF1:
+ 2885 1b54 756E7369 		.ascii	"unsigned char\000"
+ 2885      676E6564 
+ 2885      20636861 
+ 2885      7200
+ 2886              	.LASF233:
+ 2887 1b62 4359424C 		.ascii	"CYBLE_EVT_CGMSC_READ_CHAR_RESPONSE\000"
+ 2887      455F4556 
+ 2887      545F4347 
+ 2887      4D53435F 
+ 2887      52454144 
+ 2888              	.LASF356:
+ 2889 1b85 4359424C 		.ascii	"CYBLE_EVT_LNSC_INDICATION\000"
+ 2889      455F4556 
+ 2889      545F4C4E 
+ 2889      53435F49 
+ 2889      4E444943 
+ 2890              	.LASF186:
+ 2891 1b9f 4359424C 		.ascii	"CYBLE_EVT_ANCSC_WRITE_CHAR_RESPONSE\000"
+ 2891      455F4556 
+ 2891      545F414E 
+ 2891      4353435F 
+ 2891      57524954 
+ 2892              	.LASF302:
+ 2893 1bc3 4359424C 		.ascii	"CYBLE_EVT_HIDSS_SUSPEND\000"
+ 2893      455F4556 
+ 2893      545F4849 
+ 2893      4453535F 
+ 2893      53555350 
+ 2894              	.LASF447:
+ 2895 1bdb 61706952 		.ascii	"apiResult\000"
+ 2895      6573756C 
+ 2895      7400
+ 2896              	.LASF187:
+ 2897 1be5 4359424C 		.ascii	"CYBLE_EVT_ANCSC_READ_DESCR_RESPONSE\000"
+ 2897      455F4556 
+ 2897      545F414E 
+ 2897      4353435F 
+ 2897      52454144 
+ 2898              	.LASF460:
+ 2899 1c09 6261732E 		.ascii	"bas.c\000"
+ 2899      6300
+ 2900              	.LASF6:
+ 2901 1c0f 6C6F6E67 		.ascii	"long long int\000"
+ 2901      206C6F6E 
+ 2901      6720696E 
+ 2901      7400
+ 2902              	.LASF423:
+ 2903 1c1d 4359424C 		.ascii	"CYBLE_EVT_WPTSS_NOTIFICATION_DISABLED\000"
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 73
+
+
+ 2903      455F4556 
+ 2903      545F5750 
+ 2903      5453535F 
+ 2903      4E4F5449 
+ 2904              	.LASF318:
+ 2905 1c43 4359424C 		.ascii	"CYBLE_EVT_HRSS_ENERGY_EXPENDED_RESET\000"
+ 2905      455F4556 
+ 2905      545F4852 
+ 2905      53535F45 
+ 2905      4E455247 
+ 2906              	.LASF292:
+ 2907 1c68 4359424C 		.ascii	"CYBLE_EVT_GLSC_INDICATION\000"
+ 2907      455F4556 
+ 2907      545F474C 
+ 2907      53435F49 
+ 2907      4E444943 
+ 2908              	.LASF278:
+ 2909 1c82 4359424C 		.ascii	"CYBLE_EVT_ESSS_CHAR_WRITE\000"
+ 2909      455F4556 
+ 2909      545F4553 
+ 2909      53535F43 
+ 2909      4841525F 
+ 2910              	.LASF48:
+ 2911 1c9c 4359424C 		.ascii	"CYBLE_EVT_GATTC_ERROR_RSP\000"
+ 2911      455F4556 
+ 2911      545F4741 
+ 2911      5454435F 
+ 2911      4552524F 
+ 2912              	.LASF279:
+ 2913 1cb6 4359424C 		.ascii	"CYBLE_EVT_ESSS_DESCR_WRITE\000"
+ 2913      455F4556 
+ 2913      545F4553 
+ 2913      53535F44 
+ 2913      45534352 
+ 2914              	.LASF391:
+ 2915 1cd1 4359424C 		.ascii	"CYBLE_EVT_RSCSC_WRITE_CHAR_RESPONSE\000"
+ 2915      455F4556 
+ 2915      545F5253 
+ 2915      4353435F 
+ 2915      57524954 
+ 2916              	.LASF37:
+ 2917 1cf5 4359424C 		.ascii	"CYBLE_EVT_GAP_NUMERIC_COMPARISON_REQUEST\000"
+ 2917      455F4556 
+ 2917      545F4741 
+ 2917      505F4E55 
+ 2917      4D455249 
+ 2918              	.LASF230:
+ 2919 1d1e 4359424C 		.ascii	"CYBLE_EVT_CGMSS_WRITE_CHAR\000"
+ 2919      455F4556 
+ 2919      545F4347 
+ 2919      4D53535F 
+ 2919      57524954 
+ 2920              	.LASF108:
+ 2921 1d39 4359424C 		.ascii	"CYBLE_ERROR_GATT_DB_INVALID_ATTR_HANDLE\000"
+ 2921      455F4552 
+ 2921      524F525F 
+ 2921      47415454 
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 74
+
+
+ 2921      5F44425F 
+ 2922              	.LASF409:
+ 2923 1d61 4359424C 		.ascii	"CYBLE_EVT_UDSS_INDICATION_DISABLED\000"
+ 2923      455F4556 
+ 2923      545F5544 
+ 2923      53535F49 
+ 2923      4E444943 
+ 2924              	.LASF316:
+ 2925 1d84 4359424C 		.ascii	"CYBLE_EVT_HPSC_WRITE_DESCR_RESPONSE\000"
+ 2925      455F4556 
+ 2925      545F4850 
+ 2925      53435F57 
+ 2925      52495445 
+ 2926              	.LASF349:
+ 2927 1da8 4359424C 		.ascii	"CYBLE_EVT_LLSC_WRITE_CHAR_RESPONSE\000"
+ 2927      455F4556 
+ 2927      545F4C4C 
+ 2927      53435F57 
+ 2927      52495445 
+ 2928              	.LASF116:
+ 2929 1dcb 4359424C 		.ascii	"CYBLE_ERROR_MAX\000"
+ 2929      455F4552 
+ 2929      524F525F 
+ 2929      4D415800 
+ 2930              	.LASF277:
+ 2931 1ddb 4359424C 		.ascii	"CYBLE_EVT_ESSS_INDICATION_CONFIRMATION\000"
+ 2931      455F4556 
+ 2931      545F4553 
+ 2931      53535F49 
+ 2931      4E444943 
+ 2932              	.LASF157:
+ 2933 1e02 4359424C 		.ascii	"CYBLE_EVT_GATTC_SRVC_DISCOVERY_FAILED\000"
+ 2933      455F4556 
+ 2933      545F4741 
+ 2933      5454435F 
+ 2933      53525643 
+ 2934              	.LASF298:
+ 2935 1e28 4359424C 		.ascii	"CYBLE_EVT_HIDSS_NOTIFICATION_ENABLED\000"
+ 2935      455F4556 
+ 2935      545F4849 
+ 2935      4453535F 
+ 2935      4E4F5449 
+ 2936              	.LASF217:
+ 2937 1e4d 4359424C 		.ascii	"CYBLE_EVT_BLSC_NOTIFICATION\000"
+ 2937      455F4556 
+ 2937      545F424C 
+ 2937      53435F4E 
+ 2937      4F544946 
+ 2938              	.LASF223:
+ 2939 1e69 4359424C 		.ascii	"CYBLE_EVT_BMSC_WRITE_CHAR_RESPONSE\000"
+ 2939      455F4556 
+ 2939      545F424D 
+ 2939      53435F57 
+ 2939      52495445 
+ 2940              	.LASF224:
+ 2941 1e8c 4359424C 		.ascii	"CYBLE_EVT_BMSC_READ_DESCR_RESPONSE\000"
+ 2941      455F4556 
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 75
+
+
+ 2941      545F424D 
+ 2941      53435F52 
+ 2941      4541445F 
+ 2942              	.LASF357:
+ 2943 1eaf 4359424C 		.ascii	"CYBLE_EVT_LNSC_NOTIFICATION\000"
+ 2943      455F4556 
+ 2943      545F4C4E 
+ 2943      53435F4E 
+ 2943      4F544946 
+ 2944              	.LASF319:
+ 2945 1ecb 4359424C 		.ascii	"CYBLE_EVT_HRSS_NOTIFICATION_ENABLED\000"
+ 2945      455F4556 
+ 2945      545F4852 
+ 2945      53535F4E 
+ 2945      4F544946 
+ 2946              	.LASF239:
+ 2947 1eef 4359424C 		.ascii	"CYBLE_EVT_CPSS_INDICATION_ENABLED\000"
+ 2947      455F4556 
+ 2947      545F4350 
+ 2947      53535F49 
+ 2947      4E444943 
+ 2948              	.LASF182:
+ 2949 1f11 4359424C 		.ascii	"CYBLE_EVT_ANCSS_NOTIFICATION_ENABLED\000"
+ 2949      455F4556 
+ 2949      545F414E 
+ 2949      4353535F 
+ 2949      4E4F5449 
+ 2950              	.LASF383:
+ 2951 1f36 4359424C 		.ascii	"CYBLE_EVT_RSCSS_NOTIFICATION_DISABLED\000"
+ 2951      455F4556 
+ 2951      545F5253 
+ 2951      4353535F 
+ 2951      4E4F5449 
+ 2952              	.LASF105:
+ 2953 1f5c 4359424C 		.ascii	"CYBLE_ERROR_L2CAP_CONNECTION_ENTITY_NOT_FOUND\000"
+ 2953      455F4552 
+ 2953      524F525F 
+ 2953      4C324341 
+ 2953      505F434F 
+ 2954              	.LASF152:
+ 2955 1f8a 4359424C 		.ascii	"CYBLE_LONG_TERM_KEY_REQUEST_REPLY\000"
+ 2955      455F4C4F 
+ 2955      4E475F54 
+ 2955      45524D5F 
+ 2955      4B45595F 
+ 2956              	.LASF155:
+ 2957 1fac 4359424C 		.ascii	"CYBLE_EVT_GATTS_INDICATION_DISABLED\000"
+ 2957      455F4556 
+ 2957      545F4741 
+ 2957      5454535F 
+ 2957      494E4449 
+ 2958              	.LASF160:
+ 2959 1fd0 4359424C 		.ascii	"CYBLE_EVT_GATTC_DESCR_DISCOVERY_FAILED\000"
+ 2959      455F4556 
+ 2959      545F4741 
+ 2959      5454435F 
+ 2959      44455343 
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 76
+
+
+ 2960              	.LASF350:
+ 2961 1ff7 4359424C 		.ascii	"CYBLE_EVT_LNSS_INDICATION_ENABLED\000"
+ 2961      455F4556 
+ 2961      545F4C4E 
+ 2961      53535F49 
+ 2961      4E444943 
+ 2962              	.LASF407:
+ 2963 2019 4359424C 		.ascii	"CYBLE_EVT_TPSC_WRITE_DESCR_RESPONSE\000"
+ 2963      455F4556 
+ 2963      545F5450 
+ 2963      53435F57 
+ 2963      52495445 
+ 2964              	.LASF424:
+ 2965 203d 4359424C 		.ascii	"CYBLE_EVT_WPTSS_INDICATION_ENABLED\000"
+ 2965      455F4556 
+ 2965      545F5750 
+ 2965      5453535F 
+ 2965      494E4449 
+ 2966              	.LASF102:
+ 2967 2060 4359424C 		.ascii	"CYBLE_ERROR_L2CAP_PSM_WRONG_ENCODING\000"
+ 2967      455F4552 
+ 2967      524F525F 
+ 2967      4C324341 
+ 2967      505F5053 
+ 2968              	.LASF330:
+ 2969 2085 4359424C 		.ascii	"CYBLE_EVT_HTSS_INDICATION_CONFIRMED\000"
+ 2969      455F4556 
+ 2969      545F4854 
+ 2969      53535F49 
+ 2969      4E444943 
+ 2970              	.LASF345:
+ 2971 20a9 4359424C 		.ascii	"CYBLE_EVT_IPSC_ERROR_RESPONSE\000"
+ 2971      455F4556 
+ 2971      545F4950 
+ 2971      53435F45 
+ 2971      52524F52 
+ 2972              	.LASF30:
+ 2973 20c7 4359424C 		.ascii	"CYBLE_EVT_GAPP_ADVERTISEMENT_START_STOP\000"
+ 2973      455F4556 
+ 2973      545F4741 
+ 2973      50505F41 
+ 2973      44564552 
+ 2974              	.LASF324:
+ 2975 20ef 4359424C 		.ascii	"CYBLE_EVT_HRSC_READ_DESCR_RESPONSE\000"
+ 2975      455F4556 
+ 2975      545F4852 
+ 2975      53435F52 
+ 2975      4541445F 
+ 2976              	.LASF11:
+ 2977 2112 75696E74 		.ascii	"uint32\000"
+ 2977      333200
+ 2978              	.LASF80:
+ 2979 2119 4359424C 		.ascii	"CYBLE_EVT_L2CAP_CBFC_DATA_READ\000"
+ 2979      455F4556 
+ 2979      545F4C32 
+ 2979      4341505F 
+ 2979      43424643 
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 77
+
+
+ 2980              	.LASF131:
+ 2981 2138 4359424C 		.ascii	"CYBLE_BAS_CHAR_INDEX_T\000"
+ 2981      455F4241 
+ 2981      535F4348 
+ 2981      41525F49 
+ 2981      4E444558 
+ 2982              	.LASF210:
+ 2983 214f 4359424C 		.ascii	"CYBLE_EVT_BCSC_WRITE_DESCR_RESPONSE\000"
+ 2983      455F4556 
+ 2983      545F4243 
+ 2983      53435F57 
+ 2983      52495445 
+ 2984              	.LASF384:
+ 2985 2173 4359424C 		.ascii	"CYBLE_EVT_RSCSS_INDICATION_ENABLED\000"
+ 2985      455F4556 
+ 2985      545F5253 
+ 2985      4353535F 
+ 2985      494E4449 
+ 2986              	.LASF220:
+ 2987 2196 4359424C 		.ascii	"CYBLE_EVT_BLSC_WRITE_DESCR_RESPONSE\000"
+ 2987      455F4556 
+ 2987      545F424C 
+ 2987      53435F57 
+ 2987      52495445 
+ 2988              	.LASF5:
+ 2989 21ba 6C6F6E67 		.ascii	"long unsigned int\000"
+ 2989      20756E73 
+ 2989      69676E65 
+ 2989      6420696E 
+ 2989      7400
+ 2990              	.LASF461:
+ 2991 21cc 433A5C55 		.ascii	"C:\\Users\\Xavier\\Documents\\PSoC Creator\\BLE_HID"
+ 2991      73657273 
+ 2991      5C586176 
+ 2991      6965725C 
+ 2991      446F6375 
+ 2992 21fa 5F4B6579 		.ascii	"_Keyboard01\\BLE_HID_Keyboard01.cydsn\000"
+ 2992      626F6172 
+ 2992      6430315C 
+ 2992      424C455F 
+ 2992      4849445F 
+ 2993              	.LASF401:
+ 2994 221f 4359424C 		.ascii	"CYBLE_EVT_SCPSC_WRITE_DESCR_RESPONSE\000"
+ 2994      455F4556 
+ 2994      545F5343 
+ 2994      5053435F 
+ 2994      57524954 
+ 2995              	.LASF109:
+ 2996 2244 4359424C 		.ascii	"CYBLE_ERROR_DEVICE_ALREADY_EXISTS\000"
+ 2996      455F4552 
+ 2996      524F525F 
+ 2996      44455649 
+ 2996      43455F41 
+ 2997              	.LASF86:
+ 2998 2266 4359424C 		.ascii	"CYBLE_EVT_HCI_PKT\000"
+ 2998      455F4556 
+ 2998      545F4843 
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 78
+
+
+ 2998      495F504B 
+ 2998      5400
+ 2999              	.LASF122:
+ 3000 2278 4359424C 		.ascii	"CYBLE_API_RESULT_T\000"
+ 3000      455F4150 
+ 3000      495F5245 
+ 3000      53554C54 
+ 3000      5F5400
+ 3001              	.LASF104:
+ 3002 228b 4359424C 		.ascii	"CYBLE_ERROR_L2CAP_PSM_NOT_REGISTERED\000"
+ 3002      455F4552 
+ 3002      524F525F 
+ 3002      4C324341 
+ 3002      505F5053 
+ 3003              	.LASF399:
+ 3004 22b0 4359424C 		.ascii	"CYBLE_EVT_SCPSC_NOTIFICATION\000"
+ 3004      455F4556 
+ 3004      545F5343 
+ 3004      5053435F 
+ 3004      4E4F5449 
+ 3005              	.LASF341:
+ 3006 22cd 4359424C 		.ascii	"CYBLE_EVT_IPSC_READ_MULTIPLE_CHAR_RESPONSE\000"
+ 3006      455F4556 
+ 3006      545F4950 
+ 3006      53435F52 
+ 3006      4541445F 
+ 3007              	.LASF72:
+ 3008 22f8 4359424C 		.ascii	"CYBLE_EVT_GATTC_LONG_PROCEDURE_END\000"
+ 3008      455F4556 
+ 3008      545F4741 
+ 3008      5454435F 
+ 3008      4C4F4E47 
+ 3009              	.LASF377:
+ 3010 231b 4359424C 		.ascii	"CYBLE_EVT_PLXSC_INDICATION\000"
+ 3010      455F4556 
+ 3010      545F504C 
+ 3010      5853435F 
+ 3010      494E4449 
+ 3011              	.LASF369:
+ 3012 2336 4359424C 		.ascii	"CYBLE_EVT_PASSC_WRITE_DESCR_RESPONSE\000"
+ 3012      455F4556 
+ 3012      545F5041 
+ 3012      5353435F 
+ 3012      57524954 
+ 3013              	.LASF310:
+ 3014 235b 4359424C 		.ascii	"CYBLE_EVT_HPSS_NOTIFICATION_ENABLED\000"
+ 3014      455F4556 
+ 3014      545F4850 
+ 3014      53535F4E 
+ 3014      4F544946 
+ 3015              	.LASF312:
+ 3016 237f 4359424C 		.ascii	"CYBLE_EVT_HPSS_CHAR_WRITE\000"
+ 3016      455F4556 
+ 3016      545F4850 
+ 3016      53535F43 
+ 3016      4841525F 
+ 3017              	.LASF422:
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 79
+
+
+ 3018 2399 4359424C 		.ascii	"CYBLE_EVT_WPTSS_NOTIFICATION_ENABLED\000"
+ 3018      455F4556 
+ 3018      545F5750 
+ 3018      5453535F 
+ 3018      4E4F5449 
+ 3019              	.LASF288:
+ 3020 23be 4359424C 		.ascii	"CYBLE_EVT_GLSS_INDICATION_CONFIRMED\000"
+ 3020      455F4556 
+ 3020      545F474C 
+ 3020      53535F49 
+ 3020      4E444943 
+ 3021              	.LASF276:
+ 3022 23e2 4359424C 		.ascii	"CYBLE_EVT_ESSS_INDICATION_DISABLED\000"
+ 3022      455F4556 
+ 3022      545F4553 
+ 3022      53535F49 
+ 3022      4E444943 
+ 3023              	.LASF166:
+ 3024 2405 4359424C 		.ascii	"CYBLE_EVT_GATTC_CHAR_DISCOVERY_COMPLETE\000"
+ 3024      455F4556 
+ 3024      545F4741 
+ 3024      5454435F 
+ 3024      43484152 
+ 3025              	.LASF189:
+ 3026 242d 4359424C 		.ascii	"CYBLE_EVT_ANCSC_ERROR_RESPONSE\000"
+ 3026      455F4556 
+ 3026      545F414E 
+ 3026      4353435F 
+ 3026      4552524F 
+ 3027              	.LASF15:
+ 3028 244c 6C6F6E67 		.ascii	"long double\000"
+ 3028      20646F75 
+ 3028      626C6500 
+ 3029              	.LASF333:
+ 3030 2458 4359424C 		.ascii	"CYBLE_EVT_HTSC_INDICATION\000"
+ 3030      455F4556 
+ 3030      545F4854 
+ 3030      53435F49 
+ 3030      4E444943 
+ 3031              	.LASF144:
+ 3032 2472 4359424C 		.ascii	"CYBLE_DIS_FIRMWARE_REV\000"
+ 3032      455F4449 
+ 3032      535F4649 
+ 3032      524D5741 
+ 3032      52455F52 
+ 3033              	.LASF445:
+ 3034 2489 42617349 		.ascii	"BasInit\000"
+ 3034      6E697400 
+ 3035              	.LASF67:
+ 3036 2491 4359424C 		.ascii	"CYBLE_EVT_GATTC_HANDLE_VALUE_IND\000"
+ 3036      455F4556 
+ 3036      545F4741 
+ 3036      5454435F 
+ 3036      48414E44 
+ 3037              	.LASF227:
+ 3038 24b2 4359424C 		.ascii	"CYBLE_EVT_CGMSS_INDICATION_CONFIRMED\000"
+ 3038      455F4556 
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 80
+
+
+ 3038      545F4347 
+ 3038      4D53535F 
+ 3038      494E4449 
+ 3039              	.LASF270:
+ 3040 24d7 4359424C 		.ascii	"CYBLE_EVT_CTSC_WRITE_DESCR_RESPONSE\000"
+ 3040      455F4556 
+ 3040      545F4354 
+ 3040      53435F57 
+ 3040      52495445 
+ 3041              	.LASF99:
+ 3042 24fb 4359424C 		.ascii	"CYBLE_ERROR_TX_POWER_READ\000"
+ 3042      455F4552 
+ 3042      524F525F 
+ 3042      54585F50 
+ 3042      4F574552 
+ 3043              	.LASF203:
+ 3044 2515 4359424C 		.ascii	"CYBLE_EVT_BASC_WRITE_DESCR_RESPONSE\000"
+ 3044      455F4556 
+ 3044      545F4241 
+ 3044      53435F57 
+ 3044      52495445 
+ 3045              	.LASF154:
+ 3046 2539 4359424C 		.ascii	"CYBLE_EVT_GATTS_INDICATION_ENABLED\000"
+ 3046      455F4556 
+ 3046      545F4741 
+ 3046      5454535F 
+ 3046      494E4449 
+ 3047              	.LASF411:
+ 3048 255c 4359424C 		.ascii	"CYBLE_EVT_UDSS_NOTIFICATION_ENABLED\000"
+ 3048      455F4556 
+ 3048      545F5544 
+ 3048      53535F4E 
+ 3048      4F544946 
+ 3049              	.LASF294:
+ 3050 2580 4359424C 		.ascii	"CYBLE_EVT_GLSC_READ_CHAR_RESPONSE\000"
+ 3050      455F4556 
+ 3050      545F474C 
+ 3050      53435F52 
+ 3050      4541445F 
+ 3051              	.LASF97:
+ 3052 25a2 4359424C 		.ascii	"CYBLE_ERROR_REPEATED_ATTEMPTS\000"
+ 3052      455F4552 
+ 3052      524F525F 
+ 3052      52455045 
+ 3052      41544544 
+ 3053              	.LASF114:
+ 3054 25c0 4359424C 		.ascii	"CYBLE_ERROR_FLASH_WRITE\000"
+ 3054      455F4552 
+ 3054      524F525F 
+ 3054      464C4153 
+ 3054      485F5752 
+ 3055              	.LASF374:
+ 3056 25d8 4359424C 		.ascii	"CYBLE_EVT_PLXSS_INDICATION_DISABLED\000"
+ 3056      455F4556 
+ 3056      545F504C 
+ 3056      5853535F 
+ 3056      494E4449 
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 81
+
+
+ 3057              	.LASF221:
+ 3058 25fc 4359424C 		.ascii	"CYBLE_EVT_BMSS_WRITE_CHAR\000"
+ 3058      455F4556 
+ 3058      545F424D 
+ 3058      53535F57 
+ 3058      52495445 
+ 3059              	.LASF408:
+ 3060 2616 4359424C 		.ascii	"CYBLE_EVT_UDSS_INDICATION_ENABLED\000"
+ 3060      455F4556 
+ 3060      545F5544 
+ 3060      53535F49 
+ 3060      4E444943 
+ 3061              	.LASF33:
+ 3062 2638 4359424C 		.ascii	"CYBLE_EVT_GAP_ENCRYPT_CHANGE\000"
+ 3062      455F4556 
+ 3062      545F4741 
+ 3062      505F454E 
+ 3062      43525950 
+ 3063              	.LASF248:
+ 3064 2655 4359424C 		.ascii	"CYBLE_EVT_CPSC_WRITE_CHAR_RESPONSE\000"
+ 3064      455F4556 
+ 3064      545F4350 
+ 3064      53435F57 
+ 3064      52495445 
+ 3065              	.LASF258:
+ 3066 2678 4359424C 		.ascii	"CYBLE_EVT_CSCSC_NOTIFICATION\000"
+ 3066      455F4556 
+ 3066      545F4353 
+ 3066      4353435F 
+ 3066      4E4F5449 
+ 3067              	.LASF323:
+ 3068 2695 4359424C 		.ascii	"CYBLE_EVT_HRSC_WRITE_CHAR_RESPONSE\000"
+ 3068      455F4556 
+ 3068      545F4852 
+ 3068      53435F57 
+ 3068      52495445 
+ 3069              	.LASF119:
+ 3070 26b8 4359424C 		.ascii	"CYBLE_ERROR_CHAR_IS_NOT_DISCOVERED\000"
+ 3070      455F4552 
+ 3070      524F525F 
+ 3070      43484152 
+ 3070      5F49535F 
+ 3071              	.LASF381:
+ 3072 26db 4359424C 		.ascii	"CYBLE_EVT_PLXSC_WRITE_DESCR_RESPONSE\000"
+ 3072      455F4556 
+ 3072      545F504C 
+ 3072      5853435F 
+ 3072      57524954 
+ 3073              	.LASF266:
+ 3074 2700 4359424C 		.ascii	"CYBLE_EVT_CTSS_CHAR_WRITE\000"
+ 3074      455F4556 
+ 3074      545F4354 
+ 3074      53535F43 
+ 3074      4841525F 
+ 3075              	.LASF141:
+ 3076 271a 4359424C 		.ascii	"CYBLE_DIS_MODEL_NUMBER\000"
+ 3076      455F4449 
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 82
+
+
+ 3076      535F4D4F 
+ 3076      44454C5F 
+ 3076      4E554D42 
+ 3077              	.LASF386:
+ 3078 2731 4359424C 		.ascii	"CYBLE_EVT_RSCSS_INDICATION_CONFIRMATION\000"
+ 3078      455F4556 
+ 3078      545F5253 
+ 3078      4353535F 
+ 3078      494E4449 
+ 3079              	.LASF458:
+ 3080 2759 4379426C 		.ascii	"CyBle_BassSetCharacteristicValue\000"
+ 3080      655F4261 
+ 3080      73735365 
+ 3080      74436861 
+ 3080      72616374 
+ 3081              	.LASF235:
+ 3082 277a 4359424C 		.ascii	"CYBLE_EVT_CGMSC_READ_DESCR_RESPONSE\000"
+ 3082      455F4556 
+ 3082      545F4347 
+ 3082      4D53435F 
+ 3082      52454144 
+ 3083              	.LASF4:
+ 3084 279e 6C6F6E67 		.ascii	"long int\000"
+ 3084      20696E74 
+ 3084      00
+ 3085              	.LASF134:
+ 3086 27a7 4359424C 		.ascii	"CYBLE_BAS_DESCR_COUNT\000"
+ 3086      455F4241 
+ 3086      535F4445 
+ 3086      5343525F 
+ 3086      434F554E 
+ 3087              	.LASF427:
+ 3088 27bd 4359424C 		.ascii	"CYBLE_EVT_WPTSS_WRITE_CHAR\000"
+ 3088      455F4556 
+ 3088      545F5750 
+ 3088      5453535F 
+ 3088      57524954 
+ 3089              	.LASF40:
+ 3090 27d8 4359424C 		.ascii	"CYBLE_EVT_GAP_DATA_LENGTH_CHANGE\000"
+ 3090      455F4556 
+ 3090      545F4741 
+ 3090      505F4441 
+ 3090      54415F4C 
+ 3091              	.LASF426:
+ 3092 27f9 4359424C 		.ascii	"CYBLE_EVT_WPTSS_INDICATION_CONFIRMED\000"
+ 3092      455F4556 
+ 3092      545F5750 
+ 3092      5453535F 
+ 3092      494E4449 
+ 3093              	.LASF49:
+ 3094 281e 4359424C 		.ascii	"CYBLE_EVT_GATT_CONNECT_IND\000"
+ 3094      455F4556 
+ 3094      545F4741 
+ 3094      54545F43 
+ 3094      4F4E4E45 
+ 3095              	.LASF88:
+ 3096 2839 4359424C 		.ascii	"CYBLE_EVT_MAX\000"
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 83
+
+
+ 3096      455F4556 
+ 3096      545F4D41 
+ 3096      5800
+ 3097              	.LASF59:
+ 3098 2847 4359424C 		.ascii	"CYBLE_EVT_GATTC_READ_MULTI_RSP\000"
+ 3098      455F4556 
+ 3098      545F4741 
+ 3098      5454435F 
+ 3098      52454144 
+ 3099              	.LASF245:
+ 3100 2866 4359424C 		.ascii	"CYBLE_EVT_CPSC_NOTIFICATION\000"
+ 3100      455F4556 
+ 3100      545F4350 
+ 3100      53435F4E 
+ 3100      4F544946 
+ 3101              	.LASF255:
+ 3102 2882 4359424C 		.ascii	"CYBLE_EVT_CSCSS_INDICATION_DISABLED\000"
+ 3102      455F4556 
+ 3102      545F4353 
+ 3102      4353535F 
+ 3102      494E4449 
+ 3103              	.LASF222:
+ 3104 28a6 4359424C 		.ascii	"CYBLE_EVT_BMSC_READ_CHAR_RESPONSE\000"
+ 3104      455F4556 
+ 3104      545F424D 
+ 3104      53435F52 
+ 3104      4541445F 
+ 3105              	.LASF78:
+ 3106 28c8 4359424C 		.ascii	"CYBLE_EVT_L2CAP_CBFC_DISCONN_IND\000"
+ 3106      455F4556 
+ 3106      545F4C32 
+ 3106      4341505F 
+ 3106      43424643 
+ 3107              	.LASF137:
+ 3108 28e9 63686172 		.ascii	"charIndex\000"
+ 3108      496E6465 
+ 3108      7800
+ 3109              	.LASF17:
+ 3110 28f3 4359424C 		.ascii	"CYBLE_EVT_HOST_INVALID\000"
+ 3110      455F4556 
+ 3110      545F484F 
+ 3110      53545F49 
+ 3110      4E56414C 
+ 3111              	.LASF90:
+ 3112 290a 4359424C 		.ascii	"CYBLE_ERROR_INVALID_PARAMETER\000"
+ 3112      455F4552 
+ 3112      524F525F 
+ 3112      494E5641 
+ 3112      4C49445F 
+ 3113              	.LASF24:
+ 3114 2928 4359424C 		.ascii	"CYBLE_EVT_GAPC_SCAN_PROGRESS_RESULT\000"
+ 3114      455F4556 
+ 3114      545F4741 
+ 3114      50435F53 
+ 3114      43414E5F 
+ 3115              	.LASF416:
+ 3116 294c 4359424C 		.ascii	"CYBLE_EVT_UDSC_NOTIFICATION\000"
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 84
+
+
+ 3116      455F4556 
+ 3116      545F5544 
+ 3116      53435F4E 
+ 3116      4F544946 
+ 3117              	.LASF315:
+ 3118 2968 4359424C 		.ascii	"CYBLE_EVT_HPSC_READ_DESCR_RESPONSE\000"
+ 3118      455F4556 
+ 3118      545F4850 
+ 3118      53435F52 
+ 3118      4541445F 
+ 3119              	.LASF202:
+ 3120 298b 4359424C 		.ascii	"CYBLE_EVT_BASC_READ_DESCR_RESPONSE\000"
+ 3120      455F4556 
+ 3120      545F4241 
+ 3120      53435F52 
+ 3120      4541445F 
+ 3121              	.LASF435:
+ 3122 29ae 4359424C 		.ascii	"CYBLE_EVT_WSSS_INDICATION_DISABLED\000"
+ 3122      455F4556 
+ 3122      545F5753 
+ 3122      53535F49 
+ 3122      4E444943 
+ 3123              	.LASF448:
+ 3124 29d1 63636364 		.ascii	"cccdValue\000"
+ 3124      56616C75 
+ 3124      6500
+ 3125              	.LASF42:
+ 3126 29db 4359424C 		.ascii	"CYBLE_EVT_GAPC_DIRECT_ADV_REPORT\000"
+ 3126      455F4556 
+ 3126      545F4741 
+ 3126      50435F44 
+ 3126      49524543 
+ 3127              	.LASF368:
+ 3128 29fc 4359424C 		.ascii	"CYBLE_EVT_PASSC_READ_DESCR_RESPONSE\000"
+ 3128      455F4556 
+ 3128      545F5041 
+ 3128      5353435F 
+ 3128      52454144 
+ 3129              	.LASF410:
+ 3130 2a20 4359424C 		.ascii	"CYBLE_EVT_UDSS_INDICATION_CONFIRMED\000"
+ 3130      455F4556 
+ 3130      545F5544 
+ 3130      53535F49 
+ 3130      4E444943 
+ 3131              	.LASF39:
+ 3132 2a44 4359424C 		.ascii	"CYBLE_EVT_GAP_OOB_GENERATED_NOTIFICATION\000"
+ 3132      455F4556 
+ 3132      545F4741 
+ 3132      505F4F4F 
+ 3132      425F4745 
+ 3133              	.LASF53:
+ 3134 2a6d 4359424C 		.ascii	"CYBLE_EVT_GATTC_READ_BY_GROUP_TYPE_RSP\000"
+ 3134      455F4556 
+ 3134      545F4741 
+ 3134      5454435F 
+ 3134      52454144 
+ 3135              	.LASF437:
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 85
+
+
+ 3136 2a94 4359424C 		.ascii	"CYBLE_EVT_WSSC_INDICATION\000"
+ 3136      455F4556 
+ 3136      545F5753 
+ 3136      53435F49 
+ 3136      4E444943 
+ 3137              	.LASF126:
+ 3138 2aae 61637475 		.ascii	"actualLen\000"
+ 3138      616C4C65 
+ 3138      6E00
+ 3139              	.LASF208:
+ 3140 2ab8 4359424C 		.ascii	"CYBLE_EVT_BCSC_READ_CHAR_RESPONSE\000"
+ 3140      455F4556 
+ 3140      545F4243 
+ 3140      53435F52 
+ 3140      4541445F 
+ 3141              	.LASF402:
+ 3142 2ada 4359424C 		.ascii	"CYBLE_EVT_TPSS_NOTIFICATION_ENABLED\000"
+ 3142      455F4556 
+ 3142      545F5450 
+ 3142      53535F4E 
+ 3142      4F544946 
+ 3143              	.LASF388:
+ 3144 2afe 4359424C 		.ascii	"CYBLE_EVT_RSCSC_NOTIFICATION\000"
+ 3144      455F4556 
+ 3144      545F5253 
+ 3144      4353435F 
+ 3144      4E4F5449 
+ 3145              	.LASF373:
+ 3146 2b1b 4359424C 		.ascii	"CYBLE_EVT_PLXSS_INDICATION_ENABLED\000"
+ 3146      455F4556 
+ 3146      545F504C 
+ 3146      5853535F 
+ 3146      494E4449 
+ 3147              	.LASF128:
+ 3148 2b3e 4359424C 		.ascii	"CYBLE_BATTERY_SERVICE_SERVICE_INDEX\000"
+ 3148      455F4241 
+ 3148      54544552 
+ 3148      595F5345 
+ 3148      52564943 
+ 3149              	.LASF371:
+ 3150 2b62 4359424C 		.ascii	"CYBLE_EVT_PLXSS_NOTIFICATION_ENABLED\000"
+ 3150      455F4556 
+ 3150      545F504C 
+ 3150      5853535F 
+ 3150      4E4F5449 
+ 3151              	.LASF32:
+ 3152 2b87 4359424C 		.ascii	"CYBLE_EVT_GAP_DEVICE_DISCONNECTED\000"
+ 3152      455F4556 
+ 3152      545F4741 
+ 3152      505F4445 
+ 3152      56494345 
+ 3153              	.LASF267:
+ 3154 2ba9 4359424C 		.ascii	"CYBLE_EVT_CTSC_NOTIFICATION\000"
+ 3154      455F4556 
+ 3154      545F4354 
+ 3154      53435F4E 
+ 3154      4F544946 
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 86
+
+
+ 3155              	.LASF211:
+ 3156 2bc5 4359424C 		.ascii	"CYBLE_EVT_BLSS_INDICATION_ENABLED\000"
+ 3156      455F4556 
+ 3156      545F424C 
+ 3156      53535F49 
+ 3156      4E444943 
+ 3157              	.LASF385:
+ 3158 2be7 4359424C 		.ascii	"CYBLE_EVT_RSCSS_INDICATION_DISABLED\000"
+ 3158      455F4556 
+ 3158      545F5253 
+ 3158      4353535F 
+ 3158      494E4449 
+ 3159              	.LASF76:
+ 3160 2c0b 4359424C 		.ascii	"CYBLE_EVT_L2CAP_CBFC_CONN_IND\000"
+ 3160      455F4556 
+ 3160      545F4C32 
+ 3160      4341505F 
+ 3160      43424643 
+ 3161              	.LASF434:
+ 3162 2c29 4359424C 		.ascii	"CYBLE_EVT_WSSS_INDICATION_ENABLED\000"
+ 3162      455F4556 
+ 3162      545F5753 
+ 3162      53535F49 
+ 3162      4E444943 
+ 3163              	.LASF250:
+ 3164 2c4b 4359424C 		.ascii	"CYBLE_EVT_CPSC_WRITE_DESCR_RESPONSE\000"
+ 3164      455F4556 
+ 3164      545F4350 
+ 3164      53435F57 
+ 3164      52495445 
+ 3165              	.LASF36:
+ 3166 2c6f 4359424C 		.ascii	"CYBLE_EVT_GAP_KEYINFO_EXCHNGE_CMPLT\000"
+ 3166      455F4556 
+ 3166      545F4741 
+ 3166      505F4B45 
+ 3166      59494E46 
+ 3167              	.LASF192:
+ 3168 2c93 4359424C 		.ascii	"CYBLE_EVT_ANSS_CHAR_WRITE\000"
+ 3168      455F4556 
+ 3168      545F414E 
+ 3168      53535F43 
+ 3168      4841525F 
+ 3169              	.LASF254:
+ 3170 2cad 4359424C 		.ascii	"CYBLE_EVT_CSCSS_INDICATION_ENABLED\000"
+ 3170      455F4556 
+ 3170      545F4353 
+ 3170      4353535F 
+ 3170      494E4449 
+ 3171              	.LASF214:
+ 3172 2cd0 4359424C 		.ascii	"CYBLE_EVT_BLSS_NOTIFICATION_ENABLED\000"
+ 3172      455F4556 
+ 3172      545F424C 
+ 3172      53535F4E 
+ 3172      4F544946 
+ 3173              	.LASF234:
+ 3174 2cf4 4359424C 		.ascii	"CYBLE_EVT_CGMSC_WRITE_CHAR_RESPONSE\000"
+ 3174      455F4556 
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 87
+
+
+ 3174      545F4347 
+ 3174      4D53435F 
+ 3174      57524954 
+ 3175              	.LASF396:
+ 3176 2d18 4359424C 		.ascii	"CYBLE_EVT_SCPSS_NOTIFICATION_ENABLED\000"
+ 3176      455F4556 
+ 3176      545F5343 
+ 3176      5053535F 
+ 3176      4E4F5449 
+ 3177              	.LASF444:
+ 3178 2d3d 42617343 		.ascii	"BasCallBack\000"
+ 3178      616C6C42 
+ 3178      61636B00 
+ 3179              	.LASF289:
+ 3180 2d49 4359424C 		.ascii	"CYBLE_EVT_GLSS_NOTIFICATION_ENABLED\000"
+ 3180      455F4556 
+ 3180      545F474C 
+ 3180      53535F4E 
+ 3180      4F544946 
+ 3181              	.LASF16:
+ 3182 2d6d 73697A65 		.ascii	"sizetype\000"
+ 3182      74797065 
+ 3182      00
+ 3183              	.LASF185:
+ 3184 2d76 4359424C 		.ascii	"CYBLE_EVT_ANCSC_NOTIFICATION\000"
+ 3184      455F4556 
+ 3184      545F414E 
+ 3184      4353435F 
+ 3184      4E4F5449 
+ 3185              	.LASF321:
+ 3186 2d93 4359424C 		.ascii	"CYBLE_EVT_HRSC_NOTIFICATION\000"
+ 3186      455F4556 
+ 3186      545F4852 
+ 3186      53435F4E 
+ 3186      4F544946 
+ 3187              	.LASF136:
+ 3188 2daf 73657276 		.ascii	"serviceIndex\000"
+ 3188      69636549 
+ 3188      6E646578 
+ 3188      00
+ 3189              	.LASF296:
+ 3190 2dbc 4359424C 		.ascii	"CYBLE_EVT_GLSC_READ_DESCR_RESPONSE\000"
+ 3190      455F4556 
+ 3190      545F474C 
+ 3190      53435F52 
+ 3190      4541445F 
+ 3191              	.LASF441:
+ 3192 2ddf 4359424C 		.ascii	"CYBLE_DEBUG_EVT_BLESS_INT\000"
+ 3192      455F4445 
+ 3192      4255475F 
+ 3192      4556545F 
+ 3192      424C4553 
+ 3193              	.LASF103:
+ 3194 2df9 4359424C 		.ascii	"CYBLE_ERROR_L2CAP_PSM_ALREADY_REGISTERED\000"
+ 3194      455F4552 
+ 3194      524F525F 
+ 3194      4C324341 
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 88
+
+
+ 3194      505F5053 
+ 3195              	.LASF360:
+ 3196 2e22 4359424C 		.ascii	"CYBLE_EVT_LNSC_READ_DESCR_RESPONSE\000"
+ 3196      455F4556 
+ 3196      545F4C4E 
+ 3196      53435F52 
+ 3196      4541445F 
+ 3197              	.LASF329:
+ 3198 2e45 4359424C 		.ascii	"CYBLE_EVT_HTSS_INDICATION_DISABLED\000"
+ 3198      455F4556 
+ 3198      545F4854 
+ 3198      53535F49 
+ 3198      4E444943 
+ 3199              	.LASF414:
+ 3200 2e68 4359424C 		.ascii	"CYBLE_EVT_UDSS_WRITE_CHAR\000"
+ 3200      455F4556 
+ 3200      545F5544 
+ 3200      53535F57 
+ 3200      52495445 
+ 3201              	.LASF412:
+ 3202 2e82 4359424C 		.ascii	"CYBLE_EVT_UDSS_NOTIFICATION_DISABLED\000"
+ 3202      455F4556 
+ 3202      545F5544 
+ 3202      53535F4E 
+ 3202      4F544946 
+ 3203              	.LASF387:
+ 3204 2ea7 4359424C 		.ascii	"CYBLE_EVT_RSCSS_CHAR_WRITE\000"
+ 3204      455F4556 
+ 3204      545F5253 
+ 3204      4353535F 
+ 3204      43484152 
+ 3205              	.LASF95:
+ 3206 2ec2 4359424C 		.ascii	"CYBLE_ERROR_NO_CONNECTION\000"
+ 3206      455F4552 
+ 3206      524F525F 
+ 3206      4E4F5F43 
+ 3206      4F4E4E45 
+ 3207              	.LASF285:
+ 3208 2edc 4359424C 		.ascii	"CYBLE_EVT_ESSC_WRITE_DESCR_RESPONSE\000"
+ 3208      455F4556 
+ 3208      545F4553 
+ 3208      53435F57 
+ 3208      52495445 
+ 3209              	.LASF193:
+ 3210 2f00 4359424C 		.ascii	"CYBLE_EVT_ANSC_NOTIFICATION\000"
+ 3210      455F4556 
+ 3210      545F414E 
+ 3210      53435F4E 
+ 3210      4F544946 
+ 3211              	.LASF322:
+ 3212 2f1c 4359424C 		.ascii	"CYBLE_EVT_HRSC_READ_CHAR_RESPONSE\000"
+ 3212      455F4556 
+ 3212      545F4852 
+ 3212      53435F52 
+ 3212      4541445F 
+ 3213              	.LASF83:
+ 3214 2f3e 4359424C 		.ascii	"CYBLE_EVT_L2CAP_CBFC_DATA_WRITE_IND\000"
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 89
+
+
+ 3214      455F4556 
+ 3214      545F4C32 
+ 3214      4341505F 
+ 3214      43424643 
+ 3215              	.LASF346:
+ 3216 2f62 4359424C 		.ascii	"CYBLE_EVT_IPSC_READ_BLOB_RSP\000"
+ 3216      455F4556 
+ 3216      545F4950 
+ 3216      53435F52 
+ 3216      4541445F 
+ 3217              	.LASF281:
+ 3218 2f7f 4359424C 		.ascii	"CYBLE_EVT_ESSC_INDICATION\000"
+ 3218      455F4556 
+ 3218      545F4553 
+ 3218      53435F49 
+ 3218      4E444943 
+ 3219              	.LASF358:
+ 3220 2f99 4359424C 		.ascii	"CYBLE_EVT_LNSC_READ_CHAR_RESPONSE\000"
+ 3220      455F4556 
+ 3220      545F4C4E 
+ 3220      53435F52 
+ 3220      4541445F 
+ 3221              	.LASF299:
+ 3222 2fbb 4359424C 		.ascii	"CYBLE_EVT_HIDSS_NOTIFICATION_DISABLED\000"
+ 3222      455F4556 
+ 3222      545F4849 
+ 3222      4453535F 
+ 3222      4E4F5449 
+ 3223              	.LASF244:
+ 3224 2fe1 4359424C 		.ascii	"CYBLE_EVT_CPSS_CHAR_WRITE\000"
+ 3224      455F4556 
+ 3224      545F4350 
+ 3224      53535F43 
+ 3224      4841525F 
+ 3225              	.LASF372:
+ 3226 2ffb 4359424C 		.ascii	"CYBLE_EVT_PLXSS_NOTIFICATION_DISABLED\000"
+ 3226      455F4556 
+ 3226      545F504C 
+ 3226      5853535F 
+ 3226      4E4F5449 
+ 3227              	.LASF23:
+ 3228 3021 4359424C 		.ascii	"CYBLE_EVT_MEMORY_REQUEST\000"
+ 3228      455F4556 
+ 3228      545F4D45 
+ 3228      4D4F5259 
+ 3228      5F524551 
+ 3229              	.LASF231:
+ 3230 303a 4359424C 		.ascii	"CYBLE_EVT_CGMSC_INDICATION\000"
+ 3230      455F4556 
+ 3230      545F4347 
+ 3230      4D53435F 
+ 3230      494E4449 
+ 3231              	.LASF363:
+ 3232 3055 4359424C 		.ascii	"CYBLE_EVT_PASSS_NOTIFICATION_ENABLED\000"
+ 3232      455F4556 
+ 3232      545F5041 
+ 3232      5353535F 
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 90
+
+
+ 3232      4E4F5449 
+ 3233              	.LASF38:
+ 3234 307a 4359424C 		.ascii	"CYBLE_EVT_GAP_KEYPRESS_NOTIFICATION\000"
+ 3234      455F4556 
+ 3234      545F4741 
+ 3234      505F4B45 
+ 3234      59505245 
+ 3235              	.LASF139:
+ 3236 309e 4359424C 		.ascii	"CYBLE_BAS_CHAR_VALUE_T\000"
+ 3236      455F4241 
+ 3236      535F4348 
+ 3236      41525F56 
+ 3236      414C5545 
+ 3237              	.LASF344:
+ 3238 30b5 4359424C 		.ascii	"CYBLE_EVT_IPSC_WRITE_DESCR_RESPONSE\000"
+ 3238      455F4556 
+ 3238      545F4950 
+ 3238      53435F57 
+ 3238      52495445 
+ 3239              	.LASF251:
+ 3240 30d9 4359424C 		.ascii	"CYBLE_EVT_CPSC_SCAN_PROGRESS_RESULT\000"
+ 3240      455F4556 
+ 3240      545F4350 
+ 3240      53435F53 
+ 3240      43414E5F 
+ 3241              	.LASF275:
+ 3242 30fd 4359424C 		.ascii	"CYBLE_EVT_ESSS_INDICATION_ENABLED\000"
+ 3242      455F4556 
+ 3242      545F4553 
+ 3242      53535F49 
+ 3242      4E444943 
+ 3243              	.LASF57:
+ 3244 311f 4359424C 		.ascii	"CYBLE_EVT_GATTC_READ_RSP\000"
+ 3244      455F4556 
+ 3244      545F4741 
+ 3244      5454435F 
+ 3244      52454144 
+ 3245              	.LASF19:
+ 3246 3138 4359424C 		.ascii	"CYBLE_EVT_TIMEOUT\000"
+ 3246      455F4556 
+ 3246      545F5449 
+ 3246      4D454F55 
+ 3246      5400
+ 3247              	.LASF148:
+ 3248 314a 4359424C 		.ascii	"CYBLE_DIS_PNP_ID\000"
+ 3248      455F4449 
+ 3248      535F504E 
+ 3248      505F4944 
+ 3248      00
+ 3249              	.LASF206:
+ 3250 315b 4359424C 		.ascii	"CYBLE_EVT_BCSS_INDICATION_CONFIRMED\000"
+ 3250      455F4556 
+ 3250      545F4243 
+ 3250      53535F49 
+ 3250      4E444943 
+ 3251              	.LASF213:
+ 3252 317f 4359424C 		.ascii	"CYBLE_EVT_BLSS_INDICATION_CONFIRMED\000"
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 91
+
+
+ 3252      455F4556 
+ 3252      545F424C 
+ 3252      53535F49 
+ 3252      4E444943 
+ 3253              	.LASF238:
+ 3254 31a3 4359424C 		.ascii	"CYBLE_EVT_CPSS_NOTIFICATION_DISABLED\000"
+ 3254      455F4556 
+ 3254      545F4350 
+ 3254      53535F4E 
+ 3254      4F544946 
+ 3255              	.LASF403:
+ 3256 31c8 4359424C 		.ascii	"CYBLE_EVT_TPSS_NOTIFICATION_DISABLED\000"
+ 3256      455F4556 
+ 3256      545F5450 
+ 3256      53535F4E 
+ 3256      4F544946 
+ 3257              	.LASF142:
+ 3258 31ed 4359424C 		.ascii	"CYBLE_DIS_SERIAL_NUMBER\000"
+ 3258      455F4449 
+ 3258      535F5345 
+ 3258      5249414C 
+ 3258      5F4E554D 
+ 3259              	.LASF178:
+ 3260 3205 4359424C 		.ascii	"CYBLE_EVT_AIOSC_WRITE_CHAR_RESPONSE\000"
+ 3260      455F4556 
+ 3260      545F4149 
+ 3260      4F53435F 
+ 3260      57524954 
+ 3261              	.LASF47:
+ 3262 3229 4359424C 		.ascii	"CYBLE_EVT_GAP_SMP_LOC_P256_KEYS_GEN_AND_SET_COMPLET"
+ 3262      455F4556 
+ 3262      545F4741 
+ 3262      505F534D 
+ 3262      505F4C4F 
+ 3263 325c 4500     		.ascii	"E\000"
+ 3264              	.LASF326:
+ 3265 325e 4359424C 		.ascii	"CYBLE_EVT_HTSS_NOTIFICATION_ENABLED\000"
+ 3265      455F4556 
+ 3265      545F4854 
+ 3265      53535F4E 
+ 3265      4F544946 
+ 3266              	.LASF79:
+ 3267 3282 4359424C 		.ascii	"CYBLE_EVT_L2CAP_CBFC_DISCONN_CNF\000"
+ 3267      455F4556 
+ 3267      545F4C32 
+ 3267      4341505F 
+ 3267      43424643 
+ 3268              	.LASF149:
+ 3269 32a3 4359424C 		.ascii	"CYBLE_DIS_CHAR_COUNT\000"
+ 3269      455F4449 
+ 3269      535F4348 
+ 3269      41525F43 
+ 3269      4F554E54 
+ 3270              	.LASF31:
+ 3271 32b8 4359424C 		.ascii	"CYBLE_EVT_GAP_DEVICE_CONNECTED\000"
+ 3271      455F4556 
+ 3271      545F4741 
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 92
+
+
+ 3271      505F4445 
+ 3271      56494345 
+ 3272              	.LASF443:
+ 3273 32d7 6576656E 		.ascii	"eventParam\000"
+ 3273      74506172 
+ 3273      616D00
+ 3274              	.LASF63:
+ 3275 32e2 4359424C 		.ascii	"CYBLE_EVT_GATTS_PREP_WRITE_REQ\000"
+ 3275      455F4556 
+ 3275      545F4741 
+ 3275      5454535F 
+ 3275      50524550 
+ 3276              	.LASF457:
+ 3277 3301 4379426C 		.ascii	"CyBle_BassSendNotification\000"
+ 3277      655F4261 
+ 3277      73735365 
+ 3277      6E644E6F 
+ 3277      74696669 
+ 3278              	.LASF198:
+ 3279 331c 4359424C 		.ascii	"CYBLE_EVT_BASS_NOTIFICATION_ENABLED\000"
+ 3279      455F4556 
+ 3279      545F4241 
+ 3279      53535F4E 
+ 3279      4F544946 
+ 3280              	.LASF382:
+ 3281 3340 4359424C 		.ascii	"CYBLE_EVT_RSCSS_NOTIFICATION_ENABLED\000"
+ 3281      455F4556 
+ 3281      545F5253 
+ 3281      4353535F 
+ 3281      4E4F5449 
+ 3282              	.LASF425:
+ 3283 3365 4359424C 		.ascii	"CYBLE_EVT_WPTSS_INDICATION_DISABLED\000"
+ 3283      455F4556 
+ 3283      545F5750 
+ 3283      5453535F 
+ 3283      494E4449 
+ 3284              	.LASF295:
+ 3285 3389 4359424C 		.ascii	"CYBLE_EVT_GLSC_WRITE_CHAR_RESPONSE\000"
+ 3285      455F4556 
+ 3285      545F474C 
+ 3285      53435F57 
+ 3285      52495445 
+ 3286              	.LASF44:
+ 3287 33ac 4359424C 		.ascii	"CYBLE_EVT_GAP_CONN_ESTB\000"
+ 3287      455F4556 
+ 3287      545F4741 
+ 3287      505F434F 
+ 3287      4E4E5F45 
+ 3288              	.LASF196:
+ 3289 33c4 4359424C 		.ascii	"CYBLE_EVT_ANSC_READ_DESCR_RESPONSE\000"
+ 3289      455F4556 
+ 3289      545F414E 
+ 3289      53435F52 
+ 3289      4541445F 
+ 3290              	.LASF46:
+ 3291 33e7 4359424C 		.ascii	"CYBLE_EVT_GAP_AUTH_REQ_REPLY_ERR\000"
+ 3291      455F4556 
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 93
+
+
+ 3291      545F4741 
+ 3291      505F4155 
+ 3291      54485F52 
+ 3292              	.LASF317:
+ 3293 3408 4359424C 		.ascii	"CYBLE_EVT_HPSC_WRITE_CHAR_RESPONSE\000"
+ 3293      455F4556 
+ 3293      545F4850 
+ 3293      53435F57 
+ 3293      52495445 
+ 3294              	.LASF430:
+ 3295 342b 4359424C 		.ascii	"CYBLE_EVT_WPTSC_WRITE_CHAR_RESPONSE\000"
+ 3295      455F4556 
+ 3295      545F5750 
+ 3295      5453435F 
+ 3295      57524954 
+ 3296              	.LASF394:
+ 3297 344f 4359424C 		.ascii	"CYBLE_EVT_RTUSS_WRITE_CHAR_CMD\000"
+ 3297      455F4556 
+ 3297      545F5254 
+ 3297      5553535F 
+ 3297      57524954 
+ 3298              	.LASF123:
+ 3299 346e 62644861 		.ascii	"bdHandle\000"
+ 3299      6E646C65 
+ 3299      00
+ 3300              	.LASF432:
+ 3301 3477 4359424C 		.ascii	"CYBLE_EVT_WPTSC_READ_DESCR_RESPONSE\000"
+ 3301      455F4556 
+ 3301      545F5750 
+ 3301      5453435F 
+ 3301      52454144 
+ 3302              	.LASF304:
+ 3303 349b 4359424C 		.ascii	"CYBLE_EVT_HIDSS_REPORT_CHAR_WRITE\000"
+ 3303      455F4556 
+ 3303      545F4849 
+ 3303      4453535F 
+ 3303      5245504F 
+ 3304              	.LASF362:
+ 3305 34bd 4359424C 		.ascii	"CYBLE_EVT_NDCSC_READ_CHAR_RESPONSE\000"
+ 3305      455F4556 
+ 3305      545F4E44 
+ 3305      4353435F 
+ 3305      52454144 
+ 3306              	.LASF0:
+ 3307 34e0 7369676E 		.ascii	"signed char\000"
+ 3307      65642063 
+ 3307      68617200 
+ 3308              	.LASF159:
+ 3309 34ec 4359424C 		.ascii	"CYBLE_EVT_GATTC_CHAR_DISCOVERY_FAILED\000"
+ 3309      455F4556 
+ 3309      545F4741 
+ 3309      5454435F 
+ 3309      43484152 
+ 3310              	.LASF3:
+ 3311 3512 73686F72 		.ascii	"short unsigned int\000"
+ 3311      7420756E 
+ 3311      7369676E 
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 94
+
+
+ 3311      65642069 
+ 3311      6E7400
+ 3312              	.LASF449:
+ 3313 3525 53696D75 		.ascii	"SimulateBattery\000"
+ 3313      6C617465 
+ 3313      42617474 
+ 3313      65727900 
+ 3314              	.LASF305:
+ 3315 3535 4359424C 		.ascii	"CYBLE_EVT_HIDSC_NOTIFICATION\000"
+ 3315      455F4556 
+ 3315      545F4849 
+ 3315      4453435F 
+ 3315      4E4F5449 
+ 3316              	.LASF263:
+ 3317 3552 4359424C 		.ascii	"CYBLE_EVT_CSCSC_WRITE_DESCR_RESPONSE\000"
+ 3317      455F4556 
+ 3317      545F4353 
+ 3317      4353435F 
+ 3317      57524954 
+ 3318              	.LASF82:
+ 3319 3577 4359424C 		.ascii	"CYBLE_EVT_L2CAP_CBFC_TX_CREDIT_IND\000"
+ 3319      455F4556 
+ 3319      545F4C32 
+ 3319      4341505F 
+ 3319      43424643 
+ 3320              	.LASF361:
+ 3321 359a 4359424C 		.ascii	"CYBLE_EVT_LNSC_WRITE_DESCR_RESPONSE\000"
+ 3321      455F4556 
+ 3321      545F4C4E 
+ 3321      53435F57 
+ 3321      52495445 
+ 3322              	.LASF115:
+ 3323 35be 4359424C 		.ascii	"CYBLE_ERROR_CONTROLLER_BUSY\000"
+ 3323      455F4552 
+ 3323      524F525F 
+ 3323      434F4E54 
+ 3323      524F4C4C 
+ 3324              	.LASF400:
+ 3325 35da 4359424C 		.ascii	"CYBLE_EVT_SCPSC_READ_DESCR_RESPONSE\000"
+ 3325      455F4556 
+ 3325      545F5343 
+ 3325      5053435F 
+ 3325      52454144 
+ 3326              	.LASF107:
+ 3327 35fe 4359424C 		.ascii	"CYBLE_ERROR_L2CAP_PSM_NOT_IN_RANGE\000"
+ 3327      455F4552 
+ 3327      524F525F 
+ 3327      4C324341 
+ 3327      505F5053 
+ 3328              	.LASF9:
+ 3329 3621 75696E74 		.ascii	"uint8\000"
+ 3329      3800
+ 3330              	.LASF89:
+ 3331 3627 4359424C 		.ascii	"CYBLE_ERROR_OK\000"
+ 3331      455F4552 
+ 3331      524F525F 
+ 3331      4F4B00
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 95
+
+
+ 3332              	.LASF246:
+ 3333 3636 4359424C 		.ascii	"CYBLE_EVT_CPSC_INDICATION\000"
+ 3333      455F4556 
+ 3333      545F4350 
+ 3333      53435F49 
+ 3333      4E444943 
+ 3334              	.LASF320:
+ 3335 3650 4359424C 		.ascii	"CYBLE_EVT_HRSS_NOTIFICATION_DISABLED\000"
+ 3335      455F4556 
+ 3335      545F4852 
+ 3335      53535F4E 
+ 3335      4F544946 
+ 3336              	.LASF237:
+ 3337 3675 4359424C 		.ascii	"CYBLE_EVT_CPSS_NOTIFICATION_ENABLED\000"
+ 3337      455F4556 
+ 3337      545F4350 
+ 3337      53535F4E 
+ 3337      4F544946 
+ 3338              	.LASF195:
+ 3339 3699 4359424C 		.ascii	"CYBLE_EVT_ANSC_WRITE_CHAR_RESPONSE\000"
+ 3339      455F4556 
+ 3339      545F414E 
+ 3339      53435F57 
+ 3339      52495445 
+ 3340              	.LASF413:
+ 3341 36bc 4359424C 		.ascii	"CYBLE_EVT_UDSS_READ_CHAR\000"
+ 3341      455F4556 
+ 3341      545F5544 
+ 3341      53535F52 
+ 3341      4541445F 
+ 3342              	.LASF27:
+ 3343 36d5 4359424C 		.ascii	"CYBLE_EVT_GAP_PASSKEY_DISPLAY_REQUEST\000"
+ 3343      455F4556 
+ 3343      545F4741 
+ 3343      505F5041 
+ 3343      53534B45 
+ 3344              	.LASF280:
+ 3345 36fb 4359424C 		.ascii	"CYBLE_EVT_ESSC_NOTIFICATION\000"
+ 3345      455F4556 
+ 3345      545F4553 
+ 3345      53435F4E 
+ 3345      4F544946 
+ 3346              	.LASF313:
+ 3347 3717 4359424C 		.ascii	"CYBLE_EVT_HPSC_NOTIFICATION\000"
+ 3347      455F4556 
+ 3347      545F4850 
+ 3347      53435F4E 
+ 3347      4F544946 
+ 3348              	.LASF169:
+ 3349 3733 4359424C 		.ascii	"CYBLE_EVT_AIOSS_NOTIFICATION_DISABLED\000"
+ 3349      455F4556 
+ 3349      545F4149 
+ 3349      4F53535F 
+ 3349      4E4F5449 
+ 3350              	.LASF124:
+ 3351 3759 61747449 		.ascii	"attId\000"
+ 3351      6400
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccmEtlZ7.s 			page 96
+
+
+ 3352              	.LASF328:
+ 3353 375f 4359424C 		.ascii	"CYBLE_EVT_HTSS_INDICATION_ENABLED\000"
+ 3353      455F4556 
+ 3353      545F4854 
+ 3353      53535F49 
+ 3353      4E444943 
+ 3354              	.LASF135:
+ 3355 3781 636F6E6E 		.ascii	"connHandle\000"
+ 3355      48616E64 
+ 3355      6C6500
+ 3356              	.LASF273:
+ 3357 378c 4359424C 		.ascii	"CYBLE_EVT_ESSS_NOTIFICATION_ENABLED\000"
+ 3357      455F4556 
+ 3357      545F4553 
+ 3357      53535F4E 
+ 3357      4F544946 
+ 3358              	.LASF35:
+ 3359 37b0 4359424C 		.ascii	"CYBLE_EVT_GAPC_SCAN_START_STOP\000"
+ 3359      455F4556 
+ 3359      545F4741 
+ 3359      50435F53 
+ 3359      43414E5F 
+ 3360              	.LASF179:
+ 3361 37cf 4359424C 		.ascii	"CYBLE_EVT_AIOSC_READ_DESCR_RESPONSE\000"
+ 3361      455F4556 
+ 3361      545F4149 
+ 3361      4F53435F 
+ 3361      52454144 
+ 3362              	.LASF200:
+ 3363 37f3 4359424C 		.ascii	"CYBLE_EVT_BASC_NOTIFICATION\000"
+ 3363      455F4556 
+ 3363      545F4241 
+ 3363      53435F4E 
+ 3363      4F544946 
+ 3364              	.LASF440:
+ 3365 380f 4359424C 		.ascii	"CYBLE_EVT_WSSC_WRITE_DESCR_RESPONSE\000"
+ 3365      455F4556 
+ 3365      545F5753 
+ 3365      53435F57 
+ 3365      52495445 
+ 3366              	.LASF359:
+ 3367 3833 4359424C 		.ascii	"CYBLE_EVT_LNSC_WRITE_CHAR_RESPONSE\000"
+ 3367      455F4556 
+ 3367      545F4C4E 
+ 3367      53435F57 
+ 3367      52495445 
+ 3368              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

@@ -1,0 +1,1242 @@
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUiv23o.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m0
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"Buttons.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.Buttons_SetDriveMode,"ax",%progbits
+  20              		.align	2
+  21              		.global	Buttons_SetDriveMode
+  22              		.code	16
+  23              		.thumb_func
+  24              		.type	Buttons_SetDriveMode, %function
+  25              	Buttons_SetDriveMode:
+  26              	.LFB0:
+  27              		.file 1 "Generated_Source\\PSoC4\\Buttons.c"
+   1:Generated_Source\PSoC4/Buttons.c **** /*******************************************************************************
+   2:Generated_Source\PSoC4/Buttons.c **** * File Name: Buttons.c  
+   3:Generated_Source\PSoC4/Buttons.c **** * Version 2.20
+   4:Generated_Source\PSoC4/Buttons.c **** *
+   5:Generated_Source\PSoC4/Buttons.c **** * Description:
+   6:Generated_Source\PSoC4/Buttons.c **** *  This file contains API to enable firmware control of a Pins component.
+   7:Generated_Source\PSoC4/Buttons.c **** *
+   8:Generated_Source\PSoC4/Buttons.c **** ********************************************************************************
+   9:Generated_Source\PSoC4/Buttons.c **** * Copyright 2008-2015, Cypress Semiconductor Corporation.  All rights reserved.
+  10:Generated_Source\PSoC4/Buttons.c **** * You may use this file only in accordance with the license, terms, conditions, 
+  11:Generated_Source\PSoC4/Buttons.c **** * disclaimers, and limitations in the end user license agreement accompanying 
+  12:Generated_Source\PSoC4/Buttons.c **** * the software package with which this file was provided.
+  13:Generated_Source\PSoC4/Buttons.c **** *******************************************************************************/
+  14:Generated_Source\PSoC4/Buttons.c **** 
+  15:Generated_Source\PSoC4/Buttons.c **** #include "cytypes.h"
+  16:Generated_Source\PSoC4/Buttons.c **** #include "Buttons.h"
+  17:Generated_Source\PSoC4/Buttons.c **** 
+  18:Generated_Source\PSoC4/Buttons.c **** 
+  19:Generated_Source\PSoC4/Buttons.c **** #if defined(Buttons__PC)
+  20:Generated_Source\PSoC4/Buttons.c ****     #define Buttons_SetP4PinDriveMode(shift, mode)  \
+  21:Generated_Source\PSoC4/Buttons.c ****     do { \
+  22:Generated_Source\PSoC4/Buttons.c ****         Buttons_PC =   (Buttons_PC & \
+  23:Generated_Source\PSoC4/Buttons.c ****                                 (uint32)(~(uint32)(Buttons_DRIVE_MODE_IND_MASK << \
+  24:Generated_Source\PSoC4/Buttons.c ****                                 (Buttons_DRIVE_MODE_BITS * (shift))))) | \
+  25:Generated_Source\PSoC4/Buttons.c ****                                 (uint32)((uint32)(mode) << \
+  26:Generated_Source\PSoC4/Buttons.c ****                                 (Buttons_DRIVE_MODE_BITS * (shift))); \
+  27:Generated_Source\PSoC4/Buttons.c ****     } while (0)
+  28:Generated_Source\PSoC4/Buttons.c **** #else
+  29:Generated_Source\PSoC4/Buttons.c ****     #if (CY_PSOC4_4200L)
+  30:Generated_Source\PSoC4/Buttons.c ****         #define Buttons_SetP4PinDriveMode(shift, mode)  \
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUiv23o.s 			page 2
+
+
+  31:Generated_Source\PSoC4/Buttons.c ****         do { \
+  32:Generated_Source\PSoC4/Buttons.c ****             Buttons_USBIO_CTRL_REG = (Buttons_USBIO_CTRL_REG & \
+  33:Generated_Source\PSoC4/Buttons.c ****                                     (uint32)(~(uint32)(Buttons_DRIVE_MODE_IND_MASK << \
+  34:Generated_Source\PSoC4/Buttons.c ****                                     (Buttons_DRIVE_MODE_BITS * (shift))))) | \
+  35:Generated_Source\PSoC4/Buttons.c ****                                     (uint32)((uint32)(mode) << \
+  36:Generated_Source\PSoC4/Buttons.c ****                                     (Buttons_DRIVE_MODE_BITS * (shift))); \
+  37:Generated_Source\PSoC4/Buttons.c ****         } while (0)
+  38:Generated_Source\PSoC4/Buttons.c ****     #endif
+  39:Generated_Source\PSoC4/Buttons.c **** #endif
+  40:Generated_Source\PSoC4/Buttons.c ****   
+  41:Generated_Source\PSoC4/Buttons.c **** 
+  42:Generated_Source\PSoC4/Buttons.c **** #if defined(Buttons__PC) || (CY_PSOC4_4200L) 
+  43:Generated_Source\PSoC4/Buttons.c ****     /*******************************************************************************
+  44:Generated_Source\PSoC4/Buttons.c ****     * Function Name: Buttons_SetDriveMode
+  45:Generated_Source\PSoC4/Buttons.c ****     ****************************************************************************//**
+  46:Generated_Source\PSoC4/Buttons.c ****     *
+  47:Generated_Source\PSoC4/Buttons.c ****     * \brief Sets the drive mode for each of the Pins component's pins.
+  48:Generated_Source\PSoC4/Buttons.c ****     * 
+  49:Generated_Source\PSoC4/Buttons.c ****     * <b>Note</b> This affects all pins in the Pins component instance. Use the
+  50:Generated_Source\PSoC4/Buttons.c ****     * Per-Pin APIs if you wish to control individual pin's drive modes.
+  51:Generated_Source\PSoC4/Buttons.c ****     *
+  52:Generated_Source\PSoC4/Buttons.c ****     * <b>Note</b> USBIOs have limited drive functionality. Refer to the Drive Mode
+  53:Generated_Source\PSoC4/Buttons.c ****     * parameter for more information.
+  54:Generated_Source\PSoC4/Buttons.c ****     *
+  55:Generated_Source\PSoC4/Buttons.c ****     * \param mode
+  56:Generated_Source\PSoC4/Buttons.c ****     *  Mode for the selected signals. Valid options are documented in 
+  57:Generated_Source\PSoC4/Buttons.c ****     *  \ref driveMode.
+  58:Generated_Source\PSoC4/Buttons.c ****     *
+  59:Generated_Source\PSoC4/Buttons.c ****     * \return
+  60:Generated_Source\PSoC4/Buttons.c ****     *  None
+  61:Generated_Source\PSoC4/Buttons.c ****     *
+  62:Generated_Source\PSoC4/Buttons.c ****     * \sideeffect
+  63:Generated_Source\PSoC4/Buttons.c ****     *  If you use read-modify-write operations that are not atomic, the ISR can
+  64:Generated_Source\PSoC4/Buttons.c ****     *  cause corruption of this function. An ISR that interrupts this function 
+  65:Generated_Source\PSoC4/Buttons.c ****     *  and performs writes to the Pins component Drive Mode registers can cause 
+  66:Generated_Source\PSoC4/Buttons.c ****     *  corrupted port data. To avoid this issue, you should either use the Per-Pin
+  67:Generated_Source\PSoC4/Buttons.c ****     *  APIs (primary method) or disable interrupts around this function.
+  68:Generated_Source\PSoC4/Buttons.c ****     *
+  69:Generated_Source\PSoC4/Buttons.c ****     * \funcusage
+  70:Generated_Source\PSoC4/Buttons.c ****     *  \snippet Buttons_SUT.c usage_Buttons_SetDriveMode
+  71:Generated_Source\PSoC4/Buttons.c ****     *******************************************************************************/
+  72:Generated_Source\PSoC4/Buttons.c ****     void Buttons_SetDriveMode(uint8 mode)
+  73:Generated_Source\PSoC4/Buttons.c ****     {
+  28              		.loc 1 73 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 8
+  31              		@ frame_needed = 1, uses_anonymous_args = 0
+  32 0000 80B5     		push	{r7, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 7, -8
+  35              		.cfi_offset 14, -4
+  36 0002 82B0     		sub	sp, sp, #8
+  37              		.cfi_def_cfa_offset 16
+  38 0004 00AF     		add	r7, sp, #0
+  39              		.cfi_def_cfa_register 7
+  40 0006 0200     		movs	r2, r0
+  41 0008 FB1D     		adds	r3, r7, #7
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUiv23o.s 			page 3
+
+
+  42 000a 1A70     		strb	r2, [r3]
+  74:Generated_Source\PSoC4/Buttons.c **** 		Buttons_SetP4PinDriveMode(Buttons__0__SHIFT, mode);
+  43              		.loc 1 74 0
+  44 000c 1B4B     		ldr	r3, .L2
+  45 000e 1B4A     		ldr	r2, .L2
+  46 0010 1268     		ldr	r2, [r2]
+  47 0012 0721     		movs	r1, #7
+  48 0014 8A43     		bics	r2, r1
+  49 0016 1100     		movs	r1, r2
+  50 0018 FA1D     		adds	r2, r7, #7
+  51 001a 1278     		ldrb	r2, [r2]
+  52 001c 0A43     		orrs	r2, r1
+  53 001e 1A60     		str	r2, [r3]
+  75:Generated_Source\PSoC4/Buttons.c **** 		Buttons_SetP4PinDriveMode(Buttons__1__SHIFT, mode);
+  54              		.loc 1 75 0
+  55 0020 164B     		ldr	r3, .L2
+  56 0022 164A     		ldr	r2, .L2
+  57 0024 1268     		ldr	r2, [r2]
+  58 0026 3821     		movs	r1, #56
+  59 0028 8A43     		bics	r2, r1
+  60 002a 1100     		movs	r1, r2
+  61 002c FA1D     		adds	r2, r7, #7
+  62 002e 1278     		ldrb	r2, [r2]
+  63 0030 D200     		lsls	r2, r2, #3
+  64 0032 0A43     		orrs	r2, r1
+  65 0034 1A60     		str	r2, [r3]
+  76:Generated_Source\PSoC4/Buttons.c **** 		Buttons_SetP4PinDriveMode(Buttons__2__SHIFT, mode);
+  66              		.loc 1 76 0
+  67 0036 114B     		ldr	r3, .L2
+  68 0038 104A     		ldr	r2, .L2
+  69 003a 1268     		ldr	r2, [r2]
+  70 003c 1049     		ldr	r1, .L2+4
+  71 003e 1140     		ands	r1, r2
+  72 0040 FA1D     		adds	r2, r7, #7
+  73 0042 1278     		ldrb	r2, [r2]
+  74 0044 9201     		lsls	r2, r2, #6
+  75 0046 0A43     		orrs	r2, r1
+  76 0048 1A60     		str	r2, [r3]
+  77:Generated_Source\PSoC4/Buttons.c **** 		Buttons_SetP4PinDriveMode(Buttons__3__SHIFT, mode);
+  77              		.loc 1 77 0
+  78 004a 0C4B     		ldr	r3, .L2
+  79 004c 0B4A     		ldr	r2, .L2
+  80 004e 1268     		ldr	r2, [r2]
+  81 0050 0C49     		ldr	r1, .L2+8
+  82 0052 1140     		ands	r1, r2
+  83 0054 FA1D     		adds	r2, r7, #7
+  84 0056 1278     		ldrb	r2, [r2]
+  85 0058 5202     		lsls	r2, r2, #9
+  86 005a 0A43     		orrs	r2, r1
+  87 005c 1A60     		str	r2, [r3]
+  78:Generated_Source\PSoC4/Buttons.c **** 		Buttons_SetP4PinDriveMode(Buttons__4__SHIFT, mode);
+  88              		.loc 1 78 0
+  89 005e 074B     		ldr	r3, .L2
+  90 0060 064A     		ldr	r2, .L2
+  91 0062 1268     		ldr	r2, [r2]
+  92 0064 0849     		ldr	r1, .L2+12
+  93 0066 1140     		ands	r1, r2
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUiv23o.s 			page 4
+
+
+  94 0068 FA1D     		adds	r2, r7, #7
+  95 006a 1278     		ldrb	r2, [r2]
+  96 006c 1203     		lsls	r2, r2, #12
+  97 006e 0A43     		orrs	r2, r1
+  98 0070 1A60     		str	r2, [r3]
+  79:Generated_Source\PSoC4/Buttons.c ****     }
+  99              		.loc 1 79 0
+ 100 0072 C046     		nop
+ 101 0074 BD46     		mov	sp, r7
+ 102 0076 02B0     		add	sp, sp, #8
+ 103              		@ sp needed
+ 104 0078 80BD     		pop	{r7, pc}
+ 105              	.L3:
+ 106 007a C046     		.align	2
+ 107              	.L2:
+ 108 007c 08020440 		.word	1074004488
+ 109 0080 3FFEFFFF 		.word	-449
+ 110 0084 FFF1FFFF 		.word	-3585
+ 111 0088 FF8FFFFF 		.word	-28673
+ 112              		.cfi_endproc
+ 113              	.LFE0:
+ 114              		.size	Buttons_SetDriveMode, .-Buttons_SetDriveMode
+ 115              		.section	.text.Buttons_Write,"ax",%progbits
+ 116              		.align	2
+ 117              		.global	Buttons_Write
+ 118              		.code	16
+ 119              		.thumb_func
+ 120              		.type	Buttons_Write, %function
+ 121              	Buttons_Write:
+ 122              	.LFB1:
+  80:Generated_Source\PSoC4/Buttons.c **** #endif
+  81:Generated_Source\PSoC4/Buttons.c **** 
+  82:Generated_Source\PSoC4/Buttons.c **** 
+  83:Generated_Source\PSoC4/Buttons.c **** /*******************************************************************************
+  84:Generated_Source\PSoC4/Buttons.c **** * Function Name: Buttons_Write
+  85:Generated_Source\PSoC4/Buttons.c **** ****************************************************************************//**
+  86:Generated_Source\PSoC4/Buttons.c **** *
+  87:Generated_Source\PSoC4/Buttons.c **** * \brief Writes the value to the physical port (data output register), masking
+  88:Generated_Source\PSoC4/Buttons.c **** *  and shifting the bits appropriately. 
+  89:Generated_Source\PSoC4/Buttons.c **** *
+  90:Generated_Source\PSoC4/Buttons.c **** * The data output register controls the signal applied to the physical pin in 
+  91:Generated_Source\PSoC4/Buttons.c **** * conjunction with the drive mode parameter. This function avoids changing 
+  92:Generated_Source\PSoC4/Buttons.c **** * other bits in the port by using the appropriate method (read-modify-write or
+  93:Generated_Source\PSoC4/Buttons.c **** * bit banding).
+  94:Generated_Source\PSoC4/Buttons.c **** *
+  95:Generated_Source\PSoC4/Buttons.c **** * <b>Note</b> This function should not be used on a hardware digital output pin 
+  96:Generated_Source\PSoC4/Buttons.c **** * as it is driven by the hardware signal attached to it.
+  97:Generated_Source\PSoC4/Buttons.c **** *
+  98:Generated_Source\PSoC4/Buttons.c **** * \param value
+  99:Generated_Source\PSoC4/Buttons.c **** *  Value to write to the component instance.
+ 100:Generated_Source\PSoC4/Buttons.c **** *
+ 101:Generated_Source\PSoC4/Buttons.c **** * \return 
+ 102:Generated_Source\PSoC4/Buttons.c **** *  None 
+ 103:Generated_Source\PSoC4/Buttons.c **** *
+ 104:Generated_Source\PSoC4/Buttons.c **** * \sideeffect
+ 105:Generated_Source\PSoC4/Buttons.c **** *  If you use read-modify-write operations that are not atomic; the Interrupt 
+ 106:Generated_Source\PSoC4/Buttons.c **** *  Service Routines (ISR) can cause corruption of this function. An ISR that 
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUiv23o.s 			page 5
+
+
+ 107:Generated_Source\PSoC4/Buttons.c **** *  interrupts this function and performs writes to the Pins component data 
+ 108:Generated_Source\PSoC4/Buttons.c **** *  register can cause corrupted port data. To avoid this issue, you should 
+ 109:Generated_Source\PSoC4/Buttons.c **** *  either use the Per-Pin APIs (primary method) or disable interrupts around 
+ 110:Generated_Source\PSoC4/Buttons.c **** *  this function.
+ 111:Generated_Source\PSoC4/Buttons.c **** *
+ 112:Generated_Source\PSoC4/Buttons.c **** * \funcusage
+ 113:Generated_Source\PSoC4/Buttons.c **** *  \snippet Buttons_SUT.c usage_Buttons_Write
+ 114:Generated_Source\PSoC4/Buttons.c **** *******************************************************************************/
+ 115:Generated_Source\PSoC4/Buttons.c **** void Buttons_Write(uint8 value)
+ 116:Generated_Source\PSoC4/Buttons.c **** {
+ 123              		.loc 1 116 0
+ 124              		.cfi_startproc
+ 125              		@ args = 0, pretend = 0, frame = 16
+ 126              		@ frame_needed = 1, uses_anonymous_args = 0
+ 127 0000 80B5     		push	{r7, lr}
+ 128              		.cfi_def_cfa_offset 8
+ 129              		.cfi_offset 7, -8
+ 130              		.cfi_offset 14, -4
+ 131 0002 84B0     		sub	sp, sp, #16
+ 132              		.cfi_def_cfa_offset 24
+ 133 0004 00AF     		add	r7, sp, #0
+ 134              		.cfi_def_cfa_register 7
+ 135 0006 0200     		movs	r2, r0
+ 136 0008 FB1D     		adds	r3, r7, #7
+ 137 000a 1A70     		strb	r2, [r3]
+ 117:Generated_Source\PSoC4/Buttons.c ****     uint8 drVal = (uint8)(Buttons_DR & (uint8)(~Buttons_MASK));
+ 138              		.loc 1 117 0
+ 139 000c 0E4B     		ldr	r3, .L5
+ 140 000e 1B68     		ldr	r3, [r3]
+ 141 0010 DAB2     		uxtb	r2, r3
+ 142 0012 0F23     		movs	r3, #15
+ 143 0014 FB18     		adds	r3, r7, r3
+ 144 0016 1F21     		movs	r1, #31
+ 145 0018 8A43     		bics	r2, r1
+ 146 001a 1A70     		strb	r2, [r3]
+ 118:Generated_Source\PSoC4/Buttons.c ****     drVal = (drVal | ((uint8)(value << Buttons_SHIFT) & Buttons_MASK));
+ 147              		.loc 1 118 0
+ 148 001c FB1D     		adds	r3, r7, #7
+ 149 001e 1B78     		ldrb	r3, [r3]
+ 150 0020 1F22     		movs	r2, #31
+ 151 0022 1340     		ands	r3, r2
+ 152 0024 D9B2     		uxtb	r1, r3
+ 153 0026 0F23     		movs	r3, #15
+ 154 0028 FB18     		adds	r3, r7, r3
+ 155 002a 0F22     		movs	r2, #15
+ 156 002c BA18     		adds	r2, r7, r2
+ 157 002e 1278     		ldrb	r2, [r2]
+ 158 0030 0A43     		orrs	r2, r1
+ 159 0032 1A70     		strb	r2, [r3]
+ 119:Generated_Source\PSoC4/Buttons.c ****     Buttons_DR = (uint32)drVal;
+ 160              		.loc 1 119 0
+ 161 0034 044B     		ldr	r3, .L5
+ 162 0036 0F22     		movs	r2, #15
+ 163 0038 BA18     		adds	r2, r7, r2
+ 164 003a 1278     		ldrb	r2, [r2]
+ 165 003c 1A60     		str	r2, [r3]
+ 120:Generated_Source\PSoC4/Buttons.c **** }
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUiv23o.s 			page 6
+
+
+ 166              		.loc 1 120 0
+ 167 003e C046     		nop
+ 168 0040 BD46     		mov	sp, r7
+ 169 0042 04B0     		add	sp, sp, #16
+ 170              		@ sp needed
+ 171 0044 80BD     		pop	{r7, pc}
+ 172              	.L6:
+ 173 0046 C046     		.align	2
+ 174              	.L5:
+ 175 0048 00020440 		.word	1074004480
+ 176              		.cfi_endproc
+ 177              	.LFE1:
+ 178              		.size	Buttons_Write, .-Buttons_Write
+ 179              		.section	.text.Buttons_Read,"ax",%progbits
+ 180              		.align	2
+ 181              		.global	Buttons_Read
+ 182              		.code	16
+ 183              		.thumb_func
+ 184              		.type	Buttons_Read, %function
+ 185              	Buttons_Read:
+ 186              	.LFB2:
+ 121:Generated_Source\PSoC4/Buttons.c **** 
+ 122:Generated_Source\PSoC4/Buttons.c **** 
+ 123:Generated_Source\PSoC4/Buttons.c **** /*******************************************************************************
+ 124:Generated_Source\PSoC4/Buttons.c **** * Function Name: Buttons_Read
+ 125:Generated_Source\PSoC4/Buttons.c **** ****************************************************************************//**
+ 126:Generated_Source\PSoC4/Buttons.c **** *
+ 127:Generated_Source\PSoC4/Buttons.c **** * \brief Reads the associated physical port (pin status register) and masks 
+ 128:Generated_Source\PSoC4/Buttons.c **** *  the required bits according to the width and bit position of the component
+ 129:Generated_Source\PSoC4/Buttons.c **** *  instance. 
+ 130:Generated_Source\PSoC4/Buttons.c **** *
+ 131:Generated_Source\PSoC4/Buttons.c **** * The pin's status register returns the current logic level present on the 
+ 132:Generated_Source\PSoC4/Buttons.c **** * physical pin.
+ 133:Generated_Source\PSoC4/Buttons.c **** *
+ 134:Generated_Source\PSoC4/Buttons.c **** * \return 
+ 135:Generated_Source\PSoC4/Buttons.c **** *  The current value for the pins in the component as a right justified number.
+ 136:Generated_Source\PSoC4/Buttons.c **** *
+ 137:Generated_Source\PSoC4/Buttons.c **** * \funcusage
+ 138:Generated_Source\PSoC4/Buttons.c **** *  \snippet Buttons_SUT.c usage_Buttons_Read  
+ 139:Generated_Source\PSoC4/Buttons.c **** *******************************************************************************/
+ 140:Generated_Source\PSoC4/Buttons.c **** uint8 Buttons_Read(void)
+ 141:Generated_Source\PSoC4/Buttons.c **** {
+ 187              		.loc 1 141 0
+ 188              		.cfi_startproc
+ 189              		@ args = 0, pretend = 0, frame = 0
+ 190              		@ frame_needed = 1, uses_anonymous_args = 0
+ 191 0000 80B5     		push	{r7, lr}
+ 192              		.cfi_def_cfa_offset 8
+ 193              		.cfi_offset 7, -8
+ 194              		.cfi_offset 14, -4
+ 195 0002 00AF     		add	r7, sp, #0
+ 196              		.cfi_def_cfa_register 7
+ 142:Generated_Source\PSoC4/Buttons.c ****     return (uint8)((Buttons_PS & Buttons_MASK) >> Buttons_SHIFT);
+ 197              		.loc 1 142 0
+ 198 0004 044B     		ldr	r3, .L9
+ 199 0006 1B68     		ldr	r3, [r3]
+ 200 0008 DBB2     		uxtb	r3, r3
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUiv23o.s 			page 7
+
+
+ 201 000a 1F22     		movs	r2, #31
+ 202 000c 1340     		ands	r3, r2
+ 203 000e DBB2     		uxtb	r3, r3
+ 143:Generated_Source\PSoC4/Buttons.c **** }
+ 204              		.loc 1 143 0
+ 205 0010 1800     		movs	r0, r3
+ 206 0012 BD46     		mov	sp, r7
+ 207              		@ sp needed
+ 208 0014 80BD     		pop	{r7, pc}
+ 209              	.L10:
+ 210 0016 C046     		.align	2
+ 211              	.L9:
+ 212 0018 04020440 		.word	1074004484
+ 213              		.cfi_endproc
+ 214              	.LFE2:
+ 215              		.size	Buttons_Read, .-Buttons_Read
+ 216              		.section	.text.Buttons_ReadDataReg,"ax",%progbits
+ 217              		.align	2
+ 218              		.global	Buttons_ReadDataReg
+ 219              		.code	16
+ 220              		.thumb_func
+ 221              		.type	Buttons_ReadDataReg, %function
+ 222              	Buttons_ReadDataReg:
+ 223              	.LFB3:
+ 144:Generated_Source\PSoC4/Buttons.c **** 
+ 145:Generated_Source\PSoC4/Buttons.c **** 
+ 146:Generated_Source\PSoC4/Buttons.c **** /*******************************************************************************
+ 147:Generated_Source\PSoC4/Buttons.c **** * Function Name: Buttons_ReadDataReg
+ 148:Generated_Source\PSoC4/Buttons.c **** ****************************************************************************//**
+ 149:Generated_Source\PSoC4/Buttons.c **** *
+ 150:Generated_Source\PSoC4/Buttons.c **** * \brief Reads the associated physical port's data output register and masks 
+ 151:Generated_Source\PSoC4/Buttons.c **** *  the correct bits according to the width and bit position of the component 
+ 152:Generated_Source\PSoC4/Buttons.c **** *  instance. 
+ 153:Generated_Source\PSoC4/Buttons.c **** *
+ 154:Generated_Source\PSoC4/Buttons.c **** * The data output register controls the signal applied to the physical pin in 
+ 155:Generated_Source\PSoC4/Buttons.c **** * conjunction with the drive mode parameter. This is not the same as the 
+ 156:Generated_Source\PSoC4/Buttons.c **** * preferred Buttons_Read() API because the 
+ 157:Generated_Source\PSoC4/Buttons.c **** * Buttons_ReadDataReg() reads the data register instead of the status 
+ 158:Generated_Source\PSoC4/Buttons.c **** * register. For output pins this is a useful function to determine the value 
+ 159:Generated_Source\PSoC4/Buttons.c **** * just written to the pin.
+ 160:Generated_Source\PSoC4/Buttons.c **** *
+ 161:Generated_Source\PSoC4/Buttons.c **** * \return 
+ 162:Generated_Source\PSoC4/Buttons.c **** *  The current value of the data register masked and shifted into a right 
+ 163:Generated_Source\PSoC4/Buttons.c **** *  justified number for the component instance.
+ 164:Generated_Source\PSoC4/Buttons.c **** *
+ 165:Generated_Source\PSoC4/Buttons.c **** * \funcusage
+ 166:Generated_Source\PSoC4/Buttons.c **** *  \snippet Buttons_SUT.c usage_Buttons_ReadDataReg 
+ 167:Generated_Source\PSoC4/Buttons.c **** *******************************************************************************/
+ 168:Generated_Source\PSoC4/Buttons.c **** uint8 Buttons_ReadDataReg(void)
+ 169:Generated_Source\PSoC4/Buttons.c **** {
+ 224              		.loc 1 169 0
+ 225              		.cfi_startproc
+ 226              		@ args = 0, pretend = 0, frame = 0
+ 227              		@ frame_needed = 1, uses_anonymous_args = 0
+ 228 0000 80B5     		push	{r7, lr}
+ 229              		.cfi_def_cfa_offset 8
+ 230              		.cfi_offset 7, -8
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUiv23o.s 			page 8
+
+
+ 231              		.cfi_offset 14, -4
+ 232 0002 00AF     		add	r7, sp, #0
+ 233              		.cfi_def_cfa_register 7
+ 170:Generated_Source\PSoC4/Buttons.c ****     return (uint8)((Buttons_DR & Buttons_MASK) >> Buttons_SHIFT);
+ 234              		.loc 1 170 0
+ 235 0004 044B     		ldr	r3, .L13
+ 236 0006 1B68     		ldr	r3, [r3]
+ 237 0008 DBB2     		uxtb	r3, r3
+ 238 000a 1F22     		movs	r2, #31
+ 239 000c 1340     		ands	r3, r2
+ 240 000e DBB2     		uxtb	r3, r3
+ 171:Generated_Source\PSoC4/Buttons.c **** }
+ 241              		.loc 1 171 0
+ 242 0010 1800     		movs	r0, r3
+ 243 0012 BD46     		mov	sp, r7
+ 244              		@ sp needed
+ 245 0014 80BD     		pop	{r7, pc}
+ 246              	.L14:
+ 247 0016 C046     		.align	2
+ 248              	.L13:
+ 249 0018 00020440 		.word	1074004480
+ 250              		.cfi_endproc
+ 251              	.LFE3:
+ 252              		.size	Buttons_ReadDataReg, .-Buttons_ReadDataReg
+ 253              		.section	.text.Buttons_SetInterruptMode,"ax",%progbits
+ 254              		.align	2
+ 255              		.global	Buttons_SetInterruptMode
+ 256              		.code	16
+ 257              		.thumb_func
+ 258              		.type	Buttons_SetInterruptMode, %function
+ 259              	Buttons_SetInterruptMode:
+ 260              	.LFB4:
+ 172:Generated_Source\PSoC4/Buttons.c **** 
+ 173:Generated_Source\PSoC4/Buttons.c **** 
+ 174:Generated_Source\PSoC4/Buttons.c **** /*******************************************************************************
+ 175:Generated_Source\PSoC4/Buttons.c **** * Function Name: Buttons_SetInterruptMode
+ 176:Generated_Source\PSoC4/Buttons.c **** ****************************************************************************//**
+ 177:Generated_Source\PSoC4/Buttons.c **** *
+ 178:Generated_Source\PSoC4/Buttons.c **** * \brief Configures the interrupt mode for each of the Pins component's
+ 179:Generated_Source\PSoC4/Buttons.c **** *  pins. Alternatively you may set the interrupt mode for all the pins
+ 180:Generated_Source\PSoC4/Buttons.c **** *  specified in the Pins component.
+ 181:Generated_Source\PSoC4/Buttons.c **** *
+ 182:Generated_Source\PSoC4/Buttons.c **** *  <b>Note</b> The interrupt is port-wide and therefore any enabled pin
+ 183:Generated_Source\PSoC4/Buttons.c **** *  interrupt may trigger it.
+ 184:Generated_Source\PSoC4/Buttons.c **** *
+ 185:Generated_Source\PSoC4/Buttons.c **** * \param position
+ 186:Generated_Source\PSoC4/Buttons.c **** *  The pin position as listed in the Pins component. You may OR these to be 
+ 187:Generated_Source\PSoC4/Buttons.c **** *  able to configure the interrupt mode of multiple pins within a Pins 
+ 188:Generated_Source\PSoC4/Buttons.c **** *  component. Or you may use Buttons_INTR_ALL to configure the
+ 189:Generated_Source\PSoC4/Buttons.c **** *  interrupt mode of all the pins in the Pins component.       
+ 190:Generated_Source\PSoC4/Buttons.c **** *  - Buttons_0_INTR       (First pin in the list)
+ 191:Generated_Source\PSoC4/Buttons.c **** *  - Buttons_1_INTR       (Second pin in the list)
+ 192:Generated_Source\PSoC4/Buttons.c **** *  - ...
+ 193:Generated_Source\PSoC4/Buttons.c **** *  - Buttons_INTR_ALL     (All pins in Pins component)
+ 194:Generated_Source\PSoC4/Buttons.c **** *
+ 195:Generated_Source\PSoC4/Buttons.c **** * \param mode
+ 196:Generated_Source\PSoC4/Buttons.c **** *  Interrupt mode for the selected pins. Valid options are documented in
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUiv23o.s 			page 9
+
+
+ 197:Generated_Source\PSoC4/Buttons.c **** *  \ref intrMode.
+ 198:Generated_Source\PSoC4/Buttons.c **** *
+ 199:Generated_Source\PSoC4/Buttons.c **** * \return 
+ 200:Generated_Source\PSoC4/Buttons.c **** *  None
+ 201:Generated_Source\PSoC4/Buttons.c **** *  
+ 202:Generated_Source\PSoC4/Buttons.c **** * \sideeffect
+ 203:Generated_Source\PSoC4/Buttons.c **** *  It is recommended that the interrupt be disabled before calling this 
+ 204:Generated_Source\PSoC4/Buttons.c **** *  function to avoid unintended interrupt requests. Note that the interrupt
+ 205:Generated_Source\PSoC4/Buttons.c **** *  type is port wide, and therefore will trigger for any enabled pin on the 
+ 206:Generated_Source\PSoC4/Buttons.c **** *  port.
+ 207:Generated_Source\PSoC4/Buttons.c **** *
+ 208:Generated_Source\PSoC4/Buttons.c **** * \funcusage
+ 209:Generated_Source\PSoC4/Buttons.c **** *  \snippet Buttons_SUT.c usage_Buttons_SetInterruptMode
+ 210:Generated_Source\PSoC4/Buttons.c **** *******************************************************************************/
+ 211:Generated_Source\PSoC4/Buttons.c **** void Buttons_SetInterruptMode(uint16 position, uint16 mode)
+ 212:Generated_Source\PSoC4/Buttons.c **** {
+ 261              		.loc 1 212 0
+ 262              		.cfi_startproc
+ 263              		@ args = 0, pretend = 0, frame = 16
+ 264              		@ frame_needed = 1, uses_anonymous_args = 0
+ 265 0000 80B5     		push	{r7, lr}
+ 266              		.cfi_def_cfa_offset 8
+ 267              		.cfi_offset 7, -8
+ 268              		.cfi_offset 14, -4
+ 269 0002 84B0     		sub	sp, sp, #16
+ 270              		.cfi_def_cfa_offset 24
+ 271 0004 00AF     		add	r7, sp, #0
+ 272              		.cfi_def_cfa_register 7
+ 273 0006 0200     		movs	r2, r0
+ 274 0008 BB1D     		adds	r3, r7, #6
+ 275 000a 1A80     		strh	r2, [r3]
+ 276 000c 3B1D     		adds	r3, r7, #4
+ 277 000e 0A1C     		adds	r2, r1, #0
+ 278 0010 1A80     		strh	r2, [r3]
+ 213:Generated_Source\PSoC4/Buttons.c ****     uint32 intrCfg;
+ 214:Generated_Source\PSoC4/Buttons.c ****     
+ 215:Generated_Source\PSoC4/Buttons.c ****     intrCfg =  Buttons_INTCFG & (uint32)(~(uint32)position);
+ 279              		.loc 1 215 0
+ 280 0012 0B4B     		ldr	r3, .L16
+ 281 0014 1B68     		ldr	r3, [r3]
+ 282 0016 BA1D     		adds	r2, r7, #6
+ 283 0018 1288     		ldrh	r2, [r2]
+ 284 001a D243     		mvns	r2, r2
+ 285 001c 1340     		ands	r3, r2
+ 286 001e FB60     		str	r3, [r7, #12]
+ 216:Generated_Source\PSoC4/Buttons.c ****     Buttons_INTCFG = intrCfg | ((uint32)position & (uint32)mode);
+ 287              		.loc 1 216 0
+ 288 0020 074B     		ldr	r3, .L16
+ 289 0022 BA1D     		adds	r2, r7, #6
+ 290 0024 391D     		adds	r1, r7, #4
+ 291 0026 1288     		ldrh	r2, [r2]
+ 292 0028 0988     		ldrh	r1, [r1]
+ 293 002a 0A40     		ands	r2, r1
+ 294 002c 92B2     		uxth	r2, r2
+ 295 002e 1100     		movs	r1, r2
+ 296 0030 FA68     		ldr	r2, [r7, #12]
+ 297 0032 0A43     		orrs	r2, r1
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUiv23o.s 			page 10
+
+
+ 298 0034 1A60     		str	r2, [r3]
+ 217:Generated_Source\PSoC4/Buttons.c **** }
+ 299              		.loc 1 217 0
+ 300 0036 C046     		nop
+ 301 0038 BD46     		mov	sp, r7
+ 302 003a 04B0     		add	sp, sp, #16
+ 303              		@ sp needed
+ 304 003c 80BD     		pop	{r7, pc}
+ 305              	.L17:
+ 306 003e C046     		.align	2
+ 307              	.L16:
+ 308 0040 0C020440 		.word	1074004492
+ 309              		.cfi_endproc
+ 310              	.LFE4:
+ 311              		.size	Buttons_SetInterruptMode, .-Buttons_SetInterruptMode
+ 312              		.section	.text.Buttons_ClearInterrupt,"ax",%progbits
+ 313              		.align	2
+ 314              		.global	Buttons_ClearInterrupt
+ 315              		.code	16
+ 316              		.thumb_func
+ 317              		.type	Buttons_ClearInterrupt, %function
+ 318              	Buttons_ClearInterrupt:
+ 319              	.LFB5:
+ 218:Generated_Source\PSoC4/Buttons.c **** 
+ 219:Generated_Source\PSoC4/Buttons.c **** 
+ 220:Generated_Source\PSoC4/Buttons.c **** /*******************************************************************************
+ 221:Generated_Source\PSoC4/Buttons.c **** * Function Name: Buttons_ClearInterrupt
+ 222:Generated_Source\PSoC4/Buttons.c **** ****************************************************************************//**
+ 223:Generated_Source\PSoC4/Buttons.c **** *
+ 224:Generated_Source\PSoC4/Buttons.c **** * \brief Clears any active interrupts attached with the component and returns 
+ 225:Generated_Source\PSoC4/Buttons.c **** *  the value of the interrupt status register allowing determination of which
+ 226:Generated_Source\PSoC4/Buttons.c **** *  pins generated an interrupt event.
+ 227:Generated_Source\PSoC4/Buttons.c **** *
+ 228:Generated_Source\PSoC4/Buttons.c **** * \return 
+ 229:Generated_Source\PSoC4/Buttons.c **** *  The right-shifted current value of the interrupt status register. Each pin 
+ 230:Generated_Source\PSoC4/Buttons.c **** *  has one bit set if it generated an interrupt event. For example, bit 0 is 
+ 231:Generated_Source\PSoC4/Buttons.c **** *  for pin 0 and bit 1 is for pin 1 of the Pins component.
+ 232:Generated_Source\PSoC4/Buttons.c **** *  
+ 233:Generated_Source\PSoC4/Buttons.c **** * \sideeffect
+ 234:Generated_Source\PSoC4/Buttons.c **** *  Clears all bits of the physical port's interrupt status register, not just
+ 235:Generated_Source\PSoC4/Buttons.c **** *  those associated with the Pins component.
+ 236:Generated_Source\PSoC4/Buttons.c **** *
+ 237:Generated_Source\PSoC4/Buttons.c **** * \funcusage
+ 238:Generated_Source\PSoC4/Buttons.c **** *  \snippet Buttons_SUT.c usage_Buttons_ClearInterrupt
+ 239:Generated_Source\PSoC4/Buttons.c **** *******************************************************************************/
+ 240:Generated_Source\PSoC4/Buttons.c **** uint8 Buttons_ClearInterrupt(void)
+ 241:Generated_Source\PSoC4/Buttons.c **** {
+ 320              		.loc 1 241 0
+ 321              		.cfi_startproc
+ 322              		@ args = 0, pretend = 0, frame = 8
+ 323              		@ frame_needed = 1, uses_anonymous_args = 0
+ 324 0000 80B5     		push	{r7, lr}
+ 325              		.cfi_def_cfa_offset 8
+ 326              		.cfi_offset 7, -8
+ 327              		.cfi_offset 14, -4
+ 328 0002 82B0     		sub	sp, sp, #8
+ 329              		.cfi_def_cfa_offset 16
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUiv23o.s 			page 11
+
+
+ 330 0004 00AF     		add	r7, sp, #0
+ 331              		.cfi_def_cfa_register 7
+ 242:Generated_Source\PSoC4/Buttons.c **** 	uint8 maskedStatus = (uint8)(Buttons_INTSTAT & Buttons_MASK);
+ 332              		.loc 1 242 0
+ 333 0006 084B     		ldr	r3, .L20
+ 334 0008 1B68     		ldr	r3, [r3]
+ 335 000a DAB2     		uxtb	r2, r3
+ 336 000c FB1D     		adds	r3, r7, #7
+ 337 000e 1F21     		movs	r1, #31
+ 338 0010 0A40     		ands	r2, r1
+ 339 0012 1A70     		strb	r2, [r3]
+ 243:Generated_Source\PSoC4/Buttons.c **** 	Buttons_INTSTAT = maskedStatus;
+ 340              		.loc 1 243 0
+ 341 0014 044B     		ldr	r3, .L20
+ 342 0016 FA1D     		adds	r2, r7, #7
+ 343 0018 1278     		ldrb	r2, [r2]
+ 344 001a 1A60     		str	r2, [r3]
+ 244:Generated_Source\PSoC4/Buttons.c ****     return maskedStatus >> Buttons_SHIFT;
+ 345              		.loc 1 244 0
+ 346 001c FB1D     		adds	r3, r7, #7
+ 347 001e 1B78     		ldrb	r3, [r3]
+ 245:Generated_Source\PSoC4/Buttons.c **** }
+ 348              		.loc 1 245 0
+ 349 0020 1800     		movs	r0, r3
+ 350 0022 BD46     		mov	sp, r7
+ 351 0024 02B0     		add	sp, sp, #8
+ 352              		@ sp needed
+ 353 0026 80BD     		pop	{r7, pc}
+ 354              	.L21:
+ 355              		.align	2
+ 356              	.L20:
+ 357 0028 10020440 		.word	1074004496
+ 358              		.cfi_endproc
+ 359              	.LFE5:
+ 360              		.size	Buttons_ClearInterrupt, .-Buttons_ClearInterrupt
+ 361              		.text
+ 362              	.Letext0:
+ 363              		.file 2 "Generated_Source\\PSoC4\\cytypes.h"
+ 364              		.section	.debug_info,"",%progbits
+ 365              	.Ldebug_info0:
+ 366 0000 96010000 		.4byte	0x196
+ 367 0004 0400     		.2byte	0x4
+ 368 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 369 000a 04       		.byte	0x4
+ 370 000b 01       		.uleb128 0x1
+ 371 000c A1000000 		.4byte	.LASF28
+ 372 0010 0C       		.byte	0xc
+ 373 0011 84010000 		.4byte	.LASF29
+ 374 0015 25000000 		.4byte	.LASF30
+ 375 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 376 001d 00000000 		.4byte	0
+ 377 0021 00000000 		.4byte	.Ldebug_line0
+ 378 0025 02       		.uleb128 0x2
+ 379 0026 01       		.byte	0x1
+ 380 0027 06       		.byte	0x6
+ 381 0028 33020000 		.4byte	.LASF0
+ 382 002c 02       		.uleb128 0x2
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUiv23o.s 			page 12
+
+
+ 383 002d 01       		.byte	0x1
+ 384 002e 08       		.byte	0x8
+ 385 002f 68000000 		.4byte	.LASF1
+ 386 0033 02       		.uleb128 0x2
+ 387 0034 02       		.byte	0x2
+ 388 0035 05       		.byte	0x5
+ 389 0036 F6010000 		.4byte	.LASF2
+ 390 003a 02       		.uleb128 0x2
+ 391 003b 02       		.byte	0x2
+ 392 003c 07       		.byte	0x7
+ 393 003d 8E000000 		.4byte	.LASF3
+ 394 0041 02       		.uleb128 0x2
+ 395 0042 04       		.byte	0x4
+ 396 0043 05       		.byte	0x5
+ 397 0044 2A020000 		.4byte	.LASF4
+ 398 0048 02       		.uleb128 0x2
+ 399 0049 04       		.byte	0x4
+ 400 004a 07       		.byte	0x7
+ 401 004b 7C000000 		.4byte	.LASF5
+ 402 004f 02       		.uleb128 0x2
+ 403 0050 08       		.byte	0x8
+ 404 0051 05       		.byte	0x5
+ 405 0052 D6010000 		.4byte	.LASF6
+ 406 0056 02       		.uleb128 0x2
+ 407 0057 08       		.byte	0x8
+ 408 0058 07       		.byte	0x7
+ 409 0059 A5010000 		.4byte	.LASF7
+ 410 005d 03       		.uleb128 0x3
+ 411 005e 04       		.byte	0x4
+ 412 005f 05       		.byte	0x5
+ 413 0060 696E7400 		.ascii	"int\000"
+ 414 0064 02       		.uleb128 0x2
+ 415 0065 04       		.byte	0x4
+ 416 0066 07       		.byte	0x7
+ 417 0067 77010000 		.4byte	.LASF8
+ 418 006b 04       		.uleb128 0x4
+ 419 006c 00020000 		.4byte	.LASF9
+ 420 0070 02       		.byte	0x2
+ 421 0071 D201     		.2byte	0x1d2
+ 422 0073 2C000000 		.4byte	0x2c
+ 423 0077 04       		.uleb128 0x4
+ 424 0078 58010000 		.4byte	.LASF10
+ 425 007c 02       		.byte	0x2
+ 426 007d D301     		.2byte	0x1d3
+ 427 007f 3A000000 		.4byte	0x3a
+ 428 0083 04       		.uleb128 0x4
+ 429 0084 68010000 		.4byte	.LASF11
+ 430 0088 02       		.byte	0x2
+ 431 0089 D401     		.2byte	0x1d4
+ 432 008b 48000000 		.4byte	0x48
+ 433 008f 02       		.uleb128 0x2
+ 434 0090 04       		.byte	0x4
+ 435 0091 04       		.byte	0x4
+ 436 0092 62000000 		.4byte	.LASF12
+ 437 0096 02       		.uleb128 0x2
+ 438 0097 08       		.byte	0x8
+ 439 0098 04       		.byte	0x4
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUiv23o.s 			page 13
+
+
+ 440 0099 51010000 		.4byte	.LASF13
+ 441 009d 02       		.uleb128 0x2
+ 442 009e 01       		.byte	0x1
+ 443 009f 08       		.byte	0x8
+ 444 00a0 F1010000 		.4byte	.LASF14
+ 445 00a4 04       		.uleb128 0x4
+ 446 00a5 00000000 		.4byte	.LASF15
+ 447 00a9 02       		.byte	0x2
+ 448 00aa 7E02     		.2byte	0x27e
+ 449 00ac B0000000 		.4byte	0xb0
+ 450 00b0 05       		.uleb128 0x5
+ 451 00b1 83000000 		.4byte	0x83
+ 452 00b5 06       		.uleb128 0x6
+ 453 00b6 BC010000 		.4byte	.LASF16
+ 454 00ba 01       		.byte	0x1
+ 455 00bb 48       		.byte	0x48
+ 456 00bc 00000000 		.4byte	.LFB0
+ 457 00c0 8C000000 		.4byte	.LFE0-.LFB0
+ 458 00c4 01       		.uleb128 0x1
+ 459 00c5 9C       		.byte	0x9c
+ 460 00c6 D9000000 		.4byte	0xd9
+ 461 00ca 07       		.uleb128 0x7
+ 462 00cb D1010000 		.4byte	.LASF18
+ 463 00cf 01       		.byte	0x1
+ 464 00d0 48       		.byte	0x48
+ 465 00d1 6B000000 		.4byte	0x6b
+ 466 00d5 02       		.uleb128 0x2
+ 467 00d6 91       		.byte	0x91
+ 468 00d7 77       		.sleb128 -9
+ 469 00d8 00       		.byte	0
+ 470 00d9 06       		.uleb128 0x6
+ 471 00da 2F010000 		.4byte	.LASF17
+ 472 00de 01       		.byte	0x1
+ 473 00df 73       		.byte	0x73
+ 474 00e0 00000000 		.4byte	.LFB1
+ 475 00e4 4C000000 		.4byte	.LFE1-.LFB1
+ 476 00e8 01       		.uleb128 0x1
+ 477 00e9 9C       		.byte	0x9c
+ 478 00ea 0B010000 		.4byte	0x10b
+ 479 00ee 07       		.uleb128 0x7
+ 480 00ef 06000000 		.4byte	.LASF19
+ 481 00f3 01       		.byte	0x1
+ 482 00f4 73       		.byte	0x73
+ 483 00f5 6B000000 		.4byte	0x6b
+ 484 00f9 02       		.uleb128 0x2
+ 485 00fa 91       		.byte	0x91
+ 486 00fb 6F       		.sleb128 -17
+ 487 00fc 08       		.uleb128 0x8
+ 488 00fd 76000000 		.4byte	.LASF24
+ 489 0101 01       		.byte	0x1
+ 490 0102 75       		.byte	0x75
+ 491 0103 6B000000 		.4byte	0x6b
+ 492 0107 02       		.uleb128 0x2
+ 493 0108 91       		.byte	0x91
+ 494 0109 77       		.sleb128 -9
+ 495 010a 00       		.byte	0
+ 496 010b 09       		.uleb128 0x9
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUiv23o.s 			page 14
+
+
+ 497 010c 1D020000 		.4byte	.LASF20
+ 498 0110 01       		.byte	0x1
+ 499 0111 8C       		.byte	0x8c
+ 500 0112 6B000000 		.4byte	0x6b
+ 501 0116 00000000 		.4byte	.LFB2
+ 502 011a 1C000000 		.4byte	.LFE2-.LFB2
+ 503 011e 01       		.uleb128 0x1
+ 504 011f 9C       		.byte	0x9c
+ 505 0120 09       		.uleb128 0x9
+ 506 0121 3D010000 		.4byte	.LASF21
+ 507 0125 01       		.byte	0x1
+ 508 0126 A8       		.byte	0xa8
+ 509 0127 6B000000 		.4byte	0x6b
+ 510 012b 00000000 		.4byte	.LFB3
+ 511 012f 1C000000 		.4byte	.LFE3-.LFB3
+ 512 0133 01       		.uleb128 0x1
+ 513 0134 9C       		.byte	0x9c
+ 514 0135 06       		.uleb128 0x6
+ 515 0136 0C000000 		.4byte	.LASF22
+ 516 013a 01       		.byte	0x1
+ 517 013b D3       		.byte	0xd3
+ 518 013c 00000000 		.4byte	.LFB4
+ 519 0140 44000000 		.4byte	.LFE4-.LFB4
+ 520 0144 01       		.uleb128 0x1
+ 521 0145 9C       		.byte	0x9c
+ 522 0146 75010000 		.4byte	0x175
+ 523 014a 07       		.uleb128 0x7
+ 524 014b 5F010000 		.4byte	.LASF23
+ 525 014f 01       		.byte	0x1
+ 526 0150 D3       		.byte	0xd3
+ 527 0151 77000000 		.4byte	0x77
+ 528 0155 02       		.uleb128 0x2
+ 529 0156 91       		.byte	0x91
+ 530 0157 6E       		.sleb128 -18
+ 531 0158 07       		.uleb128 0x7
+ 532 0159 D1010000 		.4byte	.LASF18
+ 533 015d 01       		.byte	0x1
+ 534 015e D3       		.byte	0xd3
+ 535 015f 77000000 		.4byte	0x77
+ 536 0163 02       		.uleb128 0x2
+ 537 0164 91       		.byte	0x91
+ 538 0165 6C       		.sleb128 -20
+ 539 0166 08       		.uleb128 0x8
+ 540 0167 6F010000 		.4byte	.LASF25
+ 541 016b 01       		.byte	0x1
+ 542 016c D5       		.byte	0xd5
+ 543 016d 83000000 		.4byte	0x83
+ 544 0171 02       		.uleb128 0x2
+ 545 0172 91       		.byte	0x91
+ 546 0173 74       		.sleb128 -12
+ 547 0174 00       		.byte	0
+ 548 0175 0A       		.uleb128 0xa
+ 549 0176 06020000 		.4byte	.LASF26
+ 550 017a 01       		.byte	0x1
+ 551 017b F0       		.byte	0xf0
+ 552 017c 6B000000 		.4byte	0x6b
+ 553 0180 00000000 		.4byte	.LFB5
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUiv23o.s 			page 15
+
+
+ 554 0184 2C000000 		.4byte	.LFE5-.LFB5
+ 555 0188 01       		.uleb128 0x1
+ 556 0189 9C       		.byte	0x9c
+ 557 018a 08       		.uleb128 0x8
+ 558 018b E4010000 		.4byte	.LASF27
+ 559 018f 01       		.byte	0x1
+ 560 0190 F2       		.byte	0xf2
+ 561 0191 6B000000 		.4byte	0x6b
+ 562 0195 02       		.uleb128 0x2
+ 563 0196 91       		.byte	0x91
+ 564 0197 77       		.sleb128 -9
+ 565 0198 00       		.byte	0
+ 566 0199 00       		.byte	0
+ 567              		.section	.debug_abbrev,"",%progbits
+ 568              	.Ldebug_abbrev0:
+ 569 0000 01       		.uleb128 0x1
+ 570 0001 11       		.uleb128 0x11
+ 571 0002 01       		.byte	0x1
+ 572 0003 25       		.uleb128 0x25
+ 573 0004 0E       		.uleb128 0xe
+ 574 0005 13       		.uleb128 0x13
+ 575 0006 0B       		.uleb128 0xb
+ 576 0007 03       		.uleb128 0x3
+ 577 0008 0E       		.uleb128 0xe
+ 578 0009 1B       		.uleb128 0x1b
+ 579 000a 0E       		.uleb128 0xe
+ 580 000b 55       		.uleb128 0x55
+ 581 000c 17       		.uleb128 0x17
+ 582 000d 11       		.uleb128 0x11
+ 583 000e 01       		.uleb128 0x1
+ 584 000f 10       		.uleb128 0x10
+ 585 0010 17       		.uleb128 0x17
+ 586 0011 00       		.byte	0
+ 587 0012 00       		.byte	0
+ 588 0013 02       		.uleb128 0x2
+ 589 0014 24       		.uleb128 0x24
+ 590 0015 00       		.byte	0
+ 591 0016 0B       		.uleb128 0xb
+ 592 0017 0B       		.uleb128 0xb
+ 593 0018 3E       		.uleb128 0x3e
+ 594 0019 0B       		.uleb128 0xb
+ 595 001a 03       		.uleb128 0x3
+ 596 001b 0E       		.uleb128 0xe
+ 597 001c 00       		.byte	0
+ 598 001d 00       		.byte	0
+ 599 001e 03       		.uleb128 0x3
+ 600 001f 24       		.uleb128 0x24
+ 601 0020 00       		.byte	0
+ 602 0021 0B       		.uleb128 0xb
+ 603 0022 0B       		.uleb128 0xb
+ 604 0023 3E       		.uleb128 0x3e
+ 605 0024 0B       		.uleb128 0xb
+ 606 0025 03       		.uleb128 0x3
+ 607 0026 08       		.uleb128 0x8
+ 608 0027 00       		.byte	0
+ 609 0028 00       		.byte	0
+ 610 0029 04       		.uleb128 0x4
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUiv23o.s 			page 16
+
+
+ 611 002a 16       		.uleb128 0x16
+ 612 002b 00       		.byte	0
+ 613 002c 03       		.uleb128 0x3
+ 614 002d 0E       		.uleb128 0xe
+ 615 002e 3A       		.uleb128 0x3a
+ 616 002f 0B       		.uleb128 0xb
+ 617 0030 3B       		.uleb128 0x3b
+ 618 0031 05       		.uleb128 0x5
+ 619 0032 49       		.uleb128 0x49
+ 620 0033 13       		.uleb128 0x13
+ 621 0034 00       		.byte	0
+ 622 0035 00       		.byte	0
+ 623 0036 05       		.uleb128 0x5
+ 624 0037 35       		.uleb128 0x35
+ 625 0038 00       		.byte	0
+ 626 0039 49       		.uleb128 0x49
+ 627 003a 13       		.uleb128 0x13
+ 628 003b 00       		.byte	0
+ 629 003c 00       		.byte	0
+ 630 003d 06       		.uleb128 0x6
+ 631 003e 2E       		.uleb128 0x2e
+ 632 003f 01       		.byte	0x1
+ 633 0040 3F       		.uleb128 0x3f
+ 634 0041 19       		.uleb128 0x19
+ 635 0042 03       		.uleb128 0x3
+ 636 0043 0E       		.uleb128 0xe
+ 637 0044 3A       		.uleb128 0x3a
+ 638 0045 0B       		.uleb128 0xb
+ 639 0046 3B       		.uleb128 0x3b
+ 640 0047 0B       		.uleb128 0xb
+ 641 0048 27       		.uleb128 0x27
+ 642 0049 19       		.uleb128 0x19
+ 643 004a 11       		.uleb128 0x11
+ 644 004b 01       		.uleb128 0x1
+ 645 004c 12       		.uleb128 0x12
+ 646 004d 06       		.uleb128 0x6
+ 647 004e 40       		.uleb128 0x40
+ 648 004f 18       		.uleb128 0x18
+ 649 0050 9742     		.uleb128 0x2117
+ 650 0052 19       		.uleb128 0x19
+ 651 0053 01       		.uleb128 0x1
+ 652 0054 13       		.uleb128 0x13
+ 653 0055 00       		.byte	0
+ 654 0056 00       		.byte	0
+ 655 0057 07       		.uleb128 0x7
+ 656 0058 05       		.uleb128 0x5
+ 657 0059 00       		.byte	0
+ 658 005a 03       		.uleb128 0x3
+ 659 005b 0E       		.uleb128 0xe
+ 660 005c 3A       		.uleb128 0x3a
+ 661 005d 0B       		.uleb128 0xb
+ 662 005e 3B       		.uleb128 0x3b
+ 663 005f 0B       		.uleb128 0xb
+ 664 0060 49       		.uleb128 0x49
+ 665 0061 13       		.uleb128 0x13
+ 666 0062 02       		.uleb128 0x2
+ 667 0063 18       		.uleb128 0x18
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUiv23o.s 			page 17
+
+
+ 668 0064 00       		.byte	0
+ 669 0065 00       		.byte	0
+ 670 0066 08       		.uleb128 0x8
+ 671 0067 34       		.uleb128 0x34
+ 672 0068 00       		.byte	0
+ 673 0069 03       		.uleb128 0x3
+ 674 006a 0E       		.uleb128 0xe
+ 675 006b 3A       		.uleb128 0x3a
+ 676 006c 0B       		.uleb128 0xb
+ 677 006d 3B       		.uleb128 0x3b
+ 678 006e 0B       		.uleb128 0xb
+ 679 006f 49       		.uleb128 0x49
+ 680 0070 13       		.uleb128 0x13
+ 681 0071 02       		.uleb128 0x2
+ 682 0072 18       		.uleb128 0x18
+ 683 0073 00       		.byte	0
+ 684 0074 00       		.byte	0
+ 685 0075 09       		.uleb128 0x9
+ 686 0076 2E       		.uleb128 0x2e
+ 687 0077 00       		.byte	0
+ 688 0078 3F       		.uleb128 0x3f
+ 689 0079 19       		.uleb128 0x19
+ 690 007a 03       		.uleb128 0x3
+ 691 007b 0E       		.uleb128 0xe
+ 692 007c 3A       		.uleb128 0x3a
+ 693 007d 0B       		.uleb128 0xb
+ 694 007e 3B       		.uleb128 0x3b
+ 695 007f 0B       		.uleb128 0xb
+ 696 0080 27       		.uleb128 0x27
+ 697 0081 19       		.uleb128 0x19
+ 698 0082 49       		.uleb128 0x49
+ 699 0083 13       		.uleb128 0x13
+ 700 0084 11       		.uleb128 0x11
+ 701 0085 01       		.uleb128 0x1
+ 702 0086 12       		.uleb128 0x12
+ 703 0087 06       		.uleb128 0x6
+ 704 0088 40       		.uleb128 0x40
+ 705 0089 18       		.uleb128 0x18
+ 706 008a 9742     		.uleb128 0x2117
+ 707 008c 19       		.uleb128 0x19
+ 708 008d 00       		.byte	0
+ 709 008e 00       		.byte	0
+ 710 008f 0A       		.uleb128 0xa
+ 711 0090 2E       		.uleb128 0x2e
+ 712 0091 01       		.byte	0x1
+ 713 0092 3F       		.uleb128 0x3f
+ 714 0093 19       		.uleb128 0x19
+ 715 0094 03       		.uleb128 0x3
+ 716 0095 0E       		.uleb128 0xe
+ 717 0096 3A       		.uleb128 0x3a
+ 718 0097 0B       		.uleb128 0xb
+ 719 0098 3B       		.uleb128 0x3b
+ 720 0099 0B       		.uleb128 0xb
+ 721 009a 27       		.uleb128 0x27
+ 722 009b 19       		.uleb128 0x19
+ 723 009c 49       		.uleb128 0x49
+ 724 009d 13       		.uleb128 0x13
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUiv23o.s 			page 18
+
+
+ 725 009e 11       		.uleb128 0x11
+ 726 009f 01       		.uleb128 0x1
+ 727 00a0 12       		.uleb128 0x12
+ 728 00a1 06       		.uleb128 0x6
+ 729 00a2 40       		.uleb128 0x40
+ 730 00a3 18       		.uleb128 0x18
+ 731 00a4 9742     		.uleb128 0x2117
+ 732 00a6 19       		.uleb128 0x19
+ 733 00a7 00       		.byte	0
+ 734 00a8 00       		.byte	0
+ 735 00a9 00       		.byte	0
+ 736              		.section	.debug_aranges,"",%progbits
+ 737 0000 44000000 		.4byte	0x44
+ 738 0004 0200     		.2byte	0x2
+ 739 0006 00000000 		.4byte	.Ldebug_info0
+ 740 000a 04       		.byte	0x4
+ 741 000b 00       		.byte	0
+ 742 000c 0000     		.2byte	0
+ 743 000e 0000     		.2byte	0
+ 744 0010 00000000 		.4byte	.LFB0
+ 745 0014 8C000000 		.4byte	.LFE0-.LFB0
+ 746 0018 00000000 		.4byte	.LFB1
+ 747 001c 4C000000 		.4byte	.LFE1-.LFB1
+ 748 0020 00000000 		.4byte	.LFB2
+ 749 0024 1C000000 		.4byte	.LFE2-.LFB2
+ 750 0028 00000000 		.4byte	.LFB3
+ 751 002c 1C000000 		.4byte	.LFE3-.LFB3
+ 752 0030 00000000 		.4byte	.LFB4
+ 753 0034 44000000 		.4byte	.LFE4-.LFB4
+ 754 0038 00000000 		.4byte	.LFB5
+ 755 003c 2C000000 		.4byte	.LFE5-.LFB5
+ 756 0040 00000000 		.4byte	0
+ 757 0044 00000000 		.4byte	0
+ 758              		.section	.debug_ranges,"",%progbits
+ 759              	.Ldebug_ranges0:
+ 760 0000 00000000 		.4byte	.LFB0
+ 761 0004 8C000000 		.4byte	.LFE0
+ 762 0008 00000000 		.4byte	.LFB1
+ 763 000c 4C000000 		.4byte	.LFE1
+ 764 0010 00000000 		.4byte	.LFB2
+ 765 0014 1C000000 		.4byte	.LFE2
+ 766 0018 00000000 		.4byte	.LFB3
+ 767 001c 1C000000 		.4byte	.LFE3
+ 768 0020 00000000 		.4byte	.LFB4
+ 769 0024 44000000 		.4byte	.LFE4
+ 770 0028 00000000 		.4byte	.LFB5
+ 771 002c 2C000000 		.4byte	.LFE5
+ 772 0030 00000000 		.4byte	0
+ 773 0034 00000000 		.4byte	0
+ 774              		.section	.debug_line,"",%progbits
+ 775              	.Ldebug_line0:
+ 776 0000 BF000000 		.section	.debug_str,"MS",%progbits,1
+ 776      02004400 
+ 776      00000201 
+ 776      FB0E0D00 
+ 776      01010101 
+ 777              	.LASF15:
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUiv23o.s 			page 19
+
+
+ 778 0000 72656733 		.ascii	"reg32\000"
+ 778      3200
+ 779              	.LASF19:
+ 780 0006 76616C75 		.ascii	"value\000"
+ 780      6500
+ 781              	.LASF22:
+ 782 000c 42757474 		.ascii	"Buttons_SetInterruptMode\000"
+ 782      6F6E735F 
+ 782      53657449 
+ 782      6E746572 
+ 782      72757074 
+ 783              	.LASF30:
+ 784 0025 443A5C44 		.ascii	"D:\\Documents\\PSoC Creator\\Workspace\\BLE_HID_Key"
+ 784      6F63756D 
+ 784      656E7473 
+ 784      5C50536F 
+ 784      43204372 
+ 785 0054 626F6172 		.ascii	"board01.cydsn\000"
+ 785      6430312E 
+ 785      63796473 
+ 785      6E00
+ 786              	.LASF12:
+ 787 0062 666C6F61 		.ascii	"float\000"
+ 787      7400
+ 788              	.LASF1:
+ 789 0068 756E7369 		.ascii	"unsigned char\000"
+ 789      676E6564 
+ 789      20636861 
+ 789      7200
+ 790              	.LASF24:
+ 791 0076 64725661 		.ascii	"drVal\000"
+ 791      6C00
+ 792              	.LASF5:
+ 793 007c 6C6F6E67 		.ascii	"long unsigned int\000"
+ 793      20756E73 
+ 793      69676E65 
+ 793      6420696E 
+ 793      7400
+ 794              	.LASF3:
+ 795 008e 73686F72 		.ascii	"short unsigned int\000"
+ 795      7420756E 
+ 795      7369676E 
+ 795      65642069 
+ 795      6E7400
+ 796              	.LASF28:
+ 797 00a1 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 797      43313120 
+ 797      352E342E 
+ 797      31203230 
+ 797      31363036 
+ 798 00d4 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 798      20726576 
+ 798      6973696F 
+ 798      6E203233 
+ 798      37373135 
+ 799 0107 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 799      66756E63 
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUiv23o.s 			page 20
+
+
+ 799      74696F6E 
+ 799      2D736563 
+ 799      74696F6E 
+ 800              	.LASF17:
+ 801 012f 42757474 		.ascii	"Buttons_Write\000"
+ 801      6F6E735F 
+ 801      57726974 
+ 801      6500
+ 802              	.LASF21:
+ 803 013d 42757474 		.ascii	"Buttons_ReadDataReg\000"
+ 803      6F6E735F 
+ 803      52656164 
+ 803      44617461 
+ 803      52656700 
+ 804              	.LASF13:
+ 805 0151 646F7562 		.ascii	"double\000"
+ 805      6C6500
+ 806              	.LASF10:
+ 807 0158 75696E74 		.ascii	"uint16\000"
+ 807      313600
+ 808              	.LASF23:
+ 809 015f 706F7369 		.ascii	"position\000"
+ 809      74696F6E 
+ 809      00
+ 810              	.LASF11:
+ 811 0168 75696E74 		.ascii	"uint32\000"
+ 811      333200
+ 812              	.LASF25:
+ 813 016f 696E7472 		.ascii	"intrCfg\000"
+ 813      43666700 
+ 814              	.LASF8:
+ 815 0177 756E7369 		.ascii	"unsigned int\000"
+ 815      676E6564 
+ 815      20696E74 
+ 815      00
+ 816              	.LASF29:
+ 817 0184 47656E65 		.ascii	"Generated_Source\\PSoC4\\Buttons.c\000"
+ 817      72617465 
+ 817      645F536F 
+ 817      75726365 
+ 817      5C50536F 
+ 818              	.LASF7:
+ 819 01a5 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 819      206C6F6E 
+ 819      6720756E 
+ 819      7369676E 
+ 819      65642069 
+ 820              	.LASF16:
+ 821 01bc 42757474 		.ascii	"Buttons_SetDriveMode\000"
+ 821      6F6E735F 
+ 821      53657444 
+ 821      72697665 
+ 821      4D6F6465 
+ 822              	.LASF18:
+ 823 01d1 6D6F6465 		.ascii	"mode\000"
+ 823      00
+ 824              	.LASF6:
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccUiv23o.s 			page 21
+
+
+ 825 01d6 6C6F6E67 		.ascii	"long long int\000"
+ 825      206C6F6E 
+ 825      6720696E 
+ 825      7400
+ 826              	.LASF27:
+ 827 01e4 6D61736B 		.ascii	"maskedStatus\000"
+ 827      65645374 
+ 827      61747573 
+ 827      00
+ 828              	.LASF14:
+ 829 01f1 63686172 		.ascii	"char\000"
+ 829      00
+ 830              	.LASF2:
+ 831 01f6 73686F72 		.ascii	"short int\000"
+ 831      7420696E 
+ 831      7400
+ 832              	.LASF9:
+ 833 0200 75696E74 		.ascii	"uint8\000"
+ 833      3800
+ 834              	.LASF26:
+ 835 0206 42757474 		.ascii	"Buttons_ClearInterrupt\000"
+ 835      6F6E735F 
+ 835      436C6561 
+ 835      72496E74 
+ 835      65727275 
+ 836              	.LASF20:
+ 837 021d 42757474 		.ascii	"Buttons_Read\000"
+ 837      6F6E735F 
+ 837      52656164 
+ 837      00
+ 838              	.LASF4:
+ 839 022a 6C6F6E67 		.ascii	"long int\000"
+ 839      20696E74 
+ 839      00
+ 840              	.LASF0:
+ 841 0233 7369676E 		.ascii	"signed char\000"
+ 841      65642063 
+ 841      68617200 
+ 842              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

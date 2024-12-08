@@ -1,0 +1,6 @@
+--------------- Clean Started: 11/30/2024 23:21:33 Project: BLE_HID_Keyboard01, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
+Deleting file ".\BLE_HID_Keyboard01.cycdx"
+Deleting file ".\BLE_HID_Keyboard01.svd"
+Deleting file ".\BLE_HID_Keyboard01.rpt"
+Deleting file ".\BLE_HID_Keyboard01_timing.html"
+--------------- Clean Succeeded: 11/30/2024 23:21:33 ---------------
