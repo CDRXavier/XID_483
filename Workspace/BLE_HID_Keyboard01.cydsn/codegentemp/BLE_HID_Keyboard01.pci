@@ -1,5 +1,5 @@
 # BLE_HID_Keyboard01
-# 2024-12-08 22:25:59Z
+# 2024-12-09 05:28:14Z
 
 # IO_6@[IOP=(0)][IoId=(6)] is reserved: SWDDebugEnabled
 dont_use_io iocell 0 6
@@ -24,5 +24,5 @@ set_io "Rows(3)" iocell 2 3
 set_io "Rows(4)" iocell 2 4
 set_io "CP_MISO(0)" iocell 0 1
 set_io "DP_CLR(0)" iocell 1 6
-set_io "DP_DAT(0)" iocell 0 0
+set_io "DP_DAT(0)" iocell 0 4
 set_io "DP_CLK(0)" iocell 0 3

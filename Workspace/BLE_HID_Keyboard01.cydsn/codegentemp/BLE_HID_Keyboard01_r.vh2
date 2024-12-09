@@ -1,5 +1,5 @@
 -- Project:   BLE_HID_Keyboard01
--- Generated: 12/08/2024 17:26:00
+-- Generated: 12/09/2024 00:28:15
 -- PSoC Creator  4.4
 
 ENTITY BLE_HID_Keyboard01 IS
@@ -58,9 +58,9 @@ ARCHITECTURE __DEFAULT__ OF BLE_HID_Keyboard01 IS
     SIGNAL Net_142 : bit;
     SIGNAL Net_909 : bit;
     SIGNAL Net_915 : bit;
-    ATTRIBUTE placement_force OF Net_915 : SIGNAL IS "U(1,1,B)3";
+    ATTRIBUTE placement_force OF Net_915 : SIGNAL IS "U(1,0,B)0";
     SIGNAL Net_977 : bit;
-    ATTRIBUTE placement_force OF Net_977 : SIGNAL IS "U(1,0,B)1";
+    ATTRIBUTE placement_force OF Net_977 : SIGNAL IS "U(0,1,A)3";
     SIGNAL Net_979 : bit;
     ATTRIBUTE placement_force OF Net_979 : SIGNAL IS "U(1,1,A)0";
     SIGNAL Rows(0)__PA : bit;
@@ -71,7 +71,7 @@ ARCHITECTURE __DEFAULT__ OF BLE_HID_Keyboard01 IS
     SIGNAL SW2(0)__PA : bit;
     SIGNAL \BLE:Net_15\ : bit;
     SIGNAL \SPIM_1:BSPIM:cnt_enable\ : bit;
-    ATTRIBUTE placement_force OF \SPIM_1:BSPIM:cnt_enable\ : SIGNAL IS "U(1,1,B)0";
+    ATTRIBUTE placement_force OF \SPIM_1:BSPIM:cnt_enable\ : SIGNAL IS "U(0,1,A)0";
     SIGNAL \SPIM_1:BSPIM:cnt_tc\ : bit;
     SIGNAL \SPIM_1:BSPIM:count_0\ : bit;
     SIGNAL \SPIM_1:BSPIM:count_1\ : bit;
@@ -80,27 +80,29 @@ ARCHITECTURE __DEFAULT__ OF BLE_HID_Keyboard01 IS
     SIGNAL \SPIM_1:BSPIM:count_4\ : bit;
     SIGNAL \SPIM_1:BSPIM:count_5\ : bit;
     SIGNAL \SPIM_1:BSPIM:count_6\ : bit;
+    SIGNAL \SPIM_1:BSPIM:ld_ident\ : bit;
+    ATTRIBUTE placement_force OF \SPIM_1:BSPIM:ld_ident\ : SIGNAL IS "U(1,1,B)1";
     SIGNAL \SPIM_1:BSPIM:load_cond\ : bit;
-    ATTRIBUTE placement_force OF \SPIM_1:BSPIM:load_cond\ : SIGNAL IS "U(1,1,A)1";
+    ATTRIBUTE placement_force OF \SPIM_1:BSPIM:load_cond\ : SIGNAL IS "U(1,1,B)2";
     SIGNAL \SPIM_1:BSPIM:load_rx_data\ : bit;
-    ATTRIBUTE placement_force OF \SPIM_1:BSPIM:load_rx_data\ : SIGNAL IS "U(1,1,B)1";
+    ATTRIBUTE placement_force OF \SPIM_1:BSPIM:load_rx_data\ : SIGNAL IS "U(1,1,A)1";
     SIGNAL \SPIM_1:BSPIM:mosi_from_dp\ : bit;
     SIGNAL \SPIM_1:BSPIM:rx_status_4\ : bit;
     SIGNAL \SPIM_1:BSPIM:rx_status_5\ : bit;
     SIGNAL \SPIM_1:BSPIM:rx_status_6\ : bit;
-    ATTRIBUTE placement_force OF \SPIM_1:BSPIM:rx_status_6\ : SIGNAL IS "U(1,1,B)2";
+    ATTRIBUTE placement_force OF \SPIM_1:BSPIM:rx_status_6\ : SIGNAL IS "U(1,1,B)0";
     SIGNAL \SPIM_1:BSPIM:state_0\ : bit;
-    ATTRIBUTE placement_force OF \SPIM_1:BSPIM:state_0\ : SIGNAL IS "U(1,0,B)0";
+    ATTRIBUTE placement_force OF \SPIM_1:BSPIM:state_0\ : SIGNAL IS "U(1,0,A)1";
     SIGNAL \SPIM_1:BSPIM:state_1\ : bit;
-    ATTRIBUTE placement_force OF \SPIM_1:BSPIM:state_1\ : SIGNAL IS "U(1,0,A)0";
+    ATTRIBUTE placement_force OF \SPIM_1:BSPIM:state_1\ : SIGNAL IS "U(1,0,B)1";
     SIGNAL \SPIM_1:BSPIM:state_2\ : bit;
-    ATTRIBUTE placement_force OF \SPIM_1:BSPIM:state_2\ : SIGNAL IS "U(1,0,A)1";
+    ATTRIBUTE placement_force OF \SPIM_1:BSPIM:state_2\ : SIGNAL IS "U(1,0,A)0";
     SIGNAL \SPIM_1:BSPIM:tx_status_0\ : bit;
-    ATTRIBUTE placement_force OF \SPIM_1:BSPIM:tx_status_0\ : SIGNAL IS "U(1,0,B)2";
+    ATTRIBUTE placement_force OF \SPIM_1:BSPIM:tx_status_0\ : SIGNAL IS "U(1,0,B)3";
     SIGNAL \SPIM_1:BSPIM:tx_status_1\ : bit;
     SIGNAL \SPIM_1:BSPIM:tx_status_2\ : bit;
     SIGNAL \SPIM_1:BSPIM:tx_status_4\ : bit;
-    ATTRIBUTE placement_force OF \SPIM_1:BSPIM:tx_status_4\ : SIGNAL IS "U(1,0,A)2";
+    ATTRIBUTE placement_force OF \SPIM_1:BSPIM:tx_status_4\ : SIGNAL IS "U(1,1,A)3";
     SIGNAL \SPIM_1:Net_276_digital\ : bit;
     ATTRIBUTE udbclken_assigned OF \SPIM_1:Net_276_digital\ : SIGNAL IS "True";
     ATTRIBUTE global_signal OF \SPIM_1:Net_276_digital\ : SIGNAL IS true;
@@ -145,7 +147,7 @@ ARCHITECTURE __DEFAULT__ OF BLE_HID_Keyboard01 IS
     ATTRIBUTE lib_model OF DP_CLR(0) : LABEL IS "iocell14";
     ATTRIBUTE Location OF DP_CLR(0) : LABEL IS "P1[6]";
     ATTRIBUTE lib_model OF DP_DAT(0) : LABEL IS "iocell15";
-    ATTRIBUTE Location OF DP_DAT(0) : LABEL IS "P0[0]";
+    ATTRIBUTE Location OF DP_DAT(0) : LABEL IS "P0[4]";
     ATTRIBUTE lib_model OF DP_CLK(0) : LABEL IS "iocell16";
     ATTRIBUTE Location OF DP_CLK(0) : LABEL IS "P0[3]";
     ATTRIBUTE lib_model OF \SPIM_1:BSPIM:load_rx_data\ : LABEL IS "macrocell1";
@@ -153,7 +155,7 @@ ARCHITECTURE __DEFAULT__ OF BLE_HID_Keyboard01 IS
     ATTRIBUTE lib_model OF \SPIM_1:BSPIM:tx_status_0\ : LABEL IS "macrocell2";
     ATTRIBUTE Location OF \SPIM_1:BSPIM:tx_status_0\ : LABEL IS "U(1,0)";
     ATTRIBUTE lib_model OF \SPIM_1:BSPIM:tx_status_4\ : LABEL IS "macrocell3";
-    ATTRIBUTE Location OF \SPIM_1:BSPIM:tx_status_4\ : LABEL IS "U(1,0)";
+    ATTRIBUTE Location OF \SPIM_1:BSPIM:tx_status_4\ : LABEL IS "U(1,1)";
     ATTRIBUTE lib_model OF \SPIM_1:BSPIM:rx_status_6\ : LABEL IS "macrocell4";
     ATTRIBUTE Location OF \SPIM_1:BSPIM:rx_status_6\ : LABEL IS "U(1,1)";
     ATTRIBUTE Location OF \BLE:cy_m0s8_ble\ : LABEL IS "F(BLE,0)";
@@ -163,7 +165,7 @@ ARCHITECTURE __DEFAULT__ OF BLE_HID_Keyboard01 IS
     ATTRIBUTE lib_model OF \SPIM_1:BSPIM:TxStsReg\ : LABEL IS "statusicell1";
     ATTRIBUTE Location OF \SPIM_1:BSPIM:TxStsReg\ : LABEL IS "U(1,0)";
     ATTRIBUTE lib_model OF \SPIM_1:BSPIM:RxStsReg\ : LABEL IS "statusicell2";
-    ATTRIBUTE Location OF \SPIM_1:BSPIM:RxStsReg\ : LABEL IS "U(0,1)";
+    ATTRIBUTE Location OF \SPIM_1:BSPIM:RxStsReg\ : LABEL IS "U(0,0)";
     ATTRIBUTE lib_model OF \SPIM_1:BSPIM:sR8:Dp:u0\ : LABEL IS "datapathcell1";
     ATTRIBUTE Location OF \SPIM_1:BSPIM:sR8:Dp:u0\ : LABEL IS "U(1,0)";
     ATTRIBUTE lib_model OF Net_979 : LABEL IS "macrocell5";
@@ -175,13 +177,15 @@ ARCHITECTURE __DEFAULT__ OF BLE_HID_Keyboard01 IS
     ATTRIBUTE lib_model OF \SPIM_1:BSPIM:state_0\ : LABEL IS "macrocell8";
     ATTRIBUTE Location OF \SPIM_1:BSPIM:state_0\ : LABEL IS "U(1,0)";
     ATTRIBUTE lib_model OF Net_977 : LABEL IS "macrocell9";
-    ATTRIBUTE Location OF Net_977 : LABEL IS "U(1,0)";
+    ATTRIBUTE Location OF Net_977 : LABEL IS "U(0,1)";
     ATTRIBUTE lib_model OF \SPIM_1:BSPIM:load_cond\ : LABEL IS "macrocell10";
     ATTRIBUTE Location OF \SPIM_1:BSPIM:load_cond\ : LABEL IS "U(1,1)";
-    ATTRIBUTE lib_model OF \SPIM_1:BSPIM:cnt_enable\ : LABEL IS "macrocell11";
-    ATTRIBUTE Location OF \SPIM_1:BSPIM:cnt_enable\ : LABEL IS "U(1,1)";
-    ATTRIBUTE lib_model OF Net_915 : LABEL IS "macrocell12";
-    ATTRIBUTE Location OF Net_915 : LABEL IS "U(1,1)";
+    ATTRIBUTE lib_model OF \SPIM_1:BSPIM:ld_ident\ : LABEL IS "macrocell11";
+    ATTRIBUTE Location OF \SPIM_1:BSPIM:ld_ident\ : LABEL IS "U(1,1)";
+    ATTRIBUTE lib_model OF \SPIM_1:BSPIM:cnt_enable\ : LABEL IS "macrocell12";
+    ATTRIBUTE Location OF \SPIM_1:BSPIM:cnt_enable\ : LABEL IS "U(0,1)";
+    ATTRIBUTE lib_model OF Net_915 : LABEL IS "macrocell13";
+    ATTRIBUTE Location OF Net_915 : LABEL IS "U(1,0)";
     COMPONENT count7cell
         PORT (
             clock : IN std_ulogic;
@@ -908,10 +912,10 @@ BEGIN
 
     Columns:logicalport
         GENERIC MAP(
-            drive_mode => "101101101",
+            drive_mode => "011011011",
             ibuf_enabled => "111",
             id => "8d318d8b-cf7b-4b6b-b02c-ab1c5c49d0ba",
-            init_dr_st => "111",
+            init_dr_st => "000",
             input_buffer_sel => "000000",
             input_clk_en => 0,
             input_sync => "000",
@@ -1703,7 +1707,7 @@ BEGIN
             cl1_sync => 1,
             cmsb_sync => 1,
             co_msb_sync => 1,
-            cy_dpconfig => "0000000000000000000000001100000000000001010000000001000100010000000000011100000000010001000000000000000101000000000000010100000011111111000000001111111111111111000000000010001000001100111100000000000000000100",
+            cy_dpconfig => "0000000000000000000000001100000000000001010000000001000100010000000000011100000000010001000000000000000101000000000000010100000011111111000000001111111111111111000000000010001000001000111100000000000000000100",
             d0_init => "00000000",
             d1_init => "00000000",
             f0_blk_sync => 1,
@@ -1736,7 +1740,7 @@ BEGIN
 
     Net_979:macrocell
         GENERIC MAP(
-            eqn_main => "(main_0 * !main_1 * main_3) + (main_0 * main_1 * !main_2 * !main_3) + (!main_1 * main_2 * !main_3 * main_4)",
+            eqn_main => "(!main_0 * !main_1 * main_3) + (!main_1 * !main_2 * !main_3) + (!main_1 * !main_3 * !main_5 * !main_6 * !main_7 * main_8 * !main_9 * !main_10) + (main_1 * !main_2 * main_3) + (main_1 * main_2 * !main_3) + (main_1 * !main_4) + (!main_3 * !main_4)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
@@ -1747,11 +1751,17 @@ BEGIN
             main_1 => \SPIM_1:BSPIM:state_2\,
             main_2 => \SPIM_1:BSPIM:state_1\,
             main_3 => \SPIM_1:BSPIM:state_0\,
-            main_4 => \SPIM_1:BSPIM:mosi_from_dp\);
+            main_4 => \SPIM_1:BSPIM:mosi_from_dp\,
+            main_5 => \SPIM_1:BSPIM:count_4\,
+            main_6 => \SPIM_1:BSPIM:count_3\,
+            main_7 => \SPIM_1:BSPIM:count_2\,
+            main_8 => \SPIM_1:BSPIM:count_1\,
+            main_9 => \SPIM_1:BSPIM:count_0\,
+            main_10 => \SPIM_1:BSPIM:ld_ident\);
 
     \SPIM_1:BSPIM:state_2\:macrocell
         GENERIC MAP(
-            eqn_main => "(!main_0 * main_1 * !main_2 * !main_3 * !main_4 * !main_5 * main_6 * !main_7 * !main_8) + (!main_0 * main_1 * main_2 * !main_3 * !main_4 * !main_5 * !main_6 * main_7)",
+            eqn_main => "(!main_0 * !main_1 * main_2) + (!main_0 * main_1 * !main_2 * !main_3 * !main_4 * !main_5 * main_6 * !main_7 * !main_9) + (!main_0 * main_2 * !main_3 * !main_4 * main_5 * !main_6 * main_7 * !main_8)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
@@ -1766,12 +1776,13 @@ BEGIN
             main_5 => \SPIM_1:BSPIM:count_2\,
             main_6 => \SPIM_1:BSPIM:count_1\,
             main_7 => \SPIM_1:BSPIM:count_0\,
-            main_8 => \SPIM_1:BSPIM:tx_status_1\);
+            main_8 => \SPIM_1:BSPIM:tx_status_1\,
+            main_9 => \SPIM_1:BSPIM:ld_ident\);
 
     \SPIM_1:BSPIM:state_1\:macrocell
         GENERIC MAP(
-            eqn_main => "(!main_0 * !main_1 * !main_2) + (!main_0 * !main_2 * !main_3 * !main_4 * !main_5 * main_6 * !main_7 * !main_8) + (main_0 * main_1) + (main_0 * main_2) + (main_1 * main_2 * !main_3 * !main_4 * !main_5 * !main_6 * main_7)",
-            regmode => 1,
+            eqn_main => "(!main_0 * !main_1 * main_2) + (!main_0 * main_2 * !main_3 * !main_4 * main_5 * !main_6 * main_7 * !main_8) + (main_0 * !main_2) + (main_1 * !main_2 * !main_3 * !main_4 * !main_5 * main_6 * !main_7 * !main_9)",
+            regmode => 2,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -1785,11 +1796,12 @@ BEGIN
             main_5 => \SPIM_1:BSPIM:count_2\,
             main_6 => \SPIM_1:BSPIM:count_1\,
             main_7 => \SPIM_1:BSPIM:count_0\,
-            main_8 => \SPIM_1:BSPIM:tx_status_1\);
+            main_8 => \SPIM_1:BSPIM:tx_status_1\,
+            main_9 => \SPIM_1:BSPIM:ld_ident\);
 
     \SPIM_1:BSPIM:state_0\:macrocell
         GENERIC MAP(
-            eqn_main => "(!main_0 * main_1 * main_2 * !main_3 * !main_4 * !main_5 * !main_6 * main_7) + (main_0 * !main_2) + (!main_1 * !main_2 * main_8) + (main_1 * !main_2 * !main_3 * !main_4 * !main_5 * main_6 * !main_7 * !main_8)",
+            eqn_main => "(!main_0 * main_1) + (main_0 * !main_1) + (!main_1 * !main_2 * !main_3)",
             regmode => 2,
             clk_inv => '0',
             clken_mode => 1)
@@ -1799,16 +1811,11 @@ BEGIN
             main_0 => \SPIM_1:BSPIM:state_2\,
             main_1 => \SPIM_1:BSPIM:state_1\,
             main_2 => \SPIM_1:BSPIM:state_0\,
-            main_3 => \SPIM_1:BSPIM:count_4\,
-            main_4 => \SPIM_1:BSPIM:count_3\,
-            main_5 => \SPIM_1:BSPIM:count_2\,
-            main_6 => \SPIM_1:BSPIM:count_1\,
-            main_7 => \SPIM_1:BSPIM:count_0\,
-            main_8 => \SPIM_1:BSPIM:tx_status_1\);
+            main_3 => \SPIM_1:BSPIM:tx_status_1\);
 
     Net_977:macrocell
         GENERIC MAP(
-            eqn_main => "(!main_0 * !main_1 * main_2) + (!main_0 * main_1 * !main_3) + (main_0 * !main_1 * !main_3)",
+            eqn_main => "(!main_0 * !main_1 * main_2) + (!main_0 * main_1 * !main_3) + (main_0 * !main_1 * !main_2 * !main_3) + (main_1 * main_2 * !main_3)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
@@ -1839,14 +1846,14 @@ BEGIN
             main_7 => \SPIM_1:BSPIM:count_0\,
             main_8 => \SPIM_1:BSPIM:load_cond\);
 
-    \SPIM_1:BSPIM:cnt_enable\:macrocell
+    \SPIM_1:BSPIM:ld_ident\:macrocell
         GENERIC MAP(
-            eqn_main => "(!main_0 * !main_1 * !main_2 * main_8) + (!main_0 * !main_1 * main_2 * !main_8) + (main_0 * main_1 * main_8) + (main_0 * main_2 * main_8) + (main_1 * main_2 * !main_3 * !main_4 * !main_5 * !main_6 * main_7 * main_8)",
+            eqn_main => "(main_0 * !main_1 * !main_2 * !main_8) + (main_0 * main_1 * !main_2 * main_8) + (main_1 * !main_2 * !main_3 * !main_4 * !main_5 * main_6 * !main_7 * main_8)",
             regmode => 2,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \SPIM_1:BSPIM:cnt_enable\,
+            q => \SPIM_1:BSPIM:ld_ident\,
             clock_0 => \SPIM_1:Net_276_digital\,
             main_0 => \SPIM_1:BSPIM:state_2\,
             main_1 => \SPIM_1:BSPIM:state_1\,
@@ -1856,11 +1863,25 @@ BEGIN
             main_5 => \SPIM_1:BSPIM:count_2\,
             main_6 => \SPIM_1:BSPIM:count_1\,
             main_7 => \SPIM_1:BSPIM:count_0\,
-            main_8 => \SPIM_1:BSPIM:cnt_enable\);
+            main_8 => \SPIM_1:BSPIM:ld_ident\);
+
+    \SPIM_1:BSPIM:cnt_enable\:macrocell
+        GENERIC MAP(
+            eqn_main => "(!main_0 * !main_1 * !main_2 * main_3) + (!main_0 * main_1 * main_2 * !main_3) + (main_0 * !main_1 * main_2 * main_3) + (main_0 * main_1 * !main_2 * main_3)",
+            regmode => 2,
+            clk_inv => '0',
+            clken_mode => 1)
+        PORT MAP(
+            q => \SPIM_1:BSPIM:cnt_enable\,
+            clock_0 => \SPIM_1:Net_276_digital\,
+            main_0 => \SPIM_1:BSPIM:state_2\,
+            main_1 => \SPIM_1:BSPIM:state_1\,
+            main_2 => \SPIM_1:BSPIM:state_0\,
+            main_3 => \SPIM_1:BSPIM:cnt_enable\);
 
     Net_915:macrocell
         GENERIC MAP(
-            eqn_main => "(!main_0 * main_1 * !main_2)",
+            eqn_main => "(!main_0 * main_1 * main_2) + (main_1 * main_2 * main_3)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
@@ -1869,6 +1890,7 @@ BEGIN
             clock_0 => \SPIM_1:Net_276_digital\,
             main_0 => \SPIM_1:BSPIM:state_2\,
             main_1 => \SPIM_1:BSPIM:state_1\,
-            main_2 => \SPIM_1:BSPIM:state_0\);
+            main_2 => \SPIM_1:BSPIM:state_0\,
+            main_3 => Net_915);
 
 END __DEFAULT__;

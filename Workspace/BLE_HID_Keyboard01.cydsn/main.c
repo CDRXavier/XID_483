@@ -30,6 +30,16 @@
 volatile uint32 mainTimer = 0;
 
 
+
+
+
+
+
+
+
+
+
+
 /*******************************************************************************
 * Function Name: AppCallBack()
 ********************************************************************************
@@ -376,45 +386,77 @@ static void LowPowerImplementation(void)
 *  functionality.
 *
 *******************************************************************************/
+
+
+
+//maybe just have a single uint8 holding all the flags;
+
+
+
+
 int main()
 {
-    CyGlobalIntEnable;  
+    //CyGlobalIntEnable;  
 
 //#if (DEBUG_UART_ENABLED == ENABLED)
 //    UART_DEB_Start();
 //#endif /* (DEBUG_UART_ENABLED == ENABLED) */
 //    DBG_PRINTF("BLE HID Keyboard Example Project \r\n");
 
+    
+Disconnect_LED_Write(LED_ON);
+    Advertising_LED_Write(LED_ON);
+    CapsLock_LED_Write(LED_ON);
+    DP_CLR_Write(0);
+    CyDelay(1000);
+    SPIM_1_Init();
+    SPIM_1_Enable();
+    DP_CLR_Write(1); 
     Disconnect_LED_Write(LED_OFF);
     Advertising_LED_Write(LED_OFF);
     CapsLock_LED_Write(LED_OFF);
+    
+SPIM_1_Start();
+SPIM_1_WriteByte(dispb);
+SPIM_1_Stop();
+uint32_t press = 0;
+    uint8 i;
+while(1) {
 
+ press = 0;
+
+    
+    for (i=0; i<5; i++) {
+        Rows_Write(1 << i);
+    //for (j=0;j<3;j++) {
+        press <<= 3;
+        press += Columns_Read();
+    //    if (press & 0b00000001)
+    //    Disconnect_LED_Write(LED_ON); else Disconnect_LED_Write(LED_OFF);
+    //     if (press & 0b00000010)   
+    //Advertising_LED_Write(LED_ON); else Advertising_LED_Write(LED_OFF);
+    //if (press & 0b00000100)
+    //CapsLock_LED_Write(LED_ON); else CapsLock_LED_Write(LED_OFF);
+    //}        
+    Rows_Write(0);
+    CyDelay(10);
+    }
+SPIM_1_Start();
+SPIM_1_WriteByte((uint8)press);
+SPIM_1_Stop();
+
+}
+
+
+
+
+
+    
     /* Start CYBLE component and register generic event handler */
     CyBle_Start(AppCallBack);
     WDT_Start();
 
-    //resets display
-    DP_CLR_Write(0);
-    
-    
-    
-    
-    
-    
-DP_CLR_Write(1);    
-    
-    
 
-SPIM_1_Enable();
-
-
-SPIM_1_Start();
-SPIM_1_WriteByte(0);
-SPIM_1_WriteByte(0);
-SPIM_1_Stop();
-
-
-    
 //#if (BAS_MEASURE_ENABLE != 0)
 //    ADC_Start();
 //#endif /* BAS_MEASURE_ENABLE != 0 */

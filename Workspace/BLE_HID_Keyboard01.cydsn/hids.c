@@ -104,43 +104,27 @@ void HidsCallBack(uint32 event, void *eventParam)
 				{
 					if( (CAPS_LOCK_LED & locEventParam->value->val[0u]) != 0u)
 					{
-						CapsLock_LED_Write(LED_ON);
-                        
-                        SPIM_1_Start();
-SPIM_1_WriteByte(0xFF);
-SPIM_1_WriteByte(0x00);
-SPIM_1_Stop();
+                        CapsLock_LED_Write(LED_ON);
+						capsL = 1;
 
 					}
 					else
 					{
 						CapsLock_LED_Write(LED_OFF);
                         
-                        SPIM_1_Start();
-SPIM_1_WriteByte(0x00);
-SPIM_1_WriteByte(0x00);
-SPIM_1_Stop();
-
+capsL = 0;
 					}
 					if( (NUM_LOCK_LED & locEventParam->value->val[0u]) != 0u)
 					{
 						Advertising_LED_Write(LED_ON);
                         
-                        SPIM_1_Start();
-SPIM_1_WriteByte(0x00);
-SPIM_1_WriteByte(0xFF);
-SPIM_1_Stop();
-
+NumL = 1;
 					}
 					else
 					{
 						Advertising_LED_Write(LED_OFF);
                         
-                        SPIM_1_Start();
-SPIM_1_WriteByte(0x00);
-SPIM_1_WriteByte(0x00);
-SPIM_1_Stop();
-
+ NumL = 0;
 					}
 				}
 			}
@@ -212,14 +196,7 @@ void SimulateKeyboard(void)
     
     uint32_t press = 0;
     uint8 i, j;
-    
-    for (i=0; i<3; i++) {
-        Columns_Write(1 << i);
-    for (j=0;j<4;j++) 
-        press <<= Rows_Read();    
-    Columns_Write(0 << i);
-    
-    }
+  
 
     
 	CYBLE_API_RESULT_T apiResult;
@@ -229,6 +206,10 @@ void SimulateKeyboard(void)
 	//uint8 i;
 	
 	/* Scan SW2 key each connection interval */
+    
+    
+    
+    
 	if(0u == SW2_Read())
 	{
 		if(capsLockPress < KEYBOARD_JITTER_SIZE)
