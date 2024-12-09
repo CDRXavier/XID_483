@@ -1,5 +1,5 @@
 -- Project:   D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn\BLE_HID_Keyboard01.cyprj
--- Generated: 12/09/2024 00:28:16
+-- Generated: 12/09/2024 13:25:59
 -- PSoC Creator  4.4
 
 ENTITY BLE_HID_Keyboard01 IS
@@ -58,20 +58,21 @@ ARCHITECTURE __DEFAULT__ OF BLE_HID_Keyboard01 IS
     SIGNAL Net_142 : bit;
     SIGNAL Net_909 : bit;
     SIGNAL Net_915 : bit;
-    ATTRIBUTE placement_force OF Net_915 : SIGNAL IS "U(1,0,B)0";
+    ATTRIBUTE placement_force OF Net_915 : SIGNAL IS "U(1,1,B)0";
     SIGNAL Net_977 : bit;
-    ATTRIBUTE placement_force OF Net_977 : SIGNAL IS "U(0,1,A)3";
+    ATTRIBUTE placement_force OF Net_977 : SIGNAL IS "U(0,0,B)1";
     SIGNAL Net_979 : bit;
-    ATTRIBUTE placement_force OF Net_979 : SIGNAL IS "U(1,1,A)0";
+    ATTRIBUTE placement_force OF Net_979 : SIGNAL IS "U(1,0,A)0";
     SIGNAL Rows(0)__PA : bit;
     SIGNAL Rows(1)__PA : bit;
     SIGNAL Rows(2)__PA : bit;
     SIGNAL Rows(3)__PA : bit;
     SIGNAL Rows(4)__PA : bit;
     SIGNAL SW2(0)__PA : bit;
+    SIGNAL WDT_INT_OUT : bit;
     SIGNAL \BLE:Net_15\ : bit;
     SIGNAL \SPIM_1:BSPIM:cnt_enable\ : bit;
-    ATTRIBUTE placement_force OF \SPIM_1:BSPIM:cnt_enable\ : SIGNAL IS "U(0,1,A)0";
+    ATTRIBUTE placement_force OF \SPIM_1:BSPIM:cnt_enable\ : SIGNAL IS "U(1,1,B)1";
     SIGNAL \SPIM_1:BSPIM:cnt_tc\ : bit;
     SIGNAL \SPIM_1:BSPIM:count_0\ : bit;
     SIGNAL \SPIM_1:BSPIM:count_1\ : bit;
@@ -81,28 +82,28 @@ ARCHITECTURE __DEFAULT__ OF BLE_HID_Keyboard01 IS
     SIGNAL \SPIM_1:BSPIM:count_5\ : bit;
     SIGNAL \SPIM_1:BSPIM:count_6\ : bit;
     SIGNAL \SPIM_1:BSPIM:ld_ident\ : bit;
-    ATTRIBUTE placement_force OF \SPIM_1:BSPIM:ld_ident\ : SIGNAL IS "U(1,1,B)1";
+    ATTRIBUTE placement_force OF \SPIM_1:BSPIM:ld_ident\ : SIGNAL IS "U(1,1,A)1";
     SIGNAL \SPIM_1:BSPIM:load_cond\ : bit;
-    ATTRIBUTE placement_force OF \SPIM_1:BSPIM:load_cond\ : SIGNAL IS "U(1,1,B)2";
+    ATTRIBUTE placement_force OF \SPIM_1:BSPIM:load_cond\ : SIGNAL IS "U(1,1,A)0";
     SIGNAL \SPIM_1:BSPIM:load_rx_data\ : bit;
-    ATTRIBUTE placement_force OF \SPIM_1:BSPIM:load_rx_data\ : SIGNAL IS "U(1,1,A)1";
+    ATTRIBUTE placement_force OF \SPIM_1:BSPIM:load_rx_data\ : SIGNAL IS "U(1,0,A)1";
     SIGNAL \SPIM_1:BSPIM:mosi_from_dp\ : bit;
     SIGNAL \SPIM_1:BSPIM:rx_status_4\ : bit;
     SIGNAL \SPIM_1:BSPIM:rx_status_5\ : bit;
     SIGNAL \SPIM_1:BSPIM:rx_status_6\ : bit;
-    ATTRIBUTE placement_force OF \SPIM_1:BSPIM:rx_status_6\ : SIGNAL IS "U(1,1,B)0";
+    ATTRIBUTE placement_force OF \SPIM_1:BSPIM:rx_status_6\ : SIGNAL IS "U(1,1,A)2";
     SIGNAL \SPIM_1:BSPIM:state_0\ : bit;
-    ATTRIBUTE placement_force OF \SPIM_1:BSPIM:state_0\ : SIGNAL IS "U(1,0,A)1";
+    ATTRIBUTE placement_force OF \SPIM_1:BSPIM:state_0\ : SIGNAL IS "U(1,0,B)2";
     SIGNAL \SPIM_1:BSPIM:state_1\ : bit;
-    ATTRIBUTE placement_force OF \SPIM_1:BSPIM:state_1\ : SIGNAL IS "U(1,0,B)1";
+    ATTRIBUTE placement_force OF \SPIM_1:BSPIM:state_1\ : SIGNAL IS "U(1,0,B)0";
     SIGNAL \SPIM_1:BSPIM:state_2\ : bit;
-    ATTRIBUTE placement_force OF \SPIM_1:BSPIM:state_2\ : SIGNAL IS "U(1,0,A)0";
+    ATTRIBUTE placement_force OF \SPIM_1:BSPIM:state_2\ : SIGNAL IS "U(1,0,B)1";
     SIGNAL \SPIM_1:BSPIM:tx_status_0\ : bit;
-    ATTRIBUTE placement_force OF \SPIM_1:BSPIM:tx_status_0\ : SIGNAL IS "U(1,0,B)3";
+    ATTRIBUTE placement_force OF \SPIM_1:BSPIM:tx_status_0\ : SIGNAL IS "U(1,0,A)2";
     SIGNAL \SPIM_1:BSPIM:tx_status_1\ : bit;
     SIGNAL \SPIM_1:BSPIM:tx_status_2\ : bit;
     SIGNAL \SPIM_1:BSPIM:tx_status_4\ : bit;
-    ATTRIBUTE placement_force OF \SPIM_1:BSPIM:tx_status_4\ : SIGNAL IS "U(1,1,A)3";
+    ATTRIBUTE placement_force OF \SPIM_1:BSPIM:tx_status_4\ : SIGNAL IS "U(1,1,B)3";
     SIGNAL \SPIM_1:Net_276_digital\ : bit;
     ATTRIBUTE udbclken_assigned OF \SPIM_1:Net_276_digital\ : SIGNAL IS "True";
     ATTRIBUTE global_signal OF \SPIM_1:Net_276_digital\ : SIGNAL IS true;
@@ -151,7 +152,7 @@ ARCHITECTURE __DEFAULT__ OF BLE_HID_Keyboard01 IS
     ATTRIBUTE lib_model OF DP_CLK(0) : LABEL IS "iocell16";
     ATTRIBUTE Location OF DP_CLK(0) : LABEL IS "P0[3]";
     ATTRIBUTE lib_model OF \SPIM_1:BSPIM:load_rx_data\ : LABEL IS "macrocell1";
-    ATTRIBUTE Location OF \SPIM_1:BSPIM:load_rx_data\ : LABEL IS "U(1,1)";
+    ATTRIBUTE Location OF \SPIM_1:BSPIM:load_rx_data\ : LABEL IS "U(1,0)";
     ATTRIBUTE lib_model OF \SPIM_1:BSPIM:tx_status_0\ : LABEL IS "macrocell2";
     ATTRIBUTE Location OF \SPIM_1:BSPIM:tx_status_0\ : LABEL IS "U(1,0)";
     ATTRIBUTE lib_model OF \SPIM_1:BSPIM:tx_status_4\ : LABEL IS "macrocell3";
@@ -160,16 +161,17 @@ ARCHITECTURE __DEFAULT__ OF BLE_HID_Keyboard01 IS
     ATTRIBUTE Location OF \SPIM_1:BSPIM:rx_status_6\ : LABEL IS "U(1,1)";
     ATTRIBUTE Location OF \BLE:cy_m0s8_ble\ : LABEL IS "F(BLE,0)";
     ATTRIBUTE Location OF \BLE:bless_isr\ : LABEL IS "[IntrContainer=(0)][IntrId=(12)]";
+    ATTRIBUTE Location OF WDT_Interrupt : LABEL IS "[IntrContainer=(0)][IntrId=(8)]";
     ATTRIBUTE Location OF Wakeup_Interrupt : LABEL IS "[IntrContainer=(0)][IntrId=(2)]";
-    ATTRIBUTE Location OF \SPIM_1:BSPIM:BitCounter\ : LABEL IS "U(1,1)";
+    ATTRIBUTE Location OF \SPIM_1:BSPIM:BitCounter\ : LABEL IS "U(1,0)";
     ATTRIBUTE lib_model OF \SPIM_1:BSPIM:TxStsReg\ : LABEL IS "statusicell1";
-    ATTRIBUTE Location OF \SPIM_1:BSPIM:TxStsReg\ : LABEL IS "U(1,0)";
+    ATTRIBUTE Location OF \SPIM_1:BSPIM:TxStsReg\ : LABEL IS "U(1,1)";
     ATTRIBUTE lib_model OF \SPIM_1:BSPIM:RxStsReg\ : LABEL IS "statusicell2";
-    ATTRIBUTE Location OF \SPIM_1:BSPIM:RxStsReg\ : LABEL IS "U(0,0)";
+    ATTRIBUTE Location OF \SPIM_1:BSPIM:RxStsReg\ : LABEL IS "U(0,1)";
     ATTRIBUTE lib_model OF \SPIM_1:BSPIM:sR8:Dp:u0\ : LABEL IS "datapathcell1";
-    ATTRIBUTE Location OF \SPIM_1:BSPIM:sR8:Dp:u0\ : LABEL IS "U(1,0)";
+    ATTRIBUTE Location OF \SPIM_1:BSPIM:sR8:Dp:u0\ : LABEL IS "U(1,1)";
     ATTRIBUTE lib_model OF Net_979 : LABEL IS "macrocell5";
-    ATTRIBUTE Location OF Net_979 : LABEL IS "U(1,1)";
+    ATTRIBUTE Location OF Net_979 : LABEL IS "U(1,0)";
     ATTRIBUTE lib_model OF \SPIM_1:BSPIM:state_2\ : LABEL IS "macrocell6";
     ATTRIBUTE Location OF \SPIM_1:BSPIM:state_2\ : LABEL IS "U(1,0)";
     ATTRIBUTE lib_model OF \SPIM_1:BSPIM:state_1\ : LABEL IS "macrocell7";
@@ -177,15 +179,16 @@ ARCHITECTURE __DEFAULT__ OF BLE_HID_Keyboard01 IS
     ATTRIBUTE lib_model OF \SPIM_1:BSPIM:state_0\ : LABEL IS "macrocell8";
     ATTRIBUTE Location OF \SPIM_1:BSPIM:state_0\ : LABEL IS "U(1,0)";
     ATTRIBUTE lib_model OF Net_977 : LABEL IS "macrocell9";
-    ATTRIBUTE Location OF Net_977 : LABEL IS "U(0,1)";
+    ATTRIBUTE Location OF Net_977 : LABEL IS "U(0,0)";
     ATTRIBUTE lib_model OF \SPIM_1:BSPIM:load_cond\ : LABEL IS "macrocell10";
     ATTRIBUTE Location OF \SPIM_1:BSPIM:load_cond\ : LABEL IS "U(1,1)";
     ATTRIBUTE lib_model OF \SPIM_1:BSPIM:ld_ident\ : LABEL IS "macrocell11";
     ATTRIBUTE Location OF \SPIM_1:BSPIM:ld_ident\ : LABEL IS "U(1,1)";
     ATTRIBUTE lib_model OF \SPIM_1:BSPIM:cnt_enable\ : LABEL IS "macrocell12";
-    ATTRIBUTE Location OF \SPIM_1:BSPIM:cnt_enable\ : LABEL IS "U(0,1)";
+    ATTRIBUTE Location OF \SPIM_1:BSPIM:cnt_enable\ : LABEL IS "U(1,1)";
     ATTRIBUTE lib_model OF Net_915 : LABEL IS "macrocell13";
-    ATTRIBUTE Location OF Net_915 : LABEL IS "U(1,0)";
+    ATTRIBUTE Location OF Net_915 : LABEL IS "U(1,1)";
+    ATTRIBUTE Location OF SRSS : LABEL IS "F(SRSS,0)";
     COMPONENT count7cell
         PORT (
             clock : IN std_ulogic;
@@ -457,6 +460,19 @@ ARCHITECTURE __DEFAULT__ OF BLE_HID_Keyboard01 IS
             gen_clk_out_5 : OUT std_ulogic;
             gen_clk_out_6 : OUT std_ulogic;
             gen_clk_out_7 : OUT std_ulogic);
+    END COMPONENT;
+    COMPONENT m0s8srsscell
+        PORT (
+            clock_pump : IN std_ulogic;
+            clock_ss : IN std_ulogic;
+            dsi_ss_code_0 : IN std_ulogic;
+            dsi_ss_code_1 : IN std_ulogic;
+            dsi_ss_code_2 : IN std_ulogic;
+            dsi_ss_code_3 : IN std_ulogic;
+            dsi_ss_code_4 : IN std_ulogic;
+            dsi_ss_updown : OUT std_ulogic;
+            interrupt_wdt : OUT std_ulogic;
+            interrupt_pwr : OUT std_ulogic);
     END COMPONENT;
     COMPONENT macrocell
         PORT (
@@ -1647,6 +1663,14 @@ BEGIN
             interrupt => \BLE:Net_15\,
             clock => ClockBlock_HFCLK);
 
+    WDT_Interrupt:interrupt
+        GENERIC MAP(
+            int_type => "10",
+            is_nmi => 0)
+        PORT MAP(
+            interrupt => WDT_INT_OUT,
+            clock => ClockBlock_HFCLK);
+
     Wakeup_Interrupt:interrupt
         GENERIC MAP(
             int_type => "10",
@@ -1906,5 +1930,9 @@ BEGIN
             main_1 => \SPIM_1:BSPIM:state_1\,
             main_2 => \SPIM_1:BSPIM:state_0\,
             main_3 => Net_915);
+
+    SRSS:m0s8srsscell
+        PORT MAP(
+            interrupt_wdt => WDT_INT_OUT);
 
 END __DEFAULT__;

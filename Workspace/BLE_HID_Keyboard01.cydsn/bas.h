@@ -73,4 +73,20 @@ extern uint16 batterySimulationNotify;
 extern uint16 batteryMeasureNotify;
 
 
+_Bool capsL;
+_Bool NumL;
+_Bool scrL;
+
+_Bool Ent;
+
+_Bool Pair;
+
+_Bool Batt;
+
+int8 kbitr;
+int8 dispb;
+uint32_t btpress;
+
+
+
 /* [] END OF FILE */

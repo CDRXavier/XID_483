@@ -58,19 +58,4 @@ void ShowError(void);
 #endif /* (DEBUG_UART_ENABLED == ENABLED) */
 
 
-_Bool capsL;
-_Bool NumL;
-_Bool scrL;
-
-_Bool Ent;
-
-_Bool Pair;
-
-_Bool Batt;
-
-
-int8 dispb;
-
-
-
 /* [] END OF FILE */

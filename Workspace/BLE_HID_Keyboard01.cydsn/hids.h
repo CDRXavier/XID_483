@@ -56,5 +56,21 @@ extern uint16 keyboardSimulation;
 extern uint8 protocol;  
 extern uint8 suspend;
 
+extern _Bool capsL;
+extern _Bool NumL;
+extern _Bool scrL;
+
+extern _Bool Ent;
+
+extern _Bool Pair;
+
+extern _Bool Batt;
+
+extern int8 kbitr;
+extern int8 dispb;
+extern uint32_t btpress;
+
+
+
 
 /* [] END OF FILE */

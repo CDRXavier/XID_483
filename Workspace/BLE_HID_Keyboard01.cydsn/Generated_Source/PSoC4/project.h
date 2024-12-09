@@ -35,6 +35,7 @@
 #include "BLE_StackGattClient.h"
 #include "BLE_Stack.h"
 #include "BLE_eventHandler.h"
+#include "WDT_Interrupt.h"
 #include "Advertising_LED.h"
 #include "Advertising_LED_aliases.h"
 #include "CapsLock_LED.h"

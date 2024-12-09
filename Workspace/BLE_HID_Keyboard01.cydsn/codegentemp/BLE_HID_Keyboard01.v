@@ -1,6 +1,6 @@
 // ======================================================================
 // BLE_HID_Keyboard01.v generated from TopDesign.cysch
-// 12/09/2024 at 00:28
+// 12/09/2024 at 13:25
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -343,10 +343,9 @@ module top ;
           wire  Net_133;
           wire  Net_132;
           wire  Net_130;
-          wire  Net_984;
-          wire  Net_129;
           wire  Net_128;
           wire  Net_127;
+          wire  Net_129;
     electrical  Net_985;
     electrical  Net_987;
     electrical  Net_989;
@@ -387,6 +386,13 @@ module top ;
     BLE_v3_30_0 BLE (
         .clk(Net_127),
         .pa_en(Net_128));
+
+
+	cy_isr_v1_0
+		#(.int_type(2'b10))
+		WDT_Interrupt
+		 (.int_signal(Net_129));
+
 
 	wire [0:0] tmpOE__Advertising_LED_net;
 	wire [0:0] tmpFB_0__Advertising_LED_net;
@@ -784,6 +790,13 @@ module top ;
 		#(.int_type(2'b10))
 		Wakeup_Interrupt
 		 (.int_signal(Net_142));
+
+
+
+	cy_gsref_v1_0
+		#(.guid("1563FAA8-0748-4a1c-9785-CED309984BE3"))
+		WDT
+		 (.sig_out(Net_129));
 
 
     cy_annotation_universal_v1_0 D_4 (

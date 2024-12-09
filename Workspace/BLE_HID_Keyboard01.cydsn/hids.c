@@ -194,43 +194,64 @@ void SimulateKeyboard(void)
 {
 	static uint8 keyboard_data[KEYBOARD_DATA_SIZE]={0,0,0,0,0,0,0,0};
     
-    uint32_t press = 0;
-    uint8 i, j;
+    
+    
   
 
     
 	CYBLE_API_RESULT_T apiResult;
-	static uint32 keyboardTimer = KEYBOARD_TIMEOUT;
-	static uint8 simKey; 
-	static uint8 capsLockPress = 0u;
+	//static uint32 keyboardTimer = KEYBOARD_TIMEOUT;
+	
+	
 	//uint8 i;
 	
 	/* Scan SW2 key each connection interval */
+        
     
+    if (kbitr > 5){
+        kbitr = 0;
+    }
     
+    Rows_Write(1 << kbitr);
+    //for (j=0;j<3;j++) {
+    btpress += Columns_Read() << (3*(kbitr-1));
+    ++kbitr;
+    btpress &= 0x7FFF;
+    SPIM_1_Start();
+SPIM_1_WriteByte((uint8)btpress);
+SPIM_1_Stop();
+        
+    //    if (press & 0b00000001)
+    //    Disconnect_LED_Write(LED_ON); else Disconnect_LED_Write(LED_OFF);
+    //     if (press & 0b00000010)   
+    //Advertising_LED_Write(LED_ON); else Advertising_LED_Write(LED_OFF);
+    //if (press & 0b00000100)
+    //CapsLock_LED_Write(LED_ON); else CapsLock_LED_Write(LED_OFF);
+    //}        
+    Rows_Write(0);
+     
     
-    
-	if(0u == SW2_Read())
-	{
-		if(capsLockPress < KEYBOARD_JITTER_SIZE)
-		{
-			capsLockPress++;
-		} 
-		else if(capsLockPress == KEYBOARD_JITTER_SIZE)
-		{
-			keyboard_data[2u] = CAPS_LOCK;              /* Set up keyboard data */
-			keyboardTimer = 1u;                         /* Clear Simulation timer to send data */
-			capsLockPress++;
-		}
-		else    /* Ignore long key pressing */
-		{
-            
-		}
-	}
-	else
-	{
-		capsLockPress = 0u;
-	}
+//	if(0u == SW2_Read())
+//	{
+//		if(capsLockPress < KEYBOARD_JITTER_SIZE)
+//		{
+//			capsLockPress++;
+//		} 
+//		else if(capsLockPress == KEYBOARD_JITTER_SIZE)
+//		{
+//			keyboard_data[2u] = CAPS_LOCK;              /* Set up keyboard data */
+//			keyboardTimer = 1u;                         /* Clear Simulation timer to send data */
+//			capsLockPress++;
+//		}
+//		else    /* Ignore long key pressing */
+//		{
+//            
+//		}
+//	}
+//	else
+//	{
+//		capsLockPress = 0u;
+//	}
 	
     
     
@@ -238,9 +259,9 @@ void SimulateKeyboard(void)
     
     
 
-	if((CyBle_GattGetBusyStatus() == CYBLE_STACK_STATE_FREE) && (--keyboardTimer == 0u))
+	if((CyBle_GattGetBusyStatus() == CYBLE_STACK_STATE_FREE)/* && (--keyboardTimer == 0u)*/)
 	{
-		keyboardTimer = KEYBOARD_TIMEOUT;
+		//keyboardTimer = KEYBOARD_TIMEOUT;
 		//simKey++;
 		//if(simKey > SIM_KEY_MAX)
 		//{
@@ -248,26 +269,35 @@ void SimulateKeyboard(void)
 		//}
 		//SIM_KEY_MIN expand to 4, which correspond to key "A"
 		//
-		prevButtons = currButtons;
-		currButtons = 0;
-        currButtons = ~currButtons;
+		//prevButtons = currButtons;
+		//currButtons = 0;
+        //currButtons = ~currButtons;
+        //53 Keypad Num Lock and Clear6 Sel 90 3 3 3 4/101/104
+//54 Keypad /7 Sel 95 3 3 3 4/101/104
+//55 Keypad * Sel 100 3 3 3 4/101/104
+//56 Keypad - Sel 105 3 3 3 4/101/104
+//57 Keypad + Sel 106 3 3 3 4/101/104
+//58 Keypad ENTER3 Sel 108 3 3 3 4/101/104
+//59 Keypad 1 and End Sel 93 3 3 3 4/101/104
+//5A Keypad 2 and Down Arrow Sel 98 3 3 3 4/101/104
+//5B Keypad 3 and PageDn Sel 103 3 3 3 4/101/104
+////5C Keypad 4 and Left Arrow Sel 92 3 3 3 4/101/104
+//5D Keypad 5 Sel 97 3 3 3 4/101/104
+//5E Keypad 6 and Right Arrow Sel 102 3 3 3 4/101/104
+//5F Keypad 7 and Home Sel 91 3 3 3 4/101/104
+//60 Keypad 8 and Up Arrow Sel 96 3 3 3 4/101/104
+//61 Keypad 9 and PageUp Sel 101 3 3 3 4/101/104
+//62 Keypad 0 and Insert Sel 99 3 3 3 4/101/104
+//Usage ID Usage Name Usage Type AT-101 PC-AT Mac Unix Boot
+//63 Keypad . and Delete Sel 104 3 3 3 4/101/104
+        //
                     
-        if((currButtons & 0b00100000) && !(prevButtons & 0b00100000))
-        simKey = 4;
-        else if((currButtons & 0b00010000) && !(prevButtons & 0b00010000))
-        simKey = 5;
-        else if((currButtons & 0b00001000) && !(prevButtons & 0b00001000))
-        simKey = 6;
-        else if((currButtons & 0b00000100) && !(prevButtons & 0b00000100))
-        simKey = 7;
-        else if((currButtons & 0b00000010) && !(prevButtons & 0b00000010))
-        simKey = 8;
-        else if((currButtons & 0b00000001) && !(prevButtons & 0b00000001))
-        simKey = 9;
-		else
-        simKey = 0;
-        keyboard_data[3u] = simKey;
-	
+        keyboard_data[2u] =(btpress & 0b0000000000000001)?0x59:((btpress & 0b0000000000000010)?0x5A:((btpress & 0b0000000000000100)?0x5B:0));
+        keyboard_data[3u] = (btpress & 0b0000000000001000)?0x5C:((btpress & 0b0100000000010000)?0x5D:((btpress & 0b0100000000100000)?0x5E:0));
+	       keyboard_data[4u] =(btpress & 0b0000000001000000)?0x5F:((btpress & 0b0000000010000000)?0x60:((btpress & 0b0000000100000000)?0x61:0));
+        keyboard_data[5u] = (btpress & 0b0000001000000000)?0x62:((btpress & 0b0000010000000000)?0x63:((btpress & 0b0000100000000000)?0x58:0));
+       keyboard_data[6u] =(btpress & 0b0001000000000000)?0x53:((btpress & 0b0010000000000000)?0x54:((btpress & 0b0100000000000000)?0x55:0));
+
 		apiResult = CyBle_HidssGetCharacteristicValue(CYBLE_HUMAN_INTERFACE_DEVICE_SERVICE_INDEX, 
 			CYBLE_HIDS_PROTOCOL_MODE, sizeof(protocol), &protocol);
 		if(apiResult == CYBLE_ERROR_OK)
@@ -294,8 +324,8 @@ void SimulateKeyboard(void)
 			//sends "keyup" after sending "keydown", most likely
 			if(apiResult == CYBLE_ERROR_OK)
 			{
-				keyboard_data[2u] = 0u;                       /* Set up keyboard data*/
-				keyboard_data[3u] = 0u;                       /* Set up keyboard data*/
+				//keyboard_data[2u] = 0u;                       /* Set up keyboard data*/
+				//keyboard_data[3u] = 0u;                       /* Set up keyboard data*/
                 /*
 				if(protocol == CYBLE_HIDS_PROTOCOL_MODE_BOOT)
 				{
@@ -304,10 +334,10 @@ void SimulateKeyboard(void)
 				}
 				else
                 */
-				{
-					apiResult = CyBle_HidssSendNotification(cyBle_connHandle, CYBLE_HUMAN_INTERFACE_DEVICE_SERVICE_INDEX, 
-						CYBLE_HUMAN_INTERFACE_DEVICE_REPORT_IN, KEYBOARD_DATA_SIZE, keyboard_data);
-				}
+				//{
+				//	apiResult = CyBle_HidssSendNotification(cyBle_connHandle, CYBLE_HUMAN_INTERFACE_DEVICE_SERVICE_INDEX, 
+				//		CYBLE_HUMAN_INTERFACE_DEVICE_REPORT_IN, KEYBOARD_DATA_SIZE, keyboard_data);
+				//}
 			}
 			if(apiResult != CYBLE_ERROR_OK)
 			{

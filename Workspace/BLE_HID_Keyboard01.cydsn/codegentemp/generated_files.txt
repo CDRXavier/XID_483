@@ -39,6 +39,8 @@
   <file name="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn\codegentemp\BLE_StackGattClient.h" value="HEADER;;;;;BLE" />
   <file name="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn\codegentemp\BLE_Stack.h" value="HEADER;;;;;BLE" />
   <file name="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn\codegentemp\BLE_eventHandler.h" value="HEADER;;;;;BLE" />
+  <file name="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn\codegentemp\WDT_Interrupt.c" value="SOURCE_C;CortexM0;;;;WDT_Interrupt" />
+  <file name="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn\codegentemp\WDT_Interrupt.h" value="HEADER;;;;;WDT_Interrupt" />
   <file name="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn\codegentemp\Advertising_LED.c" value="SOURCE_C;CortexM0;;;;Advertising_LED" />
   <file name="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn\codegentemp\Advertising_LED.h" value="HEADER;;;;;Advertising_LED" />
   <file name="D:\Documents\GitHub\XID_483\Workspace\BLE_HID_Keyboard01.cydsn\codegentemp\Advertising_LED_aliases.h" value="HEADER;;;;;Advertising_LED" />

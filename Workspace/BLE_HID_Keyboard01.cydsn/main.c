@@ -34,7 +34,7 @@ volatile uint32 mainTimer = 0;
 
 
 
-
+int8 buttonflag;
 
 
 
@@ -247,9 +247,9 @@ CY_ISR(Timer_Interrupt)
         /* Clears interrupt request  */
         CySysWdtClearInterrupt(WDT_INTERRUPT_SOURCE);
     }
-}
 
-/*******************************************************************************
+}
+/********************************************************************
 * Function Name: WDT_Start
 ********************************************************************************
 *
@@ -261,21 +261,21 @@ CY_ISR(Timer_Interrupt)
 void WDT_Start(void)
 {
     /* Unlock the WDT registers for modification */
-//    CySysWdtUnlock(); 
+    CySysWdtUnlock(); 
     /* Setup ISR */
-//    WDT_Interrupt_StartEx(&Timer_Interrupt);
+    WDT_Interrupt_StartEx(&Timer_Interrupt);
     /* Write the mode to generate interrupt on match */
-//    CySysWdtWriteMode(WDT_COUNTER, CY_SYS_WDT_MODE_INT);
+    CySysWdtWriteMode(WDT_COUNTER, CY_SYS_WDT_MODE_INT);
     /* Configure the WDT counter clear on a match setting */
-//    CySysWdtWriteClearOnMatch(WDT_COUNTER, WDT_COUNTER_ENABLE);
+    CySysWdtWriteClearOnMatch(WDT_COUNTER, WDT_COUNTER_ENABLE);
     /* Configure the WDT counter match comparison value */
-//    CySysWdtWriteMatch(WDT_COUNTER, WDT_TIMEOUT);
+    CySysWdtWriteMatch(WDT_COUNTER, WDT_TIMEOUT);
     /* Reset WDT counter */
-//    CySysWdtResetCounters(WDT_COUNTER);
+    CySysWdtResetCounters(WDT_COUNTER);
     /* Enable the specified WDT counter */
-//    CySysWdtEnable(WDT_COUNTER_MASK);
+    CySysWdtEnable(WDT_COUNTER_MASK);
     /* Lock out configuration changes to the Watchdog timer registers */
-//    CySysWdtLock();    
+    CySysWdtLock();    
 }
 
 
@@ -290,11 +290,11 @@ void WDT_Start(void)
 void WDT_Stop(void)
 {
     /* Unlock the WDT registers for modification */
-//    CySysWdtUnlock(); 
+    CySysWdtUnlock(); 
     /* Disable the specified WDT counter */
-//    CySysWdtDisable(WDT_COUNTER_MASK);
+    CySysWdtDisable(WDT_COUNTER_MASK);
     /* Locks out configuration changes to the Watchdog timer registers */
-//    CySysWdtLock();    
+    CySysWdtLock();    
 }
 
 /*******************************************************************************
@@ -396,14 +396,14 @@ static void LowPowerImplementation(void)
 
 int main()
 {
-    //CyGlobalIntEnable;  
+    CyGlobalIntEnable;  
 
 //#if (DEBUG_UART_ENABLED == ENABLED)
 //    UART_DEB_Start();
 //#endif /* (DEBUG_UART_ENABLED == ENABLED) */
 //    DBG_PRINTF("BLE HID Keyboard Example Project \r\n");
 
-    
+    buttonflag = 0;
 Disconnect_LED_Write(LED_ON);
     Advertising_LED_Write(LED_ON);
     CapsLock_LED_Write(LED_ON);
@@ -419,18 +419,18 @@ Disconnect_LED_Write(LED_ON);
 SPIM_1_Start();
 SPIM_1_WriteByte(dispb);
 SPIM_1_Stop();
-uint32_t press = 0;
-    uint8 i;
-while(1) {
 
- press = 0;
+//    uint8 i;
+//while(1) {
+
+ //press = 0;
 
     
-    for (i=0; i<5; i++) {
-        Rows_Write(1 << i);
+ //   for (i=0; i<5; i++) {
+ //       Rows_Write(1 << i);
     //for (j=0;j<3;j++) {
-        press <<= 3;
-        press += Columns_Read();
+ //       press <<= 3;
+ //       press += Columns_Read();
     //    if (press & 0b00000001)
     //    Disconnect_LED_Write(LED_ON); else Disconnect_LED_Write(LED_OFF);
     //     if (press & 0b00000010)   
@@ -438,14 +438,13 @@ while(1) {
     //if (press & 0b00000100)
     //CapsLock_LED_Write(LED_ON); else CapsLock_LED_Write(LED_OFF);
     //}        
-    Rows_Write(0);
-    CyDelay(10);
-    }
-SPIM_1_Start();
-SPIM_1_WriteByte((uint8)press);
-SPIM_1_Stop();
-
-}
+ //   Rows_Write(0);
+ //   CyDelay(10);
+ //   }
+//SPIM_1_Start();
+//SPIM_1_WriteByte((uint8)press);
+//SPIM_1_Stop();
+//}
 
 
 

@@ -1,5 +1,5 @@
 # BLE_HID_Keyboard01
-# 2024-12-09 05:28:15Z
+# 2024-12-09 18:25:59Z
 
 # IO_6@[IOP=(0)][IoId=(6)] is reserved: SWDDebugEnabled
 dont_use_io iocell 0 6
@@ -28,23 +28,25 @@ set_io "CP_MISO(0)" iocell 0 1
 set_io "DP_CLR(0)" iocell 1 6
 set_io "DP_DAT(0)" iocell 0 4
 set_io "DP_CLK(0)" iocell 0 3
-set_location "\SPIM_1:BSPIM:load_rx_data\" 1 1 0 1
-set_location "\SPIM_1:BSPIM:tx_status_0\" 1 0 1 3
-set_location "\SPIM_1:BSPIM:tx_status_4\" 1 1 0 3
-set_location "\SPIM_1:BSPIM:rx_status_6\" 1 1 1 0
+set_location "\SPIM_1:BSPIM:load_rx_data\" 1 0 0 1
+set_location "\SPIM_1:BSPIM:tx_status_0\" 1 0 0 2
+set_location "\SPIM_1:BSPIM:tx_status_4\" 1 1 1 3
+set_location "\SPIM_1:BSPIM:rx_status_6\" 1 1 0 2
 set_location "\BLE:cy_m0s8_ble\" p4blecell -1 -1 0
 set_location "\BLE:bless_isr\" interrupt -1 -1 12
+set_location "WDT_Interrupt" interrupt -1 -1 8
 set_location "Wakeup_Interrupt" interrupt -1 -1 2
-set_location "\SPIM_1:BSPIM:BitCounter\" 1 1 7
-set_location "\SPIM_1:BSPIM:TxStsReg\" 1 0 4
-set_location "\SPIM_1:BSPIM:RxStsReg\" 0 0 4
-set_location "\SPIM_1:BSPIM:sR8:Dp:u0\" 1 0 2
-set_location "Net_979" 1 1 0 0
-set_location "\SPIM_1:BSPIM:state_2\" 1 0 0 0
-set_location "\SPIM_1:BSPIM:state_1\" 1 0 1 1
-set_location "\SPIM_1:BSPIM:state_0\" 1 0 0 1
-set_location "Net_977" 0 1 0 3
-set_location "\SPIM_1:BSPIM:load_cond\" 1 1 1 2
-set_location "\SPIM_1:BSPIM:ld_ident\" 1 1 1 1
-set_location "\SPIM_1:BSPIM:cnt_enable\" 0 1 0 0
-set_location "Net_915" 1 0 1 0
+set_location "\SPIM_1:BSPIM:BitCounter\" 1 0 7
+set_location "\SPIM_1:BSPIM:TxStsReg\" 1 1 4
+set_location "\SPIM_1:BSPIM:RxStsReg\" 0 1 4
+set_location "\SPIM_1:BSPIM:sR8:Dp:u0\" 1 1 2
+set_location "Net_979" 1 0 0 0
+set_location "\SPIM_1:BSPIM:state_2\" 1 0 1 1
+set_location "\SPIM_1:BSPIM:state_1\" 1 0 1 0
+set_location "\SPIM_1:BSPIM:state_0\" 1 0 1 2
+set_location "Net_977" 0 0 1 1
+set_location "\SPIM_1:BSPIM:load_cond\" 1 1 0 0
+set_location "\SPIM_1:BSPIM:ld_ident\" 1 1 0 1
+set_location "\SPIM_1:BSPIM:cnt_enable\" 1 1 1 1
+set_location "Net_915" 1 1 1 0
+set_location "SRSS" m0s8srsscell -1 -1 0

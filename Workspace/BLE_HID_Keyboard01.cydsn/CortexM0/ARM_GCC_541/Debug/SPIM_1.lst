@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNrpasF.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
   20:Generated_Source\PSoC4/SPIM_1.c **** #if(SPIM_1_TX_SOFTWARE_BUF_ENABLED)
   21:Generated_Source\PSoC4/SPIM_1.c ****     volatile uint8 SPIM_1_txBuffer[SPIM_1_TX_BUFFER_SIZE];
   22:Generated_Source\PSoC4/SPIM_1.c ****     volatile uint8 SPIM_1_txBufferFull;
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 2
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNrpasF.s 			page 2
 
 
   23:Generated_Source\PSoC4/SPIM_1.c ****     volatile uint8 SPIM_1_txBufferRead;
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
   46              		.loc 1 66 0
   47 0004 084B     		ldr	r3, .L2
   48 0006 0F22     		movs	r2, #15
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 3
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNrpasF.s 			page 3
 
 
   49 0008 1A70     		strb	r2, [r3]
@@ -178,15 +178,15 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
   66 0024 BD46     		mov	sp, r7
   67              		@ sp needed
   68 0026 80BD     		pop	{r7, pc}
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 4
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNrpasF.s 			page 4
 
 
   69              	.L3:
   70              		.align	2
   71              	.L2:
-  72 0028 81000F40 		.word	1074724993
-  73 002c 82000F40 		.word	1074724994
-  74 0030 83000F40 		.word	1074724995
+  72 0028 82000F40 		.word	1074724994
+  73 002c 81000F40 		.word	1074724993
+  74 0030 80000F40 		.word	1074724992
   75              		.cfi_endproc
   76              	.LFE2:
   77              		.size	SPIM_1_Init, .-SPIM_1_Init
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
  102 000c 0300     		movs	r3, r0
  103 000e 2370     		strb	r3, [r4]
  125:Generated_Source\PSoC4/SPIM_1.c ****     SPIM_1_COUNTER_CONTROL_REG |= SPIM_1_CNTR_ENABLE;
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 5
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNrpasF.s 			page 5
 
 
  104              		.loc 1 125 0
@@ -298,14 +298,14 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
  147              		@ sp needed
  148 005e 90BD     		pop	{r4, r7, pc}
  149              	.L6:
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 6
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNrpasF.s 			page 6
 
 
  150              		.align	2
  151              	.L5:
- 152 0060 91000F40 		.word	1074725009
- 153 0064 92000F40 		.word	1074725010
- 154 0068 93000F40 		.word	1074725011
+ 152 0060 92000F40 		.word	1074725010
+ 153 0064 91000F40 		.word	1074725009
+ 154 0068 90000F40 		.word	1074725008
  155              		.cfi_endproc
  156              	.LFE3:
  157              		.size	SPIM_1_Enable, .-SPIM_1_Enable
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
  165:Generated_Source\PSoC4/SPIM_1.c ****     if(0u == SPIM_1_initVar)
  176              		.loc 1 165 0
  177 0004 064B     		ldr	r3, .L9
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 7
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNrpasF.s 			page 7
 
 
  178 0006 1B78     		ldrb	r3, [r3]
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
  188:Generated_Source\PSoC4/SPIM_1.c **** * Theory:
  189:Generated_Source\PSoC4/SPIM_1.c **** *  Disable the clock input to enable operation.
  190:Generated_Source\PSoC4/SPIM_1.c **** *
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 8
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNrpasF.s 			page 8
 
 
  191:Generated_Source\PSoC4/SPIM_1.c **** *******************************************************************************/
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
  252 003a FFF7FEFF 		bl	SPIM_1_IntClock_Stop
  203:Generated_Source\PSoC4/SPIM_1.c ****     #endif /* (0u != SPIM_1_INTERNAL_CLOCK) */
  204:Generated_Source\PSoC4/SPIM_1.c **** 
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 9
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNrpasF.s 			page 9
 
 
  205:Generated_Source\PSoC4/SPIM_1.c ****     SPIM_1_DisableTxInt();
@@ -497,8 +497,8 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
  263              	.L13:
  264 004e C046     		.align	2
  265              	.L12:
- 266 0050 92000F40 		.word	1074725010
- 267 0054 93000F40 		.word	1074725011
+ 266 0050 91000F40 		.word	1074725009
+ 267 0054 90000F40 		.word	1074725008
  268              		.cfi_endproc
  269              	.LFE5:
  270              		.size	SPIM_1_Stop, .-SPIM_1_Stop
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
  283 0000 80B5     		push	{r7, lr}
  284              		.cfi_def_cfa_offset 8
  285              		.cfi_offset 7, -8
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 10
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNrpasF.s 			page 10
 
 
  286              		.cfi_offset 14, -4
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
  254:Generated_Source\PSoC4/SPIM_1.c ****     #if(0u != SPIM_1_INTERNAL_RX_INT_ENABLED)
  255:Generated_Source\PSoC4/SPIM_1.c ****         CyIntEnable(SPIM_1_RX_ISR_NUMBER);
  256:Generated_Source\PSoC4/SPIM_1.c ****     #endif /* (0u != SPIM_1_INTERNAL_RX_INT_ENABLED) */
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 11
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNrpasF.s 			page 11
 
 
  257:Generated_Source\PSoC4/SPIM_1.c **** }
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
  343 0006 BD46     		mov	sp, r7
  344              		@ sp needed
  345 0008 80BD     		pop	{r7, pc}
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 12
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNrpasF.s 			page 12
 
 
  346              		.cfi_endproc
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
  375              		.section	.text.SPIM_1_SetTxInterruptMode,"ax",%progbits
  376              		.align	2
  377              		.global	SPIM_1_SetTxInterruptMode
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 13
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNrpasF.s 			page 13
 
 
  378              		.code	16
@@ -778,11 +778,11 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
  408 001a 80BD     		pop	{r7, pc}
  409              	.L20:
  410              		.align	2
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 14
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNrpasF.s 			page 14
 
 
  411              	.L19:
- 412 001c 82000F40 		.word	1074724994
+ 412 001c 81000F40 		.word	1074724993
  413              		.cfi_endproc
  414              	.LFE10:
  415              		.size	SPIM_1_SetTxInterruptMode, .-SPIM_1_SetTxInterruptMode
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
  442 0010 1B78     		ldrb	r3, [r3]
  443 0012 1370     		strb	r3, [r2]
  355:Generated_Source\PSoC4/SPIM_1.c **** }
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 15
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNrpasF.s 			page 15
 
 
  444              		.loc 1 355 0
@@ -850,7 +850,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
  450              	.L23:
  451              		.align	2
  452              	.L22:
- 453 001c 83000F40 		.word	1074724995
+ 453 001c 80000F40 		.word	1074724992
  454              		.cfi_endproc
  455              	.LFE11:
  456              		.size	SPIM_1_SetRxInterruptMode, .-SPIM_1_SetRxInterruptMode
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
  466              		.cfi_startproc
  467              		@ args = 0, pretend = 0, frame = 8
  468              		@ frame_needed = 1, uses_anonymous_args = 0
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 16
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNrpasF.s 			page 16
 
 
  469 0000 80B5     		push	{r7, lr}
@@ -945,7 +945,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
  491              	.L27:
  492 001a C046     		.align	2
  493              	.L26:
- 494 001c 62000F40 		.word	1074724962
+ 494 001c 61000F40 		.word	1074724961
  495              		.cfi_endproc
  496              	.LFE12:
  497              		.size	SPIM_1_ReadTxStatus, .-SPIM_1_ReadTxStatus
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
  504              	SPIM_1_ReadRxStatus:
  505              	.LFB13:
  407:Generated_Source\PSoC4/SPIM_1.c **** 
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 17
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNrpasF.s 			page 17
 
 
  408:Generated_Source\PSoC4/SPIM_1.c **** 
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
  450:Generated_Source\PSoC4/SPIM_1.c ****     #else
  451:Generated_Source\PSoC4/SPIM_1.c **** 
  452:Generated_Source\PSoC4/SPIM_1.c ****         tmpStatus = SPIM_1_RX_STATUS_REG;
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 18
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNrpasF.s 			page 18
 
 
  518              		.loc 1 452 0
@@ -1043,7 +1043,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
  532              	.L31:
  533 001a C046     		.align	2
  534              	.L30:
- 535 001c 63000F40 		.word	1074724963
+ 535 001c 60000F40 		.word	1074724960
  536              		.cfi_endproc
  537              	.LFE13:
  538              		.size	SPIM_1_ReadRxStatus, .-SPIM_1_ReadRxStatus
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
  478:Generated_Source\PSoC4/SPIM_1.c **** *  have been read from the TX software buffer.
  479:Generated_Source\PSoC4/SPIM_1.c **** *  SPIM_1_txBuffer[SPIM_1_TX_BUFFER_SIZE] - used to store
  480:Generated_Source\PSoC4/SPIM_1.c **** *  data to sending, modified every function call if TX Software Buffer is used.
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 19
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNrpasF.s 			page 19
 
 
  481:Generated_Source\PSoC4/SPIM_1.c **** *
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
  520:Generated_Source\PSoC4/SPIM_1.c ****         SPIM_1_swStatusTx = tempStatus;
  521:Generated_Source\PSoC4/SPIM_1.c **** 
  522:Generated_Source\PSoC4/SPIM_1.c **** 
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 20
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNrpasF.s 			page 20
 
 
  523:Generated_Source\PSoC4/SPIM_1.c ****         if((SPIM_1_txBufferRead == SPIM_1_txBufferWrite) &&
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
  576 0020 1B78     		ldrb	r3, [r3]
  577 0022 1370     		strb	r3, [r2]
  563:Generated_Source\PSoC4/SPIM_1.c **** 
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 21
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNrpasF.s 			page 21
 
 
  564:Generated_Source\PSoC4/SPIM_1.c ****     #endif /* (SPIM_1_TX_SOFTWARE_BUF_ENABLED) */
@@ -1212,8 +1212,8 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
  584              	.L35:
  585              		.align	2
  586              	.L34:
- 587 002c 62000F40 		.word	1074724962
- 588 0030 42000F40 		.word	1074724930
+ 587 002c 61000F40 		.word	1074724961
+ 588 0030 41000F40 		.word	1074724929
  589              		.cfi_endproc
  590              	.LFE14:
  591              		.size	SPIM_1_WriteTxData, .-SPIM_1_WriteTxData
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
  596:Generated_Source\PSoC4/SPIM_1.c **** *  ReadByte() function.
  597:Generated_Source\PSoC4/SPIM_1.c **** *
  598:Generated_Source\PSoC4/SPIM_1.c **** * Reentrant:
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 22
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNrpasF.s 			page 22
 
 
  599:Generated_Source\PSoC4/SPIM_1.c **** *  No.
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
  636:Generated_Source\PSoC4/SPIM_1.c **** 
  637:Generated_Source\PSoC4/SPIM_1.c ****     return(rxData);
  617              		.loc 1 637 0
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 23
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNrpasF.s 			page 23
 
 
  618 000e FB1D     		adds	r3, r7, #7
@@ -1333,7 +1333,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
  626              	.L39:
  627 001a C046     		.align	2
  628              	.L38:
- 629 001c 52000F40 		.word	1074724946
+ 629 001c 51000F40 		.word	1074724945
  630              		.cfi_endproc
  631              	.LFE15:
  632              		.size	SPIM_1_ReadRxData, .-SPIM_1_ReadRxData
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
  642              		.cfi_startproc
  643              		@ args = 0, pretend = 0, frame = 8
  644              		@ frame_needed = 1, uses_anonymous_args = 0
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 24
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNrpasF.s 			page 24
 
 
  645 0000 80B5     		push	{r7, lr}
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
  696:Generated_Source\PSoC4/SPIM_1.c **** 
  697:Generated_Source\PSoC4/SPIM_1.c ****     return(size);
  671              		.loc 1 697 0 is_stmt 1 discriminator 4
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 25
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNrpasF.s 			page 25
 
 
  672 001e FB1D     		adds	r3, r7, #7
@@ -1453,7 +1453,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
  680              	.L45:
  681 002a C046     		.align	2
  682              	.L44:
- 683 002c 63000F40 		.word	1074724963
+ 683 002c 60000F40 		.word	1074724960
  684              		.cfi_endproc
  685              	.LFE16:
  686              		.size	SPIM_1_GetRxBufferSize, .-SPIM_1_GetRxBufferSize
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
  695              		.loc 1 728 0
  696              		.cfi_startproc
  697              		@ args = 0, pretend = 0, frame = 8
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 26
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNrpasF.s 			page 26
 
 
  698              		@ frame_needed = 1, uses_anonymous_args = 0
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
  757:Generated_Source\PSoC4/SPIM_1.c ****         }
  758:Generated_Source\PSoC4/SPIM_1.c ****         else if(0u != (size & SPIM_1_STS_TX_FIFO_NOT_FULL))
  724              		.loc 1 758 0
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 27
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNrpasF.s 			page 27
 
 
  725 0020 FB1D     		adds	r3, r7, #7
@@ -1601,7 +1601,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
  750              	.L52:
  751              		.align	2
  752              	.L51:
- 753 0044 62000F40 		.word	1074724962
+ 753 0044 61000F40 		.word	1074724961
  754              		.cfi_endproc
  755              	.LFE17:
  756              		.size	SPIM_1_GetTxBufferSize, .-SPIM_1_GetTxBufferSize
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
  773:Generated_Source\PSoC4/SPIM_1.c **** /*******************************************************************************
  774:Generated_Source\PSoC4/SPIM_1.c **** * Function Name: SPIM_1_ClearRxBuffer
  775:Generated_Source\PSoC4/SPIM_1.c **** ********************************************************************************
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 28
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNrpasF.s 			page 28
 
 
  776:Generated_Source\PSoC4/SPIM_1.c **** *
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
  782              		.loc 1 809 0
  783 000a 064B     		ldr	r3, .L56+4
  784 000c 1B78     		ldrb	r3, [r3]
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 29
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNrpasF.s 			page 29
 
 
  785 000e DBB2     		uxtb	r3, r3
@@ -1707,8 +1707,8 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
  795              	.L57:
  796 001e C046     		.align	2
  797              	.L56:
- 798 0020 52000F40 		.word	1074724946
- 799 0024 63000F40 		.word	1074724963
+ 798 0020 51000F40 		.word	1074724945
+ 799 0024 60000F40 		.word	1074724960
  800              		.cfi_endproc
  801              	.LFE18:
  802              		.size	SPIM_1_ClearRxBuffer, .-SPIM_1_ClearRxBuffer
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
  840:Generated_Source\PSoC4/SPIM_1.c **** * Global variables:
  841:Generated_Source\PSoC4/SPIM_1.c **** *  SPIM_1_txBufferWrite - used for the account of the bytes which
  842:Generated_Source\PSoC4/SPIM_1.c **** *  have been written down in the TX software buffer, modified every function
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 30
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNrpasF.s 			page 30
 
 
  843:Generated_Source\PSoC4/SPIM_1.c **** *  call - resets to zero.
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
  839 0020 084A     		ldr	r2, .L59
  840 0022 084B     		ldr	r3, .L59
  841 0024 1B78     		ldrb	r3, [r3]
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 31
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNrpasF.s 			page 31
 
 
  842 0026 DBB2     		uxtb	r3, r3
@@ -1842,7 +1842,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
  858              	.L60:
  859 0042 C046     		.align	2
  860              	.L59:
- 861 0044 92000F40 		.word	1074725010
+ 861 0044 91000F40 		.word	1074725009
  862              		.cfi_endproc
  863              	.LFE19:
  864              		.size	SPIM_1_ClearTxBuffer, .-SPIM_1_ClearTxBuffer
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
  892:Generated_Source\PSoC4/SPIM_1.c **** 
  893:Generated_Source\PSoC4/SPIM_1.c **** #if(0u != SPIM_1_BIDIRECTIONAL_MODE)
  894:Generated_Source\PSoC4/SPIM_1.c ****     /*******************************************************************************
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 32
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNrpasF.s 			page 32
 
 
  895:Generated_Source\PSoC4/SPIM_1.c ****     * Function Name: SPIM_1_TxEnable
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
  949:Generated_Source\PSoC4/SPIM_1.c **** *
  950:Generated_Source\PSoC4/SPIM_1.c **** * Return:
  951:Generated_Source\PSoC4/SPIM_1.c **** *  None.
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 33
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNrpasF.s 			page 33
 
 
  952:Generated_Source\PSoC4/SPIM_1.c **** *
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
  906              		.loc 1 972 0
  907 002a 0F23     		movs	r3, #15
  908 002c FB18     		adds	r3, r7, r3
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 34
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNrpasF.s 			page 34
 
 
  909 002e 1A78     		ldrb	r2, [r3]
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
  992:Generated_Source\PSoC4/SPIM_1.c **** *  Clear status register of the component.
  993:Generated_Source\PSoC4/SPIM_1.c **** *
  994:Generated_Source\PSoC4/SPIM_1.c **** *******************************************************************************/
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 35
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNrpasF.s 			page 35
 
 
  995:Generated_Source\PSoC4/SPIM_1.c **** void SPIM_1_ClearFIFO(void) 
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
  983 0030 DBB2     		uxtb	r3, r3
  984 0032 1370     		strb	r3, [r2]
 1008:Generated_Source\PSoC4/SPIM_1.c ****     SPIM_1_AUX_CONTROL_DP0_REG &= ((uint8) ~SPIM_1_TX_FIFO_CLR);
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 36
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNrpasF.s 			page 36
 
 
  985              		.loc 1 1008 0
@@ -2132,9 +2132,9 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
  1005              	.L68:
  1006 0056 C046     		.align	2
  1007              	.L67:
- 1008 0058 52000F40 		.word	1074724946
- 1009 005c 63000F40 		.word	1074724963
- 1010 0060 92000F40 		.word	1074725010
+ 1008 0058 51000F40 		.word	1074724945
+ 1009 005c 60000F40 		.word	1074724960
+ 1010 0060 91000F40 		.word	1074725009
  1011              		.cfi_endproc
  1012              	.LFE21:
  1013              		.size	SPIM_1_ClearFIFO, .-SPIM_1_ClearFIFO
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
 1026:Generated_Source\PSoC4/SPIM_1.c **** ********************************************************************************
 1027:Generated_Source\PSoC4/SPIM_1.c **** *
 1028:Generated_Source\PSoC4/SPIM_1.c **** * Summary:
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 37
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNrpasF.s 			page 37
 
 
 1029:Generated_Source\PSoC4/SPIM_1.c **** *  Enable internal interrupt generation.
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
 1053:Generated_Source\PSoC4/SPIM_1.c **** *  Disable internal interrupt generation.
 1054:Generated_Source\PSoC4/SPIM_1.c **** *
 1055:Generated_Source\PSoC4/SPIM_1.c **** * Parameters:
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 38
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNrpasF.s 			page 38
 
 
 1056:Generated_Source\PSoC4/SPIM_1.c **** *  None.
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
 1080:Generated_Source\PSoC4/SPIM_1.c **** *  intSrc: An or'd combination of the desired status bit masks (defined in the
 1081:Generated_Source\PSoC4/SPIM_1.c **** *  header file).
 1082:Generated_Source\PSoC4/SPIM_1.c **** *
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 39
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNrpasF.s 			page 39
 
 
 1083:Generated_Source\PSoC4/SPIM_1.c **** * Return:
@@ -2330,15 +2330,15 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
  1116              	.L73:
  1117 002a C046     		.align	2
  1118              	.L72:
- 1119 002c 82000F40 		.word	1074724994
- 1120 0030 83000F40 		.word	1074724995
+ 1119 002c 81000F40 		.word	1074724993
+ 1120 0030 80000F40 		.word	1074724992
  1121              		.cfi_endproc
  1122              	.LFE24:
  1123              		.size	SPIM_1_SetInterruptMode, .-SPIM_1_SetInterruptMode
  1124              		.section	.text.SPIM_1_ReadStatus,"ax",%progbits
  1125              		.align	2
  1126              		.global	SPIM_1_ReadStatus
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 40
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNrpasF.s 			page 40
 
 
  1127              		.code	16
@@ -2398,7 +2398,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
 1132:Generated_Source\PSoC4/SPIM_1.c **** 
 1133:Generated_Source\PSoC4/SPIM_1.c ****         tmpStatus  = SPIM_1_GET_STATUS_RX(SPIM_1_swStatusRx);
 1134:Generated_Source\PSoC4/SPIM_1.c ****         tmpStatus |= SPIM_1_GET_STATUS_TX(SPIM_1_swStatusTx);
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 41
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNrpasF.s 			page 41
 
 
 1135:Generated_Source\PSoC4/SPIM_1.c ****         tmpStatus &= ((uint8) ~SPIM_1_STS_SPI_IDLE);
@@ -2451,14 +2451,14 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
  1174              	.L77:
  1175 0036 C046     		.align	2
  1176              	.L76:
- 1177 0038 63000F40 		.word	1074724963
- 1178 003c 62000F40 		.word	1074724962
+ 1177 0038 60000F40 		.word	1074724960
+ 1178 003c 61000F40 		.word	1074724961
  1179              		.cfi_endproc
  1180              	.LFE25:
  1181              		.size	SPIM_1_ReadStatus, .-SPIM_1_ReadStatus
  1182              		.text
  1183              	.Letext0:
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 42
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNrpasF.s 			page 42
 
 
  1184              		.file 2 "Generated_Source\\PSoC4\\cytypes.h"
@@ -2518,7 +2518,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
  1238 0067 A5000000 		.4byte	.LASF8
  1239 006b 04       		.uleb128 0x4
  1240 006c 51010000 		.4byte	.LASF12
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 43
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNrpasF.s 			page 43
 
 
  1241 0070 02       		.byte	0x2
@@ -2578,7 +2578,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
  1295 00de 6F       		.sleb128 -17
  1296 00df 00       		.byte	0
  1297 00e0 06       		.uleb128 0x6
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 44
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNrpasF.s 			page 44
 
 
  1298 00e1 17000000 		.4byte	.LASF17
@@ -2638,7 +2638,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
  1352 0155 0A000000 		.4byte	.LFE9-.LFB9
  1353 0159 01       		.uleb128 0x1
  1354 015a 9C       		.byte	0x9c
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 45
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNrpasF.s 			page 45
 
 
  1355 015b 0B       		.uleb128 0xb
@@ -2698,7 +2698,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
  1409 01d0 00       		.byte	0
  1410 01d1 0D       		.uleb128 0xd
  1411 01d2 7A020000 		.4byte	.LASF30
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 46
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNrpasF.s 			page 46
 
 
  1412 01d6 01       		.byte	0x1
@@ -2758,7 +2758,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
  1466 024b 0D       		.uleb128 0xd
  1467 024c B9000000 		.4byte	.LASF35
  1468 0250 01       		.byte	0x1
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 47
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNrpasF.s 			page 47
 
 
  1469 0251 9A02     		.2byte	0x29a
@@ -2818,7 +2818,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
  1523 02cc 01       		.byte	0x1
  1524 02cd 5F03     		.2byte	0x35f
  1525 02cf 6B000000 		.4byte	0x6b
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 48
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNrpasF.s 			page 48
 
 
  1526 02d3 02       		.uleb128 0x2
@@ -2878,7 +2878,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
  1580 0341 01       		.byte	0x1
  1581 0342 E503     		.2byte	0x3e5
  1582 0344 6B000000 		.4byte	0x6b
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 49
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNrpasF.s 			page 49
 
 
  1583 0348 02       		.uleb128 0x2
@@ -2938,7 +2938,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
  1637 03bd 91       		.byte	0x91
  1638 03be 77       		.sleb128 -9
  1639 03bf 00       		.byte	0
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 50
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNrpasF.s 			page 50
 
 
  1640 03c0 13       		.uleb128 0x13
@@ -2998,7 +2998,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
  1694 001b 0E       		.uleb128 0xe
  1695 001c 00       		.byte	0
  1696 001d 00       		.byte	0
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 51
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNrpasF.s 			page 51
 
 
  1697 001e 03       		.uleb128 0x3
@@ -3058,7 +3058,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
  1751 0055 07       		.uleb128 0x7
  1752 0056 2E       		.uleb128 0x2e
  1753 0057 01       		.byte	0x1
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 52
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNrpasF.s 			page 52
 
 
  1754 0058 3F       		.uleb128 0x3f
@@ -3118,7 +3118,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
  1808 008f 40       		.uleb128 0x40
  1809 0090 18       		.uleb128 0x18
  1810 0091 9742     		.uleb128 0x2117
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 53
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNrpasF.s 			page 53
 
 
  1811 0093 19       		.uleb128 0x19
@@ -3178,7 +3178,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
  1865 00cb 03       		.uleb128 0x3
  1866 00cc 0E       		.uleb128 0xe
  1867 00cd 3A       		.uleb128 0x3a
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 54
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNrpasF.s 			page 54
 
 
  1868 00ce 0B       		.uleb128 0xb
@@ -3238,7 +3238,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
  1922 0105 3F       		.uleb128 0x3f
  1923 0106 19       		.uleb128 0x19
  1924 0107 03       		.uleb128 0x3
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 55
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNrpasF.s 			page 55
 
 
  1925 0108 0E       		.uleb128 0xe
@@ -3298,7 +3298,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
  1979 013f 9642     		.uleb128 0x2116
  1980 0141 19       		.uleb128 0x19
  1981 0142 00       		.byte	0
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 56
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNrpasF.s 			page 56
 
 
  1982 0143 00       		.byte	0
@@ -3358,7 +3358,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
  2036 007c 20000000 		.4byte	.LFE15-.LFB15
  2037 0080 00000000 		.4byte	.LFB16
  2038 0084 30000000 		.4byte	.LFE16-.LFB16
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 57
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNrpasF.s 			page 57
 
 
  2039 0088 00000000 		.4byte	.LFB17
@@ -3418,7 +3418,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
  2093 0080 00000000 		.4byte	.LFB18
  2094 0084 28000000 		.4byte	.LFE18
  2095 0088 00000000 		.4byte	.LFB19
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 58
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNrpasF.s 			page 58
 
 
  2096 008c 48000000 		.4byte	.LFE19
@@ -3478,7 +3478,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
  2126 007d 5350494D 		.ascii	"SPIM_1_ClearTxBuffer\000"
  2126      5F315F43 
  2126      6C656172 
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 59
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNrpasF.s 			page 59
 
 
  2126      54784275 
@@ -3538,7 +3538,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
  2148 013a 72656738 		.ascii	"reg8\000"
  2148      00
  2149              	.LASF5:
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 60
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNrpasF.s 			page 60
 
 
  2150 013f 6C6F6E67 		.ascii	"long unsigned int\000"
@@ -3598,7 +3598,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
  2170 0235 5350494D 		.ascii	"SPIM_1_ClearFIFO\000"
  2170      5F315F43 
  2170      6C656172 
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 61
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNrpasF.s 			page 61
 
 
  2170      4649464F 
@@ -3658,7 +3658,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
  2190      7300
  2191              	.LASF15:
  2192 02f1 73697A65 		.ascii	"sizetype\000"
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 62
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNrpasF.s 			page 62
 
 
  2192      74797065 
@@ -3718,7 +3718,7 @@ ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 1
  2216      74617475 
  2216      7300
  2217              	.LASF14:
-ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNKQvXq.s 			page 63
+ARM GAS  C:\Users\Xavier\AppData\Local\Temp\ccNrpasF.s 			page 63
 
 
  2218 039c 6C6F6E67 		.ascii	"long double\000"
