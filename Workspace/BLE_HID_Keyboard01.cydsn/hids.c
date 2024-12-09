@@ -214,7 +214,8 @@ void SimulateKeyboard(void)
     
     Rows_Write(1 << kbitr);
     //for (j=0;j<3;j++) {
-    btpress += Columns_Read() << (3*(kbitr-1));
+    btpress &= ~(0b00000111 << (3*(kbitr)));
+    btpress |= Columns_Read() << (3*(kbitr));
     ++kbitr;
     btpress &= 0x7FFF;
     SPIM_1_Start();

@@ -269,7 +269,7 @@ void WDT_Start(void)
     /* Configure the WDT counter clear on a match setting */
     CySysWdtWriteClearOnMatch(WDT_COUNTER, WDT_COUNTER_ENABLE);
     /* Configure the WDT counter match comparison value */
-    CySysWdtWriteMatch(WDT_COUNTER, WDT_TIMEOUT);
+    CySysWdtWriteMatch(WDT_COUNTER, 1024);
     /* Reset WDT counter */
     CySysWdtResetCounters(WDT_COUNTER);
     /* Enable the specified WDT counter */
